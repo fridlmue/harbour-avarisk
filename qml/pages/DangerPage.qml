@@ -283,7 +283,7 @@ Page {
                                 }
                         width: parent.width
                         text: comment
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pixelSize: Theme.fontSizeSmall
                         wrapMode: Text.Wrap
                     }
                 }
@@ -302,7 +302,7 @@ Page {
                                 }
                         width: parent.width
                         text: structure
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pixelSize: Theme.fontSizeSmall
                         wrapMode: Text.Wrap
                     }
                 }
@@ -321,7 +321,7 @@ Page {
                                 }
                         width: parent.width
                         text: tendency
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pixelSize: Theme.fontSizeSmall
                         wrapMode: Text.Wrap
                     }
                 }
