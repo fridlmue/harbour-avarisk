@@ -1,15 +1,15 @@
 # harbour-avaRisk
 SailfishOS Client for EAWS Avalanche Bulletins
 
-# Supported Regions
+## Supported Regions
 At the moment the following regions are supported, more is planed:
 - AT Tirol/IT Bolzano/IT Trentino (https://avalanche.report) (EN/DE)
 - AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 
-# License
+## License
 Licensed under GNU GPLv3
 
-# Credits
+## Credits
 Assets have been taken from https://avalanche.report / https://gitlab.com/albina-euregio/albina-website.
 Bit thanks to all the Avalanche Warning Services who provide the data open and for the great work they do!
