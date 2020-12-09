@@ -58,6 +58,17 @@ Page {
                 }
             }
 
+            Text {
+                            text: "<a href=\"mailto:avarisk@10hoch-6.de\">" + qsTr("Send E-Mail") + "</a>"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            font.pixelSize: Theme.fontSizeSmall
+                            linkColor: Theme.highlightColor
+
+                            onLinkActivated: Qt.openUrlExternally("mailto:avarisk@10hoch-6.de")
+            }
+
             Separator {
                 width: parent.width
                 color: Theme.primaryColor

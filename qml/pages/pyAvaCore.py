@@ -113,7 +113,7 @@ def issueReport(regionID, local):
     reports = []
     provider = ""
     # Euregio-Region Tirol, Südtirol, Trentino
-    if ("AT-07" in regionID) or ("AT-07" in regionID) or ("AT-07" in regionID):
+    if ("AT-07" in regionID) or ("IT-32-BZ" in regionID) or ("IT-32-TN" in regionID):
         url = "https://api.avalanche.report/albina/api/bulletins"
         provider = "The displayed information is provided by an open data API on https://avalanche.report by: Avalanche Warning Service Tirol, Avalanche Warning Service Südtirol, Avalanche Warning Service Trentino."
         if "DE" in local.upper():
@@ -123,15 +123,36 @@ def issueReport(regionID, local):
     # Kärnten
     if "AT-02" in regionID:
         url = "https://www.avalanche-warnings.eu/public/kaernten/caaml"
-        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Kärnten."
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Kärnten (https://lawinenwarndienst.ktn.gv.at/)."
 
     # Salzburg
     if "AT-05" in regionID:
         url = "https://www.avalanche-warnings.eu/public/salzburg/caaml/en"
-        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg."
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg (https://lawine.salzburg.at/)."
         if "DE" in local.upper():
             url = "https://www.avalanche-warnings.eu/public/salzburg/caaml"
-            provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg."
+            provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg (https://lawine.salzburg.at/)."
+
+    # Steiermark
+    if "AT-06" in regionID:
+        url = "https://www.avalanche-warnings.eu/public/steiermark/caaml/en"
+        provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Steiermark."
+        if "DE" in local.upper():
+            url = "https://www.avalanche-warnings.eu/public/steiermark/caaml"
+            provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Steiermark (https://www.lawine-steiermark.at/)."
+
+    # Oberösterreich
+    if "AT-04" in regionID:
+        url = "https://www.avalanche-warnings.eu/public/oberoesterreich/caaml"
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Oberösterreich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm)."
+
+    # Niederösterreich - Noch nicht angelegt
+    if "AT-03" in regionID:
+        url = "https://www.avalanche-warnings.eu/public/niederoesterreich/caaml"
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at)."
+
+
+
 
     reports.extend(getReports(url, ""))
 
