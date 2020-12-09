@@ -10,6 +10,9 @@ At the moment the following regions are supported, more are planned:
 ## License
 Licensed under GNU GPLv3
 
+## Contact
+avarisk (at) 10hoch-6.de
+
 ## Credits
 Assets have been taken from https://avalanche.report / https://gitlab.com/albina-euregio/albina-website.
 Big thanks to all the Avalanche Warning Services who provide the data open and for the great work they do!
