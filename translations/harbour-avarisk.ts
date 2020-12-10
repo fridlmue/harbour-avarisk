@@ -27,6 +27,10 @@
         <source>Thanks to all the Avalanche Warning Services who provide the data open and for the great work they do! Stay careful and safe!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Send E-Mail</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddFavPage</name>
@@ -119,10 +123,6 @@
 </context>
 <context>
     <name>FirstPage</name>
-    <message>
-        <source>Show Bulletin for</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>AT Tirol Allgäuer Alpen</source>
         <translation type="unfinished"></translation>
@@ -565,6 +565,34 @@
     </message>
     <message>
         <source>AT Salzbrg Chiemgauer A., Heutal, Reiteralpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Bulletin for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Austria</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tirol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kärnten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salzburg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>South Tyrol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trentino</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
