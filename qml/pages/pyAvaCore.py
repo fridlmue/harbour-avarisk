@@ -171,37 +171,40 @@ def issueReport(regionID, local):
         for ID in report.validRegions:
             if ID == regionID:
               matchingReport = report
+    try:
+        matchingReport
+    except NameError:
+        pyotherside.send('dangerLevel', "Problem resolving Region")
+        pyotherside.send('provider', "Couldn't find the RegionID in the Report. Probably it is not served at the moment.")
 
-    dangerLevel = 0
-    for elem in matchingReport.dangerMain:
-      if elem['mainValue'] > dangerLevel:
-          dangerLevel = elem['mainValue']
-
-    # for elem in matchingReport.problemList:
-    #     elem['type'] = elem['type'].replace(' ', '_')
-
-
-    LOCAL_TIMEZONE = datetime.now(timezone(timedelta(0))).astimezone().tzinfo
-
-    pyotherside.send('dangerLevel', dangerLevel)
-    pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
-    if (len(matchingReport.dangerMain) > 1):
-        pyotherside.send('dangerLevel_l', matchingReport.dangerMain[1]['mainValue'])
-        pyotherside.send('dangerLevel_alti', matchingReport.dangerMain[0]['validElev'])
+        pyotherside.send('finished')
     else:
-        pyotherside.send('dangerLevel_l', matchingReport.dangerMain[0]['mainValue'])
-    pyotherside.send('highlights', matchingReport.activityHighl)
-    pyotherside.send('comment',matchingReport.activityCom)
-    pyotherside.send('structure', matchingReport.snowStrucCom)
-    pyotherside.send('tendency', matchingReport.tendencyCom)
-    pyotherside.send('repDate', matchingReport.repDate.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('validFrom', matchingReport.timeBegin.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('validTo', matchingReport.timeEnd.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('numberOfDPatterns', len(matchingReport.problemList))
-    pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
-    pyotherside.send('provider', provider)
+        dangerLevel = 0
+        for elem in matchingReport.dangerMain:
+            if elem['mainValue'] > dangerLevel:
+                dangerLevel = elem['mainValue']
 
-    pyotherside.send('finished')
+        LOCAL_TIMEZONE = datetime.now(timezone(timedelta(0))).astimezone().tzinfo
+
+        pyotherside.send('dangerLevel', dangerLevel)
+        pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
+        if (len(matchingReport.dangerMain) > 1):
+            pyotherside.send('dangerLevel_l', matchingReport.dangerMain[1]['mainValue'])
+            pyotherside.send('dangerLevel_alti', matchingReport.dangerMain[0]['validElev'])
+        else:
+            pyotherside.send('dangerLevel_l', matchingReport.dangerMain[0]['mainValue'])
+        pyotherside.send('highlights', matchingReport.activityHighl)
+        pyotherside.send('comment',matchingReport.activityCom)
+        pyotherside.send('structure', matchingReport.snowStrucCom)
+        pyotherside.send('tendency', matchingReport.tendencyCom)
+        pyotherside.send('repDate', matchingReport.repDate.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('validFrom', matchingReport.timeBegin.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('validTo', matchingReport.timeEnd.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('numberOfDPatterns', len(matchingReport.problemList))
+        pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
+        pyotherside.send('provider', provider)
+
+        pyotherside.send('finished')
 
 class Downloader:
     def __init__(self):
@@ -209,26 +212,23 @@ class Downloader:
         self.bgthread.start()
 
     def download(self, regionID, local):
-    # def download(self):
         if self.bgthread.is_alive():
             return
         self.bgthread = threading.Thread(target=issueReport(regionID, local))
-        # self.bgthread = threading.Thread(target=getReportTyrol('IT-32-BZ-08'))
         self.bgthread.start()
 
 class avaReport:
     def __init__(self):
-        # self._items = []
-        self.validRegions = []    # list of Regions
-        self.repDate = ""         # Date of Report
-        self.timeBegin = ""       # valid Ttime start
-        self.timeEnd = ""         # valid time end
-        self.dangerMain = []      # danger Value and elev
-        self.dangerPattern = []   # list of Patterns
-        self.problemList = []     # list of Problems with Sublist of Aspect&Elevation
-        self.activityHighl = "none"   # String avalanche activity highlits text
-        self.activityCom = "none"     # String avalanche comment text
-        self.snowStrucCom = "none"    # String comment on snowpack structure
-        self.tendencyCom = "none"     # String comment on tendency
+        self.validRegions = []          # list of Regions
+        self.repDate = ""               # Date of Report
+        self.timeBegin = ""             # valid Ttime start
+        self.timeEnd = ""               # valid time end
+        self.dangerMain = []            # danger Value and elev
+        self.dangerPattern = []         # list of Patterns
+        self.problemList = []           # list of Problems with Sublist of Aspect&Elevation
+        self.activityHighl = "none"     # String avalanche activity highlits text
+        self.activityCom = "none"       # String avalanche comment text
+        self.snowStrucCom = "none"      # String comment on snowpack structure
+        self.tendencyCom = "none"       # String comment on tendency
 
 downloader = Downloader()
