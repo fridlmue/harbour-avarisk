@@ -51,11 +51,9 @@ Page {
 
     function getAvaDangElevText(validElev) {
         if (validElev.indexOf('Hi') > -1) {
-             qsTr("above")
              return "above"
         }
         else if (validElev.indexOf('Lw') > -1) {
-             qsTr("below")
              return "below"
         }
         else {
@@ -72,7 +70,7 @@ Page {
         }
 
         if (validElev.indexOf('_') === -1) {
-            return ""
+            return qsTr("entire range")
         }
 
         var elev = validElev.substring(validElev.indexOf('_')+1, validElev.length-2)
@@ -198,7 +196,7 @@ Page {
 
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
-                    text: getElevFromString(dangerLevel_alti)
+                    text: (dangerLevel_l === dangerLevel_h) ? qsTr("entire range") : getElevFromString(dangerLevel_alti)
                     font.pixelSize: Theme.fontSizeMedium
                     wrapMode: Text.Wrap
                 }

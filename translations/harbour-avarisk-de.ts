@@ -97,14 +97,6 @@
         <translation>Probleme und Gefahrenstellen</translation>
     </message>
     <message>
-        <source>above</source>
-        <translation>über</translation>
-    </message>
-    <message>
-        <source>below</source>
-        <translation>unter</translation>
-    </message>
-    <message>
         <source>treeline</source>
         <translation>Waldgrenze</translation>
     </message>
@@ -123,6 +115,10 @@
     <message>
         <source>Reload</source>
         <translation>Neu herunterladen</translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation>jede Höhe</translation>
     </message>
 </context>
 <context>
@@ -718,6 +714,13 @@
     <message>
         <source>Styria</source>
         <translation>Steiermark</translation>
+    </message>
+</context>
+<context>
+    <name>RegionSelectPage</name>
+    <message>
+        <source>Select Region</source>
+        <translation>Wähle eine Region</translation>
     </message>
 </context>
 </TS>

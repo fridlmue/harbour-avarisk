@@ -12,7 +12,12 @@
     You should have received a copy of the GNU General Public License
     along with avaRisk. If not, see <http://www.gnu.org/licenses/>.
 """
-
+"""
+    The Pythoncode is responsible for correct parsing of the CAAML-XML.
+    The dafault Parsing part is for CAAML-XMLs like used in a wide area of
+    Austria.
+    Special Implementation is done for other Regions.
+"""
 
 import pyotherside
 import threading
@@ -32,31 +37,26 @@ def getXmlAsElemT(url):
             import xml.etree.ElementTree as ET
         root = ET.fromstring(response_content.decode('utf-8'))
     except:
-        # pyotherside.send('error')
-        # print("Failed to parse xml from response (%s)" % traceback.format_exc())
-        print('error')
+        print('error parsing ElementTree')
     return root
 
-def parse_xml(root, special):
+def parseXML(root, special):
 
     reports = []
 
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
-        # if elem.tag == '{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin':
         report = avaReport()
         for detail in bulletin:
-            # if 'locRef' in detail.tag:
-                # report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
-                report.repDate = tryparsedatetime(elem.text)
+                report.repDate = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                report.timeBegin = tryparsedatetime(elem.text)
+                report.timeBegin = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                report.timeEnd = tryparsedatetime(elem.text)
+                report.timeEnd = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                 danger = elem
                 mainValue = 0
@@ -99,11 +99,11 @@ def parse_xml(root, special):
 
 def getReports(url, special):
     root = getXmlAsElemT(url)
-    reports = parse_xml(root, special)
+    reports = parseXML(root, special)
     return reports
 
 
-def tryparsedatetime(inStr):
+def tryParseDateTime(inStr):
     try:
         r_dateTime = datetime.strptime(inStr, '%Y-%m-%dT%XZ')
     except:
@@ -118,8 +118,6 @@ def tryparsedatetime(inStr):
 
 
 def issueReport(regionID, local):
-    #urlTyrol = "https://api.avalanche.report/albina/api/bulletins"
-    #urlKaernten = "www.lawine-kaernten.at/CAAML-XRISK-KTN.xml"
     url = "https://api.avalanche.report/albina/api/bulletins"
     reports = []
     provider = ""
