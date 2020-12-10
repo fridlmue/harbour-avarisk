@@ -3,7 +3,7 @@ SailfishOS Client for EAWS Avalanche Bulletins
 
 ## Remarks
 - If a Bulletin is not available at the moment for a region, the "Loading" indicator will remain. The UI will stay usable.
-- The App requires a internet connection when opening a Report.
+- The App requires an internet connection when opening a Report.
 
 ## Supported Regions
 At the moment the following regions are supported, more are planned:
