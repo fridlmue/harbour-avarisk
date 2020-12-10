@@ -29,21 +29,21 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-Mail senden</translation>
     </message>
 </context>
 <context>
     <name>AddFavPage</name>
     <message>
         <source>Select Region</source>
-        <translation type="unfinished"></translation>
+        <translation>Wähle eine Region</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>avaWarn</source>
-        <translation type="unfinished"></translation>
+        <translation>avaWarn</translation>
     </message>
 </context>
 <context>
@@ -120,480 +120,604 @@
         <source>Report from</source>
         <translation>Bericht vom</translation>
     </message>
+    <message>
+        <source>Reload</source>
+        <translation>Neu herunterladen</translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
-        <source>AT Tirol Allgäuer Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Mieminger Gebirge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Karwendel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Brandenberger Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Grieskogelgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Westl. Verwallgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Verwallgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Silvretta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Samnaungruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Glockturmgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Nördl. Ötztaler- und Stubaier A.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Weißkogelgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Gurgler Gruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Zentrale Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Glocknergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Schobergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Lienzer Dolomiten</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Glocknergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Schobergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Ankogelgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Nockberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Saualpe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Packalpe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Koralpe West</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Kreuzeckgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Lienzer Dolomiten</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Villacher Alpe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Zentrale Lechtaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Venedigergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Lecht. A. - Ammergebirge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Wilder Kaiser - Waidringer A.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Wstl. Lechtaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Wstl. Tuxer Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Tuxer Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Wstl. Kitzbühler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Kitzbühler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Nördl. Zillertaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Rieserfernergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Tirol Östl. Deferegger Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Münstertaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Langtaufers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Schnalser Kamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Südl. Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen S Zillert. A und Hohe Tauern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Saldurn-Mastaun Kamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Texelgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Sarntaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Wstl. Pfunderer Berge </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Östl. Pfunderer Berge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Durreckgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Wstl. Rieserfernergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Wstl. Deferegger Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Ortlergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Ultental</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Östl. Nonsberger Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Nördl. Fleimstaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Groedner Dolomiten</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Pragser Dolomiten</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Bozen Sextner Dolomiten</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Adamello - Presanella</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Adamello meridionale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Bondone e Stivo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Brenta Nord - Peller</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Brenta meridionale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Folgaria - Lavarone</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Lagorai settentrionale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Lagorai meridionale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Latemar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Marzola - Valsugana</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Paganella</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Prealpi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Primiero - Pale di S. Martino</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Vallarsa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Valle di Cembra</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Valle di Fassa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Valle di Non</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Valle di Ledro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Sole, Pejo e Rabbi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Maddalene</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>IT Trentino Pine&apos; - Valle dei Mocheni</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Südl. Gurktaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Westl. Gailtaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Mittlere Gailtaler Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Wstl. Karnische Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Mittlere Karnische Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Östl. Karnische Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Westl. Karawanken</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Mittlere Karawanken</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Kärnten Östl. Karawanken</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Nockberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Südl. Niedere Tauern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Ankogelgruppe, Muhr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Niedere Tauern Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Goldberggruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Glocknergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Großvenedigergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Nördl. Niedere Tauern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Nördl. Goldberggruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Nördl. Glocknergruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Nördl. Großvenedigergruppe </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Pongauer Grasberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Dientner Grasberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Kitzbüheler Alpen, Glemmtal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Oberpinzgau, Grasberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Tennengebirge, Gosaukamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Hochkönig, Hagengebirge, Göllstock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Loferer und Leoganger Steinberge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Osterhorngruppe, Gamsfeldgruppe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Unterbergstock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>AT Salzbrg Chiemgauer A., Heutal, Reiteralpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <source>Show Bulletin for</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeige Lawinenlagebericht für</translation>
     </message>
     <message>
         <source>Austria</source>
+        <translation>Österreich</translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tirol</source>
+        <source>Mieminger Gebirge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Kärnten</source>
+        <source>Karwendel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brandenberger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zentrale Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grieskogelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Verwallgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Verwallgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Silvretta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Samnaungruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Tuxer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Tuxer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Kitzbühler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Kitzbühler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glockturmgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weißkogelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gurgler Gruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zentrale Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Zillertaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Venedigergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Rieserfernergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glocknergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Deferegger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schobergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lienzer Dolomiten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Münstertaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Langtaufers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schnalser Kamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Südl. Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saldurn-Mastaun Kamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sarntaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Pfunderer Berge </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Pfunderer Berge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Durreckgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Rieserfernergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Deferegger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ortlergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ultental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Nonsberger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Fleimstaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Groedner Dolomiten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pragser Dolomiten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sextner Dolomiten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adamello - Presanella</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adamello meridionale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bondone e Stivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brenta Nord - Peller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brenta meridionale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Folgaria - Lavarone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lagorai settentrionale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lagorai meridionale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Latemar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Marzola - Valsugana</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paganella</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Prealpi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Primiero - Pale di S. Martino</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vallarsa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valle di Cembra</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valle di Fassa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valle di Non</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valle di Ledro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sole, Pejo e Rabbi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maddalene</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pine&apos; - Valle dei Mocheni</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ankogelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nockberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Südl. Gurktaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saualpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Packalpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Koralpe West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kreuzeckgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Gailtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mittlere Gailtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Villacher Alpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Karnische Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mittlere Karnische Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Karnische Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Karawanken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mittlere Karawanken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Karawanken</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Südl. Niedere Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ankogelgruppe, Muhr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Niedere Tauern Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goldberggruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glocknergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Großvenedigergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Niedere Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Goldberggruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Glocknergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pongauer Grasberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dientner Grasberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kitzbüheler Alpen, Glemmtal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Oberpinzgau, Grasberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tennengebirge, Gosaukamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hochkönig, Hagengebirge, Göllstock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loferer und Leoganger Steinberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Osterhorngruppe, Gamsfeldgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unterbergstock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer A., Heutal, Reiteralpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tyrol</source>
+        <translation>Tirol</translation>
+    </message>
+    <message>
+        <source>Carinthia</source>
+        <translation>Kärnten</translation>
     </message>
     <message>
         <source>Salzburg</source>
-        <translation type="unfinished"></translation>
+        <translation>Salzburg</translation>
+    </message>
+    <message>
+        <source>Italy</source>
+        <translation>Italien</translation>
     </message>
     <message>
         <source>South Tyrol</source>
-        <translation type="unfinished"></translation>
+        <translation>Südtirol</translation>
     </message>
     <message>
         <source>Trentino</source>
+        <translation>Trentino</translation>
+    </message>
+    <message>
+        <source>Östl. Lechtaler A. - Ammergebirge</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wilder Kaiser - Waidringer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Ötztaler- und Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S Zillertaler A. und Hohe Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Großvenedigergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dachsteingebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Totes Gebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ennstaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schladminger Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Wölzer Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rottenmanner Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Südl. Wölzer Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seckauer Tauern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Eisenerzer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hochschwabgebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mürzsteger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mürztaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Fischbacher A. und Wechselgebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westliche Fischbacher A. und Grazer Bergland</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stub- und Gleinalpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Koralpe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Seetaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gurktaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dachstein, Gosaukamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kalmberg, Katergebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pyhrgas, Haller Mauer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zimnitzmassiv, Höllengebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traunstein, Eibenberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kasbergblock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sengsengebirge, Reichraminger Hintergebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ennstaler Voralpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ybbstaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Türnitzer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gutensteiner Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rax- Schneeberggebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Semmering- Wechselgebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gippel- Göllergebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Styria</source>
+        <translation>Steiermark</translation>
     </message>
 </context>
 </TS>

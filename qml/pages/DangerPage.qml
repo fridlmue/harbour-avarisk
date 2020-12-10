@@ -85,6 +85,16 @@ Page {
 
         VerticalScrollDecorator{}
 
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Reload")
+                onClicked: {
+                    python.startDownload();
+                    busy = true;
+                }
+            }
+        }
+
         Column {
             spacing: Theme.paddingSmall
             id: column
