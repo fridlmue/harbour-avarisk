@@ -31,6 +31,6 @@ Licensed under GNU GPLv3
 avarisk(at)10hoch-6.de
 
 ## Credits
-Assets have been taken from https://avalanche.report / https://gitlab.com/albina-euregio/albina-website.
+Assets have been taken from https://avalanche.report / https://gitlab.com/albina-euregio/albina-website. It is great, that they started with providing high quality Avalanche Risk Assessments in a common open format in the international ALBINA project.
 Many thanks to the "CROSSRISK" project partners (in particular ZAMG https://www.zamg.ac.at/) for providing unifyed data at https://www.avalanche-warnings.eu/. 
 Big thanks to all the Avalanche Warning Services who provide the data open and for the great work they do and EAWS (https://www.avalanches.org/) for the standardization efforts.
