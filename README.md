@@ -9,19 +9,19 @@ SailfishOS Client for EAWS Avalanche Bulletins
 - If a Bulletin is not available at the moment for a region, the "Loading" indicator will remain. The UI will stay usable. (https://github.com/fridlmue/harbour-avarisk/issues/12)
 - The App always requires an internet connection when opening a Report.
 
-## Supported Regions
-At the moment the following regions are supported, more are planned:
+## Suported Regions
+At the moment the following regions are suported:
 - AT Tirol/IT Bolzano/IT Trentino (https://avalanche.report) (EN/DE)
 - AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 - AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
+- AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
 
-### Supported soon
+### Suported soon (suport prepared but not yet served server side.)
 - AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
 - AT Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at/) (DE)
 
-### Support considered
-- AT Vorarlberg
+### Suport considered
 - DE Bavaria
 
 ## License
