@@ -123,7 +123,7 @@ def parseXMLVorarlberg(root):
                         report.tendencyCom = subElem.text
                         commentEmpty = 0
                 for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
-                    report.activityCom = report.activityCom + " <br /> Alpinwetterbericht der ZAMG Tirol und Vorarlberg: <br /> " + subElem.text
+                    report.activityCom = report.activityCom + " <br />Alpinwetterbericht der ZAMG Tirol und Vorarlberg:<br /> " + subElem.text
                 for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
                     report.snowStrucCom = subElem.text
                 i = 0
