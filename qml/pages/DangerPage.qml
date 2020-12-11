@@ -236,7 +236,7 @@ Page {
                                          model: dPatterns[sectionIndex]['aspect']
                                          Image {
                                              property int aspectIndex: model.index
-                                             source: "qrc:///res/expositions/" + dPatterns[sectionIndex]['aspect'][aspectIndex].replace('AspectRange', 'exposition')  + ".png"
+                                             source: "qrc:///res/expositions/" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase().replace('aspectrange', 'exposition')  + ".png"
                                              width:  Theme.iconSizeLarge
                                              height: Theme.iconSizeLarge
                                          }

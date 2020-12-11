@@ -134,7 +134,7 @@ def parseXMLVorarlberg(root):
                         type = item.text
                     aspect = []
                     for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
-                        aspect.append(item.get('{http://www.w3.org/1999/xlink}href').lower())
+                        aspect.append(item.get('{http://www.w3.org/1999/xlink}href'))
                     validElev = "-"
                     for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
                         for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
