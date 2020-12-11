@@ -1,4 +1,6 @@
-# harbour-avaRisk
+![logo](icons/86x86/harbour-avarisk.png)
+
+# avaRisk
 SailfishOS Client for EAWS Avalanche Bulletins
 
 ## Download and Isntall
