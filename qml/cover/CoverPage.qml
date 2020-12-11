@@ -18,10 +18,8 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
 
-
-
     Label {
-        id: label
+        id: coverLabel
         anchors.centerIn: parent
         text: qsTr("avaWarn")
     }

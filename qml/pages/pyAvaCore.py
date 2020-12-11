@@ -13,7 +13,7 @@
     along with avaRisk. If not, see <http://www.gnu.org/licenses/>.
 """
 """
-    The Pythoncode is responsible for correct parsing of the CAAML-XML.
+    The Python Code is responsible for correct parsing of the CAAML-XML.
     The dafault Parsing part is for CAAML-XMLs like used in a wide area of
     Austria.
     Special Implementation is done for other Regions.
@@ -25,6 +25,7 @@ from datetime import datetime
 from datetime import timezone
 from datetime import timedelta
 from urllib.request import urlopen
+import copy
 
 def getXmlAsElemT(url):
 
@@ -35,12 +36,15 @@ def getXmlAsElemT(url):
             import xml.etree.cElementTree as ET
         except ImportError:
             import xml.etree.ElementTree as ET
-        root = ET.fromstring(response_content.decode('utf-8'))
+        if "VORARLBERG" in url.upper():
+            root = ET.fromstring(response_content.decode('latin-1'))
+        else:
+            root = ET.fromstring(response_content.decode('utf-8'))
     except:
         print('error parsing ElementTree')
     return root
 
-def parseXML(root, special):
+def parseXML(root):
 
     reports = []
 
@@ -97,9 +101,86 @@ def parseXML(root, special):
     return reports
 
 
-def getReports(url, special):
+def parseXMLVorarlberg(root):
+    numberOfRegions = 6
+    reports = []
+    report = avaReport()
+    report.validRegions=[""]
+    commentEmpty = 1
+    # Common for every Report:
+    for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
+        for detail in bulletin:
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}metaDataProperty'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
+                    report.repDate = tryParseDateTime(subElem.text)
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}travelAdvisoryComment'):
+                    report.activityCom = subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}highlights'):
+                    report.activityHighl = subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}comment'):
+                    if commentEmpty:
+                        report.tendencyCom = subElem.text
+                        commentEmpty = 0
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
+                    report.activityCom = report.activityCom + " <br /> Alpinwetterbericht der ZAMG Tirol und Vorarlberg: <br /> " + subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
+                    report.snowStrucCom = subElem.text
+                i = 0
+                for subElem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
+                    problem = subElem
+                    type = ""
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                        type = item.text
+                    aspect = []
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
+                        aspect.append(item.get('{http://www.w3.org/1999/xlink}href').lower())
+                    validElev = "-"
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + subSubElem.text + "Hi"
+                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + subSubElem.text + "Lw"
+                    i = i+1
+                    report.problemList.append({'type':type,'aspect':aspect,'validElev':validElev})
+
+    for i in range(numberOfRegions+1):
+        reports.append(copy.deepcopy(report))
+
+    # Individual for the Regions:
+    for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
+        for detail in bulletin:
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
+                    regionID = 6
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                        regionID = int(subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')[-1])
+                        reports[regionID-1].validRegions[0] = subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            reports[regionID-1].timeBegin = tryParseDateTime(subSubSubElem.text)
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            reports[regionID-1].timeEnd = tryParseDateTime(subSubSubElem.text)
+                    mainValue = 0
+                    validElev = "-"
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
+                        mainValue = int(subSubElem.text)
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + subSubSubElem.text + "Hi"
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + subSubSubElem.text + "Lw"
+                    reports[regionID-1].dangerMain.append({'mainValue':mainValue,'validElev':validElev})
+
+    return reports
+
+
+def getReports(url):
     root = getXmlAsElemT(url)
-    reports = parseXML(root, special)
+    if "VORARLBERG" in url.upper():
+        reports = parseXMLVorarlberg(root)
+    else:
+        reports = parseXML(root)
     return reports
 
 
@@ -160,10 +241,16 @@ def issueReport(regionID, local):
         url = "https://www.avalanche-warnings.eu/public/niederoesterreich/caaml"
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at)."
 
+    #Vorarlberg
+    if "AT8" in regionID:
+        url = "https://warndienste.cnv.at/dibos/lawine_en/avalanche_bulletin_vorarlberg_en.xml"
+        provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at/ by: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
+        if "DE" in local.upper():
+            url = "http://warndienste.cnv.at/dibos/lawine/avalanche_bulletin_vorarlberg_de.xml"
+            provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at/ abgefragt. Diese wird bereitgestellt vom: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
 
 
-
-    reports.extend(getReports(url, ""))
+    reports.extend(getReports(url))
 
     for report in reports:
         for ID in report.validRegions:

@@ -79,8 +79,11 @@ Page {
     }
 
     onStatusChanged: {
-        python.startDownload();
-        busy = true;
+        if (status == Component.Ready)
+        {
+            python.startDownload();
+            busy = true;
+        }
     }
 
     SilicaFlickable {
@@ -115,7 +118,8 @@ Page {
 
             PageHeader {
                 id: header
-                title: qsTr("Report") + ": " + regionName
+                description: qsTr("Report")
+                title: regionName
             }
 
             SectionHeader {

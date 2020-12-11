@@ -715,6 +715,30 @@
         <source>Styria</source>
         <translation>Steiermark</translation>
     </message>
+    <message>
+        <source>Bregenzerwaldgebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen/Hochtannberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengebirge/Arlberg/Lechtaler Alp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verwall</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vorarlberg</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>

@@ -30,7 +30,8 @@ Page {
 
         anchors.fill: parent
         header: PageHeader {
-            title: qsTr("Select Region") + ": " + country + " - " + macroRegion
+            description: qsTr("Select Region")
+            title: country + " - " + macroRegion
         }
         delegate: BackgroundItem {
             id: firstListViewDelegate
