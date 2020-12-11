@@ -8,7 +8,6 @@ SailfishOS Client for EAWS Avalanche Bulletins
 - avaRisk can be found and installed from the Jolla Store/Sailfish Harbour. (https://harbour.jolla.com/)
 
 ## Remarks
-- If a Bulletin is not available at the moment for a region, the "Loading" indicator will remain. The UI will stay usable. (https://github.com/fridlmue/harbour-avarisk/issues/12)
 - The App always requires an internet connection when opening a Report.
 
 ## Supported Regions
