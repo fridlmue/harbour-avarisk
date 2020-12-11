@@ -12,7 +12,12 @@
     You should have received a copy of the GNU General Public License
     along with avaRisk. If not, see <http://www.gnu.org/licenses/>.
 """
-
+"""
+    The Python Code is responsible for correct parsing of the CAAML-XML.
+    The dafault Parsing part is for CAAML-XMLs like used in a wide area of
+    Austria.
+    Special Implementation is done for other Regions.
+"""
 
 import pyotherside
 import threading
@@ -20,6 +25,7 @@ from datetime import datetime
 from datetime import timezone
 from datetime import timedelta
 from urllib.request import urlopen
+import copy
 
 def getXmlAsElemT(url):
 
@@ -30,33 +36,31 @@ def getXmlAsElemT(url):
             import xml.etree.cElementTree as ET
         except ImportError:
             import xml.etree.ElementTree as ET
-        root = ET.fromstring(response_content.decode('utf-8'))
+        if "VORARLBERG" in url.upper():
+            root = ET.fromstring(response_content.decode('latin-1'))
+        else:
+            root = ET.fromstring(response_content.decode('utf-8'))
     except:
-        # pyotherside.send('error')
-        # print("Failed to parse xml from response (%s)" % traceback.format_exc())
-        print('error')
+        print('error parsing ElementTree')
     return root
 
-def parse_xml(root, special):
+def parseXML(root):
 
     reports = []
 
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
-        # if elem.tag == '{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin':
         report = avaReport()
         for detail in bulletin:
-            # if 'locRef' in detail.tag:
-                # report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
-                report.repDate = tryparsedatetime(elem.text)
+                report.repDate = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                report.timeBegin = tryparsedatetime(elem.text)
+                report.timeBegin = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                report.timeEnd = tryparsedatetime(elem.text)
+                report.timeEnd = tryParseDateTime(elem.text)
             for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                 danger = elem
                 mainValue = 0
@@ -97,13 +101,90 @@ def parse_xml(root, special):
     return reports
 
 
-def getReports(url, special):
-    root = getXmlAsElemT(url)
-    reports = parse_xml(root, special)
+def parseXMLVorarlberg(root):
+    numberOfRegions = 6
+    reports = []
+    report = avaReport()
+    report.validRegions=[""]
+    commentEmpty = 1
+    # Common for every Report:
+    for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
+        for detail in bulletin:
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}metaDataProperty'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
+                    report.repDate = tryParseDateTime(subElem.text)
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}travelAdvisoryComment'):
+                    report.activityCom = subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}highlights'):
+                    report.activityHighl = subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}comment'):
+                    if commentEmpty:
+                        report.tendencyCom = subElem.text
+                        commentEmpty = 0
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
+                    report.activityCom = report.activityCom + " <br /> Alpinwetterbericht der ZAMG Tirol und Vorarlberg: <br /> " + subElem.text
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
+                    report.snowStrucCom = subElem.text
+                i = 0
+                for subElem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
+                    problem = subElem
+                    type = ""
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                        type = item.text
+                    aspect = []
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
+                        aspect.append(item.get('{http://www.w3.org/1999/xlink}href').lower())
+                    validElev = "-"
+                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + subSubElem.text + "Hi"
+                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + subSubElem.text + "Lw"
+                    i = i+1
+                    report.problemList.append({'type':type,'aspect':aspect,'validElev':validElev})
+
+    for i in range(numberOfRegions+1):
+        reports.append(copy.deepcopy(report))
+
+    # Individual for the Regions:
+    for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
+        for detail in bulletin:
+            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
+                    regionID = 6
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                        regionID = int(subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')[-1])
+                        reports[regionID-1].validRegions[0] = subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            reports[regionID-1].timeBegin = tryParseDateTime(subSubSubElem.text)
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            reports[regionID-1].timeEnd = tryParseDateTime(subSubSubElem.text)
+                    mainValue = 0
+                    validElev = "-"
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
+                        mainValue = int(subSubElem.text)
+                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + subSubSubElem.text + "Hi"
+                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + subSubSubElem.text + "Lw"
+                    reports[regionID-1].dangerMain.append({'mainValue':mainValue,'validElev':validElev})
+
     return reports
 
 
-def tryparsedatetime(inStr):
+def getReports(url):
+    root = getXmlAsElemT(url)
+    if "VORARLBERG" in url.upper():
+        reports = parseXMLVorarlberg(root)
+    else:
+        reports = parseXML(root)
+    return reports
+
+
+def tryParseDateTime(inStr):
     try:
         r_dateTime = datetime.strptime(inStr, '%Y-%m-%dT%XZ')
     except:
@@ -118,8 +199,6 @@ def tryparsedatetime(inStr):
 
 
 def issueReport(regionID, local):
-    #urlTyrol = "https://api.avalanche.report/albina/api/bulletins"
-    #urlKaernten = "www.lawine-kaernten.at/CAAML-XRISK-KTN.xml"
     url = "https://api.avalanche.report/albina/api/bulletins"
     reports = []
     provider = ""
@@ -162,46 +241,55 @@ def issueReport(regionID, local):
         url = "https://www.avalanche-warnings.eu/public/niederoesterreich/caaml"
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at)."
 
+    #Vorarlberg
+    if "AT8" in regionID:
+        url = "https://warndienste.cnv.at/dibos/lawine_en/avalanche_bulletin_vorarlberg_en.xml"
+        provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at/ by: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
+        if "DE" in local.upper():
+            url = "http://warndienste.cnv.at/dibos/lawine/avalanche_bulletin_vorarlberg_de.xml"
+            provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at/ abgefragt. Diese wird bereitgestellt vom: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
 
 
-
-    reports.extend(getReports(url, ""))
+    reports.extend(getReports(url))
 
     for report in reports:
         for ID in report.validRegions:
             if ID == regionID:
               matchingReport = report
+    try:
+        matchingReport
+    except NameError:
+        pyotherside.send('dangerLevel', "Problem resolving Region")
+        pyotherside.send('provider', "Couldn't find the RegionID in the Report. Probably it is not served at the moment.")
 
-    dangerLevel = 0
-    for elem in matchingReport.dangerMain:
-      if elem['mainValue'] > dangerLevel:
-          dangerLevel = elem['mainValue']
-
-    # for elem in matchingReport.problemList:
-    #     elem['type'] = elem['type'].replace(' ', '_')
-
-
-    LOCAL_TIMEZONE = datetime.now(timezone(timedelta(0))).astimezone().tzinfo
-
-    pyotherside.send('dangerLevel', dangerLevel)
-    pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
-    if (len(matchingReport.dangerMain) > 1):
-        pyotherside.send('dangerLevel_l', matchingReport.dangerMain[1]['mainValue'])
-        pyotherside.send('dangerLevel_alti', matchingReport.dangerMain[0]['validElev'])
+        pyotherside.send('finished')
     else:
-        pyotherside.send('dangerLevel_l', matchingReport.dangerMain[0]['mainValue'])
-    pyotherside.send('highlights', matchingReport.activityHighl)
-    pyotherside.send('comment',matchingReport.activityCom)
-    pyotherside.send('structure', matchingReport.snowStrucCom)
-    pyotherside.send('tendency', matchingReport.tendencyCom)
-    pyotherside.send('repDate', matchingReport.repDate.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('validFrom', matchingReport.timeBegin.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('validTo', matchingReport.timeEnd.astimezone(LOCAL_TIMEZONE))
-    pyotherside.send('numberOfDPatterns', len(matchingReport.problemList))
-    pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
-    pyotherside.send('provider', provider)
+        dangerLevel = 0
+        for elem in matchingReport.dangerMain:
+            if elem['mainValue'] > dangerLevel:
+                dangerLevel = elem['mainValue']
 
-    pyotherside.send('finished')
+        LOCAL_TIMEZONE = datetime.now(timezone(timedelta(0))).astimezone().tzinfo
+
+        pyotherside.send('dangerLevel', dangerLevel)
+        pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
+        if (len(matchingReport.dangerMain) > 1):
+            pyotherside.send('dangerLevel_l', matchingReport.dangerMain[1]['mainValue'])
+            pyotherside.send('dangerLevel_alti', matchingReport.dangerMain[0]['validElev'])
+        else:
+            pyotherside.send('dangerLevel_l', matchingReport.dangerMain[0]['mainValue'])
+        pyotherside.send('highlights', matchingReport.activityHighl)
+        pyotherside.send('comment',matchingReport.activityCom)
+        pyotherside.send('structure', matchingReport.snowStrucCom)
+        pyotherside.send('tendency', matchingReport.tendencyCom)
+        pyotherside.send('repDate', matchingReport.repDate.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('validFrom', matchingReport.timeBegin.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('validTo', matchingReport.timeEnd.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('numberOfDPatterns', len(matchingReport.problemList))
+        pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
+        pyotherside.send('provider', provider)
+
+        pyotherside.send('finished')
 
 class Downloader:
     def __init__(self):
@@ -209,26 +297,23 @@ class Downloader:
         self.bgthread.start()
 
     def download(self, regionID, local):
-    # def download(self):
         if self.bgthread.is_alive():
             return
         self.bgthread = threading.Thread(target=issueReport(regionID, local))
-        # self.bgthread = threading.Thread(target=getReportTyrol('IT-32-BZ-08'))
         self.bgthread.start()
 
 class avaReport:
     def __init__(self):
-        # self._items = []
-        self.validRegions = []    # list of Regions
-        self.repDate = ""         # Date of Report
-        self.timeBegin = ""       # valid Ttime start
-        self.timeEnd = ""         # valid time end
-        self.dangerMain = []      # danger Value and elev
-        self.dangerPattern = []   # list of Patterns
-        self.problemList = []     # list of Problems with Sublist of Aspect&Elevation
-        self.activityHighl = "none"   # String avalanche activity highlits text
-        self.activityCom = "none"     # String avalanche comment text
-        self.snowStrucCom = "none"    # String comment on snowpack structure
-        self.tendencyCom = "none"     # String comment on tendency
+        self.validRegions = []          # list of Regions
+        self.repDate = ""               # Date of Report
+        self.timeBegin = ""             # valid Ttime start
+        self.timeEnd = ""               # valid time end
+        self.dangerMain = []            # danger Value and elev
+        self.dangerPattern = []         # list of Patterns
+        self.problemList = []           # list of Problems with Sublist of Aspect&Elevation
+        self.activityHighl = "none"     # String avalanche activity highlits text
+        self.activityCom = "none"       # String avalanche comment text
+        self.snowStrucCom = "none"      # String comment on snowpack structure
+        self.tendencyCom = "none"       # String comment on tendency
 
 downloader = Downloader()

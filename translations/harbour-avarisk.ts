@@ -73,15 +73,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>treeline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Valid time interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Danger Level</source>
+        <source>Report from</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tendency</source>
+        <source>Danger Level</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -93,18 +105,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>above</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>below</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Danger Description</source>
         <translation type="unfinished"></translation>
     </message>
@@ -113,15 +113,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Report</source>
+        <source>Tendency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Report from</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload</source>
+        <source>entire range</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -717,6 +713,37 @@
     </message>
     <message>
         <source>Styria</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bregenzerwaldgebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen/Hochtannberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengebirge/Arlberg/Lechtaler Alp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verwall</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vorarlberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegionSelectPage</name>
+    <message>
+        <source>Select Region</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

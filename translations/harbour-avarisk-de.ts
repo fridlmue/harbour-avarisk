@@ -97,14 +97,6 @@
         <translation>Probleme und Gefahrenstellen</translation>
     </message>
     <message>
-        <source>above</source>
-        <translation>über</translation>
-    </message>
-    <message>
-        <source>below</source>
-        <translation>unter</translation>
-    </message>
-    <message>
         <source>treeline</source>
         <translation>Waldgrenze</translation>
     </message>
@@ -123,6 +115,10 @@
     <message>
         <source>Reload</source>
         <translation>Neu herunterladen</translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation>jede Höhe</translation>
     </message>
 </context>
 <context>
@@ -718,6 +714,37 @@
     <message>
         <source>Styria</source>
         <translation>Steiermark</translation>
+    </message>
+    <message>
+        <source>Bregenzerwaldgebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen/Hochtannberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengebirge/Arlberg/Lechtaler Alp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Verwall</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vorarlberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegionSelectPage</name>
+    <message>
+        <source>Select Region</source>
+        <translation>Wähle eine Region</translation>
     </message>
 </context>
 </TS>
