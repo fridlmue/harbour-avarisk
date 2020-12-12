@@ -20,6 +20,8 @@ import io.thp.pyotherside 1.5
 Page {
     property string regionID
     property string regionName
+    property string country
+    property string macroRegion
 
     property var dangerLevel: 0
 
@@ -172,7 +174,7 @@ Page {
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
-                    text: "Level " + dangerLevel + " - " + dangerLevelText(dangerLevel)
+                    text: qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel)
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
@@ -417,10 +419,19 @@ Page {
                     provider = val;
                 });
                 setHandler('finished', function(val) {
+                    if (val === true) {
+                        coverExchange.country = country
+                        coverExchange.region = macroRegion
+                        coverExchange.microRegion = regionName
+                        coverExchange.levelText = qsTr("LEVEL")
+                        coverExchange.dangerMain = dangerLevel
+                        coverExchange.dangerH = dangerLevel_h
+                        coverExchange.dangerL = dangerLevel_l
+                        coverExchange.validHeight = (dangerLevel_l === dangerLevel_h) ? qsTr("entire range") : getElevFromString(dangerLevel_alti)
+                    }
+
                     busy = false;
                 });
-
-                //todo Add Provider
 
                 importModule('pyAvaCore', function () {});
         }

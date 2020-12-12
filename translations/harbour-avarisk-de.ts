@@ -40,13 +40,6 @@
     </message>
 </context>
 <context>
-    <name>CoverPage</name>
-    <message>
-        <source>avaWarn</source>
-        <translation>avaWarn</translation>
-    </message>
-</context>
-<context>
     <name>DangerPage</name>
     <message>
         <source>low</source>
@@ -119,6 +112,14 @@
     <message>
         <source>entire range</source>
         <translation>jede Höhe</translation>
+    </message>
+    <message>
+        <source>Level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LEVEL</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -476,18 +477,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Goldberggruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Glocknergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Großvenedigergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nördl. Niedere Tauern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -632,14 +621,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Fischbacher A. und Wechselgebiet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Westliche Fischbacher A. und Grazer Bergland</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stub- und Gleinalpe</source>
         <translation type="unfinished"></translation>
     </message>
@@ -680,10 +661,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Sengsengebirge, Reichraminger Hintergebirge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Ennstaler Voralpen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -720,14 +697,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Allgäuer Alpen/Hochtannberg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lechquellengebirge/Arlberg/Lechtaler Alp.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Verwall</source>
         <translation type="unfinished"></translation>
     </message>
@@ -737,6 +706,38 @@
     </message>
     <message>
         <source>Vorarlberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sengsengebirge, Reichraminger Hintergeb.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen / Hochtannberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengeb. / Arlberg / Lechtaler Alp.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goldberggruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glocknergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Großvenedigergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Fischbacher A., Wechselgebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Fischbacher A., Grazer Bergland</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

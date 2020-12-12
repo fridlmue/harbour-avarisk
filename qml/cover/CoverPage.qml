@@ -18,20 +18,85 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
 
-    Label {
-        id: coverLabel
-        anchors.centerIn: parent
-        text: qsTr("avaWarn")
-    }
+    id: coverPage
+    transparent: true
 
+    Column {
 
+        anchors.topMargin: Theme.paddingLarge
+        anchors.fill: parent
+        spacing: Theme.paddingSmall
+        anchors.rightMargin: Theme.paddingLarge
+        anchors.leftMargin: Theme.paddingLarge
 
-    /*CoverActionList {
-        id: coverAction
-
-        CoverAction {
-            iconSource: "image://theme/icon-cover-refresh"
+        Label {
+            id: coverCountry
+            anchors {
+                horizontalCenter: parent.Center
+            }
+            width: parent.width
+            text: coverExchange.country + "<br \>" + coverExchange.region
+            horizontalAlignment: Text.AlignRight
+            font.pixelSize: Theme.fontSizeLarge
         }
 
-    }*/
+        Label {
+            id: coverMicroRegion
+            anchors {
+                horizontalCenter: parent.Center
+            }
+            wrapMode: Text.Wrap
+            width: parent.width
+            text: coverExchange.microRegion
+            horizontalAlignment: Text.AlignRight
+            font.pixelSize: (coverExchange.microRegion.length > 30) ? Theme.fontSizeSmall : Theme.fontSizeMedium
+        }
+
+        Rectangle {
+            height: Theme.paddingSmall
+            width: Theme.paddingLarge
+            opacity: 0.0
+        }
+
+        Grid {
+            columns: 2
+            spacing: Theme.paddingLarge
+            anchors.leftMargin: Theme.paddingLarge
+            Label {
+                text: coverExchange.levelText + " " + coverExchange.dangerMain
+                font.pixelSize: Theme.fontSizeLarge
+            }
+            Image {
+                source: "qrc:///res/danger-levels/level_" + coverExchange.dangerMain + ".png"
+                width: Theme.iconSizeMedium
+                height: width * sourceSize.height / sourceSize.width
+            }
+            Label {
+                text: coverExchange.validHeight
+                font.pixelSize: Theme.fontSizeSmall
+            }
+            Image {
+                source: "qrc:///res/warning-pictos/levels_" + coverExchange.dangerL + "_" + coverExchange.dangerH + ".png"
+                width: Theme.iconSizeMedium
+                height: width * sourceSize.height / sourceSize.width
+            }
+
+        }
+    }
+
+    Image {
+        id: bgImg
+        asynchronous: true
+        fillMode: Image.PreserveAspectFit
+        opacity: 0.50
+        source: "qrc:///res/bg.svg"
+        anchors {
+            centerIn: parent
+        }
+        sourceSize {
+            width: coverPage.width
+            height: coverPage.height
+        }
+    }
 }
+

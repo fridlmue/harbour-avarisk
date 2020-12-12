@@ -262,7 +262,7 @@ def issueReport(regionID, local):
         pyotherside.send('dangerLevel', "Problem resolving Region")
         pyotherside.send('provider', "Couldn't find the RegionID in the Report. Probably it is not served at the moment.")
 
-        pyotherside.send('finished')
+        pyotherside.send('finished', False)
     else:
         dangerLevel = 0
         for elem in matchingReport.dangerMain:
@@ -289,7 +289,7 @@ def issueReport(regionID, local):
         pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
         pyotherside.send('provider', provider)
 
-        pyotherside.send('finished')
+        pyotherside.send('finished', True)
 
 class Downloader:
     def __init__(self):

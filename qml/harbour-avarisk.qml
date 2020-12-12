@@ -22,4 +22,17 @@ ApplicationWindow
     initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
+
+    Item {
+        id: coverExchange
+        property var country: "avaRisk"
+        property var region: ""
+        property var microRegion: ""
+        property var levelText: ""
+        property var dangerMain: ""
+        property var dangerH: ""
+        property var dangerL: ""
+        property var validHeight: ""
+    }
+
 }

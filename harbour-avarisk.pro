@@ -26,6 +26,7 @@ DISTFILES += qml/harbour-avarisk.qml \
     res/avalanche-situations/new_snow.png \
     res/avalanche-situations/old_snow.png \
     res/avalanche-situations/wet_snow.png \
+    res/bg.svg \
     res/danger-levels/level_1.png \
     res/danger-levels/level_2.png \
     res/danger-levels/level_3.png \

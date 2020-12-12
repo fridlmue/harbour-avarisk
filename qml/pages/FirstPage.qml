@@ -155,8 +155,8 @@ Page {
         ListElement {region: qsTr("Hochschwabgebiet");                             RegionID: "AT-06-10"}
         ListElement {region: qsTr("Mürzsteger Alpen");                             RegionID: "AT-06-11"}
         ListElement {region: qsTr("Mürztaler Alpen");                              RegionID: "AT-06-12"}
-        ListElement {region: qsTr("Östl. Fischbacher A. und Wechselgebiet");       RegionID: "AT-06-13"}
-        ListElement {region: qsTr("Westliche Fischbacher A. und Grazer Bergland"); RegionID: "AT-06-14"}
+        ListElement {region: qsTr("Östl. Fischbacher A., Wechselgebiet");          RegionID: "AT-06-13"}
+        ListElement {region: qsTr("Westl. Fischbacher A., Grazer Bergland");       RegionID: "AT-06-14"}
         ListElement {region: qsTr("Stub- und Gleinalpe");                          RegionID: "AT-06-15"}
         ListElement {region: qsTr("Koralpe");                                      RegionID: "AT-06-16"}
         ListElement {region: qsTr("Seetaler Alpen");                               RegionID: "AT-06-17"}
@@ -172,7 +172,7 @@ Page {
         ListElement {region: qsTr("Zimnitzmassiv, Höllengebirge");                 RegionID: "AT-04-05"}
         ListElement {region: qsTr("Traunstein, Eibenberg");                        RegionID: "AT-04-06"}
         ListElement {region: qsTr("Kasbergblock");                                 RegionID: "AT-04-07"}
-        ListElement {region: qsTr("Sengsengebirge, Reichraminger Hintergebirge");  RegionID: "AT-04-08"}
+        ListElement {region: qsTr("Sengsengebirge, Reichraminger Hintergeb.");     RegionID: "AT-04-08"}
         ListElement {region: qsTr("Ennstaler Voralpen");                           RegionID: "AT-04-09"}
     }
 
@@ -188,8 +188,8 @@ Page {
 
     property ListModel regionListVorarlberg: ListModel{
         ListElement {region: qsTr("Bregenzerwaldgebirge");                         RegionID: "AT8R1"}
-        ListElement {region: qsTr("Allgäuer Alpen/Hochtannberg");                  RegionID: "AT8R2"}
-        ListElement {region: qsTr("Lechquellengebirge/Arlberg/Lechtaler Alp.");    RegionID: "AT8R3"}
+        ListElement {region: qsTr("Allgäuer Alpen / Hochtannberg");                RegionID: "AT8R2"}
+        ListElement {region: qsTr("Lechquellengeb. / Arlberg / Lechtaler Alp.");   RegionID: "AT8R3"}
         ListElement {region: qsTr("Verwall");                                      RegionID: "AT8R4"}
         ListElement {region: qsTr("Rätikon");                                      RegionID: "AT8R5"}
         ListElement {region: qsTr("Silvretta");                                    RegionID: "AT8R6"}
