@@ -2,6 +2,7 @@
 
 # avaRisk
 SailfishOS Client for EAWS Avalanche Bulletins
+
 [![Latest release](https://img.shields.io/github/v/release/fridlmue/harbour-avarisk)](https://github.com/fridlmue/harbour-avarisk/releases)
 [![SFOS](https://img.shields.io/badge/SailfishOS-OpenRepos-1CA198)](https://openrepos.net/content/fridl/avarisk-avalanche-bulletins)
 
