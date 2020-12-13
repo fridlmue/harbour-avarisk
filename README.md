@@ -15,11 +15,13 @@ SailfishOS Client for EAWS Avalanche Bulletins
 
 ## Supported Regions
 At the moment the following regions are supported:
-- AT Tirol/IT Bolzano/IT Trentino (https://avalanche.report) (EN/DE)
+- AT Tirol (https://avalanche.report) (EN/DE)
 - AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 - AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
 - AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
+- IT Bolzano (https://avalanche.report) (EN/DE)
+- IT Trentino (https://avalanche.report) (EN/DE)
 
 ### Supported soon (support prepared but not yet served server side.)
 - AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
