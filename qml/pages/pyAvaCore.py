@@ -50,52 +50,49 @@ def parseXML(root):
 
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         report = avaReport()
-        for detail in bulletin:
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
-                report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
-                report.validRegions.append(detail.attrib.get('{http://www.w3.org/1999/xlink}href'))
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
-                report.repDate = tryParseDateTime(elem.text)
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                report.timeBegin = tryParseDateTime(elem.text)
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                report.timeEnd = tryParseDateTime(elem.text)
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
-                danger = elem
-                mainValue = 0
-                for dangDet in danger.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
-                    mainValue = int(dangDet.text)
-                validElev = "-"
-                for dangDet in danger.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                    validElev = dangDet.attrib.get('{http://www.w3.org/1999/xlink}href')
-                report.dangerMain.append({'mainValue':mainValue,'validElev':validElev})
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerPattern'):
-                pattern = elem
-                for item in pattern.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
-                    report.dangerPattern.append(item.text)
+        for observations in bulletin:
+            for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
+            for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
+            for dateTimeReport in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
+                report.repDate = tryParseDateTime(dateTimeReport.text)
+            for beginPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                report.timeBegin = tryParseDateTime(beginPosition.text)
+            for endPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                report.timeEnd = tryParseDateTime(endPosition.text)
+            for DangerRating in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
+                mainValueR = 0
+                for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
+                    mainValueR = int(mainValue.text)
+                validElevR = "-"
+                for validElevation in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                    validElevR = validElevation.attrib.get('{http://www.w3.org/1999/xlink}href')
+                report.dangerMain.append({'mainValue':mainValueR,'validElev':validElevR})
+            for DangerPattern in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerPattern'):
+                for DangerPatternType in DangerPattern.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                    report.dangerPattern.append(DangerPatternType.text)
             i = 0
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
-                problem = elem
-                type = ""
-                for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
-                    type = item.text
+            for AvProblem in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
+                typeR = ""
+                for avProbType in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                    typeR = avProbType.text
                 aspect = []
-                for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
-                    aspect.append(item.get('{http://www.w3.org/1999/xlink}href'))
-                validElev = "-"
-                for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                    validElev = item.get('{http://www.w3.org/1999/xlink}href')
+                for validAspect in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
+                    aspect.append(validAspect.get('{http://www.w3.org/1999/xlink}href'))
+                validElevR = "-"
+                for validElevation in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                    validElevR = validElevation.get('{http://www.w3.org/1999/xlink}href')
                 i = i+1
-                report.problemList.append({'type':type,'aspect':aspect,'validElev':validElev})
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}avActivityHighlights'):
-                report.activityHighl = elem.text
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}avActivityComment'):
-                report.activityCom = elem.text
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
-                report.snowStrucCom = elem.text
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}tendencyComment'):
-                report.tendencyCom = elem.text
+                report.problemList.append({'type':typeR,'aspect':aspect,'validElev':validElevR})
+            for avActivityHighlights in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}avActivityHighlights'):
+                report.activityHighl = avActivityHighlights.text
+            for avActivityComment in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}avActivityComment'):
+                report.activityCom = avActivityComment.text
+            for snowpackStructureComment in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
+                report.snowStrucCom = snowpackStructureComment.text
+            for tendencyComment in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}tendencyComment'):
+                report.tendencyCom = tendencyComment.text
         reports.append(report)
 
     return reports
