@@ -53,8 +53,6 @@ def parseXML(root):
         for observations in bulletin:
             for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
-            for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
-                report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for dateTimeReport in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
                 report.repDate = tryParseDateTime(dateTimeReport.text)
             for beginPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
@@ -107,39 +105,38 @@ def parseXMLVorarlberg(root):
     # Common for every Report:
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         for detail in bulletin:
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}metaDataProperty'):
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
-                    report.repDate = tryParseDateTime(subElem.text)
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}travelAdvisoryComment'):
-                    report.activityCom = subElem.text
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}highlights'):
-                    report.activityHighl = subElem.text
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}comment'):
+            for metaDataProperty in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}metaDataProperty'):
+                for dateTimeReport in metaDataProperty.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
+                    report.repDate = tryParseDateTime(dateTimeReport.text)
+            for bulletinResultsOf in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for travelAdvisoryComment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}travelAdvisoryComment'):
+                    report.activityCom = travelAdvisoryComment.text
+                for highlights in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}highlights'):
+                    report.activityHighl = highlights.text
+                for comment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}comment'):
                     if commentEmpty:
-                        report.tendencyCom = subElem.text
+                        report.tendencyCom = comment.text
                         commentEmpty = 0
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
-                    report.activityCom = report.activityCom + " <br />Alpinwetterbericht der ZAMG Tirol und Vorarlberg:<br /> " + subElem.text
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
-                    report.snowStrucCom = subElem.text
+                for wxSynopsisComment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
+                    report.activityCom = report.activityCom + " <br />Alpinwetterbericht der ZAMG Tirol und Vorarlberg:<br /> " + wxSynopsisComment.text
+                for snowpackStructureComment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
+                    report.snowStrucCom = snowpackStructureComment.text
                 i = 0
-                for subElem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
-                    problem = subElem
-                    type = ""
-                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
-                        type = item.text
+                for AvProblem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}AvProblem'):
+                    typeR = ""
+                    for acProblemType in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                        typeR = acProblemType.text
                     aspect = []
-                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
-                        aspect.append(item.get('{http://www.w3.org/1999/xlink}href'))
+                    for validAspect in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
+                        aspect.append(validAspect.get('{http://www.w3.org/1999/xlink}href'))
                     validElev = "-"
-                    for item in problem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                            validElev = "ElevationRange_" + subSubElem.text + "Hi"
-                        for subSubElem in item.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                            validElev = "ElevationRange_" + subSubElem.text + "Lw"
+                    for validElevation in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + beginPosition.text + "Hi"
+                        for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + endPosition.text + "Lw"
                     i = i+1
-                    report.problemList.append({'type':type,'aspect':aspect,'validElev':validElev})
+                    report.problemList.append({'type':typeR,'aspect':aspect,'validElev':validElev})
 
     for i in range(numberOfRegions+1):
         reports.append(copy.deepcopy(report))
@@ -147,26 +144,26 @@ def parseXMLVorarlberg(root):
     # Individual for the Regions:
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         for detail in bulletin:
-            for elem in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
-                for subElem in elem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
+            for bulletinResultsOf in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+                for DangerRating in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                     regionID = 6
-                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
-                        regionID = int(subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')[-1])
-                        reports[regionID-1].validRegions[0] = subSubElem.attrib.get('{http://www.w3.org/1999/xlink}href')
-                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
-                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                            reports[regionID-1].timeBegin = tryParseDateTime(subSubSubElem.text)
-                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                            reports[regionID-1].timeEnd = tryParseDateTime(subSubSubElem.text)
+                    for locRef in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                        regionID = int(locRef.attrib.get('{http://www.w3.org/1999/xlink}href')[-1])
+                        reports[regionID-1].validRegions[0] = locRef.attrib.get('{http://www.w3.org/1999/xlink}href')
+                    for validTime in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                        for beginPosition in validTime.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            reports[regionID-1].timeBegin = tryParseDateTime(beginPosition.text)
+                        for endPosition in validTime.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            reports[regionID-1].timeEnd = tryParseDateTime(endPosition.text)
                     mainValue = 0
                     validElev = "-"
-                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
-                        mainValue = int(subSubElem.text)
-                    for subSubElem in subElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                            validElev = "ElevationRange_" + subSubSubElem.text + "Hi"
-                        for subSubSubElem in subSubElem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                            validElev = "ElevationRange_" + subSubSubElem.text + "Lw"
+                    for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
+                        mainValue = int(mainValue.text)
+                    for validElevation in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                        for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                            validElev = "ElevationRange_" + beginPosition.text + "Hi"
+                        for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                            validElev = "ElevationRange_" + endPosition.text + "Lw"
                     reports[regionID-1].dangerMain.append({'mainValue':mainValue,'validElev':validElev})
 
     return reports
