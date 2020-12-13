@@ -126,7 +126,7 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Valid time interval") + " UTC" //Change, when local time is used
+                text: (regionID.indexOf("AT8") != -1)? qsTr("Valid time interval") + " CET" : qsTr("Valid time interval") + " UTC" //Change, when local time is used
             }
 
             Label {

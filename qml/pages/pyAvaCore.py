@@ -146,7 +146,7 @@ def parseXMLVorarlberg(root):
         for detail in bulletin:
             for bulletinResultsOf in detail.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
                 for DangerRating in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
-                    regionID = 6
+                    regionID = 7
                     for locRef in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                         regionID = int(locRef.attrib.get('{http://www.w3.org/1999/xlink}href')[-1])
                         reports[regionID-1].validRegions[0] = locRef.attrib.get('{http://www.w3.org/1999/xlink}href')
