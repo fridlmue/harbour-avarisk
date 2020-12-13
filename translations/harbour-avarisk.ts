@@ -121,6 +121,14 @@
         <source>LEVEL</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report could not be requested</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>

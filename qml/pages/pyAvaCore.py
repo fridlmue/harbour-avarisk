@@ -236,7 +236,7 @@ def issueReport(regionID, local):
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at)."
 
     #Vorarlberg
-    if "AT8" in regionID:
+    if regionID.startswith("AT8"):
         url = "https://warndienste.cnv.at/dibos/lawine_en/avalanche_bulletin_vorarlberg_en.xml"
         provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at/ by: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
         if "DE" in local.upper():

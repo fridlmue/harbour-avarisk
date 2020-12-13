@@ -36,6 +36,7 @@ Page {
     property date validFrom: new Date()
     property date validTo: new Date()
     property var provider: ""
+    property var downloadSucc: false
 
     property bool busy: false
 
@@ -134,7 +135,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) // in UTC -> wrong!
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested") // in UTC -> wrong!
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -145,7 +146,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) //in UTC - > Wrong!
+                text: (downloadSucc)? Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) : ""  //in UTC - > Wrong!
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -174,7 +175,7 @@ Page {
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
-                    text: qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel)
+                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : qsTr("Maybe no report is provided for this region at the moment.")
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
@@ -429,6 +430,7 @@ Page {
                         coverExchange.dangerL = dangerLevel_l
                         coverExchange.validHeight = (dangerLevel_l === dangerLevel_h) ? qsTr("entire range") : getElevFromString(dangerLevel_alti)
                     }
+                    downloadSucc = val
 
                     busy = false;
                 });
