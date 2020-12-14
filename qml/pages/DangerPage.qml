@@ -469,9 +469,5 @@ Page {
             left: parent.left
             bottom: parent.bottom
         }
-        sourceSize {
-            width: coverPage.width
-            height: coverPage.height
-        }
     }
 }

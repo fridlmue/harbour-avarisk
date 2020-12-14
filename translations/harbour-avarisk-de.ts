@@ -748,6 +748,10 @@
         <source>Westl. Fischbacher A., Grazer Bergland</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Oberösterreich</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>

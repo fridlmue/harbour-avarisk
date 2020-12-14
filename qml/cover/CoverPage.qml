@@ -35,7 +35,7 @@ CoverBackground {
                 horizontalCenter: parent.Center
             }
             width: parent.width
-            text: coverExchange.country + "<br \>" + coverExchange.region
+            text: coverExchange.country + "<br />" + coverExchange.region
             horizontalAlignment: Text.AlignRight
             font.pixelSize: Theme.fontSizeLarge
         }

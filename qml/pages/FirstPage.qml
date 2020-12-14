@@ -234,24 +234,24 @@ Page {
                 content.sourceComponent: Column {
                     width: parent.width
                     BackgroundItem {
-                        id: bgndTyrol
-                        onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTyrol, "country": qsTr("Austria"), "macroRegion": qsTr("Tyrol")})
-
-                        Label {
-                            x: Theme.horizontalPageMargin
-                            text: qsTr("Tyrol")
-                            anchors.verticalCenter: parent.verticalCenter
-                            color: bgndTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        }
-                     }
-
-                    BackgroundItem {
                          id: bgndCarinthia
                          onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCarinthia, "country": qsTr("Austria"), "macroRegion": qsTr("Carinthia")})
 
                          Label {
                              x: Theme.horizontalPageMargin
                              text: qsTr("Carinthia")
+                             anchors.verticalCenter: parent.verticalCenter
+                             color: bgndCarinthia.highlighted ? Theme.highlightColor : Theme.primaryColor
+                         }
+                     }
+
+                    BackgroundItem {
+                         id: bgndOberoesterreich
+                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListOberoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Oberösterreich")})
+
+                         Label {
+                             x: Theme.horizontalPageMargin
+                             text: qsTr("Oberösterreich")
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndCarinthia.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
@@ -279,6 +279,18 @@ Page {
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndSalzburg.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
+                     }
+
+                    BackgroundItem {
+                        id: bgndTyrol
+                        onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTyrol, "country": qsTr("Austria"), "macroRegion": qsTr("Tyrol")})
+
+                        Label {
+                            x: Theme.horizontalPageMargin
+                            text: qsTr("Tyrol")
+                            anchors.verticalCenter: parent.verticalCenter
+                            color: bgndTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        }
                      }
 
                     BackgroundItem {
@@ -338,10 +350,6 @@ Page {
         anchors {
             left: parent.left
             bottom: parent.bottom
-        }
-        sourceSize {
-            width: coverPage.width
-            height: coverPage.height
         }
     }
 }

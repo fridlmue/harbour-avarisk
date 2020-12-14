@@ -58,10 +58,6 @@ Page {
         anchors {
             centerIn: parent
         }
-        sourceSize {
-            width: coverPage.width
-            height: coverPage.height
-        }
     }
 
 }

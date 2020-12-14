@@ -287,9 +287,9 @@ def issueReport(regionID, local):
         else:
             pyotherside.send('dangerLevel_l', matchingReport.dangerMain[0]['mainValue'])
         pyotherside.send('highlights', matchingReport.activityHighl)
-        pyotherside.send('comment',matchingReport.activityCom)
-        pyotherside.send('structure', matchingReport.snowStrucCom)
-        pyotherside.send('tendency', matchingReport.tendencyCom)
+        pyotherside.send('comment',matchingReport.activityCom.replace("&nbsp;", " "))
+        pyotherside.send('structure', matchingReport.snowStrucCom.replace("&nbsp;", " "))
+        pyotherside.send('tendency', matchingReport.tendencyCom.replace("&nbsp;", " "))
         pyotherside.send('repDate', matchingReport.repDate)
         pyotherside.send('validFrom', matchingReport.timeBegin)
         pyotherside.send('validTo', matchingReport.timeEnd)
