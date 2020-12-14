@@ -336,7 +336,8 @@ Page {
         opacity: 0.20
         source: "qrc:///res/bg_" + ( Theme.colorScheme ? "light" : "dark" ) + "_page.svg"
         anchors {
-            centerIn: parent
+            left: parent.left
+            bottom: parent.bottom
         }
         sourceSize {
             width: coverPage.width

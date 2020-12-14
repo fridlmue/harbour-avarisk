@@ -22,6 +22,7 @@
 import pyotherside
 import threading
 from datetime import datetime
+from datetime import timezone
 from urllib.request import urlopen
 import copy
 
@@ -66,13 +67,13 @@ def parseXML(root):
             for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for dateTimeReport in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
-                report.repDate = tryParseDateTime(dateTimeReport.text)
+                report.repDate = tryParseDateTime(dateTimeReport.text).replace(tzinfo=timezone.utc)
             for validTime in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
                 if not (getParent(validTime)):
                     for beginPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                        report.timeBegin = tryParseDateTime(beginPosition.text)
+                        report.timeBegin = tryParseDateTime(beginPosition.text).replace(tzinfo=timezone.utc)
                     for endPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                        report.timeEnd = tryParseDateTime(endPosition.text)
+                        report.timeEnd = tryParseDateTime(endPosition.text).replace(tzinfo=timezone.utc)
             for DangerRating in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                 mainValueR = 0
                 for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):

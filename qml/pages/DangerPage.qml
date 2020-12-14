@@ -81,6 +81,11 @@ Page {
         return elev + " m"
     }
 
+    function convertUTCDateToLocalDate(date) {
+        var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
+        return newDate;
+    }
+
     onStatusChanged: {
         if (status == Component.Ready)
         {
@@ -458,10 +463,11 @@ Page {
         id: bgImg
         asynchronous: true
         fillMode: Image.PreserveAspectFit
-        opacity: 0.20
+        opacity: 0.05
         source: "qrc:///res/bg_" + ( Theme.colorScheme ? "light" : "dark" ) + "_page.svg"
         anchors {
-            centerIn: parent
+            left: parent.left
+            bottom: parent.bottom
         }
         sourceSize {
             width: coverPage.width
