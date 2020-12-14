@@ -17,6 +17,7 @@ SailfishOS Client for EAWS Avalanche Bulletins
 At the moment the following regions are supported:
 - AT Tirol (https://avalanche.report) (EN/DE)
 - AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
+- AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 - AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
 - AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
@@ -24,12 +25,12 @@ At the moment the following regions are supported:
 - IT Trentino (https://avalanche.report) (EN/DE)
 
 ### Supported soon (support prepared but not yet served server side.)
-- AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
 - AT Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at/) (DE)
 
 ### Support considered
 - DE Bavaria
 - Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
+- FR Val d'Aran
 
 ### Additional Regions:
 For other Regions (in Europe) I need local help to figure out if the local Avalanche Warning Service releases an XML in the CAAML-Format (http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS/). Then I need the Link to the XML (if available also for different Languages) and the names of all the "micro regions" that are served in that bulletin/XML. This is normally an ID and a Name (e.g. from TYROL: "AT-07-08" - "Zentrale Lechtaler Alpen", can be found here: https://lawinen.report/education/handbook).
