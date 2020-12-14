@@ -35,6 +35,10 @@ At the moment the following regions are supported:
 ### Additional Regions:
 For other Regions (in Europe) I need local help to figure out if the local Avalanche Warning Service releases an XML in the CAAML-Format (http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS/). Then I need the Link to the XML (if available also for different Languages) and the names of all the "micro regions" that are served in that bulletin/XML. This is normally an ID and a Name (e.g. from TYROL: "AT-07-08" - "Zentrale Lechtaler Alpen", can be found here: https://lawinen.report/education/handbook).
 
+## Translation
+
+For Tyrol, South Tirol and Trentino the Bulletins are available in much more language versions (ES, FR, IT, CA and OC). But I'm not able to translate the App to those. So if someone can translate the Translation-Strings it is possible to make full localized versions of those languages. The region names for the sub regions also could be translated. The names can be found here: https://avalanche.report/education/handbook. If someone want to help with a translation please create an Issue. I'm happy to support for any kind of questions. 
+
 ## License
 Licensed under GNU GPLv3
 
