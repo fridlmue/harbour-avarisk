@@ -67,6 +67,9 @@
         <file>res/warning-pictos/levels_below.png</file>
         <file>res/warning-pictos/levels_middle.png</file>
         <file>res/harbour-avarisk.png</file>
-        <file>res/bg.svg</file>
+        <file>res/bg_dark.svg</file>
+        <file>res/bg_light.svg</file>
+        <file>res/bg_light_page.svg</file>
+        <file>res/bg_dark_page.svg</file>
     </qresource>
 </RCC>

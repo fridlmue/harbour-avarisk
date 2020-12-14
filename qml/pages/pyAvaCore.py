@@ -22,10 +22,19 @@
 import pyotherside
 import threading
 from datetime import datetime
-from datetime import timezone
-from datetime import timedelta
 from urllib.request import urlopen
 import copy
+
+def addParentInfo(et):
+    for child in et:
+        child.attrib['__my_parent__'] = et
+        addParentInfo(child)
+
+def getParent(et):
+    if '__my_parent__' in et.attrib:
+        return et.attrib['__my_parent__']
+    else:
+        return None
 
 def getXmlAsElemT(url):
 
@@ -51,14 +60,19 @@ def parseXML(root):
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         report = avaReport()
         for observations in bulletin:
+            addParentInfo(observations)
+            for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+                report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
                 report.validRegions.append(observations.attrib.get('{http://www.w3.org/1999/xlink}href'))
             for dateTimeReport in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
                 report.repDate = tryParseDateTime(dateTimeReport.text)
-            for beginPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                report.timeBegin = tryParseDateTime(beginPosition.text)
-            for endPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                report.timeEnd = tryParseDateTime(endPosition.text)
+            for validTime in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                if not (getParent(validTime)):
+                    for beginPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                        report.timeBegin = tryParseDateTime(beginPosition.text)
+                    for endPosition in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                        report.timeEnd = tryParseDateTime(endPosition.text)
             for DangerRating in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                 mainValueR = 0
                 for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
@@ -94,6 +108,7 @@ def parseXML(root):
         reports.append(report)
 
     return reports
+
 
 
 def parseXMLVorarlberg(root):
@@ -212,10 +227,10 @@ def issueReport(regionID, local):
     # Salzburg
     if "AT-05" in regionID:
         url = "https://www.avalanche-warnings.eu/public/salzburg/caaml/en"
-        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg (https://lawine.salzburg.at/)."
+        provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg (https://lawine.salzburg.at/)."
         if "DE" in local.upper():
             url = "https://www.avalanche-warnings.eu/public/salzburg/caaml"
-            provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg (https://lawine.salzburg.at/)."
+            provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg (https://lawine.salzburg.at/)."
 
     # Steiermark
     if "AT-06" in regionID:
@@ -263,8 +278,6 @@ def issueReport(regionID, local):
             if elem['mainValue'] > dangerLevel:
                 dangerLevel = elem['mainValue']
 
-        LOCAL_TIMEZONE = datetime.now(timezone(timedelta(0))).astimezone().tzinfo
-
         pyotherside.send('dangerLevel', dangerLevel)
         pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
         if (len(matchingReport.dangerMain) > 1):
@@ -276,9 +289,9 @@ def issueReport(regionID, local):
         pyotherside.send('comment',matchingReport.activityCom)
         pyotherside.send('structure', matchingReport.snowStrucCom)
         pyotherside.send('tendency', matchingReport.tendencyCom)
-        pyotherside.send('repDate', matchingReport.repDate.astimezone(LOCAL_TIMEZONE))
-        pyotherside.send('validFrom', matchingReport.timeBegin.astimezone(LOCAL_TIMEZONE))
-        pyotherside.send('validTo', matchingReport.timeEnd.astimezone(LOCAL_TIMEZONE))
+        pyotherside.send('repDate', matchingReport.repDate)
+        pyotherside.send('validFrom', matchingReport.timeBegin)
+        pyotherside.send('validTo', matchingReport.timeEnd)
         pyotherside.send('numberOfDPatterns', len(matchingReport.problemList))
         pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
         pyotherside.send('provider', provider)

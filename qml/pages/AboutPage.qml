@@ -125,4 +125,19 @@ Page {
 
         }
     }
+
+    Image {
+        id: bgImg
+        asynchronous: true
+        fillMode: Image.PreserveAspectFit
+        opacity: 0.20
+        source: "qrc:///res/bg_" + ( Theme.colorScheme ? "light" : "dark" ) + "_page.svg"
+        anchors {
+            centerIn: parent
+        }
+        sourceSize {
+            width: coverPage.width
+            height: coverPage.height
+        }
+    }
 }

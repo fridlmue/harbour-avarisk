@@ -88,8 +88,8 @@ CoverBackground {
         id: bgImg
         asynchronous: true
         fillMode: Image.PreserveAspectFit
-        opacity: 0.50
-        source: "qrc:///res/bg.svg"
+        opacity: 0.30
+        source: "qrc:///res/bg_" + ( Theme.colorScheme ? "light" : "dark" ) + ".svg"
         anchors {
             centerIn: parent
         }
