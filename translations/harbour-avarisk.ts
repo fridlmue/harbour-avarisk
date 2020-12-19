@@ -752,6 +752,14 @@
         <source>Oberösterreich</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Niederösterreich</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Niederöstereich</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>

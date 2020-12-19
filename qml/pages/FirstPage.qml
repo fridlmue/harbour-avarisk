@@ -246,6 +246,18 @@ Page {
                      }
 
                     BackgroundItem {
+                         id: bgndNiederoestereich
+                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListNiederoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Niederösterreich")})
+
+                         Label {
+                             x: Theme.horizontalPageMargin
+                             text: qsTr("Niederöstereich")
+                             anchors.verticalCenter: parent.verticalCenter
+                             color: bgndNiederoestereich.highlighted ? Theme.highlightColor : Theme.primaryColor
+                         }
+                     }
+
+                    BackgroundItem {
                          id: bgndOberoesterreich
                          onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListOberoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Oberösterreich")})
 
@@ -253,7 +265,7 @@ Page {
                              x: Theme.horizontalPageMargin
                              text: qsTr("Oberösterreich")
                              anchors.verticalCenter: parent.verticalCenter
-                             color: bgndCarinthia.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             color: bgndOberoesterreich.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
 
@@ -277,7 +289,7 @@ Page {
                              x: Theme.horizontalPageMargin
                              text: qsTr("Styria")
                              anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSalzburg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             color: bgndSteiermark.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
 
@@ -301,7 +313,7 @@ Page {
                              x: Theme.horizontalPageMargin
                              text: qsTr("Vorarlberg")
                              anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSalzburg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             color: bgndVorarlberg.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
                 }
