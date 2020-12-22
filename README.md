@@ -31,6 +31,11 @@ At the moment the following regions are supported:
 - DE Bavaria
 - Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
 - ES Val d'Aran
+- IT Veneto: (https://www.arpa.veneto.it/neve_valanghe/it/xml/dolomiti_nevevalanghe.xml) (Not CAAML-Compatible)
+
+### Regions, that can't be implemented at the moment
+- Swiss: seems not to have a open API
+- Finnland: answered on 2020-12-22 not to have an open api. Publication is here: https://en.ilmatieteenlaitos.fi/avalanche-forecast. Open Datasets of this provider can be found here: https://en.ilmatieteenlaitos.fi/open-data-sets-available.
 
 ### Additional Regions:
 For other Regions (in Europe) I need local help to figure out if the local Avalanche Warning Service releases an XML in the CAAML-Format (http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS/). Then I need the Link to the XML (if available also for different Languages) and the names of all the "micro regions" that are served in that bulletin/XML. This is normally an ID and a Name (e.g. from TYROL: "AT-07-08" - "Zentrale Lechtaler Alpen", can be found here: https://lawinen.report/education/handbook).
