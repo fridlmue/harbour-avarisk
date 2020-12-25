@@ -163,7 +163,6 @@ Page {
         ListElement {region: qsTr("Gurktaler Alpen");                              RegionID: "AT-06-18"}
     }
 
-    //Noch keine aktuellen Daten bei der Quelle
     property ListModel regionListOberoestereich: ListModel{
         ListElement {region: qsTr("Dachstein, Gosaukamm");                         RegionID: "AT-04-01"}
         ListElement {region: qsTr("Kalmberg, Katergebirge");                       RegionID: "AT-04-02"}
@@ -176,7 +175,6 @@ Page {
         ListElement {region: qsTr("Ennstaler Voralpen");                           RegionID: "AT-04-09"}
     }
 
-    //Noch keine aktuellen Daten bei der Quelle
     property ListModel regionListNiederoestereich: ListModel{
         ListElement {region: qsTr("Ybbstaler Alpen");                              RegionID: "AT-03-01"}
         ListElement {region: qsTr("Türnitzer Alpen");                              RegionID: "AT-03-02"}
@@ -195,11 +193,22 @@ Page {
         ListElement {region: qsTr("Silvretta");                                    RegionID: "AT8R6"}
     }
 
+    property ListModel regionListBavaria: ListModel{
+        ListElement {region: qsTr("Allgäuer Aplen");                               RegionID: "BYALL"}
+        ListElement {region: qsTr("Ammergauer Alpen");                             RegionID: "BYAMM"}
+        ListElement {region: qsTr("Werdenfelser Alpen");                           RegionID: "BYWFK"}
+        ListElement {region: qsTr("Bayrische Voralpen");                           RegionID: "BYBVA"}
+        ListElement {region: qsTr("Chiemgauer Alpen");                             RegionID: "BYCHG"}
+        ListElement {region: qsTr("Berchtesgadener Alpen");                        RegionID: "BYBGD"}
+    }
+
     SilicaFlickable {
 
         anchors.fill: parent
         contentHeight: column.height
         bottomMargin: Theme.paddingSmall
+
+        VerticalScrollDecorator {}
 
         PullDownMenu {
             //Future Concept: Select from PullMenu (First Country, then State, then Region) the Favorite regions. On the first Page only those are displayed
@@ -218,13 +227,9 @@ Page {
             id: column
             width: parent.width
 
-            anchors.fill: parent
-
             PageHeader {
                 title: qsTr("Show Bulletin for")
             }
-
-            VerticalScrollDecorator {}
 
             ExpandingSection {
                 width: parent.width
@@ -251,7 +256,7 @@ Page {
 
                          Label {
                              x: Theme.horizontalPageMargin
-                             text: qsTr("Niederöstereich")
+                             text: qsTr("Niederösterreich")
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndNiederoestereich.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
@@ -314,6 +319,27 @@ Page {
                              text: qsTr("Vorarlberg")
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndVorarlberg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                         }
+                     }
+                }
+            }
+
+            ExpandingSection {
+                width: parent.width
+
+                title: qsTr("Germany")
+
+                content.sourceComponent: Column {
+                    width: parent.width
+                    BackgroundItem {
+                         id: bgndBavaria
+                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListBavaria, "country": qsTr("Germany"), "macroRegion": qsTr("Bavaria")})
+
+                         Label {
+                             x: Theme.horizontalPageMargin
+                             text: qsTr("Bavaria")
+                             anchors.verticalCenter: parent.verticalCenter
+                             color: bgndBavaria.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
                 }

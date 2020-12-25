@@ -50,8 +50,9 @@ def getXmlAsElemT(url):
             root = ET.fromstring(response_content.decode('latin-1'))
         else:
             root = ET.fromstring(response_content.decode('utf-8'))
-    except:
-        print('error parsing ElementTree')
+    except Exception as e:
+        print('error parsing ElementTree: ' + str(e))
+
     return root
 
 def parseXML(root):
@@ -110,8 +111,6 @@ def parseXML(root):
 
     return reports
 
-
-
 def parseXMLVorarlberg(root):
     numberOfRegions = 6
     reports = []
@@ -134,7 +133,7 @@ def parseXMLVorarlberg(root):
                         report.tendencyCom = comment.text
                         commentEmpty = 0
                 for wxSynopsisComment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
-                    report.activityCom = report.activityCom + " <br />Alpinwetterbericht der ZAMG Tirol und Vorarlberg:<br /> " + wxSynopsisComment.text
+                    report.activityCom = report.activityCom + " <br />Alpinwetterbericht der ZAMG Tirol und Vorarlberg:<br /> " + str(wxSynopsisComment.text)
                 for snowpackStructureComment in bulletinResultsOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
                     report.snowStrucCom = snowpackStructureComment.text
                 i = 0
@@ -153,6 +152,7 @@ def parseXMLVorarlberg(root):
                             validElev = "ElevationRange_" + endPosition.text + "Lw"
                     i = i+1
                     report.problemList.append({'type':typeR,'aspect':aspect,'validElev':validElev})
+
 
     for i in range(numberOfRegions+1):
         reports.append(copy.deepcopy(report))
@@ -181,14 +181,98 @@ def parseXMLVorarlberg(root):
                         for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
                             validElev = "ElevationRange_" + endPosition.text + "Lw"
                     reports[regionID-1].dangerMain.append({'mainValue':mainValue,'validElev':validElev})
-
     return reports
 
+
+def parseXMLBavaria(root):
+
+    numberOfRegions = 6
+    reports = []
+    report = avaReport()
+    report.validRegions=[""]
+
+    # Common for every Report:
+    for metaData in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}metaDataProperty'):
+        for dateTimeReport in metaData.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}dateTimeReport'):
+                    report.repDate = tryParseDateTime(dateTimeReport.text)
+
+    for bulletinMeasurements in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}BulletinMeasurements'):
+        for travelAdvisoryComment in bulletinMeasurements.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}travelAdvisoryComment'):
+            report.activityCom = travelAdvisoryComment.text
+        for wxSynopsisComment in bulletinMeasurements.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}wxSynopsisComment'):
+            report.activityCom = report.activityCom + " <br />Deutscher Wetterdienst - Regionale Wetterberatung München:<br /> " + str(wxSynopsisComment.text)
+        for snowpackStructureComment in bulletinMeasurements.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}snowpackStructureComment'):
+            report.snowStrucCom = snowpackStructureComment.text
+        for highlights in bulletinMeasurements.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}comment'):
+            report.activityHighl = highlights.text
+        i = 0
+        for avProblem in bulletinMeasurements.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}avProblem'):
+            type = ""
+            for avType in avProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
+                type = avType.text
+            aspect = []
+            for validAspect in avProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validAspect'):
+                aspect.append(validAspect.get('{http://www.w3.org/1999/xlink}href').lower())
+            validElev = "-"
+            for validElevation in avProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                    validElev = "ElevationRange_" + beginPosition.text + "Hi"
+                for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                    validElev = "ElevationRange_" + endPosition.text + "Lw"
+            i = i+1
+            report.problemList.append({'type':type,'aspect':aspect,'validElev':validElev})
+
+    for i in range(numberOfRegions+1):
+        reports.append(copy.deepcopy(report))
+
+    # Check Names of all Regions
+
+    for bulletinResultOf in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}bulletinResultsOf'):
+        addParentInfo(bulletinResultOf)
+        for locRef in bulletinResultOf.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
+            found = False
+            regionID = -1
+            firstFree = 100
+            for index, report in enumerate(reports):
+                if any(report.validRegions):
+                    for region in report.validRegions:
+                        if region == locRef.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                            found = True
+                            regionID = index
+                else:
+                    if firstFree > index:
+                        firstFree = index
+            if not found:
+                reports[firstFree].validRegions.append(locRef.attrib.get('{http://www.w3.org/1999/xlink}href'))
+                regionID = firstFree
+
+            DangerRating = getParent(locRef)
+
+
+            for validTime in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                for beginPosition in validTime.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                    reports[regionID-1].timeBegin = tryParseDateTime(beginPosition.text)
+                for endPosition in validTime.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                    reports[regionID-1].timeEnd = tryParseDateTime(endPosition.text)
+            mainValue = 0
+            validElev = "-"
+            for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
+                mainValue = int(mainValue.text)
+            for validElevation in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
+                for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                    validElev = "ElevationRange_" + beginPosition.text + "Hi"
+                for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                    validElev = "ElevationRange_" + endPosition.text + "Lw"
+            reports[regionID-1].dangerMain.append({'mainValue':mainValue,'validElev':validElev})
+
+    return reports
 
 def getReports(url):
     root = getXmlAsElemT(url)
     if "VORARLBERG" in url.upper():
         reports = parseXMLVorarlberg(root)
+    elif "BAYERN" in url.upper():
+        reports = parseXMLBavaria(root)
     else:
         reports = parseXML(root)
     return reports
@@ -197,13 +281,14 @@ def getReports(url):
 def tryParseDateTime(inStr):
     try:
         r_dateTime = datetime.strptime(inStr, '%Y-%m-%dT%XZ')
+        #print(r_dateTime.isoformat())
     except:
         try:
             r_dateTime = datetime.strptime(inStr[:19], '%Y-%m-%dT%X') # 2019-04-30T15:55:29+01:00
+            #print(r_dateTime.isoformat())
         except:
-            print('some Error in try dateTime')
+            # print('some Error in try dateTime') (Normal vor Vorarlberg)
             r_dateTime = datetime.now()
-    r_dateTime
 
     return r_dateTime
 
@@ -223,23 +308,23 @@ def issueReport(regionID, local):
     # Kärnten
     if "AT-02" in regionID:
         url = "https://www.avalanche-warnings.eu/public/kaernten/caaml"
-        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Kärnten (https://lawinenwarndienst.ktn.gv.at/)."
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Kärnten (https://lawinenwarndienst.ktn.gv.at)."
 
     # Salzburg
     if "AT-05" in regionID:
         url = "https://www.avalanche-warnings.eu/public/salzburg/caaml/en"
-        provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg (https://lawine.salzburg.at/)."
+        provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg (https://lawine.salzburg.at)."
         if "DE" in local.upper():
             url = "https://www.avalanche-warnings.eu/public/salzburg/caaml"
-            provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Salzburg (https://lawine.salzburg.at/)."
+            provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Salzburg (https://lawine.salzburg.at)."
 
     # Steiermark
     if "AT-06" in regionID:
         url = "https://www.avalanche-warnings.eu/public/steiermark/caaml/en"
-        provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Steiermark."
+        provider = "The displayed information is provided by an open data API on https://www.avalanche-warnings.eu by: Avalanche Warning Service Steiermark (https://www.lawine-steiermark.at)."
         if "DE" in local.upper():
             url = "https://www.avalanche-warnings.eu/public/steiermark/caaml"
-            provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Steiermark (https://www.lawine-steiermark.at/)."
+            provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird bereitgestellt vom: Lawinenwarndienst Steiermark (https://www.lawine-steiermark.at)."
 
     # Oberösterreich
     if "AT-04" in regionID:
@@ -254,10 +339,18 @@ def issueReport(regionID, local):
     #Vorarlberg
     if regionID.startswith("AT8"):
         url = "https://warndienste.cnv.at/dibos/lawine_en/avalanche_bulletin_vorarlberg_en.xml"
-        provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at/ by: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
+        provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at by: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
         if "DE" in local.upper():
             url = "http://warndienste.cnv.at/dibos/lawine/avalanche_bulletin_vorarlberg_de.xml"
-            provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at/ abgefragt. Diese wird bereitgestellt vom: Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
+            provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at abgefragt. Diese wird bereitgestellt von der Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
+
+    #Bavaria
+    if regionID.startswith("BY"):
+        url = "https://www.lawinenwarndienst-bayern.de/download/lagebericht/caaml_en.xml"
+        provider = "The displayed ihe displayed information is provided by an open data API on https://www.lawinenwarndienst-bayern.de/ by: Avalanche warning centre at the Bavarian State Office nformation is provided by an open data API on https://www.lawinenwarndienst-bayern.de/ by: Avalanche warning centre at the Bavarian State Office for the Environment - https://www.lawinenwarndienst-bayern.de/"
+        if "DE" in local.upper():
+            url = "https://www.lawinenwarndienst-bayern.de/download/lagebericht/caaml.xml"
+            provider = "Die dargestellten Informationen werden über eine API auf https://www.lawinenwarndienst-bayern.de abgefragt. Diese wird bereitgestellt von der Lawinenwarnzentrale Bayern (https://www.lawinenwarndienst-bayern.de)."
 
 
     reports.extend(getReports(url))
@@ -266,6 +359,7 @@ def issueReport(regionID, local):
         for ID in report.validRegions:
             if ID == regionID:
               matchingReport = report
+
     try:
         matchingReport
     except NameError:

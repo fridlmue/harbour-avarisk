@@ -9,7 +9,7 @@ Name:       harbour-avarisk
 # << macros
 
 Summary:    SailfishOS Client for EAWS Avalanche Bulletins
-Version:    0.4
+Version:    0.5
 Release:    1
 Group:      Qt/Qt
 License:    GPL3

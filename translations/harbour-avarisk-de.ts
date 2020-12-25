@@ -133,19 +133,11 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>About</source>
-        <translation>Über</translation>
-    </message>
-    <message>
-        <source>Show Bulletin for</source>
-        <translation>Zeige Lawinenlagebericht für</translation>
-    </message>
-    <message>
-        <source>Austria</source>
-        <translation>Österreich</translation>
-    </message>
-    <message>
         <source>Allgäuer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Lechtaler A. - Ammergebirge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -158,6 +150,10 @@
     </message>
     <message>
         <source>Brandenberger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wilder Kaiser - Waidringer Alpen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -186,6 +182,10 @@
     </message>
     <message>
         <source>Samnaungruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Ötztaler- und Stubaier Alpen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -262,6 +262,10 @@
     </message>
     <message>
         <source>Südl. Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S Zillertaler A. und Hohe Tauern</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -485,6 +489,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Goldberggruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glocknergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Großvenedigergruppe Alpenhauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Nördl. Niedere Tauern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -494,6 +510,10 @@
     </message>
     <message>
         <source>Nördl. Glocknergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Großvenedigergruppe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -534,50 +554,6 @@
     </message>
     <message>
         <source>Chiemgauer A., Heutal, Reiteralpe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tyrol</source>
-        <translation>Tirol</translation>
-    </message>
-    <message>
-        <source>Carinthia</source>
-        <translation>Kärnten</translation>
-    </message>
-    <message>
-        <source>Salzburg</source>
-        <translation>Salzburg</translation>
-    </message>
-    <message>
-        <source>Italy</source>
-        <translation>Italien</translation>
-    </message>
-    <message>
-        <source>South Tyrol</source>
-        <translation>Südtirol</translation>
-    </message>
-    <message>
-        <source>Trentino</source>
-        <translation>Trentino</translation>
-    </message>
-    <message>
-        <source>Östl. Lechtaler A. - Ammergebirge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Wilder Kaiser - Waidringer Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nördl. Ötztaler- und Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>S Zillertaler A. und Hohe Tauern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nördl. Großvenedigergruppe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -629,6 +605,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Östl. Fischbacher A., Wechselgebiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Fischbacher A., Grazer Bergland</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Stub- und Gleinalpe</source>
         <translation type="unfinished"></translation>
     </message>
@@ -669,6 +653,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Sengsengebirge, Reichraminger Hintergeb.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Ennstaler Voralpen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -697,27 +685,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Styria</source>
-        <translation>Steiermark</translation>
-    </message>
-    <message>
         <source>Bregenzerwaldgebirge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Verwall</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rätikon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vorarlberg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sengsengebirge, Reichraminger Hintergeb.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -729,23 +697,55 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Goldberggruppe Alpenhauptkamm</source>
+        <source>Verwall</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Glocknergruppe Alpenhauptkamm</source>
+        <source>Rätikon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Großvenedigergruppe Alpenhauptkamm</source>
+        <source>Allgäuer Aplen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Fischbacher A., Wechselgebiet</source>
+        <source>Ammergauer Alpen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Westl. Fischbacher A., Grazer Bergland</source>
+        <source>Werdenfelser Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayrische Voralpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Berchtesgadener Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <source>Show Bulletin for</source>
+        <translation>Zeige Lawinenlagebericht für</translation>
+    </message>
+    <message>
+        <source>Austria</source>
+        <translation>Österreich</translation>
+    </message>
+    <message>
+        <source>Carinthia</source>
+        <translation>Kärnten</translation>
+    </message>
+    <message>
+        <source>Niederösterreich</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -753,11 +753,39 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Niederösterreich</source>
+        <source>Salzburg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Niederöstereich</source>
+        <source>Styria</source>
+        <translation>Steiermark</translation>
+    </message>
+    <message>
+        <source>Tyrol</source>
+        <translation>Tirol</translation>
+    </message>
+    <message>
+        <source>Vorarlberg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Germany</source>
+        <translation>Deutschland</translation>
+    </message>
+    <message>
+        <source>Bavaria</source>
+        <translation>Bayern</translation>
+    </message>
+    <message>
+        <source>Italy</source>
+        <translation>Italien</translation>
+    </message>
+    <message>
+        <source>South Tyrol</source>
+        <translation>Südtirol</translation>
+    </message>
+    <message>
+        <source>Trentino</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

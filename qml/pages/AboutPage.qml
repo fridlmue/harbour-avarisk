@@ -40,7 +40,7 @@ Page {
             }
 
             Label {
-                text: "avaRisk 0.4"
+                text: "avaRisk 0.5"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {
