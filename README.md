@@ -40,7 +40,7 @@ For other Regions (in Europe) I need local help to figure out if the local Avala
 
 ## Translation
 
-For Tyrol, South Tirol and Trentino the Bulletins are available in much more language versions (ES, FR, IT, CA and OC). But I'm not able to translate the App to those. So if someone can translate the Translation-Strings it is possible to make full localized versions of those languages. The region names for the sub regions also could be translated. The names can be found here: https://avalanche.report/education/handbook. If someone want to help with a translation please create an Issue. I'm happy to support for any kind of questions. 
+For Tyrol, South Tirol, Trentino and Val d'Aran the Bulletins are available in much more language versions (ES, FR, IT, CA and OC). But I'm not able to translate the App to these Languages. So if someone can translate the Translation-Strings it is possible to make full localized versions of those languages for the named regions. The region names for the sub regions also could be translated. The names can be found here: https://avalanche.report/education/handbook and for Val d'Aran here: https://gitlab.com/albina-euregio/albina-admin-gui/-/blob/master/src/app/regions/regions.aran.geojson.json. If someone want to help with a translation please create an Issue. I'm happy to support for any kind of questions. 
 
 ## License
 Licensed under GNU GPLv3
