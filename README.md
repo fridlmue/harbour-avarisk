@@ -18,19 +18,17 @@ At the moment the following regions are supported:
 - AT Tirol (https://avalanche.report) (EN/DE)
 - AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
 - AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
+- AT Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at/) (DE)
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 - AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
 - AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
 - IT Bolzano (https://avalanche.report) (EN/DE)
 - IT Trentino (https://avalanche.report) (EN/DE)
-
-### Supported soon (support prepared but not yet served server side.)
-- AT Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at/) (DE)
+- DE Bavaria (EN/DE)
+- ES Val d'Aran (EN/DE)
 
 ### Support considered
-- DE Bavaria
 - Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
-- ES Val d'Aran
 - IT Veneto: (https://www.arpa.veneto.it/neve_valanghe/it/xml/dolomiti_nevevalanghe.xml) (Not CAAML-Compatible)
 
 ### Regions, that can't be implemented at the moment
