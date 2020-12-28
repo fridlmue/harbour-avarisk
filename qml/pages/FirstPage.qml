@@ -194,12 +194,18 @@ Page {
     }
 
     property ListModel regionListBavaria: ListModel{
-        ListElement {region: qsTr("Allgäuer Aplen");                               RegionID: "BYALL"}
+        ListElement {region: qsTr("Allgäuer Alpen");                               RegionID: "BYALL"}
         ListElement {region: qsTr("Ammergauer Alpen");                             RegionID: "BYAMM"}
         ListElement {region: qsTr("Werdenfelser Alpen");                           RegionID: "BYWFK"}
         ListElement {region: qsTr("Bayrische Voralpen");                           RegionID: "BYBVA"}
         ListElement {region: qsTr("Chiemgauer Alpen");                             RegionID: "BYCHG"}
         ListElement {region: qsTr("Berchtesgadener Alpen");                        RegionID: "BYBGD"}
+    }
+
+    property ListModel regionListAran: ListModel{
+        ListElement {region: qsTr("Aran norte y centro");                          RegionID: "ES-CT-L-01"}
+        ListElement {region: qsTr("Aran límite sur");                              RegionID: "ES-CT-L-02"}
+        ListElement {region: qsTr("Aran vertiente sur");                           RegionID: "ES-CT-L-03"}
     }
 
     SilicaFlickable {
@@ -211,14 +217,13 @@ Page {
         VerticalScrollDecorator {}
 
         PullDownMenu {
-            //Future Concept: Select from PullMenu (First Country, then State, then Region) the Favorite regions. On the first Page only those are displayed
-            /*MenuItem {
-                text: qsTr("Add Favorite")
-                onClicked: pageStack.push(Qt.resolvedUrl("AddFav.qml"))
-            }*/
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Know-How")
+                onClicked: pageStack.push(Qt.resolvedUrl("Education.qml"))
             }
         }
 
@@ -346,6 +351,7 @@ Page {
             }
 
             ExpandingSection {
+
                 width: parent.width
 
                 title: qsTr("Italy")
@@ -373,6 +379,28 @@ Page {
                              text: qsTr("Trentino")
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndTrentino.highlighted ? Theme.highlightColor : Theme.primaryColor
+                         }
+                     }
+                }
+            }
+
+            ExpandingSection {
+
+                width: parent.width
+
+                title: qsTr("Spain")
+
+                content.sourceComponent: Column {
+                    width: parent.width
+                    BackgroundItem {
+                         id: bgndAran
+                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListAran, "country": qsTr("Spain"), "macroRegion": qsTr("Val d'Aran")})
+
+                         Label {
+                             x: Theme.horizontalPageMargin
+                             text: qsTr("Val d'Aran")
+                             anchors.verticalCenter: parent.verticalCenter
+                             color: bgndAran.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
                 }

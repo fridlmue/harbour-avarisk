@@ -33,13 +33,6 @@
     </message>
 </context>
 <context>
-    <name>AddFavPage</name>
-    <message>
-        <source>Select Region</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DangerPage</name>
     <message>
         <source>low</source>
@@ -127,6 +120,45 @@
     </message>
     <message>
         <source>Report could not be requested</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Know-How</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Education</name>
+    <message>
+        <source>Danger Scale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Avalanche Problems</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EAWS Matrix</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Danger Patterns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Avalanche Sizes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Avalanche Know-How</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Displays know-how from avalanche.report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update your Avalanche Knowledge by visiting the Education pages on www.avalanche.report by the Avalanche Warning Services of Tirol, Südtirol and Trentino.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -705,10 +737,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Allgäuer Aplen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Ammergauer Alpen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -788,11 +816,42 @@
         <source>Trentino</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Know-How</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aran norte y centro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aran límite sur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aran vertiente sur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Spain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Val d&apos;Aran</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>
     <message>
         <source>Select Region</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebViewPage</name>
+    <message>
+        <source>avalanche.report</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

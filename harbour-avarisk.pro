@@ -13,13 +13,16 @@
 TARGET = harbour-avarisk
 
 CONFIG += sailfishapp
+PKGCONFIG += qt5embedwidget
 
 SOURCES += src/harbour-avarisk.cpp
 
 DISTFILES += qml/harbour-avarisk.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/Education.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/WebViewPage.qml \
     res/avalanche-situations/drifting_snow.png \
     res/avalanche-situations/favourable_situation.png \
     res/avalanche-situations/gliding_snow.png \
@@ -50,6 +53,7 @@ DISTFILES += qml/harbour-avarisk.qml \
     res/expositions/exposition_se.png \
     res/expositions/exposition_sw.png \
     res/expositions/exposition_w.png \
+    res/harbour-avarisk.png \
     res/warning-pictos/Elevation/levels_all.png \
     res/warning-pictos/levels_0_0.png \
     res/warning-pictos/levels_0_1.png \

@@ -71,6 +71,12 @@ Page {
         if (validElev.indexOf('Forestline') > -1) {
             return qsTr("treeline")
         }
+        if (validElev.indexOf('Waldgrenze') > -1) {
+            return qsTr("treeline")
+        }
+        if (validElev.indexOf('treeline') > -1) {
+            return qsTr("treeline")
+        }
 
         if (validElev.indexOf('_') === -1) {
             return qsTr("entire range")
@@ -116,6 +122,10 @@ Page {
                     python.startDownload();
                     busy = true;
                 }
+            }
+            MenuItem {
+                text: qsTr("Know-How")
+                onClicked: pageStack.push(Qt.resolvedUrl("Education.qml"))
             }
         }
 
