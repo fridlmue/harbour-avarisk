@@ -15,7 +15,7 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-import Sailfish.WebView 1.0
+//import Sailfish.WebView 1.0
 
 
 Page {
@@ -28,7 +28,7 @@ Page {
         title: topic
     }
 
-    WebView {
+    SilicaWebView { //Should be WebView to work
         id: webView
 
         anchors {
