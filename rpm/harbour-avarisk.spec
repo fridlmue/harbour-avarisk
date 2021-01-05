@@ -25,7 +25,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my Sailfish OS Application
+SailfishOS Client for EAWS Avalanche Bulletins
 
 
 %prep

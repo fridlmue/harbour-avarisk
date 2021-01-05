@@ -12,7 +12,7 @@ License: GPL3
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my Sailfish OS Application
+  SailfishOS Client for EAWS Avalanche Bulletins
 Builder: qmake5
 
 # This section specifies build dependencies that are resolved using pkgconfig.

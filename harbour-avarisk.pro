@@ -13,7 +13,6 @@
 TARGET = harbour-avarisk
 
 CONFIG += sailfishapp
-PKGCONFIG += qt5embedwidget
 
 SOURCES += src/harbour-avarisk.cpp
 
