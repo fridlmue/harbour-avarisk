@@ -128,6 +128,85 @@
     </message>
 </context>
 <context>
+    <name>DangerPage_swiss</name>
+    <message>
+        <source>low</source>
+        <translation type="unfinished">gering</translation>
+    </message>
+    <message>
+        <source>moderate</source>
+        <translation type="unfinished">mäßig</translation>
+    </message>
+    <message>
+        <source>considerable</source>
+        <translation type="unfinished">erheblich</translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation type="unfinished">groß</translation>
+    </message>
+    <message>
+        <source>very high</source>
+        <translation type="unfinished">sehr groß</translation>
+    </message>
+    <message>
+        <source>loading</source>
+        <translation type="unfinished">lädt</translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished">Neu herunterladen</translation>
+    </message>
+    <message>
+        <source>Know-How</source>
+        <translation type="unfinished">Know-How</translation>
+    </message>
+    <message>
+        <source>Report</source>
+        <translation type="unfinished">Bericht</translation>
+    </message>
+    <message>
+        <source>Valid time interval</source>
+        <translation type="unfinished">Gültigkeitszeitraum</translation>
+    </message>
+    <message>
+        <source>Report from</source>
+        <translation type="unfinished">Bericht vom</translation>
+    </message>
+    <message>
+        <source>Report could not be requested</source>
+        <translation type="unfinished">Report konnte nicht abgerufen werden</translation>
+    </message>
+    <message>
+        <source>Danger Level</source>
+        <translation type="unfinished">Gefahrenstufe</translation>
+    </message>
+    <message>
+        <source>Level</source>
+        <translation type="unfinished">Stufe</translation>
+    </message>
+    <message>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation type="unfinished">Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
+    </message>
+    <message>
+        <source>LEVEL</source>
+        <translation type="unfinished">STUFE</translation>
+    </message>
+    <message>
+        <source>Avalanche prone locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Local Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Snow and Weather Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Education</name>
     <message>
         <source>Danger Scale</source>
@@ -842,6 +921,26 @@
     </message>
     <message>
         <source>Val d&apos;Aran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jaun</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Emosson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switzerland</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Davos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

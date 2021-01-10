@@ -208,6 +208,13 @@ Page {
         ListElement {region: qsTr("Aran vertiente sur");                           RegionID: "ES-CT-L-03"}
     }
 
+    property ListModel regionListSwiss: ListModel{
+        ListElement {region: qsTr("Jaun");                                         RegionID: "CH-1121"}
+        ListElement {region: qsTr("Emosson");                                      RegionID: "CH-4111"}
+        ListElement {region: qsTr("Davos");                                        RegionID: "CH-5123"}
+        ListElement {region: qsTr("Thal");                                         RegionID: "CH-8215"}
+    }
+
     SilicaFlickable {
 
         anchors.fill: parent
@@ -401,6 +408,28 @@ Page {
                              text: qsTr("Val d'Aran")
                              anchors.verticalCenter: parent.verticalCenter
                              color: bgndAran.highlighted ? Theme.highlightColor : Theme.primaryColor
+                         }
+                     }
+                }
+            }
+
+            ExpandingSection {
+
+                width: parent.width
+
+                title: qsTr("Switzerland")
+
+                content.sourceComponent: Column {
+                    width: parent.width
+                    BackgroundItem {
+                         id: bgndSwitzerland
+                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSwiss, "country": qsTr("Switzerland"), "macroRegion": qsTr("Switzerland")})
+
+                         Label {
+                             x: Theme.horizontalPageMargin
+                             text: qsTr("Switzerland")
+                             anchors.verticalCenter: parent.verticalCenter
+                             color: bgndSwitzerland.highlighted ? Theme.highlightColor : Theme.primaryColor
                          }
                      }
                 }

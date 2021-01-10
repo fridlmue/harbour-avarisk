@@ -18,10 +18,12 @@ SOURCES += src/harbour-avarisk.cpp
 
 DISTFILES += qml/harbour-avarisk.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/DangerPage_swiss.qml \
     qml/pages/Education.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
     qml/pages/WebViewPage.qml \
+    qml/pages/pyAvaCoreSwiss.py \
     res/avalanche-situations/drifting_snow.png \
     res/avalanche-situations/favourable_situation.png \
     res/avalanche-situations/gliding_snow.png \

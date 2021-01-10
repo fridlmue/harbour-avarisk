@@ -294,6 +294,7 @@ def tryParseDateTime(inStr):
 
 
 def issueReport(regionID, local):
+
     url = "https://api.avalanche.report/albina/api/bulletins"
     reports = []
     provider = ""
