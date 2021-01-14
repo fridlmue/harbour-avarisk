@@ -17,38 +17,8 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 
 Page {
-    property ListModel regionListTyrol: ListModel{
-        ListElement {region: qsTr("Allgäuer Alpen");                               RegionID: "AT-07-01"}
-        ListElement {region: qsTr("Östl. Lechtaler A. - Ammergebirge");            RegionID: "AT-07-02"}
-        ListElement {region: qsTr("Mieminger Gebirge");                            RegionID: "AT-07-03"}
-        ListElement {region: qsTr("Karwendel");                                    RegionID: "AT-07-04"}
-        ListElement {region: qsTr("Brandenberger Alpen");                          RegionID: "AT-07-05"}
-        ListElement {region: qsTr("Wilder Kaiser - Waidringer Alpen");             RegionID: "AT-07-06"}
-        ListElement {region: qsTr("Wstl. Lechtaler Alpen");                        RegionID: "AT-07-07"}
-        ListElement {region: qsTr("Zentrale Lechtaler Alpen");                     RegionID: "AT-07-08"}
-        ListElement {region: qsTr("Grieskogelgruppe");                             RegionID: "AT-07-09"}
-        ListElement {region: qsTr("Westl. Verwallgruppe");                         RegionID: "AT-07-10"}
-        ListElement {region: qsTr("Östl. Verwallgruppe");                          RegionID: "AT-07-11"}
-        ListElement {region: qsTr("Silvretta");                                    RegionID: "AT-07-12"}
-        ListElement {region: qsTr("Samnaungruppe");                                RegionID: "AT-07-13"}
-        ListElement {region: qsTr("Nördl. Ötztaler- und Stubaier Alpen");          RegionID: "AT-07-14"}
-        ListElement {region: qsTr("Wstl. Tuxer Alpen");                            RegionID: "AT-07-15"}
-        ListElement {region: qsTr("Östl. Tuxer Alpen");                            RegionID: "AT-07-16"}
-        ListElement {region: qsTr("Wstl. Kitzbühler Alpen");                       RegionID: "AT-07-17"}
-        ListElement {region: qsTr("Östl. Kitzbühler Alpen");                       RegionID: "AT-07-18"}
-        ListElement {region: qsTr("Glockturmgruppe");                              RegionID: "AT-07-19"}
-        ListElement {region: qsTr("Weißkogelgruppe");                              RegionID: "AT-07-20"}
-        ListElement {region: qsTr("Gurgler Gruppe");                               RegionID: "AT-07-21"}
-        ListElement {region: qsTr("Zentrale Stubaier Alpen");                      RegionID: "AT-07-22"}
-        ListElement {region: qsTr("Nördl. Zillertaler Alpen");                     RegionID: "AT-07-23"}
-        ListElement {region: qsTr("Venedigergruppe");                              RegionID: "AT-07-24"}
-        ListElement {region: qsTr("Östl. Rieserfernergruppe");                     RegionID: "AT-07-25"}
-        ListElement {region: qsTr("Glocknergruppe");                               RegionID: "AT-07-26"}
-        ListElement {region: qsTr("Östl. Deferegger Alpen");                       RegionID: "AT-07-27"}
-        ListElement {region: qsTr("Schobergruppe");                                RegionID: "AT-07-28"}
-        ListElement {region: qsTr("Lienzer Dolomiten");                            RegionID: "AT-07-29"}
-    }
 
+    //REGIONS ITALY
     property ListModel regionListSTyrol: ListModel{
         ListElement {region: qsTr("Münstertaler Alpen");                           RegionID: "IT-32-BZ-01"}
         ListElement {region: qsTr("Langtaufers");                                  RegionID: "IT-32-BZ-02"}
@@ -94,6 +64,39 @@ Page {
         ListElement {region: qsTr("Sole, Pejo e Rabbi");                           RegionID: "IT-32-TN-19"}
         ListElement {region: qsTr("Maddalene");                                    RegionID: "IT-32-TN-20"}
         ListElement {region: qsTr("Pine' - Valle dei Mocheni");                    RegionID: "IT-32-TN-21"}
+    }
+
+    //REGIONS AUSTRIA
+    property ListModel regionListTyrol: ListModel{
+        ListElement {region: qsTr("Allgäuer Alpen");                               RegionID: "AT-07-01"}
+        ListElement {region: qsTr("Östl. Lechtaler A. - Ammergebirge");            RegionID: "AT-07-02"}
+        ListElement {region: qsTr("Mieminger Gebirge");                            RegionID: "AT-07-03"}
+        ListElement {region: qsTr("Karwendel");                                    RegionID: "AT-07-04"}
+        ListElement {region: qsTr("Brandenberger Alpen");                          RegionID: "AT-07-05"}
+        ListElement {region: qsTr("Wilder Kaiser - Waidringer Alpen");             RegionID: "AT-07-06"}
+        ListElement {region: qsTr("Wstl. Lechtaler Alpen");                        RegionID: "AT-07-07"}
+        ListElement {region: qsTr("Zentrale Lechtaler Alpen");                     RegionID: "AT-07-08"}
+        ListElement {region: qsTr("Grieskogelgruppe");                             RegionID: "AT-07-09"}
+        ListElement {region: qsTr("Westl. Verwallgruppe");                         RegionID: "AT-07-10"}
+        ListElement {region: qsTr("Östl. Verwallgruppe");                          RegionID: "AT-07-11"}
+        ListElement {region: qsTr("Silvretta");                                    RegionID: "AT-07-12"}
+        ListElement {region: qsTr("Samnaungruppe");                                RegionID: "AT-07-13"}
+        ListElement {region: qsTr("Nördl. Ötztaler- und Stubaier Alpen");          RegionID: "AT-07-14"}
+        ListElement {region: qsTr("Wstl. Tuxer Alpen");                            RegionID: "AT-07-15"}
+        ListElement {region: qsTr("Östl. Tuxer Alpen");                            RegionID: "AT-07-16"}
+        ListElement {region: qsTr("Wstl. Kitzbühler Alpen");                       RegionID: "AT-07-17"}
+        ListElement {region: qsTr("Östl. Kitzbühler Alpen");                       RegionID: "AT-07-18"}
+        ListElement {region: qsTr("Glockturmgruppe");                              RegionID: "AT-07-19"}
+        ListElement {region: qsTr("Weißkogelgruppe");                              RegionID: "AT-07-20"}
+        ListElement {region: qsTr("Gurgler Gruppe");                               RegionID: "AT-07-21"}
+        ListElement {region: qsTr("Zentrale Stubaier Alpen");                      RegionID: "AT-07-22"}
+        ListElement {region: qsTr("Nördl. Zillertaler Alpen");                     RegionID: "AT-07-23"}
+        ListElement {region: qsTr("Venedigergruppe");                              RegionID: "AT-07-24"}
+        ListElement {region: qsTr("Östl. Rieserfernergruppe");                     RegionID: "AT-07-25"}
+        ListElement {region: qsTr("Glocknergruppe");                               RegionID: "AT-07-26"}
+        ListElement {region: qsTr("Östl. Deferegger Alpen");                       RegionID: "AT-07-27"}
+        ListElement {region: qsTr("Schobergruppe");                                RegionID: "AT-07-28"}
+        ListElement {region: qsTr("Lienzer Dolomiten");                            RegionID: "AT-07-29"}
     }
 
     property ListModel regionListCarinthia: ListModel{
@@ -193,6 +196,7 @@ Page {
         ListElement {region: qsTr("Silvretta");                                    RegionID: "AT8R6"}
     }
 
+    //REGIONS GERMANY
     property ListModel regionListBavaria: ListModel{
         ListElement {region: qsTr("Allgäuer Alpen");                               RegionID: "BYALL"}
         ListElement {region: qsTr("Ammergauer Alpen");                             RegionID: "BYAMM"}
@@ -202,18 +206,200 @@ Page {
         ListElement {region: qsTr("Berchtesgadener Alpen");                        RegionID: "BYBGD"}
     }
 
+    // REGIONS SPAIN
     property ListModel regionListAran: ListModel{
         ListElement {region: qsTr("Aran norte y centro");                          RegionID: "ES-CT-L-01"}
         ListElement {region: qsTr("Aran límite sur");                              RegionID: "ES-CT-L-02"}
         ListElement {region: qsTr("Aran vertiente sur");                           RegionID: "ES-CT-L-03"}
     }
 
-    property ListModel regionListSwiss: ListModel{
+
+    // REGIONS CH and Liechtenstein
+    property ListModel regionListCHBEA: ListModel{
+        ListElement {region: qsTr("Jaun");                                         RegionID: "CH-1121"}
+        ListElement {region: qsTr("Gruyère");                                      RegionID: "CH-1122"}
+        ListElement {region: qsTr("westliche Berner Voralpen");                    RegionID: "CH-1211"}
+        ListElement {region: qsTr("östliche Berner Voralpen");                     RegionID: "CH-1212"}
+        ListElement {region: qsTr("Hohgant");                                      RegionID: "CH-1213"}
+        ListElement {region: qsTr("Niedersimmental");                              RegionID: "CH-1221"}
+        ListElement {region: qsTr("Gstaad");                                       RegionID: "CH-1222"}
+        ListElement {region: qsTr("Wildhorn");                                     RegionID: "CH-1223"}
+        ListElement {region: qsTr("sLenk");                                        RegionID: "CH-1224"}
+        ListElement {region: qsTr("Iffigen");                                      RegionID: "CH-1225"}
+        ListElement {region: qsTr("Adelboden");                                    RegionID: "CH-1226"}
+        ListElement {region: qsTr("Engstligen");                                   RegionID: "CH-1227"}
+        ListElement {region: qsTr("Obersimmental");                                RegionID: "CH-1228"}
+        ListElement {region: qsTr("Kandersteg");                                   RegionID: "CH-1231"}
+        ListElement {region: qsTr("Blüemlisalp");                                  RegionID: "CH-1232"}
+        ListElement {region: qsTr("Lauterbrunnen");                                RegionID: "CH-1233"}
+        ListElement {region: qsTr("Jungfrau - Schilthorn");                        RegionID: "CH-1234"}
+        ListElement {region: qsTr("Brienz-Interlaken");                            RegionID: "CH-1241"}
+        ListElement {region: qsTr("Grindelwald");                                  RegionID: "CH-1242"}
+        ListElement {region: qsTr("Schreckhorn");                                  RegionID: "CH-1243"}
+        ListElement {region: qsTr("Hasliberg - Rosenlaui");                        RegionID: "CH-1244"}
+        ListElement {region: qsTr("Guttannen");                                    RegionID: "CH-1245"}
+        ListElement {region: qsTr("Gadmertal");                                    RegionID: "CH-1246"}
+        ListElement {region: qsTr("Grimselpass");                                  RegionID: "CH-1247"}
+    }
+
+    property ListModel regionListCHZAN: ListModel{
+        ListElement {region: qsTr("Pilatus");                                      RegionID: "CH-2111"}
+        ListElement {region: qsTr("Schwarzenberg");                                RegionID: "CH-2112"}
+        ListElement {region: qsTr("Glaubenberg");                                  RegionID: "CH-2121"}
+        ListElement {region: qsTr("Engelberg");                                    RegionID: "CH-2122"}
+        ListElement {region: qsTr("Melchtal");                                     RegionID: "CH-2123"}
+        ListElement {region: qsTr("Gersau");                                       RegionID: "CH-2124"}
+        ListElement {region: qsTr("Rothenthurm");                                  RegionID: "CH-2131"}
+        ListElement {region: qsTr("Ybrig");                                        RegionID: "CH-2132"}
+        ListElement {region: qsTr("Stoos");                                        RegionID: "CH-2133"}
+        ListElement {region: qsTr("Bisistal");                                     RegionID: "CH-2134"}
+        ListElement {region: qsTr("Schächental");                                  RegionID: "CH-2211"}
+        ListElement {region: qsTr("Uri Rot Stock");                                RegionID: "CH-2212"}
+        ListElement {region: qsTr("Meiental");                                     RegionID: "CH-2221"}
+        ListElement {region: qsTr("Maderanertal");                                 RegionID: "CH-2222"}
+        ListElement {region: qsTr("nördliches Urseren");                           RegionID: "CH-2223"}
+        ListElement {region: qsTr("südliches Urseren");                            RegionID: "CH-2224"}
+    }
+
+    property ListModel regionListCHOAN: ListModel{
+        ListElement {region: qsTr("Glarus Nord");                                  RegionID: "CH-3111"}
+        ListElement {region: qsTr("Glarus Süd-Grosstal");                          RegionID: "CH-3112"}
+        ListElement {region: qsTr("Glarus Süd-Sernftal");                          RegionID: "CH-3113"}
+        ListElement {region: qsTr("Glarus Mitte");                                 RegionID: "CH-3114"}
+        ListElement {region: qsTr("Appenzeller Alpen");                            RegionID: "CH-3211"}
+        ListElement {region: qsTr("Toggenburg");                                   RegionID: "CH-3221"}
+        ListElement {region: qsTr("Alpstein - Alvier");                            RegionID: "CH-3222"}
+        ListElement {region: qsTr("Flumserberg");                                  RegionID: "CH-3223"}
+        ListElement {region: qsTr("Sarganserland");                                RegionID: "CH-3224"}
+        // ListElement {region: qsTr("Liechtenstein");                             RegionID: "CH-3311"}
+    }
+
+    property ListModel regionListCHUWW: ListModel{
+        ListElement {region: qsTr("Waadtländer Voralpen");                         RegionID: "CH-1111"}
+        ListElement {region: qsTr("Pays d'Enhaut");                                RegionID: "CH-1112"}
+        ListElement {region: qsTr("Pays d'Enhaut");                                RegionID: "CH-1113"}
+        ListElement {region: qsTr("Bex-Villars");                                  RegionID: "CH-1114"}
+        ListElement {region: qsTr("Vouvry");                                       RegionID: "CH-1311"}
+        ListElement {region: qsTr("Monthey-Val d'Illiez");                         RegionID: "CH-1312"}
+        ListElement {region: qsTr("Emosson");                                      RegionID: "CH-4111"}
+        ListElement {region: qsTr("Génépi");                                       RegionID: "CH-4112"}
+        ListElement {region: qsTr("Val d'Entremont-Val Ferret");                   RegionID: "CH-4113"}
+        ListElement {region: qsTr("Conthey-Fully");                                RegionID: "CH-4114"}
+        ListElement {region: qsTr("Martigny-Verbier");                             RegionID: "CH-4115"}
+        ListElement {region: qsTr("Haut Val de Bagnes");                           RegionID: "CH-4116"}
+        ListElement {region: qsTr("Montana");                                      RegionID: "CH-4121"}
+        ListElement {region: qsTr("Val d'Hérens");                                 RegionID: "CH-4122"}
+        ListElement {region: qsTr("Arolla");                                       RegionID: "CH-4123"}
+        ListElement {region: qsTr("Val d'Anniviers");                              RegionID: "CH-4124"}
+        ListElement {region: qsTr("Mountet");                                      RegionID: "CH-4125"}
+    }
+
+    property ListModel regionListCHOW: ListModel{
+        ListElement {region: qsTr("Leukerbad - Lötschental");                      RegionID: "CH-4211"}
+        ListElement {region: qsTr("Turtmanntal");                                  RegionID: "CH-4212"}
+        ListElement {region: qsTr("Konkordia Gebiet");                             RegionID: "CH-4213"}
+        ListElement {region: qsTr("Riederalp");                                    RegionID: "CH-4214"}
+        ListElement {region: qsTr("Leuk");                                         RegionID: "CH-4215"}
+        ListElement {region: qsTr("untere Vispertäler");                           RegionID: "CH-4221"}
+        ListElement {region: qsTr("Zermatt");                                      RegionID: "CH-4222"}
+        ListElement {region: qsTr("Saas Fee");                                     RegionID: "CH-4223"}
+        ListElement {region: qsTr("Monte Rosa");                                   RegionID: "CH-4224"}
+        ListElement {region: qsTr("Mattmark");                                     RegionID: "CH-4225"}
+        ListElement {region: qsTr("nördliches Simplon Gebiet");                    RegionID: "CH-4231"}
+        ListElement {region: qsTr("südliches Simplon Gebiet");                     RegionID: "CH-4232"}
+        ListElement {region: qsTr("Reckingen");                                    RegionID: "CH-4241"}
+        ListElement {region: qsTr("Binntal");                                      RegionID: "CH-4242"}
+        ListElement {region: qsTr("nördliches Obergoms");                          RegionID: "CH-4243"}
+        ListElement {region: qsTr("südliches Obergoms");                           RegionID: "CH-4244"}
+    }
+
+    property ListModel regionListCHNB: ListModel{
+        ListElement {region: qsTr("nördliches Prättigau");                         RegionID: "CH-5111"}
+        ListElement {region: qsTr("südliches Prättigau");                          RegionID: "CH-5112"}
+        ListElement {region: qsTr("westliche Silvretta");                          RegionID: "CH-5113"}
+        ListElement {region: qsTr("Calanda");                                      RegionID: "CH-5121"}
+        ListElement {region: qsTr("Schanfigg");                                    RegionID: "CH-5122"}
+        ListElement {region: qsTr("Davos");                                        RegionID: "CH-5123"}
+        ListElement {region: qsTr("Flims");                                        RegionID: "CH-5124"}
+        ListElement {region: qsTr("nördliches Tujetsch");                          RegionID: "CH-5211"}
+        ListElement {region: qsTr("südliches Tujetsch");                           RegionID: "CH-5212"}
+        ListElement {region: qsTr("Obersaxen - Safiental");                        RegionID: "CH-5214"}
+        ListElement {region: qsTr("Val Sumvitg");                                  RegionID: "CH-5215"}
+        ListElement {region: qsTr("Zervreila");                                    RegionID: "CH-5216"}
+        ListElement {region: qsTr("Domleschg - Lenzerheide");                      RegionID: "CH-5221"}
+        ListElement {region: qsTr("Schams");                                       RegionID: "CH-5222"}
+        ListElement {region: qsTr("Rheinwald");                                    RegionID: "CH-5223"}
+        ListElement {region: qsTr("Albulatal");                                    RegionID: "CH-5231"}
+        ListElement {region: qsTr("Savognin");                                     RegionID: "CH-5232"}
+        ListElement {region: qsTr("Avers");                                        RegionID: "CH-5233"}
+        ListElement {region: qsTr("Bivio");                                        RegionID: "CH-5234"}
+    }
+
+    property ListModel regionListCHTES: ListModel{
+        ListElement {region: qsTr("Bedrettotal");                                  RegionID: "CH-6111"}
+        ListElement {region: qsTr("obere Leventina");                              RegionID: "CH-6112"}
+        ListElement {region: qsTr("Bleniotal");                                    RegionID: "CH-6113"}
+        ListElement {region: qsTr("obere Maggiatäler");                            RegionID: "CH-6114"}
+        ListElement {region: qsTr("untere Leventina");                             RegionID: "CH-6115"}
+        ListElement {region: qsTr("untere Maggiatäler");                           RegionID: "CH-6121"}
+        ListElement {region: qsTr("Riviera");                                      RegionID: "CH-6122"}
+        ListElement {region: qsTr("Luganese");                                     RegionID: "CH-6131"}
+        ListElement {region: qsTr("Mendrisiotto");                                 RegionID: "CH-6132"}
+        ListElement {region: qsTr("alto Moesano");                                 RegionID: "CH-6211"}
+        ListElement {region: qsTr("basso Moesano");                                RegionID: "CH-6212"}
+    }
+
+    property ListModel regionListCHENG: ListModel{
+        ListElement {region: qsTr("Corvatsch");                                    RegionID: "CH-7111"}
+        ListElement {region: qsTr("Bernina");                                      RegionID: "CH-7112"}
+        ListElement {region: qsTr("Zuoz");                                         RegionID: "CH-7113"}
+        ListElement {region: qsTr("St. Moritz");                                   RegionID: "CH-7114"}
+        ListElement {region: qsTr("Val Chamuera");                                 RegionID: "CH-7115"}
+        ListElement {region: qsTr("Samnaun");                                      RegionID: "CH-7121"}
+        ListElement {region: qsTr("östliche Silvretta");                           RegionID: "CH-7122"}
+        ListElement {region: qsTr("Sur Tasna");                                    RegionID: "CH-7123"}
+        ListElement {region: qsTr("Val Suot");                                     RegionID: "CH-7124"}
+        ListElement {region: qsTr("Val dal Spöl");                                 RegionID: "CH-7125"}
+        ListElement {region: qsTr("Val S-charl");                                  RegionID: "CH-7126"}
+        ListElement {region: qsTr("Bergell");                                      RegionID: "CH-7211"}
+        ListElement {region: qsTr("oberes Puschlav");                              RegionID: "CH-7221"}
+        ListElement {region: qsTr("unteres Puschlav");                             RegionID: "CH-7222"}
+        ListElement {region: qsTr("Münstertal");                                   RegionID: "CH-7231"}
+    }
+
+    property ListModel regionListCHJUR: ListModel{
+        ListElement {region: qsTr("Saint-Cergue");                                 RegionID: "CH-8111"}
+        ListElement {region: qsTr("Vallée de Joux");                               RegionID: "CH-8112"}
+        ListElement {region: qsTr("Yverdon - Bevaix");                             RegionID: "CH-8113"}
+        ListElement {region: qsTr("Val de Travers");                               RegionID: "CH-8114"}
+        ListElement {region: qsTr("Val de Ruz - Colombier");                       RegionID: "CH-8211"}
+        ListElement {region: qsTr("Bienne - Neuchâtel");                           RegionID: "CH-8212"}
+        ListElement {region: qsTr("Vallon de Saint-Imier");                        RegionID: "CH-8213"}
+        ListElement {region: qsTr("Moutier - Tavannes");                           RegionID: "CH-8214"}
+        ListElement {region: qsTr("Thal");                                         RegionID: "CH-8215"}
+        ListElement {region: qsTr("Olten-Gösgen");                                 RegionID: "CH-8216"} //Serverside not served at the moment (Deffect @Server?)
+        ListElement {region: qsTr("La Chaux-de-Fonds - Le Locle");                 RegionID: "CH-8221"}
+        ListElement {region: qsTr("Franches-Montagnes");                           RegionID: "CH-8222"}
+        ListElement {region: qsTr("Franches-Montagnes");                           RegionID: "CH-8223"} //Serverside not served at the moment (Deffect @Server?)
+        ListElement {region: qsTr("Delémont - Bellelay");                          RegionID: "CH-8224"}
+    }
+
+    property ListModel regionListCHMittelland: ListModel{
+        ListElement {region: qsTr("westliches Mittelland");                        RegionID: "CH-9111"}
+        ListElement {region: qsTr("zentrales Mittelland");                         RegionID: "CH-9112"}
+        ListElement {region: qsTr("östliches Mittelland");                         RegionID: "CH-9113"}
+    }
+
+    property ListModel regionListLiechtenstein: ListModel{
+         ListElement {region: qsTr("Liechtenstein");                               RegionID: "CH-3311"}
+    }
+
+    /*property ListModel regionListSwiss: ListModel{
         ListElement {region: qsTr("Jaun");                                         RegionID: "CH-1121"}
         ListElement {region: qsTr("Emosson");                                      RegionID: "CH-4111"}
         ListElement {region: qsTr("Davos");                                        RegionID: "CH-5123"}
         ListElement {region: qsTr("Thal");                                         RegionID: "CH-8215"}
-    }
+    }*/
 
     SilicaFlickable {
 
@@ -243,197 +429,323 @@ Page {
                 title: qsTr("Show Bulletin for")
             }
 
-            ExpandingSection {
-                width: parent.width
+            ExpandingSectionGroup {
 
-                title: qsTr("Austria")
-
-                content.sourceComponent: Column {
+                ExpandingSection {
                     width: parent.width
-                    BackgroundItem {
-                         id: bgndCarinthia
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCarinthia, "country": qsTr("Austria"), "macroRegion": qsTr("Carinthia")})
 
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Carinthia")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndCarinthia.highlighted ? Theme.highlightColor : Theme.primaryColor
+                    title: qsTr("Austria")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndCarinthia
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCarinthia, "country": qsTr("Austria"), "macroRegion": qsTr("Carinthia")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Carinthia")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCarinthia.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
                          }
-                     }
 
-                    BackgroundItem {
-                         id: bgndNiederoestereich
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListNiederoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Niederösterreich")})
+                        BackgroundItem {
+                             id: bgndNiederoestereich
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListNiederoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Niederösterreich")})
 
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Niederösterreich")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndNiederoestereich.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Niederösterreich")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndNiederoestereich.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
                          }
-                     }
 
-                    BackgroundItem {
-                         id: bgndOberoesterreich
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListOberoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Oberösterreich")})
+                        BackgroundItem {
+                             id: bgndOberoesterreich
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListOberoestereich, "country": qsTr("Austria"), "macroRegion": qsTr("Oberösterreich")})
 
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Oberösterreich")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndOberoesterreich.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Oberösterreich")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndOberoesterreich.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
                          }
-                     }
 
-                    BackgroundItem {
-                         id: bgndSalzburg
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSalzburg, "country": qsTr("Austria"), "macroRegion": qsTr("Salzburg")})
+                        BackgroundItem {
+                             id: bgndSalzburg
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSalzburg, "country": qsTr("Austria"), "macroRegion": qsTr("Salzburg")})
 
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Salzburg")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSalzburg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Salzburg")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndSalzburg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
                          }
-                     }
 
-                    BackgroundItem {
-                         id: bgndSteiermark
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSteiermark, "country": qsTr("Austria"), "macroRegion": qsTr("Styria")})
+                        BackgroundItem {
+                             id: bgndSteiermark
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSteiermark, "country": qsTr("Austria"), "macroRegion": qsTr("Styria")})
 
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Styria")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSteiermark.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Styria")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndSteiermark.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
                          }
-                     }
 
-                    BackgroundItem {
-                        id: bgndTyrol
-                        onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTyrol, "country": qsTr("Austria"), "macroRegion": qsTr("Tyrol")})
+                        BackgroundItem {
+                            id: bgndTyrol
+                            onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTyrol, "country": qsTr("Austria"), "macroRegion": qsTr("Tyrol")})
 
-                        Label {
-                            x: Theme.horizontalPageMargin
-                            text: qsTr("Tyrol")
-                            anchors.verticalCenter: parent.verticalCenter
-                            color: bgndTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
-                        }
-                     }
-
-                    BackgroundItem {
-                         id: bgndVorarlberg
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListVorarlberg, "country": qsTr("Austria"), "macroRegion": qsTr("Vorarlberg")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Vorarlberg")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndVorarlberg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            Label {
+                                x: Theme.horizontalPageMargin
+                                text: qsTr("Tyrol")
+                                anchors.verticalCenter: parent.verticalCenter
+                                color: bgndTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            }
                          }
-                     }
+
+                        BackgroundItem {
+                             id: bgndVorarlberg
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListVorarlberg, "country": qsTr("Austria"), "macroRegion": qsTr("Vorarlberg")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Vorarlberg")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndVorarlberg.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+                    width: parent.width
+
+                    title: qsTr("Germany")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndBavaria
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListBavaria, "country": qsTr("Germany"), "macroRegion": qsTr("Bavaria")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Bavaria")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndBavaria.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
+                    title: qsTr("Italy")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndSTyrol
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSTyrol, "country": qsTr("Italy"), "macroRegion": qsTr("South Tyrol")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("South Tyrol")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndSTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+
+                        BackgroundItem {
+                             id: bgndTrentino
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTrentino, "country": qsTr("Italy"), "macroRegion": qsTr("Trentino")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Trentino")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndTrentino.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
+                    title: qsTr("Spain")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndAran
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListAran, "country": qsTr("Spain"), "macroRegion": qsTr("Val d'Aran")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Val d'Aran")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndAran.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
+                    title: qsTr("Switzerland")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndCHBEA
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHBEA, "country": qsTr("Switzerland"), "macroRegion": qsTr("Bernese and Fribourg Alps")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Bernese and Fribourg Alps")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHBEA.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHZAN
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHZAN, "country": qsTr("Switzerland"), "macroRegion": qsTr("central part of the Northern flank of the Alps")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("central part of the Northern flank of the Alps")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHZAN.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHOAN
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHOAN, "country": qsTr("Switzerland"), "macroRegion": qsTr("Eastern part of the Northern flank")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Eastern part of the Northern flank")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHOAN.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHUWW
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHUWW, "country": qsTr("Switzerland"), "macroRegion": qsTr("lower Valais and Vaud Alps")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("lower Valais and Vaud Alps")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHUWW.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHOW
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHOW, "country": qsTr("Switzerland"), "macroRegion": qsTr("Upper Valais")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Upper Valais")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHOW.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHNB
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHNB, "country": qsTr("Switzerland"), "macroRegion": qsTr("northern and central Grisons")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("northern and central Grisons")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHNB.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHTES
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHTES, "country": qsTr("Switzerland"), "macroRegion": qsTr("Ticino and Moesano")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Ticino and Moesano")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHTES.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHENG
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHENG, "country": qsTr("Switzerland"), "macroRegion": qsTr("Engadine and southern valleys")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Engadine and southern valleys")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHENG.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHJUR
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHJUR, "country": qsTr("Switzerland"), "macroRegion": qsTr("Jura")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Jura")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHJUR.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                        BackgroundItem {
+                             id: bgndCHMittelland
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListCHMittelland, "country": qsTr("Switzerland"), "macroRegion": qsTr("Mittelland")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Mittelland")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCHMittelland.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
+                    title: qsTr("Liechtenstein")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndLiechtenstein
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListLiechtenstein, "country": qsTr("Liechtenstein"), "macroRegion": qsTr("Lichtenstein")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Liechtenstein")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndLiechtenstein.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
                 }
             }
 
-            ExpandingSection {
-                width: parent.width
-
-                title: qsTr("Germany")
-
-                content.sourceComponent: Column {
-                    width: parent.width
-                    BackgroundItem {
-                         id: bgndBavaria
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListBavaria, "country": qsTr("Germany"), "macroRegion": qsTr("Bavaria")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Bavaria")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndBavaria.highlighted ? Theme.highlightColor : Theme.primaryColor
-                         }
-                     }
-                }
-            }
-
-            ExpandingSection {
-
-                width: parent.width
-
-                title: qsTr("Italy")
-
-                content.sourceComponent: Column {
-                    width: parent.width
-                    BackgroundItem {
-                         id: bgndSTyrol
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSTyrol, "country": qsTr("Italy"), "macroRegion": qsTr("South Tyrol")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("South Tyrol")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSTyrol.highlighted ? Theme.highlightColor : Theme.primaryColor
-                         }
-                     }
-
-                    BackgroundItem {
-                         id: bgndTrentino
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListTrentino, "country": qsTr("Italy"), "macroRegion": qsTr("Trentino")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Trentino")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndTrentino.highlighted ? Theme.highlightColor : Theme.primaryColor
-                         }
-                     }
-                }
-            }
-
-            ExpandingSection {
-
-                width: parent.width
-
-                title: qsTr("Spain")
-
-                content.sourceComponent: Column {
-                    width: parent.width
-                    BackgroundItem {
-                         id: bgndAran
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListAran, "country": qsTr("Spain"), "macroRegion": qsTr("Val d'Aran")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Val d'Aran")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndAran.highlighted ? Theme.highlightColor : Theme.primaryColor
-                         }
-                     }
-                }
-            }
-
-            ExpandingSection {
-
-                width: parent.width
-
-                title: qsTr("Switzerland")
-
-                content.sourceComponent: Column {
-                    width: parent.width
-                    BackgroundItem {
-                         id: bgndSwitzerland
-                         onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": regionListSwiss, "country": qsTr("Switzerland"), "macroRegion": qsTr("Switzerland")})
-
-                         Label {
-                             x: Theme.horizontalPageMargin
-                             text: qsTr("Switzerland")
-                             anchors.verticalCenter: parent.verticalCenter
-                             color: bgndSwitzerland.highlighted ? Theme.highlightColor : Theme.primaryColor
-                         }
-                     }
-                }
-            }
         }
     }
     Image {

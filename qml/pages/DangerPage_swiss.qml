@@ -192,48 +192,52 @@ Page {
                 }
             }
 
-            ExpandingSection {
-                title: qsTr("Local Report")
+            ExpandingSectionGroup {
 
-                content.sourceComponent:
-                    Column {
-                       width: parent.width
-                       Label {
-                           textFormat: Text.RichText
-                           anchors {
-                                       left: parent.left
-                                       right: parent.right
-                                       margins: Theme.paddingMedium
-                                   }
+                ExpandingSection {
+                    title: qsTr("Local Report")
+
+                    content.sourceComponent:
+                        Column {
                            width: parent.width
-                           text: htmlLocal
-                           wrapMode: Text.Wrap
-                       }
+                           Label {
+                               textFormat: Text.RichText
+                               anchors {
+                                           left: parent.left
+                                           right: parent.right
+                                           margins: Theme.paddingMedium
+                                       }
+                               width: parent.width
+                               text: htmlLocal
+                               wrapMode: Text.Wrap
+                           }
+                    }
                 }
+
+               ExpandingSection {
+                   title: qsTr("Snow and Weather Data")
+
+                   content.sourceComponent:
+                       Column {
+                          width: parent.width
+                          Label {
+                              textFormat: Text.RichText
+                              anchors {
+                                          left: parent.left
+                                          right: parent.right
+                                          margins: Theme.paddingMedium
+                                      }
+                              width: parent.width
+                              text: htmlWeatherSnow
+                              // font.pixelSize: Theme.fontSizeSmall
+                              wrapMode: Text.Wrap
+                          }
+                    }
+               }
+
             }
 
-           ExpandingSection {
-               title: qsTr("Snow and Weather Data")
-
-               content.sourceComponent:
-                   Column {
-                      width: parent.width
-                      Label {
-                          textFormat: Text.RichText
-                          anchors {
-                                      left: parent.left
-                                      right: parent.right
-                                      margins: Theme.paddingMedium
-                                  }
-                          width: parent.width
-                          text: htmlWeatherSnow
-                          // font.pixelSize: Theme.fontSizeSmall
-                          wrapMode: Text.Wrap
-                      }
-                }
-           }
-
-           LinkedLabel {
+            LinkedLabel {
                 anchors {
                             left: parent.left
                             right: parent.right
@@ -301,7 +305,7 @@ Page {
         }
 
         function startDownload() {
-            call('pyAvaCoreSwiss.downloader.download', [regionID, Qt.locale().name], function() {});
+            call('pyAvaCoreSwiss.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
         }
 
         onError: {

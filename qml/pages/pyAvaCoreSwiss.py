@@ -23,21 +23,23 @@ import zipfile
 from pathlib import Path
 import json
 
-def issueReport(regionID, local):
+def issueReport(regionID, local, path):
+
+    #path = ".cache/harbour-avarisk/"
 
     lang = "en"  #Set Lang to get Report (fr, it, en, de)
 
     if "DE" in local.upper():
         lang = "de"
 
-    Path(".cache/harbour-avarisk/swiss/").mkdir(parents=True, exist_ok=True)
+    Path(path + '/swiss/').mkdir(parents=True, exist_ok=True)
     url = 'https://www.slf.ch/avalanche/mobile/bulletin_'+lang+'.zip'
-    urllib.request.urlretrieve(url, '.cache/harbour-avarisk/swiss/bulletin_'+lang+'.zip')
+    urllib.request.urlretrieve(url, path + '/swiss/bulletin_'+lang+'.zip')
 
-    with zipfile.ZipFile('.cache/harbour-avarisk/swiss/bulletin_'+lang+'.zip', 'r') as zip_ref:
-        zip_ref.extractall('.cache/harbour-avarisk/swiss/')
+    with zipfile.ZipFile(path + '/swiss/bulletin_'+lang+'.zip', 'r') as zip_ref:
+        zip_ref.extractall(path + '/swiss/')
 
-    with open('.cache/harbour-avarisk/swiss/text.json') as fp:
+    with open(path + '/swiss/text.json') as fp:
         data = json.load(fp)
 
     region_id = regionID[-4:]
@@ -48,7 +50,7 @@ def issueReport(regionID, local):
 
     report.repDate = begin[begin.find(':')+2:-1]
     report.timeBegin = report.repDate
-    report.timeEnd = end[end.find(':')+2:-1]
+    report.timeEnd = end[end.find(':')+2:]
     report.timeBegin
 
     response = urllib.request.urlopen('https://www.slf.ch/avalanche/bulletin/'+lang+'/gk_region2pdf.txt')
@@ -60,7 +62,7 @@ def issueReport(regionID, local):
             report_id = str(line).split('_')[5][:-7]
             break
 
-    with open('.cache/harbour-avarisk/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
+    with open(path + '/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
         text = f.read()
 
     text_pos = text.find('data-level=')+len('data-level=')+1
@@ -75,22 +77,20 @@ def issueReport(regionID, local):
 
     report.proneLocationsText = subtext[:subtext.find('"')]
 
-    # split1 = text.split('<img')
-
-    # split2 = split1[1].split('">')
-
-    # report.htmlLocal = split1[0]+str(split2[1:])
-
-    report.htmlLocal = text
+    # Remove Image
+    split1 = text.split('<img')
+    split2 = split1[1].split('">')
+    report.htmlLocal = split1[0]+'"'.join(split2[1:])
+    # report.htmlLocal = text
 
     text = ""
 
-    with open('.cache/harbour-avarisk/swiss/sdwetter.html', encoding="utf-8") as f:
+    with open(path + '/swiss/sdwetter.html', encoding="utf-8") as f:
         text = f.read()
 
     report.htmlWeatherSnow = text
 
-    pyotherside.send('validRegions', report.validRegions)
+    # pyotherside.send('validRegions', report.validRegions)
     pyotherside.send('repDate', report.repDate)
     pyotherside.send('timeBegin', report.timeBegin)
     pyotherside.send('timeEnd', report.timeEnd)
@@ -108,10 +108,10 @@ class Downloader:
         self.bgthread = threading.Thread()
         self.bgthread.start()
 
-    def download(self, regionID, local):
+    def download(self, regionID, local, path):
         if self.bgthread.is_alive():
             return
-        self.bgthread = threading.Thread(target=issueReport(regionID, local))
+        self.bgthread = threading.Thread(target=issueReport(regionID, local, path))
         self.bgthread.start()
 
 class avaReport_swiss:

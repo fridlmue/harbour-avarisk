@@ -224,150 +224,153 @@ Page {
                 }
             }
 
-            ExpandingSection {
-                title: qsTr("Avalanche Problem")
+            ExpandingSectionGroup {
 
-                content.sourceComponent:
-                    Column {
-                        spacing: Theme.paddingMedium
-                        Repeater {
-                            model: dPatterns
-                            Row {
-                                width: parent.width
-                                spacing: Theme.paddingMedium
-                                property int sectionIndex: model.index
-                                anchors {
-                                            left:     parent.left
-                                            right:    parent.right
-                                            margins:  Theme.paddingMedium
-                                        }
-                                Image {
-                                    source: "qrc:///res/avalanche-situations/" + dPatterns[sectionIndex]['type'].replace(' ', '_') + ".png"
-                                    width:  Theme.iconSizeLarge
-                                    height: Theme.iconSizeLarge
-                                }
-                                Rectangle {
-                                     color: "white"
-                                     width: Theme.iconSizeLarge
-                                     height:Theme.iconSizeLarge
-                                     Repeater {
-                                         model: dPatterns[sectionIndex]['aspect']
+                ExpandingSection {
+                    title: qsTr("Avalanche Problem")
+
+                    content.sourceComponent:
+                        Column {
+                            spacing: Theme.paddingMedium
+                            Repeater {
+                                model: dPatterns
+                                Row {
+                                    width: parent.width
+                                    spacing: Theme.paddingMedium
+                                    property int sectionIndex: model.index
+                                    anchors {
+                                                left:     parent.left
+                                                right:    parent.right
+                                                margins:  Theme.paddingMedium
+                                            }
+                                    Image {
+                                        source: "qrc:///res/avalanche-situations/" + dPatterns[sectionIndex]['type'].replace(' ', '_') + ".png"
+                                        width:  Theme.iconSizeLarge
+                                        height: Theme.iconSizeLarge
+                                    }
+                                    Rectangle {
+                                         color: "white"
+                                         width: Theme.iconSizeLarge
+                                         height:Theme.iconSizeLarge
+                                         Repeater {
+                                             model: dPatterns[sectionIndex]['aspect']
+                                             Image {
+                                                 property int aspectIndex: model.index
+                                                 source: "qrc:///res/expositions/" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase().replace('aspectrange', 'exposition')  + ".png"
+                                                 width:  Theme.iconSizeLarge
+                                                 height: Theme.iconSizeLarge
+                                             }
+                                         }
+
                                          Image {
-                                             property int aspectIndex: model.index
-                                             source: "qrc:///res/expositions/" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase().replace('aspectrange', 'exposition')  + ".png"
+                                            source: "qrc:///res/expositions/exposition_bg.png"
+                                            width:  Theme.iconSizeLarge
+                                            height: Theme.iconSizeLarge
+                                         }
+                                    }
+
+                                    //Middle is not yet covered
+                                    Rectangle {
+                                         color: "white"
+                                         width: Theme.iconSizeLarge
+                                         height:Theme.iconSizeLarge
+                                         Image {
+                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['validElev']) + ".png"
                                              width:  Theme.iconSizeLarge
                                              height: Theme.iconSizeLarge
                                          }
-                                     }
-
-                                     Image {
-                                        source: "qrc:///res/expositions/exposition_bg.png"
-                                        width:  Theme.iconSizeLarge
-                                        height: Theme.iconSizeLarge
-                                     }
-                                }
-
-                                //Middle is not yet covered
-                                Rectangle {
-                                     color: "white"
-                                     width: Theme.iconSizeLarge
-                                     height:Theme.iconSizeLarge
-                                     Image {
-                                         source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['validElev']) + ".png"
-                                         width:  Theme.iconSizeLarge
-                                         height: Theme.iconSizeLarge
-                                     }
-                                }
-
-                                IconButton {
-                                    id: upDownInd
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['validElev']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
-                                    transform: Rotation {
-                                        origin.x: upDownInd.width/2;
-                                        origin.y: upDownInd.height/2;
-                                        angle: (dPatterns[sectionIndex]['validElev'].indexOf('Hi') > -1) ? 180 : 0
                                     }
 
+                                    IconButton {
+                                        id: upDownInd
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['validElev']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
+                                        transform: Rotation {
+                                            origin.x: upDownInd.width/2;
+                                            origin.y: upDownInd.height/2;
+                                            angle: (dPatterns[sectionIndex]['validElev'].indexOf('Hi') > -1) ? 180 : 0
+                                        }
+
+                                    }
+
+                                    Label {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: getElevFromString(dPatterns[sectionIndex]['validElev'])
+                                        font.pixelSize: Theme.fontSizeMedium
+                                        wrapMode: Text.Wrap
+                                    }
+
+
                                 }
-
-                                Label {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    text: getElevFromString(dPatterns[sectionIndex]['validElev'])
-                                    font.pixelSize: Theme.fontSizeMedium
-                                    wrapMode: Text.Wrap
-                                }
-
-
                             }
                         }
-                    }
-            }
+                }
 
-            ExpandingSection {
-                title: qsTr("Danger Description")
+                ExpandingSection {
+                    title: qsTr("Danger Description")
 
-                content.sourceComponent: Column {
-                    width: parent.width
-                    Label {
-                        anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    margins: Theme.paddingMedium
-                                }
+                    content.sourceComponent: Column {
                         width: parent.width
-                        text: highlights
-                        font.pixelSize: Theme.fontSizeMedium
-                        wrapMode: Text.Wrap
-                    }
-                    Label {
-                        anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    margins: Theme.paddingMedium
-                                }
-                        width: parent.width
-                        text: comment
-                        font.pixelSize: Theme.fontSizeSmall
-                        wrapMode: Text.Wrap
+                        Label {
+                            anchors {
+                                        left: parent.left
+                                        right: parent.right
+                                        margins: Theme.paddingMedium
+                                    }
+                            width: parent.width
+                            text: highlights
+                            font.pixelSize: Theme.fontSizeMedium
+                            wrapMode: Text.Wrap
+                        }
+                        Label {
+                            anchors {
+                                        left: parent.left
+                                        right: parent.right
+                                        margins: Theme.paddingMedium
+                                    }
+                            width: parent.width
+                            text: comment
+                            font.pixelSize: Theme.fontSizeSmall
+                            wrapMode: Text.Wrap
+                        }
                     }
                 }
-            }
 
-            ExpandingSection {
-                title: qsTr("Snowpack Description")
+                ExpandingSection {
+                    title: qsTr("Snowpack Description")
 
-                content.sourceComponent: Column {
-                    width: parent.width
-                    Label {
-                        anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    margins: Theme.paddingMedium
-                                }
+                    content.sourceComponent: Column {
                         width: parent.width
-                        text: structure
-                        font.pixelSize: Theme.fontSizeSmall
-                        wrapMode: Text.Wrap
+                        Label {
+                            anchors {
+                                        left: parent.left
+                                        right: parent.right
+                                        margins: Theme.paddingMedium
+                                    }
+                            width: parent.width
+                            text: structure
+                            font.pixelSize: Theme.fontSizeSmall
+                            wrapMode: Text.Wrap
+                        }
                     }
                 }
-            }
 
-            ExpandingSection {
-                title: qsTr("Tendency")
+                ExpandingSection {
+                    title: qsTr("Tendency")
 
-                content.sourceComponent: Column {
-                    width: parent.width
-                    Label {
-                        anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    margins: Theme.paddingMedium
-                                }
+                    content.sourceComponent: Column {
                         width: parent.width
-                        text: tendency
-                        font.pixelSize: Theme.fontSizeSmall
-                        wrapMode: Text.Wrap
+                        Label {
+                            anchors {
+                                        left: parent.left
+                                        right: parent.right
+                                        margins: Theme.paddingMedium
+                                    }
+                            width: parent.width
+                            text: tendency
+                            font.pixelSize: Theme.fontSizeSmall
+                            wrapMode: Text.Wrap
+                        }
                     }
                 }
             }
