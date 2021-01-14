@@ -24,8 +24,8 @@ At the moment the following regions are supported:
 - AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
 - IT Bolzano (https://avalanche.report) (EN/DE)
 - IT Trentino (https://avalanche.report) (EN/DE)
-- DE Bavaria (EN/DE)
-- ES Val d'Aran (EN/DE)
+- DE Bavaria (https://www.lawinenwarndienst-bayern.de) (EN/DE)
+- ES Val d'Aran (https://lauegi.conselharan.org/) (EN/DE)
 
 ### Support considered
 - Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
