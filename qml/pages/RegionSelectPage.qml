@@ -15,11 +15,21 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import org.freedesktop.contextkit 1.0
 
 Page {
     property ListModel regionList
     property string country
-    property string macroRegion
+    property string macroRegion 
+    property string connection
+
+    ContextProperty {
+       key: "Internet.NetworkState"
+
+       onValueChanged: {
+           connection = value
+       }
+    }
 
     SilicaListView {
         id:regionSelectionView
@@ -36,7 +46,7 @@ Page {
         delegate: BackgroundItem {
             id: firstListViewDelegate
 
-            onClicked: pageStack.push(Qt.resolvedUrl("DangerPage" + (RegionID.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion})
+            onClicked: pageStack.push(Qt.resolvedUrl("DangerPage" + (RegionID.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion, "connection": connection})
 
             Label {
                 x: Theme.horizontalPageMargin

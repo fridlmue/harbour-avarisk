@@ -16,12 +16,18 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
+import org.freedesktop.contextkit 1.0
 
 Page {
     property string regionID
     property string regionName
     property string country
     property string macroRegion
+
+    property string connection
+    property bool connectionOnceUpdated: false
+
+    property var dangerLevelError: qsTr("Downloading...")
 
     property var dangerLevel: 0
 
@@ -44,26 +50,24 @@ Page {
         else if (x === '3') {return qsTr("considerable")}
         else if (x === '4') {return qsTr("high")        }
         else if (x === '5') {return qsTr("very high")   }
-        else              {return qsTr("loading") }
+        else                {return qsTr("loading") }
     }
 
-    /*function getAvaDangElevText(validElev) {
-        if (validElev.indexOf('Hi') > -1) {
-             return "above"
-        }
-        else if (validElev.indexOf('Lw') > -1) {
-             return "below"
-        }
-        else {
-             return "all"
-        }
-    }*/
+    ContextProperty {
+       key: "Internet.NetworkState"
+
+       onValueChanged: {
+           if (connection == "" || connectionOnceUpdated) {
+               connection = value
+               connectionOnceUpdated = true
+           }
+       }
+    }
 
     onStatusChanged: {
         if (status == Component.Ready)
         {
             python.startDownload();
-            busy = true;
         }
     }
 
@@ -85,9 +89,9 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Reload")
+                visible: (connection == "connected") ? true : false
                 onClicked: {
                     python.startDownload();
-                    busy = true;
                 }
             }
             MenuItem {
@@ -105,6 +109,18 @@ Page {
                 id: header
                 description: qsTr("Report")
                 title: regionName
+            }
+
+            Label {
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingLarge
+                        }
+                text: qsTr("Offline Report - Check Validity Date")
+                font.pixelSize: Theme.fontSizeLarge
+                wrapMode: Text.Wrap
+                visible: (cached) ? true : false
             }
 
             SectionHeader {
@@ -157,7 +173,7 @@ Page {
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
-                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : qsTr("Maybe no report is provided for this region at the moment.")
+                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : dangerLevelError
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
@@ -295,17 +311,31 @@ Page {
                         coverExchange.microRegion = regionName
                         coverExchange.levelText = qsTr("LEVEL")
                         coverExchange.dangerMain = dangerLevel
+
+                        coverExchange.dangerH = ''
+                        coverExchange.dangerL = ''
+                        coverExchange.validHeight = ''
                     }
                     downloadSucc = val
 
                     busy = false;
+
+                    if (downloadSucc == false) {
+                        dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
+                    }
                 });
 
                 importModule('pyAvaCoreSwiss', function () {});
         }
 
         function startDownload() {
-            call('pyAvaCoreSwiss.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+            if (connection == "connected") {
+                busy = true;
+                call('pyAvaCoreSwiss.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+            } else {
+                busy = false;
+                dangerLevelError = qsTr("No Internet connection and no report cached for this region")
+            }
         }
 
         onError: {

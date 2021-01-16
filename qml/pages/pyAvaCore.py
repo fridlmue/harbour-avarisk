@@ -24,6 +24,8 @@ import threading
 from datetime import datetime
 from datetime import timezone
 from urllib.request import urlopen
+import pickle
+from pathlib import Path
 import copy
 
 def addParentInfo(et):
@@ -37,8 +39,16 @@ def getParent(et):
     else:
         return None
 
+def fetchCachedReport(regionID, local, path):
+    if Path(path + 'reports/'+regionID+local+'.pkl').is_file():
+        with open(path + 'reports/'+regionID+local+'.pkl', 'rb') as input:
+            return pickle.load(input)
+
 def getXmlAsElemT(url):
 
+    #timeout_time = 5
+
+    #with urlopen(url, timeout=timeout_time) as response:
     with urlopen(url) as response:
         response_content = response.read()
     try:
@@ -293,8 +303,7 @@ def tryParseDateTime(inStr):
     return r_dateTime
 
 
-def issueReport(regionID, local):
-
+def issueReport(regionID, local, path, fromCache=False):
     url = "https://api.avalanche.report/albina/api/bulletins"
     reports = []
     provider = ""
@@ -361,13 +370,20 @@ def issueReport(regionID, local):
             url = "https://conselharan2.cyberneticos.net/albina_files_local/latest/de.xml"
             provider = "Die dargestellten Informationen werden über eine API auf https://lauegi.conselharan.org/ abgefragt. Diese wird bereitgestellt von Conselh Generau d'Aran (https://lauegi.conselharan.org/)."
 
+    cached = True
+    if not fromCache:
+        try:
+            reports.extend(getReports(url))
+        except:
+            matchingReport = fetchCachedReport(regionID, local, path)
 
-    reports.extend(getReports(url))
-
-    for report in reports:
-        for ID in report.validRegions:
-            if ID == regionID:
-              matchingReport = report
+        for report in reports:
+            for ID in report.validRegions:
+                if ID == regionID:
+                  matchingReport = report
+                  cached = False
+    else:
+         matchingReport = fetchCachedReport(regionID, local, path)
 
     try:
         matchingReport
@@ -378,10 +394,12 @@ def issueReport(regionID, local):
         pyotherside.send('finished', False)
     else:
         dangerLevel = 0
-        for elem in matchingReport.dangerMain:
-            if elem['mainValue'] > dangerLevel:
-                dangerLevel = elem['mainValue']
-
+        try:
+            for elem in matchingReport.dangerMain:
+                if elem['mainValue'] > dangerLevel:
+                    dangerLevel = elem['mainValue']
+        except:
+            pyotherside.send('finished', False)
         pyotherside.send('dangerLevel', dangerLevel)
         pyotherside.send('dangerLevel_h', matchingReport.dangerMain[0]['mainValue'])
         if (len(matchingReport.dangerMain) > 1):
@@ -400,18 +418,27 @@ def issueReport(regionID, local):
         pyotherside.send('dPatterns', str(matchingReport.problemList).replace("'", '"'))
         pyotherside.send('provider', provider)
 
+        pyotherside.send('cached', cached)
         pyotherside.send('finished', True)
+
+        Path(path + "reports/").mkdir(parents=True, exist_ok=True)
+
+        with open(path + 'reports/'+regionID+local+'.pkl', 'wb') as f:
+            pickle.dump(matchingReport, f, pickle.HIGHEST_PROTOCOL)
 
 class Downloader:
     def __init__(self):
         self.bgthread = threading.Thread()
         self.bgthread.start()
 
-    def download(self, regionID, local):
+    def download(self, regionID, local, path):
         if self.bgthread.is_alive():
             return
-        self.bgthread = threading.Thread(target=issueReport(regionID, local))
+        self.bgthread = threading.Thread(target=issueReport(regionID, local, path))
         self.bgthread.start()
+
+    def cached(self, regionID, local, path):
+        issueReport(regionID, local, path, fromCache=True)
 
 class avaReport:
     def __init__(self):

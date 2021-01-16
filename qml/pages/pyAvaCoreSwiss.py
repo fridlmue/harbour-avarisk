@@ -21,11 +21,10 @@ import threading
 import urllib.request
 import zipfile
 from pathlib import Path
+import pickle
 import json
 
 def issueReport(regionID, local, path):
-
-    #path = ".cache/harbour-avarisk/"
 
     lang = "en"  #Set Lang to get Report (fr, it, en, de)
 
@@ -102,6 +101,11 @@ def issueReport(regionID, local, path):
 
     pyotherside.send('provider', "SLF.ch")
     pyotherside.send('finished', True)
+
+    Path(path + "reports/").mkdir(parents=True, exist_ok=True)
+
+    with open(path + 'reports/'+regionID+local+'.pkl', 'wb') as f:
+        pickle.dump(matchingReport, f, pickle.HIGHEST_PROTOCOL)
 
 class Downloader:
     def __init__(self):

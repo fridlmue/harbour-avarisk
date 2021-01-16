@@ -16,12 +16,18 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
+import org.freedesktop.contextkit 1.0
 
 Page {
     property string regionID
     property string regionName
     property string country
     property string macroRegion
+
+    property string connection
+    property bool connectionOnceUpdated: false
+
+    property var dangerLevelError: qsTr("Downloading...")
 
     property var dangerLevel: 0
 
@@ -37,6 +43,7 @@ Page {
     property date validTo: new Date()
     property var provider: ""
     property var downloadSucc: false
+    property var cached: false
 
     property bool busy: false
 
@@ -92,11 +99,24 @@ Page {
         return newDate;
     }
 
+    ContextProperty {
+       key: "Internet.NetworkState"
+
+       onValueChanged: {
+           if (connection == "" || connectionOnceUpdated) {
+               connection = value
+               connectionOnceUpdated = true
+           }
+           if (connection == "connected") {
+               connectionOnceUpdated = true
+           }
+       }
+    }
+
     onStatusChanged: {
         if (status == Component.Ready)
         {
             python.startDownload();
-            busy = true;
         }
     }
 
@@ -118,9 +138,9 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Reload")
+                visible: (connection == "connected") ? true : false
                 onClicked: {
                     python.startDownload();
-                    busy = true;
                 }
             }
             MenuItem {
@@ -138,6 +158,18 @@ Page {
                 id: header
                 description: qsTr("Report")
                 title: regionName
+            }
+
+            Label {
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingLarge
+                        }
+                text: qsTr("Offline Report - Check Validity Date")
+                font.pixelSize: Theme.fontSizeLarge
+                wrapMode: Text.Wrap
+                visible: (cached) ? true : false
             }
 
             SectionHeader {
@@ -188,9 +220,10 @@ Page {
                 }
 
                 Label {
+                    id: lblDangerLevel
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
-                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : qsTr("Maybe no report is provided for this region at the moment.")
+                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : dangerLevelError
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
@@ -437,6 +470,9 @@ Page {
                 setHandler('provider', function(val) {
                     provider = val;
                 });
+                setHandler('cached', function(val) {
+                    cached = val;
+                });
                 setHandler('finished', function(val) {
                     if (val === true) {
                         coverExchange.country = country
@@ -450,6 +486,10 @@ Page {
                     }
                     downloadSucc = val
 
+                    if (downloadSucc == false) {
+                        dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
+                    }
+
                     busy = false;
                 });
 
@@ -457,7 +497,14 @@ Page {
         }
 
         function startDownload() {
-            call('pyAvaCore.downloader.download', [regionID, Qt.locale().name], function() {});
+            if (connection == "connected") {
+                busy = true;
+                call('pyAvaCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+            } else {
+                busy = false;
+                dangerLevelError = qsTr("No Internet connection and no report cached for this region")
+                call('pyAvaCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+            }
         }
 
         onError: {
