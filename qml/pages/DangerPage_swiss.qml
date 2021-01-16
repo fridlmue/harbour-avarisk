@@ -41,6 +41,7 @@ Page {
     property var htmlWeatherSnow: ""
 
     property var downloadSucc: false
+    property var cached: false
 
     property bool busy: false
 
@@ -61,6 +62,10 @@ Page {
                connection = value
                connectionOnceUpdated = true
            }
+           if (connection == "connected") {
+              connectionOnceUpdated = true
+          }
+
        }
     }
 
@@ -303,6 +308,10 @@ Page {
                 setHandler('provider', function(val) {
                     provider = val;
                 });
+                setHandler('cached', function(val) {
+                    cached = val;
+                });
+
 
                 setHandler('finished', function(val) {
                     if (val === true) {
@@ -323,6 +332,10 @@ Page {
                     if (downloadSucc == false) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
                     }
+
+                    if (cached == true) {
+                        dangerLevelError = qsTr("No Internet connection and no report cached for this region")
+                    }
                 });
 
                 importModule('pyAvaCoreSwiss', function () {});
@@ -335,6 +348,7 @@ Page {
             } else {
                 busy = false;
                 dangerLevelError = qsTr("No Internet connection and no report cached for this region")
+                call('pyAvaCoreSwiss.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
             }
         }
 

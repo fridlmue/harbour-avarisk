@@ -20,103 +20,126 @@ import threading
 
 import urllib.request
 import zipfile
-from pathlib import Path
 import pickle
+from pathlib import Path
 import json
 
-def issueReport(regionID, local, path):
-
-    lang = "en"  #Set Lang to get Report (fr, it, en, de)
-
-    if "DE" in local.upper():
-        lang = "de"
-
+# Downloads the swiss avalanche zip for the slf app together with the region mapping information
+def downloadFiles(lang, path):
     Path(path + '/swiss/').mkdir(parents=True, exist_ok=True)
     url = 'https://www.slf.ch/avalanche/mobile/bulletin_'+lang+'.zip'
     urllib.request.urlretrieve(url, path + '/swiss/bulletin_'+lang+'.zip')
 
+    urllib.request.urlretrieve('https://www.slf.ch/avalanche/bulletin/'+lang+'/gk_region2pdf.txt', path + '/swiss/gk_region2pdf.txt')
+
     with zipfile.ZipFile(path + '/swiss/bulletin_'+lang+'.zip', 'r') as zip_ref:
         zip_ref.extractall(path + '/swiss/')
 
-    with open(path + '/swiss/text.json') as fp:
-        data = json.load(fp)
+# Decodes the information from the Report
+def issueReport(regionID, local, path, fromCache=False):
 
-    region_id = regionID[-4:]
+    lang = "en"  #Set Lang to get Report (fr, it, en, de)
+    provider = "Report from slf.ch"
 
-    report = avaReport_swiss()
+    if not fromCache:
+        cached = False
+        if "DE" in local.upper():
+            lang = "de"
+            provider = "Bericht des slf.ch"
 
-    begin, end = data['validity'].split('/')
+        downloadFiles(lang, path)
+    else:
+        cached = True
 
-    report.repDate = begin[begin.find(':')+2:-1]
-    report.timeBegin = report.repDate
-    report.timeEnd = end[end.find(':')+2:]
-    report.timeBegin
+    # If some files are available in chache or newly loaded
+    if Path(path + '/swiss/gk_region2pdf.txt').is_file():
 
-    response = urllib.request.urlopen('https://www.slf.ch/avalanche/bulletin/'+lang+'/gk_region2pdf.txt')
+        # Receives validity information from text.json
+        with open(path + '/swiss/text.json') as fp:
+            data = json.load(fp)
 
-    report_id = 0
+        region_id = regionID[-4:]
 
-    for line in response.readlines():
-        if str(line)[2:6] == region_id:
-            report_id = str(line).split('_')[5][:-7]
-            break
+        report = avaReport_swiss()
 
-    with open(path + '/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
-        text = f.read()
+        begin, end = data['validity'].split('/')
 
-    text_pos = text.find('data-level=')+len('data-level=')+1
-    report.dangerMain = text[text_pos:text_pos+1]
+        report.repDate = begin[begin.find(':')+2:-1]
+        report.timeBegin = report.repDate
+        report.timeEnd = end[end.find(':')+2:]
+        report.timeBegin
 
-    text_pos = text.find('src="data:image/png;base64,')+len('src="data:image/png;base64,')
-    subtext = text[text_pos:]
-    report.proneLocationsImg = subtext[:subtext.find('"')]
+        report_id = 0
 
-    text_pos = subtext.find('alt="')+len('alt="')
-    subtext = subtext[text_pos:]
+        # Receives the ID of the report that matches the selected region_id
+        with open(path + '/swiss/gk_region2pdf.txt') as fp:
+            for line in fp:
+                if line[:4] == region_id:
+                    report_id = line.split('_')[5][:-5]
+                    break
 
-    report.proneLocationsText = subtext[:subtext.find('"')]
+        # Opens the matching Report
+        with open(path + '/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
+            text = f.read()
 
-    # Remove Image
-    split1 = text.split('<img')
-    split2 = split1[1].split('">')
-    report.htmlLocal = split1[0]+'"'.join(split2[1:])
-    # report.htmlLocal = text
+        # Isolates the relevant Danger Information
+        text_pos = text.find('data-level=')+len('data-level=')+1
+        report.dangerMain = text[text_pos:text_pos+1]
 
-    text = ""
+        # Isolates the prone location Image
+        text_pos = text.find('src="data:image/png;base64,')+len('src="data:image/png;base64,')
+        subtext = text[text_pos:]
+        report.proneLocationsImg = subtext[:subtext.find('"')]
 
-    with open(path + '/swiss/sdwetter.html', encoding="utf-8") as f:
-        text = f.read()
+        # Isolates the prone location Text
+        text_pos = subtext.find('alt="')+len('alt="')
+        subtext = subtext[text_pos:]
+        report.proneLocationsText = subtext[:subtext.find('"')]
 
-    report.htmlWeatherSnow = text
+        # Remove Image from html
+        split1 = text.split('<img')
+        split2 = split1[1].split('">')
+        report.htmlLocal = split1[0]+'"'.join(split2[1:])
 
-    # pyotherside.send('validRegions', report.validRegions)
-    pyotherside.send('repDate', report.repDate)
-    pyotherside.send('timeBegin', report.timeBegin)
-    pyotherside.send('timeEnd', report.timeEnd)
-    pyotherside.send('dangerMain', report.dangerMain)
-    pyotherside.send('proneLocationsText', report.proneLocationsText)
-    pyotherside.send('proneLocationsImg', report.proneLocationsImg)
-    pyotherside.send('htmlLocal', report.htmlLocal)
-    pyotherside.send('htmlWeatherSnow', report.htmlWeatherSnow)
+        # Retreives the Weather and Snow Information
+        text = ""
+        with open(path + '/swiss/sdwetter.html', encoding="utf-8") as f:
+            text = f.read()
+        report.htmlWeatherSnow = text
 
-    pyotherside.send('provider', "SLF.ch")
-    pyotherside.send('finished', True)
+        pyotherside.send('repDate', report.repDate)
+        pyotherside.send('timeBegin', report.timeBegin)
+        pyotherside.send('timeEnd', report.timeEnd)
+        pyotherside.send('dangerMain', report.dangerMain)
+        pyotherside.send('proneLocationsText', report.proneLocationsText)
+        pyotherside.send('proneLocationsImg', report.proneLocationsImg)
+        pyotherside.send('htmlLocal', report.htmlLocal)
+        pyotherside.send('htmlWeatherSnow', report.htmlWeatherSnow)
 
-    Path(path + "reports/").mkdir(parents=True, exist_ok=True)
+        pyotherside.send('provider', provider)
+        pyotherside.send('finished', True)
+        pyotherside.send('cached', cached)
 
-    with open(path + 'reports/'+regionID+local+'.pkl', 'wb') as f:
-        pickle.dump(matchingReport, f, pickle.HIGHEST_PROTOCOL)
+    else:
+        pyotherside.send('finished', False)
 
+# Threaded Downloading of Report
 class Downloader:
     def __init__(self):
         self.bgthread = threading.Thread()
         self.bgthread.start()
 
+    # Starts Download and decoding of Report
     def download(self, regionID, local, path):
         if self.bgthread.is_alive():
             return
         self.bgthread = threading.Thread(target=issueReport(regionID, local, path))
         self.bgthread.start()
+
+    # Starts Decoding of Report if available
+    def cached(self, regionID, local, path):
+        issueReport(regionID, local, path, fromCache=True)
+
 
 class avaReport_swiss:
     def __init__(self):

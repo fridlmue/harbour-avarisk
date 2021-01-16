@@ -40,14 +40,13 @@ def getParent(et):
         return None
 
 def fetchCachedReport(regionID, local, path):
-    if Path(path + 'reports/'+regionID+local+'.pkl').is_file():
-        with open(path + 'reports/'+regionID+local+'.pkl', 'rb') as input:
+    if Path(path + '/reports/'+regionID+local+'.pkl').is_file():
+        with open(path + '/reports/'+regionID+local+'.pkl', 'rb') as input:
             return pickle.load(input)
 
 def getXmlAsElemT(url):
 
     #timeout_time = 5
-
     #with urlopen(url, timeout=timeout_time) as response:
     with urlopen(url) as response:
         response_content = response.read()
@@ -377,7 +376,13 @@ def issueReport(regionID, local, path, fromCache=False):
         except:
             matchingReport = fetchCachedReport(regionID, local, path)
 
+
+        Path(path + "/reports/").mkdir(parents=True, exist_ok=True)
+
         for report in reports:
+            for currentRegionID in report.validRegions:
+                with open(path + '/reports/'+currentRegionID+local+'.pkl', 'wb') as f:
+                    pickle.dump(report, f, pickle.HIGHEST_PROTOCOL)
             for ID in report.validRegions:
                 if ID == regionID:
                   matchingReport = report
@@ -420,11 +425,6 @@ def issueReport(regionID, local, path, fromCache=False):
 
         pyotherside.send('cached', cached)
         pyotherside.send('finished', True)
-
-        Path(path + "reports/").mkdir(parents=True, exist_ok=True)
-
-        with open(path + 'reports/'+regionID+local+'.pkl', 'wb') as f:
-            pickle.dump(matchingReport, f, pickle.HIGHEST_PROTOCOL)
 
 class Downloader:
     def __init__(self):

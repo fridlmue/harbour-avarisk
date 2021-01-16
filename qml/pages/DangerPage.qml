@@ -490,6 +490,10 @@ Page {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
                     }
 
+                    if (cached == true) {
+                        dangerLevelError = qsTr("No Internet connection and no report cached for this region")
+                    }
+
                     busy = false;
                 });
 
