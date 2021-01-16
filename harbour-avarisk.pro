@@ -24,6 +24,7 @@ DISTFILES += qml/harbour-avarisk.qml \
     qml/pages/SecondPage.qml \
     qml/pages/WebViewPage.qml \
     qml/pages/pyAvaCoreSwiss.py \
+    qml/pages/qmldir \
     res/avalanche-situations/drifting_snow.png \
     res/avalanche-situations/favourable_situation.png \
     res/avalanche-situations/gliding_snow.png \

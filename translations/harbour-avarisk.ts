@@ -272,121 +272,132 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Allgäuer Alpen</source>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Lechtaler A. - Ammergebirge</source>
+        <source>Show Bulletin for</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mieminger Gebirge</source>
+        <source>Austria</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Karwendel</source>
+        <source>Carinthia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Brandenberger Alpen</source>
+        <source>Niederösterreich</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wilder Kaiser - Waidringer Alpen</source>
+        <source>Oberösterreich</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wstl. Lechtaler Alpen</source>
+        <source>Salzburg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zentrale Lechtaler Alpen</source>
+        <source>Styria</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Grieskogelgruppe</source>
+        <source>Tyrol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Westl. Verwallgruppe</source>
+        <source>Vorarlberg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Verwallgruppe</source>
+        <source>Germany</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Silvretta</source>
+        <source>Bavaria</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Samnaungruppe</source>
+        <source>Italy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nördl. Ötztaler- und Stubaier Alpen</source>
+        <source>South Tyrol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wstl. Tuxer Alpen</source>
+        <source>Trentino</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Tuxer Alpen</source>
+        <source>Know-How</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wstl. Kitzbühler Alpen</source>
+        <source>Spain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Kitzbühler Alpen</source>
+        <source>Val d&apos;Aran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Glockturmgruppe</source>
+        <source>Switzerland</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Weißkogelgruppe</source>
+        <source>Liechtenstein</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Gurgler Gruppe</source>
+        <source>Bernese and Fribourg Alps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Zentrale Stubaier Alpen</source>
+        <source>central part of the Northern flank of the Alps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nördl. Zillertaler Alpen</source>
+        <source>Eastern part of the Northern flank</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Venedigergruppe</source>
+        <source>lower Valais and Vaud Alps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Rieserfernergruppe</source>
+        <source>Upper Valais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Glocknergruppe</source>
+        <source>northern and central Grisons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Östl. Deferegger Alpen</source>
+        <source>Ticino and Moesano</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Schobergruppe</source>
+        <source>Engadine and southern valleys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Lienzer Dolomiten</source>
+        <source>Jura</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Mittelland</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lichtenstein</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RegionList</name>
     <message>
         <source>Münstertaler Alpen</source>
         <translation type="unfinished"></translation>
@@ -549,6 +560,122 @@
     </message>
     <message>
         <source>Pine&apos; - Valle dei Mocheni</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Lechtaler A. - Ammergebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mieminger Gebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Karwendel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Brandenberger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wilder Kaiser - Waidringer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zentrale Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Grieskogelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Westl. Verwallgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Verwallgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Silvretta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Samnaungruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Ötztaler- und Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Tuxer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Tuxer Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wstl. Kitzbühler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Kitzbühler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glockturmgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weißkogelgruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gurgler Gruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Zentrale Stubaier Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nördl. Zillertaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Venedigergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Rieserfernergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Glocknergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Östl. Deferegger Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schobergruppe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lienzer Dolomiten</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -864,70 +991,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Bulletin for</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Austria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Carinthia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Niederösterreich</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Oberösterreich</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Salzburg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Styria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tyrol</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vorarlberg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Germany</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bavaria</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Italy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>South Tyrol</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trentino</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Know-How</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Aran norte y centro</source>
         <translation type="unfinished"></translation>
     </message>
@@ -940,31 +1003,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Spain</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Val d&apos;Aran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Jaun</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Emosson</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Thal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Switzerland</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Davos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1180,6 +1219,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Emosson</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Génépi</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1301,6 +1344,10 @@
     </message>
     <message>
         <source>Schanfigg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Davos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1492,6 +1539,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Thal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Olten-Gösgen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1521,50 +1572,6 @@
     </message>
     <message>
         <source>Liechtenstein</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bernese and Fribourg Alps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>central part of the Northern flank of the Alps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Eastern part of the Northern flank</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>lower Valais and Vaud Alps</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Upper Valais</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>northern and central Grisons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ticino and Moesano</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Engadine and southern valleys</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Jura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mittelland</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lichtenstein</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
