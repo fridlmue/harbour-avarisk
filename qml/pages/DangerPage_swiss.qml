@@ -197,16 +197,15 @@ Page {
                         }
 
                 Image {
+                    id: reportProneLocImg
                     source: "data:image/png;base64," + proneLocationsImg
-                    // width: Theme.iconSizeLarge
-                    // height: width * sourceSize.height / sourceSize.width
                     height: Theme.iconSizeLarge
                     width: height * sourceSize.width / sourceSize.height
                 }
 
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
-                    width: parent.width - Theme.iconSizeLarge - 3 * Theme.paddingLarge
+                    width: parent.width - reportProneLocImg.width - 3 * Theme.paddingLarge
                     text: proneLocationsText
                     font.pixelSize: Theme.fontSizeSmall
                     wrapMode: Text.Wrap
@@ -327,15 +326,13 @@ Page {
                     }
                     downloadSucc = val
 
-                    busy = false;
 
-                    if (downloadSucc == false) {
+                    // If Busy == false, error message was set by startDownload()
+                    if (downloadSucc == false && busy == true) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
                     }
 
-                    if (cached == true) {
-                        dangerLevelError = qsTr("No Internet connection and no report cached for this region")
-                    }
+                    busy = false;
                 });
 
                 importModule('pyAvaCoreSwiss', function () {});

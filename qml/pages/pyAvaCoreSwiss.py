@@ -78,47 +78,51 @@ def issueReport(regionID, local, path, fromCache=False):
                     report_id = line.split('_')[5][:-5]
                     break
 
+        if report_id != 0:
+
         # Opens the matching Report
-        with open(path + '/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
-            text = f.read()
+            with open(path + '/swiss/1/dst' + report_id + '.html', encoding="utf-8") as f:
+                text = f.read()
 
-        # Isolates the relevant Danger Information
-        text_pos = text.find('data-level=')+len('data-level=')+1
-        report.dangerMain = text[text_pos:text_pos+1]
+            # Isolates the relevant Danger Information
+            text_pos = text.find('data-level=')+len('data-level=')+1
+            report.dangerMain = text[text_pos:text_pos+1]
 
-        # Isolates the prone location Image
-        text_pos = text.find('src="data:image/png;base64,')+len('src="data:image/png;base64,')
-        subtext = text[text_pos:]
-        report.proneLocationsImg = subtext[:subtext.find('"')]
+            # Isolates the prone location Image
+            text_pos = text.find('src="data:image/png;base64,')+len('src="data:image/png;base64,')
+            subtext = text[text_pos:]
+            report.proneLocationsImg = subtext[:subtext.find('"')]
 
-        # Isolates the prone location Text
-        text_pos = subtext.find('alt="')+len('alt="')
-        subtext = subtext[text_pos:]
-        report.proneLocationsText = subtext[:subtext.find('"')]
+            # Isolates the prone location Text
+            text_pos = subtext.find('alt="')+len('alt="')
+            subtext = subtext[text_pos:]
+            report.proneLocationsText = subtext[:subtext.find('"')]
 
-        # Remove Image from html
-        split1 = text.split('<img')
-        split2 = split1[1].split('">')
-        report.htmlLocal = split1[0]+'"'.join(split2[1:])
+            # Remove Image from html
+            split1 = text.split('<img')
+            split2 = split1[1].split('">')
+            report.htmlLocal = split1[0]+'"'.join(split2[1:])
 
-        # Retreives the Weather and Snow Information
-        text = ""
-        with open(path + '/swiss/sdwetter.html', encoding="utf-8") as f:
-            text = f.read()
-        report.htmlWeatherSnow = text
+            # Retreives the Weather and Snow Information
+            text = ""
+            with open(path + '/swiss/sdwetter.html', encoding="utf-8") as f:
+                text = f.read()
+            report.htmlWeatherSnow = text
 
-        pyotherside.send('repDate', report.repDate)
-        pyotherside.send('timeBegin', report.timeBegin)
-        pyotherside.send('timeEnd', report.timeEnd)
-        pyotherside.send('dangerMain', report.dangerMain)
-        pyotherside.send('proneLocationsText', report.proneLocationsText)
-        pyotherside.send('proneLocationsImg', report.proneLocationsImg)
-        pyotherside.send('htmlLocal', report.htmlLocal)
-        pyotherside.send('htmlWeatherSnow', report.htmlWeatherSnow)
+            pyotherside.send('repDate', report.repDate)
+            pyotherside.send('timeBegin', report.timeBegin)
+            pyotherside.send('timeEnd', report.timeEnd)
+            pyotherside.send('dangerMain', report.dangerMain)
+            pyotherside.send('proneLocationsText', report.proneLocationsText)
+            pyotherside.send('proneLocationsImg', report.proneLocationsImg)
+            pyotherside.send('htmlLocal', report.htmlLocal)
+            pyotherside.send('htmlWeatherSnow', report.htmlWeatherSnow)
 
-        pyotherside.send('provider', provider)
-        pyotherside.send('finished', True)
-        pyotherside.send('cached', cached)
+            pyotherside.send('provider', provider)
+            pyotherside.send('finished', True)
+            pyotherside.send('cached', cached)
+        else:
+            pyotherside.send('finished', False)
 
     else:
         pyotherside.send('finished', False)

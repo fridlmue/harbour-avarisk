@@ -126,6 +126,18 @@
         <source>LEVEL</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Internet connection and no report cached for this region</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DangerPage_swiss</name>
@@ -203,6 +215,18 @@
     </message>
     <message>
         <source>Snow and Weather Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Internet connection and no report cached for this region</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

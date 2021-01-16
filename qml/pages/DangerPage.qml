@@ -486,12 +486,9 @@ Page {
                     }
                     downloadSucc = val
 
-                    if (downloadSucc == false) {
+                    // If Busy == false, error message was set by startDownload()
+                    if (downloadSucc == false && busy == True) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
-                    }
-
-                    if (cached == true) {
-                        dangerLevelError = qsTr("No Internet connection and no report cached for this region")
                     }
 
                     busy = false;
