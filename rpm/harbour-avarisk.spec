@@ -6,6 +6,7 @@
 Name:       harbour-avarisk
 
 # >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
 # << macros
 
 Summary:    SailfishOS Client for EAWS Avalanche Bulletins
@@ -18,7 +19,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-avarisk.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   pyotherside-qml-plugin-python3-qt5
-Requires:   nemo-qml-plugin-contextkit-qt5
+Requires:   qml(org.freedesktop.contextkit)
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
