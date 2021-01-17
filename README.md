@@ -22,17 +22,18 @@ At the moment the following regions are supported:
 - AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
 - AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
 - AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
-- IT Bolzano (https://avalanche.report) (EN/DE)
-- IT Trentino (https://avalanche.report) (EN/DE)
+- CH (including FL) (https://www.slf.ch/en/index.html) (EN/DE)
 - DE Bavaria (https://www.lawinenwarndienst-bayern.de) (EN/DE)
 - ES Val d'Aran (https://lauegi.conselharan.org/) (EN/DE)
+- IT Bolzano (https://avalanche.report) (EN/DE)
+- IT Trentino (https://avalanche.report) (EN/DE)
 
 ### Support considered
 - Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
 - IT Veneto: (https://www.arpa.veneto.it/neve_valanghe/it/xml/dolomiti_nevevalanghe.xml) (Not CAAML-Compatible)
 
 ### Regions, that can't be implemented at the moment
-- Swiss: seems not to have a open API
+
 - Finnland: answered on 2020-12-22 not to have an open api. Publication is here: https://en.ilmatieteenlaitos.fi/avalanche-forecast. Open Datasets of this provider can be found here: https://en.ilmatieteenlaitos.fi/open-data-sets-available.
 
 ### Additional Regions:
