@@ -3,7 +3,7 @@
 # avaRisk
 SailfishOS Client for EAWS Avalanche Bulletins.
 
-##Screenshots
+## Screenshots
 Screenshots are available [here][screenshots].
 
 [![Latest release](https://img.shields.io/github/v/release/fridlmue/harbour-avarisk)](https://github.com/fridlmue/harbour-avarisk/releases)
