@@ -308,10 +308,10 @@ def issueReport(regionID, local, path, fromCache=False):
     provider = ""
     # Euregio-Region Tirol, Südtirol, Trentino
     if ("AT-07" in regionID) or ("IT-32-BZ" in regionID) or ("IT-32-TN" in regionID):
-        url = "https://api.avalanche.report/albina/api/bulletins"
+        url = "https://avalanche.report/albina_files/latest/en.xml"
         provider = "The displayed information is provided by an open data API on https://avalanche.report by: Avalanche Warning Service Tirol, Avalanche Warning Service Südtirol, Avalanche Warning Service Trentino."
         if "DE" in local.upper():
-            url += "?lang=de"
+            url += "https://avalanche.report/albina_files/latest/de.xml"
             provider = "Die dargestellten Informationen werden über eine API auf https://avalanche.report abgefragt. Diese wird bereitgestellt von: Avalanche Warning Service Tirol, Avalanche Warning Service Südtirol, Avalanche Warning Service Trentino."
 
     # Kärnten

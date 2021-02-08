@@ -138,7 +138,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + repDate : qsTr("Report could not be requested") // in UTC -> wrong!
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested") // in UTC -> wrong!
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -149,7 +149,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? validFrom  + " - " + validTo : ""  //in UTC - > Wrong!
+                text: (downloadSucc)? Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) : ""  //in UTC - > Wrong!
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -198,7 +198,7 @@ Page {
 
                 Image {
                     id: reportProneLocImg
-                    source: "data:image/png;base64," + proneLocationsImg
+                    source: (proneLocationsImg == "" || proneLocationsImg == "-")? "" : "data:image/png;base64," + proneLocationsImg
                     height: Theme.iconSizeLarge
                     width: height * sourceSize.width / sourceSize.height
                 }

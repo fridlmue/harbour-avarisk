@@ -6,12 +6,11 @@
 Name:       harbour-avarisk
 
 # >> macros
-%define __provides_exclude_from ^%{_datadir}/.*$
 # << macros
 
 Summary:    SailfishOS Client for EAWS Avalanche Bulletins
-Version:    0.7
-Release:    4
+Version:    0.8
+Release:    1
 Group:      Qt/Qt
 License:    GPL3
 URL:        https://github.com/fridlmue/harbour-avaRisk

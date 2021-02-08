@@ -17,6 +17,7 @@
 """
 import pyotherside
 import threading
+from datetime import datetime
 
 import urllib.request
 import zipfile
@@ -64,10 +65,11 @@ def issueReport(regionID, local, path, fromCache=False):
 
         begin, end = data['validity'].split('/')
 
-        report.repDate = begin[begin.find(':')+2:-1]
+        dateTimeNow = datetime.now()
+
+        report.repDate = datetime.strptime(str(dateTimeNow.year) + '-' + begin[begin.find(':')+2:-1], '%Y-%d.%m., %H:%M')
         report.timeBegin = report.repDate
-        report.timeEnd = end[end.find(':')+2:]
-        report.timeBegin
+        report.timeEnd = datetime.strptime(str(dateTimeNow.year) + '-' + end[end.find(':')+2:], '%Y-%d.%m., %H:%M')
 
         report_id = 0
 
@@ -92,16 +94,25 @@ def issueReport(regionID, local, path, fromCache=False):
             text_pos = text.find('src="data:image/png;base64,')+len('src="data:image/png;base64,')
             subtext = text[text_pos:]
             report.proneLocationsImg = subtext[:subtext.find('"')]
+            if (len(report.proneLocationsImg) < 1000): # Sometimes no Picture is attached
+                report.proneLocationsImg = '-'
 
             # Isolates the prone location Text
             text_pos = subtext.find('alt="')+len('alt="')
             subtext = subtext[text_pos:]
             report.proneLocationsText = subtext[:subtext.find('"')]
+            if (report.proneLocationsText == 'Content-Type'):
+                report.proneLocationsText = '-'
 
-            # Remove Image from html
-            split1 = text.split('<img')
-            split2 = split1[1].split('">')
-            report.htmlLocal = split1[0]+'"'.join(split2[1:])
+            # Remove Image from html, sometimes no Picture is attached
+
+            try:
+                split1 = text.split('<img')
+                split2 = split1[1].split('">')
+                report.htmlLocal = split1[0]+'"'.join(split2[1:])
+
+            except:
+                report.htmlLocal = text
 
             # Retreives the Weather and Snow Information
             text = ""
