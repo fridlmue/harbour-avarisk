@@ -308,7 +308,7 @@ Page {
                                          width: Theme.iconSizeLarge
                                          height:Theme.iconSizeLarge
                                          Image {
-                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['validElev']) + ".png"
+                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) + ".png"
                                              width:  Theme.iconSizeLarge
                                              height: Theme.iconSizeLarge
                                          }
@@ -317,18 +317,18 @@ Page {
                                     IconButton {
                                         id: upDownInd
                                         anchors.verticalCenter: parent.verticalCenter
-                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['validElev']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
+                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
                                         transform: Rotation {
                                             origin.x: upDownInd.width/2;
                                             origin.y: upDownInd.height/2;
-                                            angle: (dPatterns[sectionIndex]['validElev'].indexOf('Hi') > -1) ? 180 : 0
+                                            angle: (dPatterns[sectionIndex]['valid_elevation'].indexOf('Hi') > -1) ? 180 : 0
                                         }
 
                                     }
 
                                     Label {
                                         anchors.verticalCenter: parent.verticalCenter
-                                        text: getElevFromString(dPatterns[sectionIndex]['validElev'])
+                                        text: getElevFromString(dPatterns[sectionIndex]['valid_elevation'])
                                         font.pixelSize: Theme.fontSizeMedium
                                         wrapMode: Text.Wrap
                                     }
@@ -494,17 +494,17 @@ Page {
                     busy = false;
                 });
 
-                importModule('pyAvaCore', function () {});
+                importModule('pyCore', function () {});
         }
 
         function startDownload() {
             if (connection == "connected") {
                 busy = true;
-                call('pyAvaCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
             } else {
                 busy = false;
                 dangerLevelError = qsTr("No Internet connection and no report cached for this region")
-                call('pyAvaCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
             }
         }
 

@@ -1,0 +1,3 @@
+[submodule "qml/pages/pyAvaCore"]
+	path = qml/pages/pyAvaCore
+	url = git@gitlab.com:albina-euregio/pyAvaCore.git
