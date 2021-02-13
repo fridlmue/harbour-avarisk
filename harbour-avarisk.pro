@@ -17,6 +17,8 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-avarisk.cpp
 
 DISTFILES += qml/harbour-avarisk.qml \
+    pyAvaCore/pyAvaCore/__init__.py \
+    pyAvaCore/pyAvaCore/pyAvaCore.py \
     qml/cover/CoverPage.qml \
     qml/pages/DangerPage_swiss.qml \
     qml/pages/Education.qml \
