@@ -1,0 +1,3 @@
+[submodule "pyAvaCore"]
+	path = pyAvaCore
+	url = git@gitlab.com:albina-euregio/pyAvaCore.git
