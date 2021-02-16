@@ -8,6 +8,9 @@ SailfishOS Client for EAWS Avalanche Bulletins.
 
 Screenshots are available [here][screenshots].
 
+## pyAvaCore
+The Python core of avaRisk - pyAvaCore - moved to an extra repository at https://gitlab.com/albina-euregio/pyAvaCore. From Version 0.8 the Python-Code will be used from this project. Core component development and adding new Regions will be tracked there.
+
 ## Download and Install
 - avaRisk can be found and installed from openrepos. (https://openrepos.net/content/fridl/avarisk-avalanche-bulletins)
 - avaRisk can be found and installed from the Jolla Store/Sailfish Harbour. (https://harbour.jolla.com/)
