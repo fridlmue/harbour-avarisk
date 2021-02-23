@@ -27,6 +27,8 @@ Page {
     property string connection
     property bool connectionOnceUpdated: false
 
+    property bool pm_only
+
     property var dangerLevelError: qsTr("Downloading...")
 
     property var dangerLevel: 0

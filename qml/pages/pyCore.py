@@ -22,31 +22,39 @@
 import pyotherside
 import threading
 import pickle
+import json
+from datetime import datetime
 from pathlib import Path
-from pyAvaCore.pyAvaCore import pyAvaCore
+from avacore import pyAvaCore
 
-def fetch_cached_report(region_id, local, path):
+def fetch_cached_report(region_id, local, path, pm=False):
 
     '''checks for a region_id if a local copy of this report is available at path at language local'''
 
+    if pm:
+        local = local + '_pm'
+
+    if Path(path + '/reports/'+region_id+local+'_pm'+'.pkl').is_file() and not '_pm' in region_id:
+        with open(path + '/reports/'+region_id+local+'_pm'+'.pkl', 'rb') as input_file:
+            print('')
     if Path(path + '/reports/'+region_id+local+'.pkl').is_file():
         with open(path + '/reports/'+region_id+local+'.pkl', 'rb') as input_file:
             return pickle.load(input_file)
-    return None
 
-def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_other_side=True):
+def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_other_side=True, pm=False):
 
     '''function to issue report from remote or local cache. Caches local.'''
 
     url = "https://api.avalanche.report/albina/api/bulletins"
     reports = []
     provider = ""
-
-    url, provider = pyAvaCore.get_report_url(region_id, local)
-
+    matching_report_pm = ''
 
     cached = True
     if not from_cache:
+
+        url, provider = pyAvaCore.get_report_url(region_id, local)
+
         try:
             reports.extend(pyAvaCore.get_reports(url))
         except:
@@ -57,22 +65,39 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
 
         for report in reports:
             for current_region_id in report.valid_regions:
-                with open(path + '/reports/'+current_region_id+local+'.pkl', 'wb') as f:
+                pm_marker = ''
+                if hasattr(report, 'predecessor_id'):
+                    pm_marker = '_pm'
+                with open(path + '/reports/' + current_region_id + local + pm_marker + '.pkl', 'wb') as f:
                     pickle.dump(report, f, pickle.HIGHEST_PROTOCOL)
-            for ID in report.valid_regions:
-                if ID == region_id:
-                    matching_report = report
-                    cached = False
+                if current_region_id == region_id:
+                    if not hasattr(report, 'predecessor_id'):
+                        matching_report = report
+                        cached = False
+        for report in reports:
+            if hasattr(report, 'predecessor_id'):
+                if matching_report.report_id == report.predecessor_id:
+                    matching_report_pm = report
+
     else:
         matching_report = fetch_cached_report(region_id, local, path)
 
     if send_other_side:
-        send_to_other_side(matching_report, provider, cached)
+        send_to_other_side(matching_report, matching_report_pm, provider, cached)
 
     if cli_out:
         pyAvaCore.cli_print_report(matching_report, provider, cached)
 
-def send_to_other_side(matching_report, provider, cached): # Should be part of avaRisk not pyAvaCore
+def dumper(obj):
+    """JSON serialization of datetime"""
+    if isinstance(obj, datetime):
+        return obj.isoformat()
+    try:
+        return obj.toJSON()
+    except: # pylint: disable=bare-except
+        return obj.__dict__
+
+def send_to_other_side(matching_report, matching_report_pm, provider, cached): # Should be part of avaRisk not pyAvaCore
 
     '''Sends out result using pyotherside'''
 
@@ -85,33 +110,18 @@ def send_to_other_side(matching_report, provider, cached): # Should be part of a
 
         pyotherside.send('finished', False)
     else:
-        dangerLevel = 0
-        try:
-            for elem in matching_report.danger_main:
-                if elem.main_value > dangerLevel:
-                    dangerLevel = elem.main_value
-        except:
-            pyotherside.send('finished', False)
-        pyotherside.send('dangerLevel', dangerLevel)
-        pyotherside.send('dangerLevel_h', matching_report.danger_main[0].main_value)
-        if len(matching_report.danger_main) > 1:
-            pyotherside.send('dangerLevel_l', matching_report.danger_main[1].main_value)
-            pyotherside.send('dangerLevel_alti', matching_report.danger_main[0].valid_elevation)
-        else:
-            pyotherside.send('dangerLevel_l', matching_report.danger_main[0].main_value)
-        pyotherside.send('highlights', matching_report.activity_hl)
-        pyotherside.send('comment', matching_report.activity_com.replace("&nbsp;", " "))
-        pyotherside.send('structure', matching_report.snow_struct_com.replace("&nbsp;", " "))
-        pyotherside.send('tendency', matching_report.tendency_com.replace("&nbsp;", " "))
-        pyotherside.send('repDate', matching_report.rep_date)
-        pyotherside.send('validFrom', matching_report.validity_begin)
-        pyotherside.send('validTo', matching_report.validity_end)
-        pyotherside.send('numberOfDPatterns', len(matching_report.problem_list))
-        pyotherside.send('dPatterns', str(matching_report.problem_list).replace("'", '"'))
-        pyotherside.send('provider', provider)
+        reports = [matching_report, matching_report_pm]
+        json_dump = json.dumps(reports, default=dumper, indent=2)
+        pyotherside.send('AvaReport', json_dump)
 
         pyotherside.send('cached', cached)
         pyotherside.send('finished', True)
+
+def sel_report_text(report_texts, searched_type):
+    for text in report_texts:
+        if text.text_type == searched_type:
+            return text.text_content
+    return ''
 
 class Downloader:
 
@@ -135,5 +145,11 @@ class Downloader:
         '''Print out cached report'''
 
         issue_report(region_id, local, path, from_cache=True)
+
+    def cached_pm(self, region_id, local, path):
+
+        '''Print out cached report'''
+
+        issue_report(region_id, local, path, from_cache=True, pm=True)
 
 downloader = Downloader()

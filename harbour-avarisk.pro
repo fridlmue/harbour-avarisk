@@ -23,6 +23,21 @@ DISTFILES += qml/harbour-avarisk.qml \
     qml/pages/FirstPage.qml \
     qml/pages/SecondPage.qml \
     qml/pages/WebViewPage.qml \
+    qml/pages/avacore/__init__.py \
+    qml/pages/avacore/__main__.py \
+    qml/pages/avacore/avacore/__init__.py \
+    qml/pages/avacore/avacore/__main__.py \
+    qml/pages/avacore/avacore/png/__init__.py \
+    qml/pages/avacore/avacore/png/png.py \
+    qml/pages/avacore/avacore/pyAvaCore.py \
+    qml/pages/avacore/png/__init__.py \
+    qml/pages/avacore/png/png.py \
+    qml/pages/avacore/pyAvaCore.py \
+    qml/pages/external_avacore/__init__.py \
+    qml/pages/external_avacore/__main__.py \
+    qml/pages/external_avacore/png/__init__.py \
+    qml/pages/external_avacore/png/png.py \
+    qml/pages/external_avacore/pyAvaCore.py \
     qml/pages/pyAvaCoreSwiss.py \
     qml/pages/qmldir \
     res/avalanche-situations/drifting_snow.png \
