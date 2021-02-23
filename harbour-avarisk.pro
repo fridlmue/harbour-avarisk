@@ -38,7 +38,6 @@ DISTFILES += qml/harbour-avarisk.qml \
     qml/pages/external_avacore/png/__init__.py \
     qml/pages/external_avacore/png/png.py \
     qml/pages/external_avacore/pyAvaCore.py \
-    qml/pages/pyAvaCoreSwiss.py \
     qml/pages/qmldir \
     res/avalanche-situations/drifting_snow.png \
     res/avalanche-situations/favourable_situation.png \
@@ -62,14 +61,23 @@ DISTFILES += qml/harbour-avarisk.qml \
     res/expositions/Exposition/exposition_s.png \
     res/expositions/Exposition/exposition_se.png \
     res/expositions/exposition_bg.png \
+    res/expositions/exposition_bg_ch.png \
     res/expositions/exposition_e.png \
+    res/expositions/exposition_ene.png \
+    res/expositions/exposition_ese.png \
     res/expositions/exposition_n.png \
     res/expositions/exposition_ne.png \
+    res/expositions/exposition_nne.png \
+    res/expositions/exposition_nnw.png \
     res/expositions/exposition_nw.png \
     res/expositions/exposition_s.png \
     res/expositions/exposition_se.png \
+    res/expositions/exposition_sse.png \
+    res/expositions/exposition_ssw.png \
     res/expositions/exposition_sw.png \
     res/expositions/exposition_w.png \
+    res/expositions/exposition_wnw.png \
+    res/expositions/exposition_wsw.png \
     res/harbour-avarisk.png \
     res/warning-pictos/Elevation/levels_all.png \
     res/warning-pictos/levels_0_0.png \

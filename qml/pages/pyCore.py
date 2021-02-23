@@ -31,15 +31,20 @@ def fetch_cached_report(region_id, local, path, pm=False):
 
     '''checks for a region_id if a local copy of this report is available at path at language local'''
 
-    if pm:
-        local = local + '_pm'
+    matching_report = ''
+    matching_report_pm = ''
 
-    if Path(path + '/reports/'+region_id+local+'_pm'+'.pkl').is_file() and not '_pm' in region_id:
-        with open(path + '/reports/'+region_id+local+'_pm'+'.pkl', 'rb') as input_file:
-            print('')
     if Path(path + '/reports/'+region_id+local+'.pkl').is_file():
         with open(path + '/reports/'+region_id+local+'.pkl', 'rb') as input_file:
-            return pickle.load(input_file)
+             matching_report = pickle.load(input_file)
+
+    if Path(path + '/reports/'+region_id+local+'_pm.pkl').is_file():
+        with open(path + '/reports/'+region_id+local+'_pm.pkl', 'rb') as input_file:
+            matching_report_pm = pickle.load(input_file)
+            if not matching_report.rep_date == matching_report_pm.rep_date:
+                matching_report_pm = ''
+
+    return matching_report, matching_report_pm
 
 def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_other_side=True, pm=False):
 
@@ -53,12 +58,16 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
     cached = True
     if not from_cache:
 
-        url, provider = pyAvaCore.get_report_url(region_id, local)
+        if "CH-" in region_id:
+            reports.extend(pyAvaCore.get_reports_ch(path))
 
-        try:
-            reports.extend(pyAvaCore.get_reports(url))
-        except:
-            matching_report = fetch_cached_report(region_id, local, path)
+        else:
+            url, provider = pyAvaCore.get_report_url(region_id, local)
+
+            try:
+                reports.extend(pyAvaCore.get_reports(url))
+            except:
+                matching_report, matching_report_pm = fetch_cached_report(region_id, local, path)
 
 
         Path(path + "/reports/").mkdir(parents=True, exist_ok=True)
@@ -76,11 +85,11 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
                         cached = False
         for report in reports:
             if hasattr(report, 'predecessor_id'):
-                if matching_report.report_id == report.predecessor_id:
+                if matching_report.report_id in report.predecessor_id:
                     matching_report_pm = report
 
     else:
-        matching_report = fetch_cached_report(region_id, local, path)
+        matching_report, matching_report_pm = fetch_cached_report(region_id, local, path)
 
     if send_other_side:
         send_to_other_side(matching_report, matching_report_pm, provider, cached)
@@ -146,10 +155,5 @@ class Downloader:
 
         issue_report(region_id, local, path, from_cache=True)
 
-    def cached_pm(self, region_id, local, path):
-
-        '''Print out cached report'''
-
-        issue_report(region_id, local, path, from_cache=True, pm=True)
 
 downloader = Downloader()

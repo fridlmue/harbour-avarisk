@@ -71,5 +71,14 @@
         <file>res/bg_light_page.svg</file>
         <file>res/bg_dark_page.svg</file>
         <file>res/harbour-avarisk.png</file>
+        <file>res/expositions/exposition_bg_ch.png</file>
+        <file>res/expositions/exposition_ene.png</file>
+        <file>res/expositions/exposition_ese.png</file>
+        <file>res/expositions/exposition_nne.png</file>
+        <file>res/expositions/exposition_nnw.png</file>
+        <file>res/expositions/exposition_sse.png</file>
+        <file>res/expositions/exposition_ssw.png</file>
+        <file>res/expositions/exposition_wnw.png</file>
+        <file>res/expositions/exposition_wsw.png</file>
     </qresource>
 </RCC>
