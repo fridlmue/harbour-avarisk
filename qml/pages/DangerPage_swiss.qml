@@ -68,7 +68,7 @@ Page {
             }
         }
 
-        console.log("Plot Report: " + avaReport.report_id)
+        // console.log("Plot Report: " + avaReport.report_id)
 
         /*
         dangerLevel_h = avaReport.danger_main[0]['main_value'];
@@ -150,14 +150,14 @@ Page {
         if ((status == Component.Ready) && (pm_only == false))
         {
             python.startDownload();
-            console.log('Start DL')
-            console.log(pm_only)
+            // console.log('Start DL')
+            // console.log(pm_only)
         }
         if ((status == Component.Ready) && pm_only)
         {
             parseAvaReportJSON(avaReport);
-            console.log('Load from avaReport')
-            console.log(pm_only)
+            // console.log('Load from avaReport')
+            // console.log(pm_only)
             downloadSucc = true
         }
     }

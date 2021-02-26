@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.2">
 <context>
     <name>AboutPage</name>
     <message>
@@ -34,6 +34,10 @@
 </context>
 <context>
     <name>DangerPage</name>
+    <message>
+        <source>Downloading...</source>
+        <translation>Lädt...</translation>
+    </message>
     <message>
         <source>low</source>
         <translation>gering</translation>
@@ -75,8 +79,16 @@
         <translation>Know-How</translation>
     </message>
     <message>
+        <source>PM Report</source>
+        <translation>Nachmittagsbericht</translation>
+    </message>
+    <message>
         <source>Report</source>
         <translation>Bericht</translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation>Offline Report: Prüfe ob gültig!</translation>
     </message>
     <message>
         <source>Valid time interval</source>
@@ -97,10 +109,6 @@
     <message>
         <source>Level</source>
         <translation>Stufe</translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
     </message>
     <message>
         <source>Elevation Data</source>
@@ -127,20 +135,24 @@
         <translation>STUFE</translation>
     </message>
     <message>
-        <source>Downloading...</source>
-        <translation>Lädt...</translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Offline Report: Prüfe ob gültig!</translation>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
     </message>
     <message>
         <source>No Internet connection and no report cached for this region</source>
         <translation>Keine Internetverbindung und kein heruntergeladener Report verfügbar</translation>
     </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translatio>Nachmittagsbericht verfügbar!</translation>
+    </message>
 </context>
 <context>
     <name>DangerPage_swiss</name>
+    <message>
+        <source>Downloading...</source>
+        <translation>Lädt...</translation>
+    </message>
     <message>
         <source>low</source>
         <translation>gering</translation>
@@ -166,6 +178,14 @@
         <translation>lädt</translation>
     </message>
     <message>
+        <source>treeline</source>
+        <translation>Waldgrenze</translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation>jede Höhe</translation>
+    </message>
+    <message>
         <source>Reload</source>
         <translation>Neu herunterladen</translation>
     </message>
@@ -174,8 +194,20 @@
         <translation>Know-How</translation>
     </message>
     <message>
+        <source>PM Report</source>
+        <translation>Nachmittagsbericht</translation>
+    </message>
+    <message>
         <source>Report</source>
         <translation>Bericht</translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation>Offline Report: Prüfe ob gültig!</translation>
+    </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translation>Nachmittagsbericht verfügbar!</translation>
     </message>
     <message>
         <source>Valid time interval</source>
@@ -198,14 +230,6 @@
         <translation>Stufe</translation>
     </message>
     <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation>STUFE</translation>
-    </message>
-    <message>
         <source>Avalanche prone locations</source>
         <translation>Lawinengefährdete Expositionen</translation>
     </message>
@@ -218,12 +242,12 @@
         <translation>Schnee- und Wetterdaten</translation>
     </message>
     <message>
-        <source>Downloading...</source>
-        <translation>Lädt...</translation>
+        <source>LEVEL</source>
+        <translation>STUFE</translation>
     </message>
     <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Offline Report: Prüfe ob gültig!</translation>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
     </message>
     <message>
         <source>No Internet connection and no report cached for this region</source>

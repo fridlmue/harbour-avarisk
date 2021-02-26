@@ -35,6 +35,10 @@
 <context>
     <name>DangerPage</name>
     <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>low</source>
         <translation type="unfinished"></translation>
     </message>
@@ -75,7 +79,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>PM Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -96,10 +108,6 @@
     </message>
     <message>
         <source>Level</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -127,20 +135,24 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Downloading...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
+        <source>Maybe no report is provided for this region at the moment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>No Internet connection and no report cached for this region</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DangerPage_swiss</name>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>low</source>
         <translation type="unfinished"></translation>
@@ -166,6 +178,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>treeline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
@@ -174,7 +194,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>PM Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PM Report Available!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -198,14 +230,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Avalanche prone locations</source>
         <translation type="unfinished"></translation>
     </message>
@@ -218,11 +242,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Downloading...</source>
+        <source>LEVEL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Offline Report - Check Validity Date</source>
+        <source>Maybe no report is provided for this region at the moment.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
