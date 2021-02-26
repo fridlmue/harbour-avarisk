@@ -27,6 +27,11 @@ Page {
     property string connection
     property bool connectionOnceUpdated: false
 
+    property var pm_only
+    property var avaReport
+    property var avaReportPM
+    property bool pm_available: false
+
     property var dangerLevelError: qsTr("Downloading...")
 
     property var dangerLevel: 0
@@ -45,13 +50,85 @@ Page {
 
     property bool busy: false
 
+    property var dPatterns
+
     function dangerLevelText(x) {
-        if      (x === '1') {return qsTr("low")         }
-        else if (x === '2') {return qsTr("moderate")    }
-        else if (x === '3') {return qsTr("considerable")}
-        else if (x === '4') {return qsTr("high")        }
-        else if (x === '5') {return qsTr("very high")   }
+        if      (x === 1) {return qsTr("low")         }
+        else if (x === 2) {return qsTr("moderate")    }
+        else if (x === 3) {return qsTr("considerable")}
+        else if (x === 4) {return qsTr("high")        }
+        else if (x === 5) {return qsTr("very high")   }
         else                {return qsTr("loading") }
+    }
+
+    function parseAvaReportJSON(avaReport) {
+        for (var elem in avaReport.danger_main) {
+            if (avaReport.danger_main[elem]['main_value'] > dangerLevel) {
+                dangerLevel = avaReport.danger_main[elem]['main_value']
+            }
+        }
+
+        // console.log("Plot Report: " + avaReport.report_id)
+
+        /*
+        dangerLevel_h = avaReport.danger_main[0]['main_value'];
+        if (avaReport.danger_main.length > 1) {
+            dangerLevel_l = avaReport.danger_main[1]['main_value'];
+            dangerLevel_alti = avaReport.danger_main[1]['valid_elevation'];
+        }
+        else {
+            dangerLevel_l = avaReport.danger_main[0]['main_value'];
+        }
+        */
+        validFrom = new Date(avaReport.validity_begin)
+        validTo = new Date(avaReport.validity_end)
+        repDate = new Date(avaReport.rep_date)
+
+        dPatterns = avaReport.problem_list
+
+        for (var elem in avaReport.report_texts) {
+            if (avaReport.report_texts[elem].text_type === 'prone_locations_img') {
+                proneLocationsImg = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'prone_locations_text') {
+                proneLocationsText = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'html_report_local') {
+                htmlLocal = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'html_weather_snow') {
+                htmlWeatherSnow = avaReport.report_texts[elem].text_content;
+            }
+        }
+    }
+
+    function getAvaDangElevText(validElev) {
+        if (validElev) {
+            if (validElev.indexOf('>') > -1) {
+                 return "above"
+            }
+            else if (validElev.indexOf('<') > -1) {
+                 return "below"
+            }
+        }
+        return "all"
+    }
+
+    function getElevFromString(validElev) {
+        if (validElev) {
+            if (validElev.indexOf('Treeline') > -1) {
+                return qsTr("treeline")
+            }
+
+            var elev = validElev
+            if ((validElev.indexOf('<') > -1) || (validElev.indexOf('>') > -1)) {
+                elev = validElev.substring(1)
+                return elev + " m"
+            }
+        }
+
+        return qsTr("entire range")
+
     }
 
     ContextProperty {
@@ -70,9 +147,18 @@ Page {
     }
 
     onStatusChanged: {
-        if (status == Component.Ready)
+        if ((status == Component.Ready) && (pm_only == false))
         {
             python.startDownload();
+            // console.log('Start DL')
+            // console.log(pm_only)
+        }
+        if ((status == Component.Ready) && pm_only)
+        {
+            parseAvaReportJSON(avaReport);
+            // console.log('Load from avaReport')
+            // console.log(pm_only)
+            downloadSucc = true
         }
     }
 
@@ -94,7 +180,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Reload")
-                visible: (connection == "connected") ? true : false
+                visible: ((connection == "connected") && (pm_only == false)) ? true : false
                 onClicked: {
                     python.startDownload();
                 }
@@ -102,6 +188,13 @@ Page {
             MenuItem {
                 text: qsTr("Know-How")
                 onClicked: pageStack.push(Qt.resolvedUrl("Education.qml"))
+            }
+            MenuItem {
+                text: qsTr("PM Report")
+                visible: pm_available
+                onClicked: {
+                    onClicked: pageStack.push(Qt.resolvedUrl("DangerPage_swiss.qml"), {"regionID": regionID, "regionName": regionName, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": true, "avaReport": avaReportPM})
+                }
             }
         }
 
@@ -123,9 +216,21 @@ Page {
                             margins: Theme.paddingLarge
                         }
                 text: qsTr("Offline Report - Check Validity Date")
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                 wrapMode: Text.Wrap
                 visible: (cached) ? true : false
+            }
+
+            Label {
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingLarge
+                        }
+                text: qsTr("PM Report Available!")
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+                visible: (pm_available) ? true : false
             }
 
             SectionHeader {
@@ -186,7 +291,68 @@ Page {
             SectionHeader {
                 text: qsTr("Avalanche prone locations")
             }
+
             Row {
+                width: parent.width
+                spacing: Theme.paddingMedium
+                anchors {
+                            left:     parent.left
+                            right:    parent.right
+                            margins:  Theme.paddingMedium
+                        }
+                Rectangle {
+                     color: "white"
+                     width: Theme.iconSizeLarge
+                     height:Theme.iconSizeLarge
+                     Repeater {
+                         model: dPatterns[0]['aspect']
+                         Image {
+                             property int aspectIndex: model.index
+                             source: "qrc:///res/expositions/exposition_" + dPatterns[0]['aspect'][aspectIndex].toLowerCase()  + ".png"
+                             width:  Theme.iconSizeLarge
+                             height: Theme.iconSizeLarge
+                         }
+                     }
+
+                     Image {
+                        source: "qrc:///res/expositions/exposition_bg_ch.png"
+                        width:  Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
+                     }
+                }
+
+                //Middle is not yet covered
+                Rectangle {
+                     color: "white"
+                     width: Theme.iconSizeLarge
+                     height:Theme.iconSizeLarge
+                     Image {
+                         source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[0]['valid_elevation']) + ".png"
+                         width:  Theme.iconSizeLarge
+                         height: Theme.iconSizeLarge
+                     }
+                }
+
+                IconButton {
+                    id: upDownInd
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: (getAvaDangElevText(dPatterns[0]['valid_elevation']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
+                    transform: Rotation {
+                        origin.x: upDownInd.width/2;
+                        origin.y: upDownInd.height/2;
+                        angle: (dPatterns[0]['valid_elevation'].indexOf('>') > -1) ? 180 : 0
+                    }
+
+                }
+
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: getElevFromString(dPatterns[0]['valid_elevation'])
+                    font.pixelSize: Theme.fontSizeMedium
+                    wrapMode: Text.Wrap
+                }
+            }
+            /*Row {
                 width: parent.width
                 spacing: Theme.paddingMedium
 
@@ -210,7 +376,7 @@ Page {
                     font.pixelSize: Theme.fontSizeSmall
                     wrapMode: Text.Wrap
                 }
-            }
+            }*/
 
             ExpandingSectionGroup {
 
@@ -278,31 +444,18 @@ Page {
         Component.onCompleted: {
                 addImportPath(Qt.resolvedUrl('.'));
 
-                setHandler('dangerMain', function(val) {
-                    dangerLevel = val;
-                });
+                setHandler('AvaReport', function(val) {
+                    var avaReport_str = val;
+                    var avaReports = JSON.parse(avaReport_str);
 
+                    parseAvaReportJSON(avaReports[0])
 
-                setHandler('proneLocationsText', function(val) {
-                    proneLocationsText = val;
-                });
-                setHandler('proneLocationsImg', function(val) {
-                    proneLocationsImg = val;
-                });
-                setHandler('htmlLocal', function(val) {
-                    htmlLocal = val;
-                });
-                setHandler('htmlWeatherSnow', function(val) {
-                    htmlWeatherSnow = val
-                });            
-                setHandler('timeBegin', function(val) {
-                    validFrom = val
-                });
-                setHandler('timeEnd', function(val) {
-                    validTo = val
-                });
-                setHandler('repDate', function(val) {
-                    repDate = val
+                    if (avaReports.length > 1) {
+                        if (avaReports[1] !== '') {
+                            pm_available = true
+                            avaReportPM = avaReports[1]
+                        }
+                    }
                 });
                 setHandler('provider', function(val) {
                     provider = val;
@@ -310,8 +463,9 @@ Page {
                 setHandler('cached', function(val) {
                     cached = val;
                 });
-
-
+                setHandler('cached_pm', function(val) {
+                    cached_pm = val;
+                });
                 setHandler('finished', function(val) {
                     if (val === true) {
                         coverExchange.country = country
@@ -319,33 +473,32 @@ Page {
                         coverExchange.microRegion = regionName
                         coverExchange.levelText = qsTr("LEVEL")
                         coverExchange.dangerMain = dangerLevel
-
-                        coverExchange.dangerH = ''
-                        coverExchange.dangerL = ''
-                        coverExchange.validHeight = ''
+                        coverExchange.dangerH = dangerLevel
+                        coverExchange.dangerL = dangerLevel
+                        coverExchange.validHeight = qsTr("entire range")
                     }
                     downloadSucc = val
 
-
                     // If Busy == false, error message was set by startDownload()
-                    if (downloadSucc == false && busy == true) {
+                    if (downloadSucc == false && busy == True) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
                     }
 
                     busy = false;
                 });
 
-                importModule('pyAvaCoreSwiss', function () {});
+                importModule('pyCore', function () {});
         }
 
         function startDownload() {
-            if (connection == "connected") {
+            if (connection == "connected" && pm_only == false) {
                 busy = true;
-                call('pyAvaCoreSwiss.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
             } else {
                 busy = false;
                 dangerLevelError = qsTr("No Internet connection and no report cached for this region")
-                call('pyAvaCoreSwiss.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+
             }
         }
 

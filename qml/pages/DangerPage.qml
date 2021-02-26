@@ -23,9 +23,13 @@ Page {
     property string regionName
     property string country
     property string macroRegion
-
     property string connection
+    property var pm_only
+    property var avaReport
+    property var avaReportPM
+
     property bool connectionOnceUpdated: false
+    property bool pm_available: false
 
     property var dangerLevelError: qsTr("Downloading...")
 
@@ -47,7 +51,6 @@ Page {
 
     property bool busy: false
 
-    property var numberOfDPatterns: 0
     property var dPatterns
 
     function dangerLevelText(x) {
@@ -60,38 +63,32 @@ Page {
     }
 
     function getAvaDangElevText(validElev) {
-        if (validElev.indexOf('Hi') > -1) {
-             return "above"
+        if (validElev) {
+            if (validElev.indexOf('>') > -1) {
+                 return "above"
+            }
+            else if (validElev.indexOf('<') > -1) {
+                 return "below"
+            }
         }
-        else if (validElev.indexOf('Lw') > -1) {
-             return "below"
-        }
-        else {
-             return "all"
-        }
+        return "all"
     }
 
     function getElevFromString(validElev) {
-        if (validElev.indexOf('Treeline') > -1) {
-            return qsTr("treeline")
-        }
-        if (validElev.indexOf('Forestline') > -1) {
-            return qsTr("treeline")
-        }
-        if (validElev.indexOf('Waldgrenze') > -1) {
-            return qsTr("treeline")
-        }
-        if (validElev.indexOf('treeline') > -1) {
-            return qsTr("treeline")
+        if (validElev) {
+            if (validElev.indexOf('Treeline') > -1) {
+                return qsTr("treeline")
+            }
+
+            var elev = validElev
+            if ((validElev.indexOf('<') > -1) || (validElev.indexOf('>') > -1)) {
+                elev = validElev.substring(1)
+                return elev + " m"
+            }
         }
 
-        if (validElev.indexOf('_') === -1) {
-            return qsTr("entire range")
-        }
+        return qsTr("entire range")
 
-        var elev = validElev.substring(validElev.indexOf('_')+1, validElev.length-2)
-
-        return elev + " m"
     }
 
     function convertUTCDateToLocalDate(date) {
@@ -99,9 +96,48 @@ Page {
         return newDate;
     }
 
+    function parseAvaReportJSON(avaReport) {
+        for (var elem in avaReport.danger_main) {
+            if (avaReport.danger_main[elem]['main_value'] > dangerLevel) {
+                dangerLevel = avaReport.danger_main[elem]['main_value']
+            }
+        }
+
+        // console.log("Plot Report: " + avaReport.report_id)
+
+        dangerLevel_h = avaReport.danger_main[0]['main_value'];
+        if (avaReport.danger_main.length > 1) {
+            dangerLevel_l = avaReport.danger_main[1]['main_value'];
+            dangerLevel_alti = avaReport.danger_main[1]['valid_elevation'];
+        }
+        else {
+            dangerLevel_l = avaReport.danger_main[0]['main_value'];
+        }
+
+        validFrom = new Date(avaReport.validity_begin)
+        validTo = new Date(avaReport.validity_end)
+        repDate = new Date(avaReport.rep_date)
+
+        dPatterns = avaReport.problem_list
+
+        for (var elem in avaReport.report_texts) {
+            if (avaReport.report_texts[elem].text_type === 'activity_hl') {
+                highlights = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'activity_com') {
+                comment = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'snow_struct_com') {
+                structure = avaReport.report_texts[elem].text_content;
+            }
+            if (avaReport.report_texts[elem].text_type === 'tendency_com') {
+                tendency = avaReport.report_texts[elem].text_content;
+            }
+        }
+    }
+
     ContextProperty {
        key: "Internet.NetworkState"
-
        onValueChanged: {
            if (connection == "" || connectionOnceUpdated) {
                connection = value
@@ -114,9 +150,18 @@ Page {
     }
 
     onStatusChanged: {
-        if (status == Component.Ready)
+        if ((status == Component.Ready) && (pm_only == false))
         {
             python.startDownload();
+            // console.log('Start DL')
+            // console.log(pm_only)
+        }
+        if ((status == Component.Ready) && pm_only)
+        {
+            parseAvaReportJSON(avaReport);
+            // console.log('Load from avaReport')
+            // console.log(pm_only)
+            downloadSucc = true
         }
     }
 
@@ -138,7 +183,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Reload")
-                visible: (connection == "connected") ? true : false
+                visible: ((connection == "connected") && (pm_only == false)) ? true : false
                 onClicked: {
                     python.startDownload();
                 }
@@ -146,6 +191,13 @@ Page {
             MenuItem {
                 text: qsTr("Know-How")
                 onClicked: pageStack.push(Qt.resolvedUrl("Education.qml"))
+            }
+            MenuItem {
+                text: qsTr("PM Report")
+                visible: pm_available
+                onClicked: {
+                    onClicked: pageStack.push(Qt.resolvedUrl("DangerPage.qml"), {"regionID": regionID, "regionName": regionName, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": true, "avaReport": avaReportPM})
+                }
             }
         }
 
@@ -167,9 +219,21 @@ Page {
                             margins: Theme.paddingLarge
                         }
                 text: qsTr("Offline Report - Check Validity Date")
-                font.pixelSize: Theme.fontSizeLarge
+                font.pixelSize: Theme.fontSizeMedium
                 wrapMode: Text.Wrap
                 visible: (cached) ? true : false
+            }
+
+            Label {
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingLarge
+                        }
+                text: qsTr("PM Report Available!")
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+                visible: (pm_available) ? true : false
             }
 
             SectionHeader {
@@ -277,7 +341,7 @@ Page {
                                                 margins:  Theme.paddingMedium
                                             }
                                     Image {
-                                        source: "qrc:///res/avalanche-situations/" + dPatterns[sectionIndex]['type'].replace(' ', '_') + ".png"
+                                        source: "qrc:///res/avalanche-situations/" + dPatterns[sectionIndex]['problem_type'].replace(' ', '_') + ".png"
                                         width:  Theme.iconSizeLarge
                                         height: Theme.iconSizeLarge
                                     }
@@ -289,7 +353,7 @@ Page {
                                              model: dPatterns[sectionIndex]['aspect']
                                              Image {
                                                  property int aspectIndex: model.index
-                                                 source: "qrc:///res/expositions/" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase().replace('aspectrange', 'exposition')  + ".png"
+                                                 source: "qrc:///res/expositions/exposition_" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase()  + ".png"
                                                  width:  Theme.iconSizeLarge
                                                  height: Theme.iconSizeLarge
                                              }
@@ -308,7 +372,7 @@ Page {
                                          width: Theme.iconSizeLarge
                                          height:Theme.iconSizeLarge
                                          Image {
-                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['validElev']) + ".png"
+                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) + ".png"
                                              width:  Theme.iconSizeLarge
                                              height: Theme.iconSizeLarge
                                          }
@@ -317,18 +381,18 @@ Page {
                                     IconButton {
                                         id: upDownInd
                                         anchors.verticalCenter: parent.verticalCenter
-                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['validElev']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
+                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
                                         transform: Rotation {
                                             origin.x: upDownInd.width/2;
                                             origin.y: upDownInd.height/2;
-                                            angle: (dPatterns[sectionIndex]['validElev'].indexOf('Hi') > -1) ? 180 : 0
+                                            angle: (dPatterns[sectionIndex]['valid_elevation'].indexOf('>') > -1) ? 180 : 0
                                         }
 
                                     }
 
                                     Label {
                                         anchors.verticalCenter: parent.verticalCenter
-                                        text: getElevFromString(dPatterns[sectionIndex]['validElev'])
+                                        text: getElevFromString(dPatterns[sectionIndex]['valid_elevation'])
                                         font.pixelSize: Theme.fontSizeMedium
                                         wrapMode: Text.Wrap
                                     }
@@ -428,50 +492,27 @@ Page {
         Component.onCompleted: {
                 addImportPath(Qt.resolvedUrl('.'));
 
-                setHandler('dangerLevel', function(val) {
-                    dangerLevel = val;
-                });
-                setHandler('dangerLevel_h', function(val) {
-                    dangerLevel_h = val;
-                });
-                setHandler('dangerLevel_l', function(val) {
-                    dangerLevel_l = val;
-                });
-                setHandler('dangerLevel_alti', function(val) {
-                    dangerLevel_alti = val;
-                });
-                setHandler('highlights', function(val) {
-                    highlights = val;
-                });
-                setHandler('comment', function(val) {
-                    comment = val;
-                });
-                setHandler('structure', function(val) {
-                    structure = val
-                });
-                setHandler('tendency', function(val) {
-                    tendency = val
-                });
-                setHandler('validFrom', function(val) {
-                    validFrom = new Date(val)
-                });
-                setHandler('validTo', function(val) {
-                    validTo = new Date(val)
-                });
-                setHandler('repDate', function(val) {
-                    repDate = new Date(val)
-                });
-                setHandler('numberOfDPatterns', function(val) {
-                    numberOfDPatterns = val;
-                });
-                setHandler('dPatterns', function(val) {
-                    dPatterns = JSON.parse(val);
+                setHandler('AvaReport', function(val) {
+                    var avaReport_str = val;
+                    var avaReports = JSON.parse(avaReport_str);
+
+                    parseAvaReportJSON(avaReports[0])
+
+                    if (avaReports.length > 1) {
+                        if (avaReports[1] !== '') {
+                            pm_available = true
+                            avaReportPM = avaReports[1]
+                        }
+                    }
                 });
                 setHandler('provider', function(val) {
                     provider = val;
                 });
                 setHandler('cached', function(val) {
                     cached = val;
+                });
+                setHandler('cached_pm', function(val) {
+                    cached_pm = val;
                 });
                 setHandler('finished', function(val) {
                     if (val === true) {
@@ -494,17 +535,18 @@ Page {
                     busy = false;
                 });
 
-                importModule('pyAvaCore', function () {});
+                importModule('pyCore', function () {});
         }
 
         function startDownload() {
-            if (connection == "connected") {
+            if (connection == "connected" && pm_only == false) {
                 busy = true;
-                call('pyAvaCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.download', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
             } else {
                 busy = false;
                 dangerLevelError = qsTr("No Internet connection and no report cached for this region")
-                call('pyAvaCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+                call('pyCore.downloader.cached', [regionID, Qt.locale().name, StandardPaths.cache], function() {});
+
             }
         }
 

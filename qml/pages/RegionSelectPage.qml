@@ -46,7 +46,7 @@ Page {
         delegate: BackgroundItem {
             id: firstListViewDelegate
 
-            onClicked: pageStack.push(Qt.resolvedUrl("DangerPage" + (RegionID.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion, "connection": connection})
+            onClicked: pageStack.push(Qt.resolvedUrl("DangerPage" + (RegionID.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": false})
 
             Label {
                 x: Theme.horizontalPageMargin
