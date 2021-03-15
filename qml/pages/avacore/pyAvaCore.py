@@ -16,6 +16,7 @@
 from datetime import datetime
 from datetime import timezone
 from datetime import time
+from datetime import timedelta
 from urllib.request import urlopen
 from pathlib import Path
 import urllib.request
@@ -25,6 +26,7 @@ import re
 import base64
 import json
 import logging
+import typing
 
 from avacore.png import png
 
@@ -80,6 +82,14 @@ def parse_xml(root):
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         report = AvaReport()
         report.report_id = bulletin.attrib.get('{http://www.opengis.net/gml}id')
+        pm_danger_ratings = []
+
+        pm_available = False
+        for DangerRating in bulletin.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
+            for validTime in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validTime'):
+                pm_available = True
+                break
+
         for observations in bulletin:
             et_add_parent_info(observations)
             for locRef in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}locRef'):
@@ -96,12 +106,20 @@ def parse_xml(root):
                         report.validity_end = try_parse_datetime(endPosition.text).replace(tzinfo=timezone.utc)
             for DangerRating in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerRating'):
                 main_value = 0
+                am_rating = True
                 for mainValue in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
                     main_value = int(mainValue.text)
                 valid_elevation = "-"
                 for validElevation in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
                     valid_elevation = validElevation.attrib.get('{http://www.w3.org/1999/xlink}href')
-                report.danger_main.append(DangerMain(main_value, valid_elevation))
+                for beginPosition in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                    if '11:00' in beginPosition.text:
+                        am_rating = False
+                        report.validity_end = report.validity_end.replace(hour=11)
+                if am_rating:
+                    report.danger_main.append(DangerMain(main_value, valid_elevation))
+                else:
+                    pm_danger_ratings.append(DangerMain(main_value, valid_elevation))
             for DangerPattern in observations.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}DangerPattern'):
                 for DangerPatternType in DangerPattern.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}type'):
                     report.dangerpattern.append(DangerPatternType.text)
@@ -127,6 +145,14 @@ def parse_xml(root):
                 report.report_texts.append(ReportText('tendency_com', tendencyComment.text))
         reports.append(report)
 
+        if pm_available:
+            pm_report = copy.deepcopy(report)
+            pm_report.danger_main = pm_danger_ratings
+            pm_report.report_id += '_PM'
+            pm_report.validity_begin = pm_report.validity_begin + timedelta(hours=12)
+            pm_report.validity_end = pm_report.validity_end + timedelta(hours=12)
+            reports.append(pm_report)
+
     for report in reports:
         if report.report_id.endswith('_PM') and any(x.report_id == report.report_id[:-3] for x in reports):
             report.predecessor_id = report.report_id[:-3]
@@ -140,13 +166,13 @@ def parse_xml_vorarlberg(root):
     reports = []
     report = AvaReport()
     comment_empty = 1
-    
+
     # Common for every Report:
-    
+
     report_id = ''
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         report_id = bulletin.attrib.get('{http://www.opengis.net/gml}id')
-    
+
     activity_com = ''
     for bulletin in root.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}Bulletin'):
         for detail in bulletin:
@@ -180,10 +206,17 @@ def parse_xml_vorarlberg(root):
                             'ASPECTRANGE_', '').replace('O', 'E'))
                     valid_elevation = "-"
                     for validElevation in AvProblem.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                        for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                            valid_elevation = ">" + beginPosition.text
-                        for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                            valid_elevation = "<" + endPosition.text
+                        if '{http://www.w3.org/1999/xlink}href' in validElevation.attrib:
+                            if "Treeline" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                                if "Hi" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                                    valid_elevation = ">Treeline"
+                                if "Lo" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                                    valid_elevation = "<Treeline"
+                        else:
+                            for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                                valid_elevation = ">" + beginPosition.text
+                            for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                                valid_elevation = "<" + endPosition.text
                     report.problem_list.append(Problem(type_r, aspect, valid_elevation))
 
     report.report_texts.append(ReportText('activity_com', activity_com))
@@ -211,12 +244,19 @@ def parse_xml_vorarlberg(root):
             for main_value in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}mainValue'):
                 main_value = int(main_value.text)
             for validElevation in DangerRating.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}validElevation'):
-                for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
-                    if not 'Keine' in beginPosition.text:
-                        valid_elevation = ">" + beginPosition.text
-                for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
-                    if not 'Keine' in endPosition.text:
-                        valid_elevation = "<" + endPosition.text
+                if '{http://www.w3.org/1999/xlink}href' in validElevation.attrib:
+                    if "Treeline" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                        if "Hi" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                            valid_elevation = ">Treeline"
+                        if "Lo" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
+                            valid_elevation = "<Treeline"
+                else:
+                    for beginPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}beginPosition'):
+                        if not 'Keine' in beginPosition.text:
+                            valid_elevation = ">" + beginPosition.text
+                    for endPosition in validElevation.iter(tag='{http://caaml.org/Schemas/V5.0/Profiles/BulletinEAWS}endPosition'):
+                        if not 'Keine' in endPosition.text:
+                            valid_elevation = "<" + endPosition.text
 
             loc_list.append([current_loc_ref, validity_begin, validity_end, DangerMain(main_value, valid_elevation)])
 
@@ -262,10 +302,10 @@ def parse_xml_vorarlberg(root):
             c_report.validity_begin = loc_elem[1]
             c_report.validity_end = loc_elem[2]
             c_report.predecessor_id = report_id + '-' + loc_elem[0]
-            
+
             c_report.danger_main = []
             c_report.danger_main.append(loc_elem[3])
-            
+
             reports.append(c_report)
             del_index.append(index)
 
@@ -284,7 +324,7 @@ def parse_xml_vorarlberg(root):
 def parse_xml_bavaria(root):
 
     '''parses Bavarian-Style CAAML-XML. root is a ElementTree'''
-    
+
     reports = []
     report = AvaReport()
 
@@ -498,7 +538,7 @@ def get_report_url(region_id, local=''): #You can ignore "provider" return value
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird "\
             "bereitgestellt vom: Lawinenwarndienst Oberösterreich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm)."
 
-    # Niederösterreich - Noch nicht angelegt
+    # Niederösterreich
     if region_id.startswith("AT-03"):
         url = "https://www.avalanche-warnings.eu/public/niederoesterreich/caaml"
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird "\
@@ -607,8 +647,8 @@ def get_reports_ch(path, lang="en", cached=False):
 
         common_report.rep_date = datetime.strptime(str(date_time_now.year) + '-' + begin[begin.find(':')+2:-1], '%Y-%d.%m., %H:%M')
         common_report.validity_begin = common_report.rep_date
-        # Achtung: validity_end is here the next expected update. It should be valid sometimes longer than that.
-        # (5PM repot up to 5PM next day)
+        # Warning: validity_end is here the next expected update. It should be valid sometimes longer than that.
+        # (5PM report up to 5PM next day)
         common_report.validity_end = datetime.strptime(str(date_time_now.year) + '-' + end[end.find(':')+2:], '%Y-%d.%m., %H:%M')
 
         report_ids = []
@@ -637,7 +677,8 @@ def get_reports_ch(path, lang="en", cached=False):
                     if not report_id in reports[report_ids.index(report_id_pm)].predecessor_id:
                         reports[report_ids.index(report_id_pm)].predecessor_id += ('_' + report_id)
                 reports[report_ids.index(report_id)].valid_regions.append("CH-" + line[:4])
-                reports[report_ids.index(report_id_pm)].valid_regions.append("CH-" + line[:4])
+                if not report_id_pm is None:
+                    reports[report_ids.index(report_id_pm)].valid_regions.append("CH-" + line[:4])
 
         for report in reports:
             # Opens the matching Report-File
@@ -755,17 +796,44 @@ class AvaReport:
     '''
     Class for the AvaReport
     '''
+    report_id: str
+    '''ID of the Report'''
+    valid_regions: typing.List[str]
+    '''list of Regions'''
+    rep_date: datetime
+    '''Date of Report'''
+    validity_begin: datetime
+    '''valid time start'''
+    validity_end: datetime
+    '''valid time end'''
+    predecessor_id: str
+    '''ID of first report (AM) if Report is e. g. a PM-Report'''
+    danger_main: typing.List[DangerMain]
+    '''danger Value and elev'''
+    dangerpattern: typing.List[str]
+    '''list of Patterns'''
+    problem_list: typing.List[Problem]
+    '''list of Problems with Sublist of Aspect&Elevation'''
+    report_texts: typing.List[ReportText]
+    '''All textual elements of the Report'''
+
     def __init__(self):
-        self.report_id = ""                 # ID of the Report
-        self.valid_regions = []             # list of Regions
-        self.rep_date = ""                  # Date of Report
-        self.validity_begin = ""            # valid Ttime start
-        self.validity_end = ""              # valid time end
-        str: self.predecessor_id = None     # ID of first report (AM) if Report is e. g. a PM-Report
-        self.danger_main = []               # danger Value and elev
-        self.dangerpattern = []             # list of Patterns
-        self.problem_list = []              # list of Problems with Sublist of Aspect&Elevation
-        self.report_texts = []              # All textual elements of the Report
+        self.valid_regions = []
+        self.danger_main = []
+        self.dangerpattern = []
+        self.problem_list = []
+        self.report_texts = []
+
+
+class JSONEncoder(json.JSONEncoder):
+    """JSON serialization of datetime"""
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return obj.isoformat()
+        try:
+            return obj.toJSON()
+        except: # pylint: disable=bare-except
+            return obj.__dict__
 
 
 def clean_elevation(elev: str):

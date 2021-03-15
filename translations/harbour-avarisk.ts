@@ -1598,6 +1598,14 @@
         <source>Liechtenstein</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>PREALPI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DOLOMITI</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>

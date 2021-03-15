@@ -193,6 +193,19 @@ Page {
                                  color: bgndTrentino.highlighted ? Theme.highlightColor : Theme.primaryColor
                              }
                          }
+/*
+                        BackgroundItem {
+                             id: bgndVeneto
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListVeneto, "country": qsTr("Italy"), "macroRegion": qsTr("Veneto")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Veneto")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndTrentino.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                         */
                     }
                 }
 

@@ -66,7 +66,9 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
 
             try:
                 reports.extend(pyAvaCore.get_reports(url))
-            except:
+                pyotherside.send('error', 'done :' + str(reports))
+            except Exception as e:
+                pyotherside.send('error', str(e))
                 matching_report, matching_report_pm = fetch_cached_report(region_id, local, path)
 
 
