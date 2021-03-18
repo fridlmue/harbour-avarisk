@@ -15,9 +15,6 @@ The Python core of avaRisk - pyAvaCore - moved to an extra repository at https:/
 - avaRisk can be found and installed from openrepos. (https://openrepos.net/content/fridl/avarisk-avalanche-bulletins)
 - avaRisk can be found and installed from the Jolla Store/Sailfish Harbour. (https://harbour.jolla.com/)
 
-## Remarks
-- The App always requires an internet connection when opening a Report.
-
 ## Supported Regions
 At the moment the following regions are supported:
 - AT Tirol (https://avalanche.report) (EN/DE)
