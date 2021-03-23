@@ -50,7 +50,8 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
 
     '''function to issue report from remote or local cache. Caches local.'''
 
-    url = "https://api.avalanche.report/albina/api/bulletins"
+    # url = "https://api.avalanche.report/albina/api/bulletins"
+    pyotherside.send('error', 'Info: local :' +local.lower())
     reports = []
     provider = ""
     matching_report_pm = ''
@@ -58,18 +59,19 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
     cached = True
     if not from_cache:
 
-        if "CH-" in region_id:
-            reports.extend(pyAvaCore.get_reports_ch(path))
+        # if "CH-" in region_id:
+        #    reports.extend(pyAvaCore.get_reports_ch(path))
 
-        else:
-            url, provider = pyAvaCore.get_report_url(region_id, local)
+        # else:
+        #    url, provider = pyAvaCore.get_report_url(region_id, local)
 
-            try:
-                reports.extend(pyAvaCore.get_reports(url))
-                pyotherside.send('error', 'done :' + str(reports))
-            except Exception as e:
-                pyotherside.send('error', str(e))
-                matching_report, matching_report_pm = fetch_cached_report(region_id, local, path)
+        try:
+            reports_r, provider, url = pyAvaCore.get_reports(region_id, local=local.lower()[0:2], cache_path=path)
+            reports.extend(reports_r)
+            pyotherside.send('error', 'local :' +local.lower())
+        except Exception as e:
+            pyotherside.send('error', str(e))
+            matching_report, matching_report_pm = fetch_cached_report(region_id, local, path)
 
 
         Path(path + "/reports/").mkdir(parents=True, exist_ok=True)

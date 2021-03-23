@@ -203,7 +203,7 @@ QtObject {
     }
 
 
-    // REGIONS CH and Liechtenstein
+    // REGIONS CH
     property ListModel regionListCHBEA: ListModel{
         ListElement {region: qsTr("Jaun");                                         RegionID: "CH-1121"}
         ListElement {region: qsTr("Gruyère");                                      RegionID: "CH-1122"}
@@ -260,7 +260,6 @@ QtObject {
         ListElement {region: qsTr("Alpstein - Alvier");                            RegionID: "CH-3222"}
         ListElement {region: qsTr("Flumserberg");                                  RegionID: "CH-3223"}
         ListElement {region: qsTr("Sarganserland");                                RegionID: "CH-3224"}
-        // ListElement {region: qsTr("Liechtenstein");                             RegionID: "CH-3311"}
     }
 
     property ListModel regionListCHUWW: ListModel{
@@ -366,10 +365,10 @@ QtObject {
         ListElement {region: qsTr("Vallon de Saint-Imier");                        RegionID: "CH-8213"}
         ListElement {region: qsTr("Moutier - Tavannes");                           RegionID: "CH-8214"}
         ListElement {region: qsTr("Thal");                                         RegionID: "CH-8215"}
-        ListElement {region: qsTr("Olten-Gösgen");                                 RegionID: "CH-8216"} //Serverside not served at the moment (Deffect @Server?)
+        ListElement {region: qsTr("Olten-Gösgen");                                 RegionID: "CH-8216"}
         ListElement {region: qsTr("La Chaux-de-Fonds - Le Locle");                 RegionID: "CH-8221"}
         ListElement {region: qsTr("Franches-Montagnes");                           RegionID: "CH-8222"}
-        ListElement {region: qsTr("Franches-Montagnes");                           RegionID: "CH-8223"} //Serverside not served at the moment (Deffect @Server?)
+        ListElement {region: qsTr("Franches-Montagnes");                           RegionID: "CH-8223"}
         ListElement {region: qsTr("Delémont - Bellelay");                          RegionID: "CH-8224"}
     }
 
@@ -381,5 +380,65 @@ QtObject {
 
     property ListModel regionListLiechtenstein: ListModel{
          ListElement {region: qsTr("Liechtenstein");                               RegionID: "CH-3311"}
+    }
+    
+    // REGIONS France
+    property ListModel regionListFrAlpesDuNord: ListModel{
+        //Haute Savoie
+        ListElement {region: qsTr("CHABLAIS");                                     RegionID: "FR-01"}
+        ListElement {region: qsTr("ARAVIS");                                       RegionID: "FR-02"}
+        ListElement {region: qsTr("MONT-BLANC");                                   RegionID: "FR-03"}
+        //Savoie
+        ListElement {region: qsTr("BAUGES");                                       RegionID: "FR-04"}
+        ListElement {region: qsTr("BEAUFORTAIN");                                  RegionID: "FR-05"}
+        ListElement {region: qsTr("HAUTE-TARENTAISE");                             RegionID: "FR-06"}
+        ListElement {region: qsTr("MAURIENNE");                                    RegionID: "FR-09"}
+        ListElement {region: qsTr("VANOISE");                                      RegionID: "FR-10"}
+        ListElement {region: qsTr("HAUTE-MAURIENNE");                              RegionID: "FR-11"}
+        //Isere                                                                    
+        ListElement {region: qsTr("CHARTREUSE");                                   RegionID: "FR-07"}
+        ListElement {region: qsTr("BELLEDONNE");                                   RegionID: "FR-08"}
+        ListElement {region: qsTr("GRANDES-ROUSSES");                              RegionID: "FR-12"}
+        ListElement {region: qsTr("VERCORS");                                      RegionID: "FR-14"}
+        ListElement {region: qsTr("OISANS");                                       RegionID: "FR-15"}
+    }
+    
+    property ListModel regionListFrAlpesDuSud: ListModel{
+        //Hautes Alpes
+        ListElement {region: qsTr("THABOR");                                       RegionID: "FR-13"}
+        ListElement {region: qsTr("PELVOUX");                                      RegionID: "FR-16"}
+        ListElement {region: qsTr("QUEYRAS");                                      RegionID: "FR-17"}
+        ListElement {region: qsTr("DEVOLUY");                                      RegionID: "FR-18"}
+        ListElement {region: qsTr("CHAMPSAUR");                                    RegionID: "FR-19"}
+        ListElement {region: qsTr("EMBRUNAIS-PARPAILLON");                         RegionID: "FR-20"}
+        ListElement {region: qsTr("UBAYE");                                        RegionID: "FR-21"}
+        //Alpes Maritimes
+        ListElement {region: qsTr("HAUT-VAR/HAUT-VERDON");                         RegionID: "FR-22"}
+        ListElement {region: qsTr("MERCANTOUR");                                   RegionID: "FR-23"}
+    }
+    
+    property ListModel regionListFrPyrenees: ListModel{
+        //Pyrenees Atlantique
+        ListElement {region: qsTr("PAYS-BASQUE");                                  RegionID: "FR-64"}
+        ListElement {region: qsTr("ASPE-OSSAU");                                   RegionID: "FR-65"}
+        //Hautes Pyrenees                                                      
+        ListElement {region: qsTr("HAUTE-BIGORRE");                                RegionID: "FR-66"}
+        ListElement {region: qsTr("AURE-LOURON");                                  RegionID: "FR-67"}
+        //Haute Garonne                                                        
+        ListElement {region: qsTr("LUCHONNAIS");                                   RegionID: "FR-68"}
+        ListElement {region: qsTr("COUSERANS");                                    RegionID: "FR-69"}
+        //Ariege                                                               
+        ListElement {region: qsTr("HAUTE-ARIEGE");                                 RegionID: "FR-70"}
+        ListElement {region: qsTr("ORLU  ST BARTHELEMY");                          RegionID: "FR-72"}
+        //Andorre                                                              
+        ListElement {region: qsTr("ANDORRE");                                      RegionID: "FR-71"}
+        //Pyrenees Orientales
+        ListElement {region: qsTr("CAPCIR-PUYMORENS");                             RegionID: "FR-73"}
+        ListElement {region: qsTr("CERDAGNE-CANIGOU");                             RegionID: "FR-74"}
+    }
+    
+    property ListModel regionListFrCorse: ListModel{
+        ListElement {region: qsTr("CINTO-ROTONDO");                                RegionID: "FR-40"}
+        ListElement {region: qsTr("RENOSO-INCUDINE");                              RegionID: "FR-41"}
     }
 }

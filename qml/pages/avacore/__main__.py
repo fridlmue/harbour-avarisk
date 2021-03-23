@@ -10,7 +10,7 @@ import logging
 import logging.handlers
 import sys
 
-from .pyAvaCore import AvaReport, clean_elevation, get_report_url, get_reports, get_reports_ch
+from .pyAvaCore import AvaReport, JSONEncoder, get_report_url, get_reports
 
 Path('logs').mkdir(parents=True, exist_ok=True)
 logging.basicConfig(
@@ -21,24 +21,13 @@ logging.basicConfig(
         logging.StreamHandler()])
 
 
-def dumper(obj):
-    """JSON serialization of datetime"""
-    if isinstance(obj, datetime):
-        return obj.isoformat()
-    try:
-        return obj.toJSON()
-    except: # pylint: disable=bare-except
-        return obj.__dict__
-
-
 def download_region(regionID):
     """Downloads the given region and converts it to JSON"""
     if regionID == 'CH':
         url = 'https://www.slf.ch/avalanche/mobile/bulletin_en.zip'
-        reports = get_reports_ch(str(Path('cache')))
+        reports, _, _ = get_reports(regionID, cache_path=str(Path('cache')))
     else:
-        url, _ = get_report_url(regionID)
-        reports = get_reports(url)
+        reports, _, url = get_reports(regionID)
     report: AvaReport
     for report in reports:
         if isinstance(report.validity_begin, datetime):
@@ -48,11 +37,6 @@ def download_region(regionID):
             validityDate = validityDate.date().isoformat()
         report.report_texts = None
         report.valid_regions = [r.replace('AT8R', 'AT-08-0') for r in report.valid_regions]
-        for danger in report.danger_main:
-            danger.valid_elevation = clean_elevation(danger.valid_elevation)
-        for problem in report.problem_list:
-            problem.valid_elevation = clean_elevation(problem.valid_elevation)
-            problem.aspect = [a.upper().replace('ASPECTRANGE_', '') for a in problem.aspect]
 
     directory = Path(sys.argv[1] if len(sys.argv) > 1 else 'data')
     directory.mkdir(parents=True, exist_ok=True)
@@ -62,7 +46,7 @@ def download_region(regionID):
         f.write(http.read())
     with open(f'{directory}/{validityDate}-{regionID}.json', mode='w', encoding='utf-8') as f:
         logging.info('Writing %s', f.name)
-        json.dump(reports, fp=f, default=dumper, indent=2)
+        json.dump(reports, fp=f, cls=JSONEncoder, indent=2)
 
 
 if __name__ == "__main__":

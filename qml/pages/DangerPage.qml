@@ -516,7 +516,7 @@ Page {
                     cached_pm = val;
                 });
                 setHandler('error', function(val) {
-                    // console.log("Error: " + val)
+                    console.log("Error: " + val)
                 });
                 setHandler('finished', function(val) {
                     // console.log("should be done: " + val)

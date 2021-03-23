@@ -1606,6 +1606,150 @@
         <source>DOLOMITI</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>CHABLAIS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ARAVIS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MONT-BLANC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BAUGES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BEAUFORTAIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HAUTE-TARENTAISE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MAURIENNE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VANOISE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HAUTE-MAURIENNE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CHARTREUSE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BELLEDONNE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GRANDES-ROUSSES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VERCORS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OISANS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>THABOR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PELVOUX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QUEYRAS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DEVOLUY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CHAMPSAUR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EMBRUNAIS-PARPAILLON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>UBAYE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HAUT-VAR/HAUT-VERDON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MERCANTOUR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PAYS-BASQUE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ASPE-OSSAU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HAUTE-BIGORRE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>AURE-LOURON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LUCHONNAIS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>COUSERANS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>HAUTE-ARIEGE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ORLU  ST BARTHELEMY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ANDORRE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CAPCIR-PUYMORENS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CINTO-ROTONDO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RENOSO-INCUDINE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CERDAGNE-CANIGOU</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionSelectPage</name>

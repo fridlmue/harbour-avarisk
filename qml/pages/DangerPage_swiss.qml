@@ -466,6 +466,9 @@ Page {
                 setHandler('cached_pm', function(val) {
                     cached_pm = val;
                 });
+                setHandler('error', function(val) {
+                    console.log("Error: " + val)
+                });
                 setHandler('finished', function(val) {
                     if (val === true) {
                         coverExchange.country = country
