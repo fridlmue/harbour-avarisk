@@ -145,6 +145,64 @@ Page {
                 ExpandingSection {
                     width: parent.width
 
+                    title: qsTr("France")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndAlpesDuNord
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListFrAlpesDuNord, "country": qsTr("France"), "macroRegion": qsTr("Alpes du Nord")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Alpes du Nord")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndAlpesDuNord.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+
+                        BackgroundItem {
+                             id: bgndAlpesDuSud
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListFrAlpesDuSud, "country": qsTr("France"), "macroRegion": qsTr("Alpes du Sud")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Alpes du Sud")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndAlpesDuSud.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+
+                        BackgroundItem {
+                             id: bgndPyrenees
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListFrPyrenees, "country": qsTr("France"), "macroRegion": qsTr("Pyrenees")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Pyrenees")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndPyrenees.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+
+                        BackgroundItem {
+                             id: bgndCorse
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListFrCorse, "country": qsTr("France"), "macroRegion": qsTr("Corse")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Corse")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndCorse.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+
+                    }
+                }
+
+                ExpandingSection {
+                    width: parent.width
+
                     title: qsTr("Germany")
 
                     content.sourceComponent: Column {

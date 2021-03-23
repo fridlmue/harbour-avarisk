@@ -419,6 +419,26 @@
         <source>Lichtenstein</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>France</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alpes du Nord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alpes du Sud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pyrenees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corse</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegionList</name>
