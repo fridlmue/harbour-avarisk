@@ -74,9 +74,9 @@ def process_reports_fr(region_id, path='', cached=False):
     reports = []
 
     report.valid_regions.append('FR-' + root.attrib.get('ID').zfill(2))
-    report.rep_date = pyAvaCore.try_parse_datetime(root.attrib.get('DATEBULLETIN'))
-    report.validity_begin = pyAvaCore.try_parse_datetime(root.attrib.get('DATEBULLETIN'))
-    report.validity_end = pyAvaCore.try_parse_datetime(root.attrib.get('DATEVALIDITE'))
+    report.rep_date = pyAvaCore.try_parse_datetime(root.attrib.get('DATEBULLETIN')+'+01:00')
+    report.validity_begin = pyAvaCore.try_parse_datetime(root.attrib.get('DATEBULLETIN')+'+01:00')
+    report.validity_end = pyAvaCore.try_parse_datetime(root.attrib.get('DATEVALIDITE')+'+01:00')
 
     for cartoucherisque in root.iter(tag='CARTOUCHERISQUE'):
         for risque in cartoucherisque.iter(tag='RISQUE'):

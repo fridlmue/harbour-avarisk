@@ -83,7 +83,8 @@ def try_parse_datetime(datetime_string):
         r_datetime = datetime.strptime(datetime_string, '%Y-%m-%dT%XZ')
     except:
         try:
-            r_datetime = datetime.strptime(datetime_string[:19], '%Y-%m-%dT%X') # 2019-04-30T15:55:29+01:00
+            r_datetime = datetime.fromisoformat(datetime_string)
+            # r_datetime = datetime.strptime(datetime_string[:19], '%Y-%m-%dT%X+%z') # 2019-04-30T15:55:29+01:00
         except:
             r_datetime = datetime.now()
     return r_datetime

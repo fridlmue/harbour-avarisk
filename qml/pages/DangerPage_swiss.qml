@@ -234,7 +234,7 @@ Page {
             }
 
             SectionHeader {
-                text: (qsTr("Valid time interval") + " CET")
+                text: qsTr("Valid time interval")
             }
 
             Label {
@@ -243,7 +243,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested") // in UTC -> wrong!
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -254,7 +254,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) : ""  //in UTC - > Wrong!
+                text: (downloadSucc)? Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) : ""
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }

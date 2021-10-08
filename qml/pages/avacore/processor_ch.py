@@ -92,14 +92,14 @@ def process_reports_ch(path, lang="en", cached=False):
 
         date_time_now = datetime.now()
 
-        common_report.rep_date = datetime.strptime(str(date_time_now.year) + '-' + begin[begin.find(':')+2:-1], '%Y-%d.%m., %H:%M')
+        common_report.rep_date = datetime.strptime(str(date_time_now.year) + '-' + begin[begin.find(':')+2:-1] + '_+01:00', '%Y-%d.%m., %H:%M_%z')
         common_report.validity_begin = common_report.rep_date
         if common_report.validity_begin.hour == 17:
             common_report.validity_end = common_report.validity_begin + timedelta(days=1)
         elif common_report.validity_begin.hour == 8:
             common_report.validity_end = common_report.validity_begin + timedelta(hours=9)
         else: # Shourld not happen
-            common_report.validity_end = datetime.strptime(str(date_time_now.year) + '-' + end[end.find(':')+2:], '%Y-%d.%m., %H:%M')
+            common_report.validity_end = datetime.strptime(str(date_time_now.year) + '-' + end[end.find(':')+2:] + '_+01:00', '%Y-%d.%m., %H:%M_%z')
 
         report_ids = []
         reports = []

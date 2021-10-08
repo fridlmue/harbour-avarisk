@@ -91,10 +91,10 @@ Page {
 
     }
 
-    function convertUTCDateToLocalDate(date) {
+    /*function convertUTCDateToLocalDate(date) {
         var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
         return newDate;
-    }
+    }*/
 
     function parseAvaReportJSON(avaReport) {
         for (var elem in avaReport.danger_main) {
@@ -237,7 +237,7 @@ Page {
             }
 
             SectionHeader {
-                text: (regionID.indexOf("AT8") != -1 || regionID.indexOf("BY") != -1)? qsTr("Valid time interval") + " CET" : qsTr("Valid time interval") + " UTC" //Change, when local time is used
+                text: qsTr("Valid time interval")
             }
 
             Label {
@@ -246,7 +246,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested") // in UTC -> wrong!
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
