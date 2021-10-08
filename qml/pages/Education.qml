@@ -40,10 +40,10 @@ Page {
         delegate: BackgroundItem {
             id: educationListViewDelegate
 
-            //onClicked: pageStack.push(Qt.resolvedUrl("WebViewPage.qml"), {"subPage": link, "topic": topic})
-            onClicked: {
-                Qt.openUrlExternally("https://" + qsTr("avalanche.report") + "/education/" + link);
-            }
+            onClicked: pageStack.push(Qt.resolvedUrl("WebViewPage.qml"), {"subPage": link, "topic": topic})
+            //onClicked: {
+            //    Qt.openUrlExternally("https://" + qsTr("avalanche.report") + "/education/" + link);
+            //}
 
             Label {
                 x: Theme.horizontalPageMargin

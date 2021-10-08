@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2020 Friedrich Mütschele and other contributors
+    Copyright (C) 2021 Friedrich Mütschele and other contributors
     This file is part of avaRisk.
     avaRisk is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-//import Sailfish.WebView 1.0
+import Sailfish.WebView 1.0
 
 
 Page {
@@ -27,16 +27,14 @@ Page {
         id: header
         title: topic
     }
-
-    SilicaWebView { //Should be WebView to work
-        id: webView
-
+    WebView {
         anchors {
             top: header.bottom
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
+        active: true
         url: "https://" + qsTr("avalanche.report") + "/education/" + subPage
     }
 }

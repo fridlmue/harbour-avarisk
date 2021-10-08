@@ -288,10 +288,6 @@
         <source>Update your Avalanche Knowledge by visiting the Education pages on www.avalanche.report by the Avalanche Warning Services of Tirol, Südtirol and Trentino.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>avalanche.report</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>FirstPage</name>

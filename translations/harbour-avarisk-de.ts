@@ -288,10 +288,6 @@
         <source>Update your Avalanche Knowledge by visiting the Education pages on www.avalanche.report by the Avalanche Warning Services of Tirol, Südtirol and Trentino.</source>
         <translation>Bringe dein Wissen über Lawinen auf den aktuellen Stand und besuche die Ausbildungsinhalte auf www.lawinen.report der Lawinenwarndienste Tirol, Südtirol und Trentino.</translation>
     </message>
-    <message>
-        <source>avalanche.report</source>
-        <translation>lawinen.report</translation>
-    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -1782,7 +1778,7 @@
     <name>WebViewPage</name>
     <message>
         <source>avalanche.report</source>
-        <translation>lawinen.report</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
