@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -309,15 +307,15 @@
     </message>
     <message>
         <source>Niederösterreich</source>
-        <translation type="unfinished"></translation>
+        <translation>Niederösterreich</translation>
     </message>
     <message>
         <source>Oberösterreich</source>
-        <translation type="unfinished"></translation>
+        <translation>Oberösterreich</translation>
     </message>
     <message>
         <source>Salzburg</source>
-        <translation type="unfinished"></translation>
+        <translation>Salzburg</translation>
     </message>
     <message>
         <source>Styria</source>
@@ -329,7 +327,7 @@
     </message>
     <message>
         <source>Vorarlberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorarlberg</translation>
     </message>
     <message>
         <source>Germany</source>
@@ -349,7 +347,7 @@
     </message>
     <message>
         <source>Trentino</source>
-        <translation type="unfinished"></translation>
+        <translation>Trentino</translation>
     </message>
     <message>
         <source>Know-How</source>
@@ -361,7 +359,7 @@
     </message>
     <message>
         <source>Val d&apos;Aran</source>
-        <translation type="unfinished"></translation>
+        <translation>Val d&apos;Aran</translation>
     </message>
     <message>
         <source>Switzerland</source>
@@ -369,7 +367,7 @@
     </message>
     <message>
         <source>Liechtenstein</source>
-        <translation type="unfinished"></translation>
+        <translation>Liechtenstein</translation>
     </message>
     <message>
         <source>Bernese and Fribourg Alps</source>
@@ -405,1366 +403,1366 @@
     </message>
     <message>
         <source>Jura</source>
-        <translation type="unfinished"></translation>
+        <translation>Jura</translation>
     </message>
     <message>
         <source>Mittelland</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittelland</translation>
     </message>
     <message>
         <source>Lichtenstein</source>
-        <translation type="unfinished"></translation>
+        <translation>Lichtenstein</translation>
     </message>
     <message>
         <source>France</source>
-        <translation type="unfinished"></translation>
+        <translation>Frankreich</translation>
     </message>
     <message>
         <source>Alpes du Nord</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Alpes du Sud</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pyrenees</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Corse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>RegionList</name>
     <message>
         <source>Münstertaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Münstertaler Alpen</translation>
     </message>
     <message>
         <source>Langtaufers</source>
-        <translation type="unfinished"></translation>
+        <translation>Langtaufers</translation>
     </message>
     <message>
         <source>Schnalser Kamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnalser Kamm</translation>
     </message>
     <message>
         <source>Südl. Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Südl. Stubaier Alpen</translation>
     </message>
     <message>
         <source>S Zillertaler A. und Hohe Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>S Zillertaler A. und Hohe Tauern</translation>
     </message>
     <message>
         <source>Saldurn-Mastaun Kamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Saldurn-Mastaun Kamm</translation>
     </message>
     <message>
         <source>Texelgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Texelgruppe</translation>
     </message>
     <message>
         <source>Sarntaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarntaler Alpen</translation>
     </message>
     <message>
         <source>Wstl. Pfunderer Berge </source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Pfunderer Berge </translation>
     </message>
     <message>
         <source>Östl. Pfunderer Berge</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Pfunderer Berge</translation>
     </message>
     <message>
         <source>Durreckgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Durreckgruppe</translation>
     </message>
     <message>
         <source>Wstl. Rieserfernergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Rieserfernergruppe</translation>
     </message>
     <message>
         <source>Wstl. Deferegger Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Deferegger Alpen</translation>
     </message>
     <message>
         <source>Ortlergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ortlergruppe</translation>
     </message>
     <message>
         <source>Ultental</source>
-        <translation type="unfinished"></translation>
+        <translation>Ultental</translation>
     </message>
     <message>
         <source>Östl. Nonsberger Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Nonsberger Alpen</translation>
     </message>
     <message>
         <source>Nördl. Fleimstaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Fleimstaler Alpen</translation>
     </message>
     <message>
         <source>Groedner Dolomiten</source>
-        <translation type="unfinished"></translation>
+        <translation>Groedner Dolomiten</translation>
     </message>
     <message>
         <source>Pragser Dolomiten</source>
-        <translation type="unfinished"></translation>
+        <translation>Pragser Dolomiten</translation>
     </message>
     <message>
         <source>Sextner Dolomiten</source>
-        <translation type="unfinished"></translation>
+        <translation>Sextner Dolomiten</translation>
     </message>
     <message>
         <source>Adamello - Presanella</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Adamello meridionale</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bondone e Stivo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Brenta Nord - Peller</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Brenta meridionale</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Folgaria - Lavarone</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Lagorai settentrionale</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Lagorai meridionale</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Latemar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Marzola - Valsugana</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Paganella</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Prealpi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Primiero - Pale di S. Martino</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vallarsa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Valle di Cembra</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Valle di Fassa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Valle di Non</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Valle di Ledro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Sole, Pejo e Rabbi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Maddalene</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Pine&apos; - Valle dei Mocheni</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Allgäuer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgäuer Alpen</translation>
     </message>
     <message>
         <source>Östl. Lechtaler A. - Ammergebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Lechtaler A. - Ammergebirge</translation>
     </message>
     <message>
         <source>Mieminger Gebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Mieminger Gebirge</translation>
     </message>
     <message>
         <source>Karwendel</source>
-        <translation type="unfinished"></translation>
+        <translation>Karwendel</translation>
     </message>
     <message>
         <source>Brandenberger Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Brandenberger Alpen</translation>
     </message>
     <message>
         <source>Wilder Kaiser - Waidringer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wilder Kaiser - Waidringer Alpen</translation>
     </message>
     <message>
         <source>Wstl. Lechtaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Lechtaler Alpen</translation>
     </message>
     <message>
         <source>Zentrale Lechtaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Zentrale Lechtaler Alpen</translation>
     </message>
     <message>
         <source>Grieskogelgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Grieskogelgruppe</translation>
     </message>
     <message>
         <source>Westl. Verwallgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Westl. Verwallgruppe</translation>
     </message>
     <message>
         <source>Östl. Verwallgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Verwallgruppe</translation>
     </message>
     <message>
         <source>Silvretta</source>
-        <translation type="unfinished"></translation>
+        <translation>Silvretta</translation>
     </message>
     <message>
         <source>Samnaungruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Samnaungruppe</translation>
     </message>
     <message>
         <source>Nördl. Ötztaler- und Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Ötztaler- und Stubaier Alpen</translation>
     </message>
     <message>
         <source>Wstl. Tuxer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Tuxer Alpen</translation>
     </message>
     <message>
         <source>Östl. Tuxer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Tuxer Alpen</translation>
     </message>
     <message>
         <source>Wstl. Kitzbühler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Kitzbühler Alpen</translation>
     </message>
     <message>
         <source>Östl. Kitzbühler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Kitzbühler Alpen</translation>
     </message>
     <message>
         <source>Glockturmgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Glockturmgruppe</translation>
     </message>
     <message>
         <source>Weißkogelgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Weißkogelgruppe</translation>
     </message>
     <message>
         <source>Gurgler Gruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Gurgler Gruppe</translation>
     </message>
     <message>
         <source>Zentrale Stubaier Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Zentrale Stubaier Alpen</translation>
     </message>
     <message>
         <source>Nördl. Zillertaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Zillertaler Alpen</translation>
     </message>
     <message>
         <source>Venedigergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Venedigergruppe</translation>
     </message>
     <message>
         <source>Östl. Rieserfernergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Rieserfernergruppe</translation>
     </message>
     <message>
         <source>Glocknergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Glocknergruppe</translation>
     </message>
     <message>
         <source>Östl. Deferegger Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Deferegger Alpen</translation>
     </message>
     <message>
         <source>Schobergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Schobergruppe</translation>
     </message>
     <message>
         <source>Lienzer Dolomiten</source>
-        <translation type="unfinished"></translation>
+        <translation>Lienzer Dolomiten</translation>
     </message>
     <message>
         <source>Ankogelgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Ankogelgruppe</translation>
     </message>
     <message>
         <source>Nockberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Nockberge</translation>
     </message>
     <message>
         <source>Südl. Gurktaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Südl. Gurktaler Alpen</translation>
     </message>
     <message>
         <source>Saualpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Saualpe</translation>
     </message>
     <message>
         <source>Packalpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Packalpe</translation>
     </message>
     <message>
         <source>Koralpe West</source>
-        <translation type="unfinished"></translation>
+        <translation>Koralpe West</translation>
     </message>
     <message>
         <source>Kreuzeckgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreuzeckgruppe</translation>
     </message>
     <message>
         <source>Westl. Gailtaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Westl. Gailtaler Alpen</translation>
     </message>
     <message>
         <source>Mittlere Gailtaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Gailtaler Alpen</translation>
     </message>
     <message>
         <source>Villacher Alpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Villacher Alpe</translation>
     </message>
     <message>
         <source>Wstl. Karnische Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstl. Karnische Alpen</translation>
     </message>
     <message>
         <source>Mittlere Karnische Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Karnische Alpen</translation>
     </message>
     <message>
         <source>Östl. Karnische Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Karnische Alpen</translation>
     </message>
     <message>
         <source>Westl. Karawanken</source>
-        <translation type="unfinished"></translation>
+        <translation>Westl. Karawanken</translation>
     </message>
     <message>
         <source>Mittlere Karawanken</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittlere Karawanken</translation>
     </message>
     <message>
         <source>Östl. Karawanken</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Karawanken</translation>
     </message>
     <message>
         <source>Südl. Niedere Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Südl. Niedere Tauern</translation>
     </message>
     <message>
         <source>Ankogelgruppe, Muhr</source>
-        <translation type="unfinished"></translation>
+        <translation>Ankogelgruppe, Muhr</translation>
     </message>
     <message>
         <source>Niedere Tauern Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Niedere Tauern Alpenhauptkamm</translation>
     </message>
     <message>
         <source>Goldberggruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Goldberggruppe Alpenhauptkamm</translation>
     </message>
     <message>
         <source>Glocknergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Glocknergruppe Alpenhauptkamm</translation>
     </message>
     <message>
         <source>Großvenedigergruppe Alpenhauptkamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Großvenedigergruppe Alpenhauptkamm</translation>
     </message>
     <message>
         <source>Nördl. Niedere Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Niedere Tauern</translation>
     </message>
     <message>
         <source>Nördl. Goldberggruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Goldberggruppe</translation>
     </message>
     <message>
         <source>Nördl. Glocknergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Glocknergruppe</translation>
     </message>
     <message>
         <source>Nördl. Großvenedigergruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Großvenedigergruppe</translation>
     </message>
     <message>
         <source>Pongauer Grasberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Pongauer Grasberge</translation>
     </message>
     <message>
         <source>Dientner Grasberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Dientner Grasberge</translation>
     </message>
     <message>
         <source>Kitzbüheler Alpen, Glemmtal</source>
-        <translation type="unfinished"></translation>
+        <translation>Kitzbüheler Alpen, Glemmtal</translation>
     </message>
     <message>
         <source>Oberpinzgau, Grasberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Oberpinzgau, Grasberge</translation>
     </message>
     <message>
         <source>Tennengebirge, Gosaukamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Tennengebirge, Gosaukamm</translation>
     </message>
     <message>
         <source>Hochkönig, Hagengebirge, Göllstock</source>
-        <translation type="unfinished"></translation>
+        <translation>Hochkönig, Hagengebirge, Göllstock</translation>
     </message>
     <message>
         <source>Loferer und Leoganger Steinberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Loferer und Leoganger Steinberge</translation>
     </message>
     <message>
         <source>Osterhorngruppe, Gamsfeldgruppe</source>
-        <translation type="unfinished"></translation>
+        <translation>Osterhorngruppe, Gamsfeldgruppe</translation>
     </message>
     <message>
         <source>Unterbergstock</source>
-        <translation type="unfinished"></translation>
+        <translation>Unterbergstock</translation>
     </message>
     <message>
         <source>Chiemgauer A., Heutal, Reiteralpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiemgauer A., Heutal, Reiteralpe</translation>
     </message>
     <message>
         <source>Dachsteingebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Dachsteingebiet</translation>
     </message>
     <message>
         <source>Totes Gebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes Gebirge</translation>
     </message>
     <message>
         <source>Ennstaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ennstaler Alpen</translation>
     </message>
     <message>
         <source>Schladminger Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Schladminger Tauern</translation>
     </message>
     <message>
         <source>Nördl. Wölzer Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Nördl. Wölzer Tauern</translation>
     </message>
     <message>
         <source>Rottenmanner Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Rottenmanner Tauern</translation>
     </message>
     <message>
         <source>Südl. Wölzer Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Südl. Wölzer Tauern</translation>
     </message>
     <message>
         <source>Seckauer Tauern</source>
-        <translation type="unfinished"></translation>
+        <translation>Seckauer Tauern</translation>
     </message>
     <message>
         <source>Eisenerzer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Eisenerzer Alpen</translation>
     </message>
     <message>
         <source>Hochschwabgebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Hochschwabgebiet</translation>
     </message>
     <message>
         <source>Mürzsteger Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mürzsteger Alpen</translation>
     </message>
     <message>
         <source>Mürztaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Mürztaler Alpen</translation>
     </message>
     <message>
         <source>Östl. Fischbacher A., Wechselgebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Östl. Fischbacher A., Wechselgebiet</translation>
     </message>
     <message>
         <source>Westl. Fischbacher A., Grazer Bergland</source>
-        <translation type="unfinished"></translation>
+        <translation>Westl. Fischbacher A., Grazer Bergland</translation>
     </message>
     <message>
         <source>Stub- und Gleinalpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Stub- und Gleinalpe</translation>
     </message>
     <message>
         <source>Koralpe</source>
-        <translation type="unfinished"></translation>
+        <translation>Koralpe</translation>
     </message>
     <message>
         <source>Seetaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Seetaler Alpen</translation>
     </message>
     <message>
         <source>Gurktaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Gurktaler Alpen</translation>
     </message>
     <message>
         <source>Dachstein, Gosaukamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Dachstein, Gosaukamm</translation>
     </message>
     <message>
         <source>Kalmberg, Katergebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalmberg, Katergebirge</translation>
     </message>
     <message>
         <source>Pyhrgas, Haller Mauer</source>
-        <translation type="unfinished"></translation>
+        <translation>Pyhrgas, Haller Mauer</translation>
     </message>
     <message>
         <source>Zimnitzmassiv, Höllengebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Zimnitzmassiv, Höllengebirge</translation>
     </message>
     <message>
         <source>Traunstein, Eibenberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Traunstein, Eibenberg</translation>
     </message>
     <message>
         <source>Kasbergblock</source>
-        <translation type="unfinished"></translation>
+        <translation>Kasbergblock</translation>
     </message>
     <message>
         <source>Sengsengebirge, Reichraminger Hintergeb.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sengsengebirge, Reichraminger Hintergeb.</translation>
     </message>
     <message>
         <source>Ennstaler Voralpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ennstaler Voralpen</translation>
     </message>
     <message>
         <source>Ybbstaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ybbstaler Alpen</translation>
     </message>
     <message>
         <source>Türnitzer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Türnitzer Alpen</translation>
     </message>
     <message>
         <source>Gutensteiner Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Gutensteiner Alpen</translation>
     </message>
     <message>
         <source>Rax- Schneeberggebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Rax- Schneeberggebiet</translation>
     </message>
     <message>
         <source>Semmering- Wechselgebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Semmering- Wechselgebiet</translation>
     </message>
     <message>
         <source>Gippel- Göllergebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Gippel- Göllergebiet</translation>
     </message>
     <message>
         <source>Bregenzerwaldgebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Bregenzerwaldgebirge</translation>
     </message>
     <message>
         <source>Allgäuer Alpen / Hochtannberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgäuer Alpen / Hochtannberg</translation>
     </message>
     <message>
         <source>Lechquellengeb. / Arlberg / Lechtaler Alp.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lechquellengeb. / Arlberg / Lechtaler Alp.</translation>
     </message>
     <message>
         <source>Verwall</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwall</translation>
     </message>
     <message>
         <source>Rätikon</source>
-        <translation type="unfinished"></translation>
+        <translation>Rätikon</translation>
     </message>
     <message>
         <source>Ammergauer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Ammergauer Alpen</translation>
     </message>
     <message>
         <source>Werdenfelser Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Werdenfelser Alpen</translation>
     </message>
     <message>
         <source>Bayrische Voralpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Bayrische Voralpen</translation>
     </message>
     <message>
         <source>Chiemgauer Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiemgauer Alpen</translation>
     </message>
     <message>
         <source>Berchtesgadener Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Berchtesgadener Alpen</translation>
     </message>
     <message>
         <source>Aran norte y centro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Aran límite sur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Aran vertiente sur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Jaun</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Gruyère</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>westliche Berner Voralpen</source>
-        <translation type="unfinished"></translation>
+        <translation>westliche Berner Voralpen</translation>
     </message>
     <message>
         <source>östliche Berner Voralpen</source>
-        <translation type="unfinished"></translation>
+        <translation>östliche Berner Voralpen</translation>
     </message>
     <message>
         <source>Hohgant</source>
-        <translation type="unfinished"></translation>
+        <translation>Hohgant</translation>
     </message>
     <message>
         <source>Niedersimmental</source>
-        <translation type="unfinished"></translation>
+        <translation>Niedersimmental</translation>
     </message>
     <message>
         <source>Gstaad</source>
-        <translation type="unfinished"></translation>
+        <translation>Gstaad</translation>
     </message>
     <message>
         <source>Wildhorn</source>
-        <translation type="unfinished"></translation>
+        <translation>Wildhorn</translation>
     </message>
     <message>
         <source>sLenk</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Iffigen</source>
-        <translation type="unfinished"></translation>
+        <translation>Iffigen</translation>
     </message>
     <message>
         <source>Adelboden</source>
-        <translation type="unfinished"></translation>
+        <translation>Adelboden</translation>
     </message>
     <message>
         <source>Engstligen</source>
-        <translation type="unfinished"></translation>
+        <translation>Engstligen</translation>
     </message>
     <message>
         <source>Obersimmental</source>
-        <translation type="unfinished"></translation>
+        <translation>Obersimmental</translation>
     </message>
     <message>
         <source>Kandersteg</source>
-        <translation type="unfinished"></translation>
+        <translation>Kandersteg</translation>
     </message>
     <message>
         <source>Blüemlisalp</source>
-        <translation type="unfinished"></translation>
+        <translation>Blüemlisalp</translation>
     </message>
     <message>
         <source>Lauterbrunnen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lauterbrunnen</translation>
     </message>
     <message>
         <source>Jungfrau - Schilthorn</source>
-        <translation type="unfinished"></translation>
+        <translation>Jungfrau - Schilthorn</translation>
     </message>
     <message>
         <source>Brienz-Interlaken</source>
-        <translation type="unfinished"></translation>
+        <translation>Brienz-Interlaken</translation>
     </message>
     <message>
         <source>Grindelwald</source>
-        <translation type="unfinished"></translation>
+        <translation>Grindelwald</translation>
     </message>
     <message>
         <source>Schreckhorn</source>
-        <translation type="unfinished"></translation>
+        <translation>Schreckhorn</translation>
     </message>
     <message>
         <source>Hasliberg - Rosenlaui</source>
-        <translation type="unfinished"></translation>
+        <translation>Hasliberg - Rosenlaui</translation>
     </message>
     <message>
         <source>Guttannen</source>
-        <translation type="unfinished"></translation>
+        <translation>Guttannen</translation>
     </message>
     <message>
         <source>Gadmertal</source>
-        <translation type="unfinished"></translation>
+        <translation>Gadmertal</translation>
     </message>
     <message>
         <source>Grimselpass</source>
-        <translation type="unfinished"></translation>
+        <translation>Grimselpass</translation>
     </message>
     <message>
         <source>Pilatus</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilatus</translation>
     </message>
     <message>
         <source>Schwarzenberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Schwarzenberg</translation>
     </message>
     <message>
         <source>Glaubenberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Glaubenberg</translation>
     </message>
     <message>
         <source>Engelberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Engelberg</translation>
     </message>
     <message>
         <source>Melchtal</source>
-        <translation type="unfinished"></translation>
+        <translation>Melchtal</translation>
     </message>
     <message>
         <source>Gersau</source>
-        <translation type="unfinished"></translation>
+        <translation>Gersau</translation>
     </message>
     <message>
         <source>Rothenthurm</source>
-        <translation type="unfinished"></translation>
+        <translation>Rothenthurm</translation>
     </message>
     <message>
         <source>Ybrig</source>
-        <translation type="unfinished"></translation>
+        <translation>Ybrig</translation>
     </message>
     <message>
         <source>Stoos</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoos</translation>
     </message>
     <message>
         <source>Bisistal</source>
-        <translation type="unfinished"></translation>
+        <translation>Bisistal</translation>
     </message>
     <message>
         <source>Schächental</source>
-        <translation type="unfinished"></translation>
+        <translation>Schächental</translation>
     </message>
     <message>
         <source>Uri Rot Stock</source>
-        <translation type="unfinished"></translation>
+        <translation>Uri Rot Stock</translation>
     </message>
     <message>
         <source>Meiental</source>
-        <translation type="unfinished"></translation>
+        <translation>Meiental</translation>
     </message>
     <message>
         <source>Maderanertal</source>
-        <translation type="unfinished"></translation>
+        <translation>Maderanertal</translation>
     </message>
     <message>
         <source>nördliches Urseren</source>
-        <translation type="unfinished"></translation>
+        <translation>nördliches Urseren</translation>
     </message>
     <message>
         <source>südliches Urseren</source>
-        <translation type="unfinished"></translation>
+        <translation>südliches Urseren</translation>
     </message>
     <message>
         <source>Glarus Nord</source>
-        <translation type="unfinished"></translation>
+        <translation>Glarus Nord</translation>
     </message>
     <message>
         <source>Glarus Süd-Grosstal</source>
-        <translation type="unfinished"></translation>
+        <translation>Glarus Süd-Grosstal</translation>
     </message>
     <message>
         <source>Glarus Süd-Sernftal</source>
-        <translation type="unfinished"></translation>
+        <translation>Glarus Süd-Sernftal</translation>
     </message>
     <message>
         <source>Glarus Mitte</source>
-        <translation type="unfinished"></translation>
+        <translation>Glarus Mitte</translation>
     </message>
     <message>
         <source>Appenzeller Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Appenzeller Alpen</translation>
     </message>
     <message>
         <source>Toggenburg</source>
-        <translation type="unfinished"></translation>
+        <translation>Toggenburg</translation>
     </message>
     <message>
         <source>Alpstein - Alvier</source>
-        <translation type="unfinished"></translation>
+        <translation>Alpstein - Alvier</translation>
     </message>
     <message>
         <source>Flumserberg</source>
-        <translation type="unfinished"></translation>
+        <translation>Flumserberg</translation>
     </message>
     <message>
         <source>Sarganserland</source>
-        <translation type="unfinished"></translation>
+        <translation>Sarganserland</translation>
     </message>
     <message>
         <source>Waadtländer Voralpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Waadtländer Voralpen</translation>
     </message>
     <message>
         <source>Pays d&apos;Enhaut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bex-Villars</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vouvry</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Monthey-Val d&apos;Illiez</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Emosson</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Génépi</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val d&apos;Entremont-Val Ferret</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Conthey-Fully</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Martigny-Verbier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Haut Val de Bagnes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Montana</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val d&apos;Hérens</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Arolla</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val d&apos;Anniviers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mountet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Leukerbad - Lötschental</source>
-        <translation type="unfinished"></translation>
+        <translation>Leukerbad - Lötschental</translation>
     </message>
     <message>
         <source>Turtmanntal</source>
-        <translation type="unfinished"></translation>
+        <translation>Turtmanntal</translation>
     </message>
     <message>
         <source>Konkordia Gebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Konkordia Gebiet</translation>
     </message>
     <message>
         <source>Riederalp</source>
-        <translation type="unfinished"></translation>
+        <translation>Riederalp</translation>
     </message>
     <message>
         <source>Leuk</source>
-        <translation type="unfinished"></translation>
+        <translation>Leuk</translation>
     </message>
     <message>
         <source>untere Vispertäler</source>
-        <translation type="unfinished"></translation>
+        <translation>untere Vispertäler</translation>
     </message>
     <message>
         <source>Zermatt</source>
-        <translation type="unfinished"></translation>
+        <translation>Zermatt</translation>
     </message>
     <message>
         <source>Saas Fee</source>
-        <translation type="unfinished"></translation>
+        <translation>Saas Fee</translation>
     </message>
     <message>
         <source>Monte Rosa</source>
-        <translation type="unfinished"></translation>
+        <translation>Monte Rosa</translation>
     </message>
     <message>
         <source>Mattmark</source>
-        <translation type="unfinished"></translation>
+        <translation>Mattmark</translation>
     </message>
     <message>
         <source>nördliches Simplon Gebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>nördliches Simplon Gebiet</translation>
     </message>
     <message>
         <source>südliches Simplon Gebiet</source>
-        <translation type="unfinished"></translation>
+        <translation>südliches Simplon Gebiet</translation>
     </message>
     <message>
         <source>Reckingen</source>
-        <translation type="unfinished"></translation>
+        <translation>Reckingen</translation>
     </message>
     <message>
         <source>Binntal</source>
-        <translation type="unfinished"></translation>
+        <translation>Binntal</translation>
     </message>
     <message>
         <source>nördliches Obergoms</source>
-        <translation type="unfinished"></translation>
+        <translation>nördliches Obergoms</translation>
     </message>
     <message>
         <source>südliches Obergoms</source>
-        <translation type="unfinished"></translation>
+        <translation>südliches Obergoms</translation>
     </message>
     <message>
         <source>nördliches Prättigau</source>
-        <translation type="unfinished"></translation>
+        <translation>nördliches Prättigau</translation>
     </message>
     <message>
         <source>südliches Prättigau</source>
-        <translation type="unfinished"></translation>
+        <translation>südliches Prättigau</translation>
     </message>
     <message>
         <source>westliche Silvretta</source>
-        <translation type="unfinished"></translation>
+        <translation>westliche Silvretta</translation>
     </message>
     <message>
         <source>Calanda</source>
-        <translation type="unfinished"></translation>
+        <translation>Calanda</translation>
     </message>
     <message>
         <source>Schanfigg</source>
-        <translation type="unfinished"></translation>
+        <translation>Schanfigg</translation>
     </message>
     <message>
         <source>Davos</source>
-        <translation type="unfinished"></translation>
+        <translation>Davos</translation>
     </message>
     <message>
         <source>Flims</source>
-        <translation type="unfinished"></translation>
+        <translation>Flims</translation>
     </message>
     <message>
         <source>nördliches Tujetsch</source>
-        <translation type="unfinished"></translation>
+        <translation>nördliches Tujetsch</translation>
     </message>
     <message>
         <source>südliches Tujetsch</source>
-        <translation type="unfinished"></translation>
+        <translation>südliches Tujetsch</translation>
     </message>
     <message>
         <source>Obersaxen - Safiental</source>
-        <translation type="unfinished"></translation>
+        <translation>Obersaxen - Safiental</translation>
     </message>
     <message>
         <source>Val Sumvitg</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Zervreila</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Domleschg - Lenzerheide</source>
-        <translation type="unfinished"></translation>
+        <translation>Domleschg - Lenzerheide</translation>
     </message>
     <message>
         <source>Schams</source>
-        <translation type="unfinished"></translation>
+        <translation>Schams</translation>
     </message>
     <message>
         <source>Rheinwald</source>
-        <translation type="unfinished"></translation>
+        <translation>Rheinwald</translation>
     </message>
     <message>
         <source>Albulatal</source>
-        <translation type="unfinished"></translation>
+        <translation>Albulatal</translation>
     </message>
     <message>
         <source>Savognin</source>
-        <translation type="unfinished"></translation>
+        <translation>Savognin</translation>
     </message>
     <message>
         <source>Avers</source>
-        <translation type="unfinished"></translation>
+        <translation>Avers</translation>
     </message>
     <message>
         <source>Bivio</source>
-        <translation type="unfinished"></translation>
+        <translation>Bivio</translation>
     </message>
     <message>
         <source>Bedrettotal</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedrettotal</translation>
     </message>
     <message>
         <source>obere Leventina</source>
-        <translation type="unfinished"></translation>
+        <translation>obere Leventina</translation>
     </message>
     <message>
         <source>Bleniotal</source>
-        <translation type="unfinished"></translation>
+        <translation>Bleniotal</translation>
     </message>
     <message>
         <source>obere Maggiatäler</source>
-        <translation type="unfinished"></translation>
+        <translation>obere Maggiatäler</translation>
     </message>
     <message>
         <source>untere Leventina</source>
-        <translation type="unfinished"></translation>
+        <translation>untere Leventina</translation>
     </message>
     <message>
         <source>untere Maggiatäler</source>
-        <translation type="unfinished"></translation>
+        <translation>untere Maggiatäler</translation>
     </message>
     <message>
         <source>Riviera</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Luganese</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Mendrisiotto</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>alto Moesano</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>basso Moesano</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Corvatsch</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bernina</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Zuoz</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>St. Moritz</source>
-        <translation type="unfinished"></translation>
+        <translation>St. Moritz</translation>
     </message>
     <message>
         <source>Val Chamuera</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Samnaun</source>
-        <translation type="unfinished"></translation>
+        <translation>Samnaun</translation>
     </message>
     <message>
         <source>östliche Silvretta</source>
-        <translation type="unfinished"></translation>
+        <translation>östliche Silvretta</translation>
     </message>
     <message>
         <source>Sur Tasna</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val Suot</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val dal Spöl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val S-charl</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bergell</source>
-        <translation type="unfinished"></translation>
+        <translation>Bergell</translation>
     </message>
     <message>
         <source>oberes Puschlav</source>
-        <translation type="unfinished"></translation>
+        <translation>oberes Puschlav</translation>
     </message>
     <message>
         <source>unteres Puschlav</source>
-        <translation type="unfinished"></translation>
+        <translation>unteres Puschlav</translation>
     </message>
     <message>
         <source>Münstertal</source>
-        <translation type="unfinished"></translation>
+        <translation>Münstertal</translation>
     </message>
     <message>
         <source>Saint-Cergue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vallée de Joux</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Yverdon - Bevaix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val de Travers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Val de Ruz - Colombier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Bienne - Neuchâtel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Vallon de Saint-Imier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Moutier - Tavannes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Thal</source>
-        <translation type="unfinished"></translation>
+        <translation>Thal</translation>
     </message>
     <message>
         <source>Olten-Gösgen</source>
-        <translation type="unfinished"></translation>
+        <translation>Olten-Gösgen</translation>
     </message>
     <message>
         <source>La Chaux-de-Fonds - Le Locle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Franches-Montagnes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Delémont - Bellelay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>westliches Mittelland</source>
-        <translation type="unfinished"></translation>
+        <translation>westliches Mittelland</translation>
     </message>
     <message>
         <source>zentrales Mittelland</source>
-        <translation type="unfinished"></translation>
+        <translation>zentrales Mittelland</translation>
     </message>
     <message>
         <source>östliches Mittelland</source>
-        <translation type="unfinished"></translation>
+        <translation>östliches Mittelland</translation>
     </message>
     <message>
         <source>Liechtenstein</source>
-        <translation type="unfinished"></translation>
+        <translation>Liechtenstein</translation>
     </message>
     <message>
         <source>PREALPI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>DOLOMITI</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>CHABLAIS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ARAVIS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>MONT-BLANC</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>BAUGES</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>BEAUFORTAIN</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HAUTE-TARENTAISE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>MAURIENNE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>VANOISE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HAUTE-MAURIENNE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>CHARTREUSE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>BELLEDONNE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>GRANDES-ROUSSES</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>VERCORS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>OISANS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>THABOR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>PELVOUX</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>QUEYRAS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>DEVOLUY</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>CHAMPSAUR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>EMBRUNAIS-PARPAILLON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>UBAYE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HAUT-VAR/HAUT-VERDON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>MERCANTOUR</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>PAYS-BASQUE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ASPE-OSSAU</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HAUTE-BIGORRE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>AURE-LOURON</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>LUCHONNAIS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>COUSERANS</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>HAUTE-ARIEGE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ORLU  ST BARTHELEMY</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>ANDORRE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>CAPCIR-PUYMORENS</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CERDAGNE-CANIGOU</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>CINTO-ROTONDO</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>RENOSO-INCUDINE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>CERDAGNE-CANIGOU</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1778,7 +1776,7 @@
     <name>WebViewPage</name>
     <message>
         <source>avalanche.report</source>
-        <translation type="unfinished"></translation>
+        <translation>lawinen.report</translation>
     </message>
 </context>
 </TS>
