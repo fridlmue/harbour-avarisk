@@ -14,6 +14,9 @@ TARGET = harbour-avarisk
 
 CONFIG += sailfishapp
 
+# For mozembed WebView
+PKGCONFIG += qt5embedwidget
+
 SOURCES += src/harbour-avarisk.cpp
 
 DISTFILES += qml/harbour-avarisk.qml \
