@@ -4,8 +4,8 @@ import QtQuick 2.0
 QtObject {
     //REGIONS ITALY
     property ListModel regionListVeneto: ListModel{
-        ListElement {region: qsTr("PREALPI");                           RegionID: "IT-34-01"}
-        ListElement {region: qsTr("DOLOMITI");                          RegionID: "IT-34-02"}
+        ListElement {region: qsTr("PREALPI");                                      RegionID: "IT-34-01"}
+        ListElement {region: qsTr("DOLOMITI");                                     RegionID: "IT-34-02"}
     }
 
     property ListModel regionListSTyrol: ListModel{

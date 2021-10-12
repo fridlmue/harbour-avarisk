@@ -15,6 +15,7 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import QtPositioning 5.4
 import "RegionList"
 
 Page {
@@ -26,6 +27,31 @@ Page {
         bottomMargin: Theme.paddingSmall
 
         VerticalScrollDecorator {}
+
+        PositionSource {
+            id: possrc
+            updateInterval: 10000
+            active: true
+            onPositionChanged: {
+                var coordinate = possrc.position.coordinate;
+                positiontext.text = "Coordinate: " + coordinate.longitude + " " + coordinate.latitude
+                var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon=9.743790&lat=47.412400"
+
+                request(endp_url, function (o) {
+
+                        // log the json response
+                        // console.log(o.responseText);
+
+                        // translate response into object
+                        // var d = eval('new Object(' + o.responseText + ')');
+                        var d = JSON.parse(o.responseText);
+
+                        // access elements inside json object with dot notation
+                        determinedRegionName.text = d.RegionID
+                });
+
+            }
+        }
 
         PullDownMenu {
             MenuItem {
@@ -432,6 +458,51 @@ Page {
                          }
                     }
                 }
+
+                SectionHeader {
+                    text: qsTr("Region by GPS-Position")
+                }
+
+                Row {
+                    width: parent.width
+                    spacing: Theme.paddingMedium
+
+                    anchors {
+                                left: parent.left
+                                right: parent.right
+                                margins: Theme.paddingLarge
+                            }
+
+                    Label {
+                        //anchors.verticalCenter: parent.verticalCenter
+                        id: determinedRegionName
+                        width: parent.width * 2 / 3
+                        text: "Region not determined"
+                        font.pixelSize: Theme.fontSizeLarge
+                        wrapMode: Text.Wrap
+                    }
+
+                    Button {
+                        text: qsTr("show")
+                        width: parent.width * 1 / 3
+                        // height: 3 * width * sourceSize.height / sourceSize.width
+                        onPressed: {
+                            determinedRegionName.text = getRegionNameFromId('AT-08-01');
+                        }
+                    }
+
+
+                }
+
+                Label {
+                    id:positiontext
+                    //anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width
+                    text: "n/a"
+                    font.pixelSize: Theme.fontSizeLarge
+                    wrapMode: Text.Wrap
+                }
+
             }
 
         }
@@ -446,5 +517,33 @@ Page {
             left: parent.left
             bottom: parent.bottom
         }
+    }
+
+    function request(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = (function(myxhr) {
+            return function() {
+                callback(myxhr);
+            }
+        })(xhr);
+        xhr.open('GET', url, true);
+        xhr.send('');
+    }
+
+    function getRegionNameFromId(RegionID) {
+        for (var list in RegionList) {
+            try {
+                var list_model = ListModel(list);
+                console.log(list_model.columnCount());
+                for (var element in list_model) {
+                    if (element.RegionID == RegionID)
+                        consol.log(element.region)
+                        return element.region;
+                }
+            } catch(error) {
+                console.log('ooops')
+            }
+        }
+        return 'n/a';
     }
 }
