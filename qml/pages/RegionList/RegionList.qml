@@ -381,7 +381,7 @@ QtObject {
     property ListModel regionListLiechtenstein: ListModel{
          ListElement {region: qsTr("Liechtenstein");                               RegionID: "CH-3311"}
     }
-    
+
     // REGIONS France
     property ListModel regionListFrAlpesDuNord: ListModel{
         //Haute Savoie
@@ -395,14 +395,14 @@ QtObject {
         ListElement {region: qsTr("MAURIENNE");                                    RegionID: "FR-09"}
         ListElement {region: qsTr("VANOISE");                                      RegionID: "FR-10"}
         ListElement {region: qsTr("HAUTE-MAURIENNE");                              RegionID: "FR-11"}
-        //Isere                                                                    
+        //Isere
         ListElement {region: qsTr("CHARTREUSE");                                   RegionID: "FR-07"}
         ListElement {region: qsTr("BELLEDONNE");                                   RegionID: "FR-08"}
         ListElement {region: qsTr("GRANDES-ROUSSES");                              RegionID: "FR-12"}
         ListElement {region: qsTr("VERCORS");                                      RegionID: "FR-14"}
         ListElement {region: qsTr("OISANS");                                       RegionID: "FR-15"}
     }
-    
+
     property ListModel regionListFrAlpesDuSud: ListModel{
         //Hautes Alpes
         ListElement {region: qsTr("THABOR");                                       RegionID: "FR-13"}
@@ -416,27 +416,27 @@ QtObject {
         ListElement {region: qsTr("HAUT-VAR/HAUT-VERDON");                         RegionID: "FR-22"}
         ListElement {region: qsTr("MERCANTOUR");                                   RegionID: "FR-23"}
     }
-    
+
     property ListModel regionListFrPyrenees: ListModel{
         //Pyrenees Atlantique
         ListElement {region: qsTr("PAYS-BASQUE");                                  RegionID: "FR-64"}
         ListElement {region: qsTr("ASPE-OSSAU");                                   RegionID: "FR-65"}
-        //Hautes Pyrenees                                                      
+        //Hautes Pyrenees
         ListElement {region: qsTr("HAUTE-BIGORRE");                                RegionID: "FR-66"}
         ListElement {region: qsTr("AURE-LOURON");                                  RegionID: "FR-67"}
-        //Haute Garonne                                                        
+        //Haute Garonne
         ListElement {region: qsTr("LUCHONNAIS");                                   RegionID: "FR-68"}
         ListElement {region: qsTr("COUSERANS");                                    RegionID: "FR-69"}
-        //Ariege                                                               
+        //Ariege
         ListElement {region: qsTr("HAUTE-ARIEGE");                                 RegionID: "FR-70"}
         ListElement {region: qsTr("ORLU  ST BARTHELEMY");                          RegionID: "FR-72"}
-        //Andorre                                                              
+        //Andorre
         ListElement {region: qsTr("ANDORRE");                                      RegionID: "FR-71"}
         //Pyrenees Orientales
         ListElement {region: qsTr("CAPCIR-PUYMORENS");                             RegionID: "FR-73"}
         ListElement {region: qsTr("CERDAGNE-CANIGOU");                             RegionID: "FR-74"}
     }
-    
+
     property ListModel regionListFrCorse: ListModel{
         ListElement {region: qsTr("CINTO-ROTONDO");                                RegionID: "FR-40"}
         ListElement {region: qsTr("RENOSO-INCUDINE");                              RegionID: "FR-41"}

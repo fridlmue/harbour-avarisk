@@ -16,9 +16,23 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 import QtPositioning 5.4
+import org.freedesktop.contextkit 1.0
 import "RegionList"
 
 Page {
+
+    property string determined_region_name: 'n/a';
+    property string determined_region_id: 'n/a';
+
+    property string connection
+
+    ContextProperty {
+       key: "Internet.NetworkState"
+
+       onValueChanged: {
+           connection = value
+       }
+    }
 
     SilicaFlickable {
 
@@ -33,21 +47,27 @@ Page {
             updateInterval: 10000
             active: true
             onPositionChanged: {
+                console.log(possrc.valid)
                 var coordinate = possrc.position.coordinate;
                 positiontext.text = "Coordinate: " + coordinate.longitude + " " + coordinate.latitude
-                var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon=9.743790&lat=47.412400"
+                //var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon=11.4041024&lat=47.2692124"
+                var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon="+coordinate.longitude+"&lat="+coordinate.latitude
 
                 request(endp_url, function (o) {
 
-                        // log the json response
-                        // console.log(o.responseText);
+                        if (o.responseText != '') {
+                            possrc.stop();
+                            // log the json response
+                            console.log(o.responseText);
 
-                        // translate response into object
-                        // var d = eval('new Object(' + o.responseText + ')');
-                        var d = JSON.parse(o.responseText);
+                            // translate response into object
+                            // var d = eval('new Object(' + o.responseText + ')');
+                            var d = JSON.parse(o.responseText);
 
-                        // access elements inside json object with dot notation
-                        determinedRegionName.text = d.RegionID
+                            // access elements inside json object with dot notation
+                            //console.log(getRegionNameFromId(d.RegionID))
+                            getRegionNameFromId(d.RegionID)
+                    }
                 });
 
             }
@@ -57,6 +77,10 @@ Page {
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Update Position")
+                onClicked: {possrc.update()}
             }
             MenuItem {
                 text: qsTr("Know-How")
@@ -477,17 +501,19 @@ Page {
                         //anchors.verticalCenter: parent.verticalCenter
                         id: determinedRegionName
                         width: parent.width * 2 / 3
-                        text: "Region not determined"
+                        text: determined_region_name;
                         font.pixelSize: Theme.fontSizeLarge
                         wrapMode: Text.Wrap
                     }
 
                     Button {
-                        text: qsTr("show")
+                        id: requestDetermined
+                        text: qsTr("Bulletin")
+                        enabled: false
                         width: parent.width * 1 / 3
                         // height: 3 * width * sourceSize.height / sourceSize.width
                         onPressed: {
-                            determinedRegionName.text = getRegionNameFromId('AT-08-01');
+                            pageStack.push(Qt.resolvedUrl("DangerPage" + (determined_region_id.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": determined_region_id, "regionName": determined_region_name, "country": "tbd_1", "macroRegion": "tbd_2", "connection": connection, "pm_only": false})
                         }
                     }
 
@@ -529,21 +555,23 @@ Page {
         xhr.open('GET', url, true);
         xhr.send('');
     }
-
     function getRegionNameFromId(RegionID) {
-        for (var list in RegionList) {
-            try {
-                var list_model = ListModel(list);
-                console.log(list_model.columnCount());
-                for (var element in list_model) {
-                    if (element.RegionID == RegionID)
-                        consol.log(element.region)
-                        return element.region;
+        var xhr = new XMLHttpRequest;
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE){
+                var d = JSON.parse(xhr.responseText);
+                if (RegionID != 'na') {
+                    var region_name = String(d[String(RegionID)])
+                    determined_region_id = RegionID
+                    determined_region_name = region_name;
+                    requestDetermined.enabled = true;
+                 } else {
+                    determined_region_name = qsTr("Couldn't resolve Region");
                 }
-            } catch(error) {
-                console.log('ooops')
+
             }
         }
-        return 'n/a';
+        xhr.open('GET', 'micro-regions_names/'+Qt.locale().name.substring(0,2)+'.json');
+        xhr.send('');
     }
 }
