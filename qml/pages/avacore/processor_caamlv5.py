@@ -119,23 +119,17 @@ def parse_xml(root):
                 if comment_r != '':
                     problem.comment = comment_r
                 report.avalancheProblems.append(problem)
-                # report.problem_list.append(pyAvaCore.Problem(type_r, aspect, valid_elevation))
             for avActivityHighlights in observations.iter(tag=CAAMLTAG + 'avActivityHighlights'):
-                # report.report_texts.append(pyAvaCore.ReportText('activity_hl', avActivityHighlights.text))
-                report.avalancheActivityHighlights = avActivityHighlights.text
+                report.avalancheActivityHighlights = avActivityHighlights.text.replace('&nbsp;', '\n')
             for wxSynopsisComment in observations.iter(tag=CAAMLTAG + 'wxSynopsisComment'):
-                # report.report_texts.append(pyAvaCore.ReportText('activity_hl', avActivityHighlights.text))
-                report.wxSynopsisComment = wxSynopsisComment.text
+                report.wxSynopsisComment = wxSynopsisComment.text.replace('&nbsp;', '\n')
             for avActivityComment in observations.iter(tag=CAAMLTAG + 'avActivityComment'):
-                #report.report_texts.append(pyAvaCore.ReportText('activity_com', avActivityComment.text))
-                report.avalancheActivityComment = avActivityComment.text
+                report.avalancheActivityComment = avActivityComment.text.replace('&nbsp;', '\n')
             for snowpackStructureComment in observations.iter(tag=CAAMLTAG + ''\
                                                               'snowpackStructureComment'):
-                # report.report_texts.append(pyAvaCore.ReportText('snow_struct_com', snowpackStructureComment.text))
-                report.snowpackStructureComment = snowpackStructureComment.text
+                report.snowpackStructureComment = snowpackStructureComment.text.replace('&nbsp;', '\n')
             for tendencyComment in observations.iter(tag=CAAMLTAG + 'tendencyComment'):
-                # report.report_texts.append(pyAvaCore.ReportText('tendency_com', tendencyComment.text))
-                report.tendency.tendencyComment = tendencyComment.text
+                report.tendency.tendencyComment = tendencyComment.text.replace('&nbsp;', '\n')
         reports.append(report)
 
         if pm_available:
@@ -177,11 +171,9 @@ def parse_xml_vorarlberg(root):
                                                                     'travelAdvisoryComment'):
                     activity_com = travelAdvisoryComment.text
                 for highlights in bulletinResultsOf.iter(tag=CAAMLTAG + 'highlights'):
-                    # report.report_texts.append(pyAvaCore.ReportText('activity_hl', highlights.text))
                     report.avalancheActivityHighlights = highlights.text
                 for comment in bulletinResultsOf.iter(tag=CAAMLTAG + 'comment'):
                     if comment_empty:
-                        # report.report_texts.append(pyAvaCore.ReportText('tendency_com', comment.text))
                         report.tendency.tendencyComment = comment.text
                         comment_empty = 0
                 for wxSynopsisComment in bulletinResultsOf.iter(tag=CAAMLTAG + ''\
@@ -189,7 +181,6 @@ def parse_xml_vorarlberg(root):
                     report.wxSynopsisComment = wxSynopsisComment.text
                 for snowpackStructureComment in bulletinResultsOf.iter(tag=CAAMLTAG + ''\
                                                                        'snowpackStructureComment'):
-                    # report.report_texts.append(pyAvaCore.ReportText('snow_struct_com', snowpackStructureComment.text))
                     report.snowpackStructureComment = snowpackStructureComment.text
                 for AvProblem in detail.iter(tag=CAAMLTAG + 'AvProblem'):
                     type_r = ""
@@ -213,7 +204,6 @@ def parse_xml_vorarlberg(root):
                                 valid_elevation = "ElevationRange_" + beginPosition.text + "Hi"
                             for endPosition in validElevation.iter(tag=CAAMLTAG + 'endPosition'):
                                 valid_elevation = "ElevationRange_" + endPosition.text + "Lw"
-                    #report.problem_list.append(pyAvaCore.Problem(type_r, aspect, valid_elevation))
                     problem_danger_rating = DangerRatingType()
                     problem_danger_rating.aspect = aspect
                     problem_danger_rating.elevation.auto_select(valid_elevation)
@@ -222,7 +212,6 @@ def parse_xml_vorarlberg(root):
                     problem.dangerRating = problem_danger_rating
                     report.avalancheProblems.append(problem)
 
-    # report.report_texts.append(pyAvaCore.ReportText('activity_com', activity_com))
     report.avalancheActivityComment = activity_com
 
     for bulletinResultOf in root.iter(tag=CAAMLTAG + 'bulletinResultsOf'):
@@ -250,13 +239,6 @@ def parse_xml_vorarlberg(root):
             for validElevation in DangerRating.iter(tag=CAAMLTAG + 'validElevation'):
                 if '{http://www.w3.org/1999/xlink}href' in validElevation.attrib:
                     valid_elevation = validElevation.attrib.get('{http://www.w3.org/1999/xlink}href')
-                    '''
-                    if "Treeline" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
-                        if "Hi" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
-                            valid_elevation = ">Treeline"
-                        if "Lo" in validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'):
-                            valid_elevation = "<Treeline"
-                    '''
                 else:
                     for beginPosition in validElevation.iter(tag=CAAMLTAG + 'beginPosition'):
                         if not 'Keine' in beginPosition.text:
@@ -317,7 +299,7 @@ def parse_xml_vorarlberg(root):
 
             c_report.dangerRatings = []
             c_report.dangerRatings.append(loc_elem[3])
-            
+
             reports.append(c_report)
             del_index.append(index)
 
@@ -334,12 +316,11 @@ def parse_xml_vorarlberg(root):
 
 
 def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1), fetch_time_dependant=True):
-
     '''parses Bavarian-Style CAAML-XML. root is a ElementTree. Also works for Slovenia with minor modification'''
+    
     now = datetime.now(pytz.timezone('Europe/Ljubljana'))
     if fetch_time_dependant and today == datetime(1, 1, 1, 1, 1, 1) and now.time() > time(17, 0, 0):
         today = now.date() + timedelta(days=1)
-                
 
     reports = []
     report = AvaBulletin()
@@ -356,7 +337,6 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
                 report.publicationTime =  pytz.timezone("Europe/Berlin").localize(time_i)
             else:
                 report.publicationTime = dateutil.parser.parse(dateTimeReport.text)
-
 
     activity_com = ''
 
@@ -402,7 +382,6 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
                 for endPosition in validElevation.iter(tag=CAAMLTAG + 'endPosition'):
                     if not 'Keine' in endPosition.text:
                         valid_elevation = "ElevationRange_" + endPosition.text + "Lw"
-            # report.problem_list.append(pyAvaCore.Problem(type_r, aspect, valid_elevation))
             problem_danger_rating = DangerRatingType()
             problem_danger_rating.aspect = aspect
             problem_danger_rating.elevation.auto_select(valid_elevation)
@@ -429,7 +408,6 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
 
             for validTime in DangerRating.iter(tag=CAAMLTAG + 'validTime'):
                 for beginPosition in validTime.iter(tag=CAAMLTAG + 'beginPosition'):
-                    # validity_begin = dateutil.parser.parse(beginPosition.text)
                     if location == 'slovenia':
                         time_i = dateutil.parser.parse(beginPosition.text, ignoretz = True)
                         validity_begin =  pytz.timezone("Europe/Berlin").localize(time_i)
@@ -456,7 +434,6 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
             danger_rating.set_mainValue_int(main_value)
             danger_rating.elevation.auto_select(valid_elevation)
             loc_list.append([current_loc_ref, validity_begin, validity_end, danger_rating])
-            # loc_list.append([current_loc_ref, validity_begin, validity_end, pyAvaCore.DangerMain(main_value, valid_elevation)])
 
     loc_ref_list = []
     del_index = []

@@ -1,10 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/avalanche-situations/drifting_snow.png</file>
+        <file>res/avalanche-situations/wind_drifted_snow.png</file>
         <file>res/avalanche-situations/favourable_situation.png</file>
         <file>res/avalanche-situations/gliding_snow.png</file>
         <file>res/avalanche-situations/new_snow.png</file>
-        <file>res/avalanche-situations/old_snow.png</file>
+        <file>res/avalanche-situations/persistent_weak_layers.png</file>
         <file>res/avalanche-situations/wet_snow.png</file>
         <file>res/danger-levels/level_1.png</file>
         <file>res/danger-levels/level_2.png</file>

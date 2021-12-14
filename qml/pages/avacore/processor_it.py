@@ -75,6 +75,7 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
         content = response.read()
 
     aineva_object = json.loads(content)
+
     all_text = aineva_object['d']
     details_1x = all_text.split('£')
     details_10 = details_1x[0].split('|')
@@ -94,33 +95,53 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
     
     danger_rating = DangerRatingType()
 
-    if int(details_10[0][3]) < 6:
-        danger_rating.set_mainValue_int(int(details_10[0][3]))
-        # danger_rating.elevation.auto_select(valid_elevation)
-        # report.danger_main.append(pyAvaCore.DangerMain(int(details_10[0][3]), '-'))
+    if (details_10[0][4].isnumeric()):
+        danger_img_value = int(details_10[0][3] + details_10[0][4])
+    elif (details_10[0][3].isnumeric()):
+        danger_img_value = int(details_10[0][3])
+    else:
+        danger_img_value = -1
+    
+    if danger_img_value != -1:    
+        if danger_img_value < 6:
+            danger_rating.set_mainValue_int(danger_img_value)
+            # danger_rating.elevation.auto_select(valid_elevation)
+            # report.danger_main.append(pyAvaCore.DangerMain(int(details_10[0][3]), '-'))
+        else:
+            # More Values should follow here. I don't know all the possible combinations.
+            if danger_img_value == 12:
+                danger_rating.set_mainValue_int(2) # Tagesverläuflicher Anstieg von 1 auf 2
+            elif danger_img_value == 14:
+                danger_rating.set_mainValue_int(3) # Tagesverläuflicher Anstieg von 2 auf 3
+            elif danger_img_value == 16:
+                danger_rating.set_mainValue_int(2) # Tagesverläuflicher Wechsel von 2 auf 1
+            elif danger_img_value == 17:
+                danger_rating.set_mainValue_int(4) # Tagesverläuflicher Anstieg von 3 auf 4
+            elif danger_img_value == 20:
+                danger_rating.set_mainValue_int(3) # Tagesverläuflicher Wechsel von 3 auf 2
 
-    prefix_alti = ''
+        prefix_alti = ''
 
-    if int(details_10[2][3]) in [1, 2, 3]:
-        prefix_alti = '>'
-    if int(details_10[2][3]) == 4:
-        prefix_alti = '<'
-    elev_data = details_11[2]
-    if prefix_alti != '' and len(elev_data) < 20:
-        aspects = []
-        general_problem_valid_elevation = ''.join(c for c in elev_data.split('/')[0].split('-')[0] if c.isdigit())
-        # ToDo Aspects are missing at the moment
-        # report.problem_list.append(pyAvaCore.Problem("general", aspects, prefix_alti + general_problem_valid_elevation))
-        danger_rating.elevation.auto_select(prefix_alti + general_problem_valid_elevation)
-        
-    report.dangerRatings.append(danger_rating)
+        if int(details_10[2][3]) in [1, 2, 3]:
+            prefix_alti = '>'
+        if int(details_10[2][3]) == 4:
+            prefix_alti = '<'
+        elev_data = details_11[2]
+        if prefix_alti != '' and len(elev_data) < 20:
+            aspects = []
+            general_problem_valid_elevation = ''.join(c for c in elev_data.split('/')[0].split('-')[0] if c.isdigit())
+            # ToDo Aspects are missing at the moment
+            # report.problem_list.append(pyAvaCore.Problem("general", aspects, prefix_alti + general_problem_valid_elevation))
+            danger_rating.elevation.auto_select(prefix_alti + general_problem_valid_elevation)
+            
+        report.dangerRatings.append(danger_rating)
 
-    av_problem = details_10[3][5:-4].lower()
-    if av_problem != '':
-        #report.problem_list.append(av_problem)
-        problem = AvalancheProblemType()
-        problem.add_problemType(av_problem)
-        report.avalancheProblems.append(problem)
+        av_problem = details_10[3][5:-4].lower()
+        if av_problem != '':
+            #report.problem_list.append(av_problem)
+            problem = AvalancheProblemType()
+            problem.add_problemType(av_problem)
+            report.avalancheProblems.append(problem)
 
     reports.append(report)
 

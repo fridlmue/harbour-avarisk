@@ -33,6 +33,125 @@
     </message>
 </context>
 <context>
+    <name>BulletinView</name>
+    <message>
+        <source>Downloading...</source>
+        <translation>Lädt...</translation>
+    </message>
+    <message>
+        <source>low</source>
+        <translation>gering</translation>
+    </message>
+    <message>
+        <source>moderate</source>
+        <translation>mäßig</translation>
+    </message>
+    <message>
+        <source>considerable</source>
+        <translation>erheblich</translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation>groß</translation>
+    </message>
+    <message>
+        <source>very high</source>
+        <translation>sehr groß</translation>
+    </message>
+    <message>
+        <source>loading</source>
+        <translation>lädt</translation>
+    </message>
+    <message>
+        <source>between </source>
+        <translation>zwischen</translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation>jede Höhe</translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation>Neu herunterladen</translation>
+    </message>
+    <message>
+        <source>Know-How</source>
+        <translation>Know-How</translation>
+    </message>
+    <message>
+        <source>Report</source>
+        <translation>Bericht</translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation>Offline Report: Prüfe ob gültig!</translation>
+    </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translation>Nachmittagsbericht verfügbar!</translation>
+    </message>
+    <message>
+        <source>Valid time interval</source>
+        <translation>Gültigkeitszeitraum</translation>
+    </message>
+    <message>
+        <source>Report from</source>
+        <translation>Bericht vom</translation>
+    </message>
+    <message>
+        <source>Report could not be requested</source>
+        <translation>Report konnte nicht abgerufen werden</translation>
+    </message>
+    <message>
+        <source>Danger Level</source>
+        <translation>Gefahrenstufe</translation>
+    </message>
+    <message>
+        <source>Elevation Data</source>
+        <translation>Höheneingrenzung</translation>
+    </message>
+    <message>
+        <source>Avalanche prone locations</source>
+        <translation>Lawinengefährdete Expositionen</translation>
+    </message>
+    <message>
+        <source>Avalanche Problem</source>
+        <translation>Lawinenprobleme</translation>
+    </message>
+    <message>
+        <source>Danger Description</source>
+        <translation>Gefahrenbeschrieb</translation>
+    </message>
+    <message>
+        <source>Snowpack Description</source>
+        <translation>Schneedeckenaufbau</translation>
+    </message>
+    <message>
+        <source>Tendency</source>
+        <translation>Tendenz</translation>
+    </message>
+    <message>
+        <source>LEVEL</source>
+        <translation>STUFE</translation>
+    </message>
+    <message>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
+    </message>
+    <message>
+        <source>No Internet connection and no report cached for this region</source>
+        <translation>Keine Internetverbindung und kein heruntergeladener Report verfügbar</translation>
+    </message>
+    <message>
+        <source>Travel Advisory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather Forecast</source>
+        <translation>Wettervorhersage</translation>
+    </message>
+</context>
+<context>
     <name>DangerPage</name>
     <message>
         <source>Downloading...</source>

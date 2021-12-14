@@ -33,10 +33,23 @@ Page {
 
     property var dangerLevelError: qsTr("Downloading...")
 
+    property bool downloadSucc: false
+    property bool cached: false
+
+    property bool busy: false
+    property int dangerLevel: 0
+    property int dangerLevel_h: 0
+    property int dangerLevel_l: 0
+    property string dangerLevel_alti: ""
+
+    /*
     property var dangerLevel: 0
+    property var dangerLevel_pm: 0
 
     property var dangerLevel_h: 0
+    property var dangerLevel_h_pm: 0
     property var dangerLevel_l: 0
+    property var dangerLevel_l_pm: 0
     property var dangerLevel_alti: ""
     property var highlights: ""
     property var comment: ""
@@ -46,12 +59,17 @@ Page {
     property date validFrom: new Date()
     property date validTo: new Date()
     property var provider: ""
-    property var downloadSucc: false
-    property var cached: false
+    */
 
-    property bool busy: false
+    // property var dPatterns
 
-    property var dPatterns
+    property var avDanger: {
+        'low': 1,
+        'moderate': 2,
+        'considerable': 3,
+        'high': 4,
+        'very_high': 5
+    }
 
     function dangerLevelText(x) {
         if      (x === 1) {return qsTr("low")         }
@@ -62,79 +80,37 @@ Page {
         else              {return qsTr("loading") }
     }
 
-    function getAvaDangElevText(validElev) {
-        if (validElev) {
-            if (validElev.indexOf('>') > -1) {
-                 return "above"
-            }
-            else if (validElev.indexOf('<') > -1) {
-                 return "below"
-            }
+    function getAvaProbElevText(problemElev) {
+        if (problemElev.hasOwnProperty('upperBound') && problemElev.hasOwnProperty('lowerBound')) {
+            return "middle"
+        } else if (problemElev.hasOwnProperty('upperBound')) {
+            return "below"
+        } else if (problemElev.hasOwnProperty('lowerBound')) {
+            return "above"
         }
         return "all"
     }
 
-    function getElevFromString(validElev) {
-        if (validElev) {
-            if (validElev.indexOf('Treeline') > -1) {
-                return qsTr("treeline")
-            }
-
-            var elev = validElev
-            if ((validElev.indexOf('<') > -1) || (validElev.indexOf('>') > -1)) {
-                elev = validElev.substring(1)
-                return elev + " m"
-            }
+    function getElevFromString(problemElev) {
+        var str_return = qsTr("entire range")
+        if (problemElev.hasOwnProperty('upperBound') && problemElev.hasOwnProperty('lowerBound')) {
+            str_return = qsTr("between ") + problemElev.lowerBound + " and " + problemElev.upperBound
+        } else if (problemElev.hasOwnProperty('upperBound')) {
+            str_return = problemElev.upperBound
+        } else if (problemElev.hasOwnProperty('lowerBound')) {
+            str_return = problemElev.lowerBound
         }
 
-        return qsTr("entire range")
-
+        if (str_return.toLowerCase().indexOf("treeline") === -1 && str_return.toLowerCase().indexOf("entire") === -1) {
+          str_return += " m"
+        }
+        return str_return
     }
 
     /*function convertUTCDateToLocalDate(date) {
         var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
         return newDate;
     }*/
-
-    function parseAvaReportJSON(avaReport) {
-        for (var elem in avaReport.danger_main) {
-            if (avaReport.danger_main[elem]['main_value'] > dangerLevel) {
-                dangerLevel = avaReport.danger_main[elem]['main_value']
-            }
-        }
-
-        // console.log("Plot Report: " + avaReport.report_id)
-
-        dangerLevel_h = avaReport.danger_main[0]['main_value'];
-        if (avaReport.danger_main.length > 1) {
-            dangerLevel_l = avaReport.danger_main[1]['main_value'];
-            dangerLevel_alti = avaReport.danger_main[1]['valid_elevation'];
-        }
-        else {
-            dangerLevel_l = avaReport.danger_main[0]['main_value'];
-        }
-
-        validFrom = new Date(avaReport.validity_begin)
-        validTo = new Date(avaReport.validity_end)
-        repDate = new Date(avaReport.rep_date)
-
-        dPatterns = avaReport.problem_list
-
-        for (var elem in avaReport.report_texts) {
-            if (avaReport.report_texts[elem].text_type === 'activity_hl') {
-                highlights = avaReport.report_texts[elem].text_content;
-            }
-            if (avaReport.report_texts[elem].text_type === 'activity_com') {
-                comment = avaReport.report_texts[elem].text_content;
-            }
-            if (avaReport.report_texts[elem].text_type === 'snow_struct_com') {
-                structure = avaReport.report_texts[elem].text_content;
-            }
-            if (avaReport.report_texts[elem].text_type === 'tendency_com') {
-                tendency = avaReport.report_texts[elem].text_content;
-            }
-        }
-    }
 
     ContextProperty {
        key: "Internet.NetworkState"
@@ -150,18 +126,11 @@ Page {
     }
 
     onStatusChanged: {
-        if ((status == Component.Ready) && (pm_only == false))
+        if (status == Component.Ready)
         {
             python.startDownload();
             // console.log('Start DL')
             // console.log(pm_only)
-        }
-        if ((status == Component.Ready) && pm_only)
-        {
-            parseAvaReportJSON(avaReport);
-            // console.log('Load from avaReport')
-            // console.log(pm_only)
-            downloadSucc = true
         }
     }
 
@@ -183,7 +152,7 @@ Page {
         PullDownMenu {
             MenuItem {
                 text: qsTr("Reload")
-                visible: ((connection == "connected") && (pm_only == false)) ? true : false
+                visible: (connection == "connected")  ? true : false
                 onClicked: {
                     python.startDownload();
                 }
@@ -191,13 +160,6 @@ Page {
             MenuItem {
                 text: qsTr("Know-How")
                 onClicked: pageStack.push(Qt.resolvedUrl("Education.qml"))
-            }
-            MenuItem {
-                text: qsTr("PM Report")
-                visible: pm_available
-                onClicked: {
-                    onClicked: pageStack.push(Qt.resolvedUrl("DangerPage.qml"), {"regionID": regionID, "regionName": regionName, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": true, "avaReport": avaReportPM})
-                }
             }
         }
 
@@ -236,37 +198,35 @@ Page {
                 visible: (pm_available) ? true : false
             }
 
+            //Valid time interval
             SectionHeader {
                 text: qsTr("Valid time interval")
             }
-
             Label {
                 anchors {
                             left: parent.left
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(repDate, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(avaReport.publicationTime, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
-
             Label {
                 anchors {
                             left: parent.left
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? Qt.formatDateTime(validFrom, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(validTo, Qt.SystemLocaleShortDate) : ""  //in UTC - > Wrong!
+                text: (downloadSucc)? Qt.formatDateTime(avaReport.validTime.startTime, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(avaReport.validTime.endTime, Qt.SystemLocaleShortDate) : ""
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
 
-
+            //Danger Level
             SectionHeader {
                 text: qsTr("Danger Level")
             }
-
             Row {
                 width: parent.width
                 spacing: Theme.paddingMedium
@@ -287,19 +247,21 @@ Page {
                     id: lblDangerLevel
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width
-                    text: (downloadSucc)? qsTr("Level") + " " + dangerLevel + " - " + dangerLevelText(dangerLevel) : dangerLevelError
+                    text: (downloadSucc)? dangerLevelText(dangerLevel) : dangerLevelError
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
             }
 
+            //ElevationData
             SectionHeader {
                 text: qsTr("Elevation Data")
+                visible: (dangerLevel_l === dangerLevel_h) ? false : true
             }
-
             Row {
                 width: parent.width
                 spacing: Theme.paddingMedium
+                visible: (dangerLevel_l === dangerLevel_h) ? false : true
 
                 anchors {
                             left: parent.left
@@ -315,93 +277,318 @@ Page {
 
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
-                    text: (dangerLevel_l === dangerLevel_h) ? qsTr("entire range") : getElevFromString(dangerLevel_alti)
+                    text: getElevFromString(avaReport.dangerRatings[0].elevation)
                     font.pixelSize: Theme.fontSizeMedium
                     wrapMode: Text.Wrap
                 }
             }
 
-            ExpandingSectionGroup {
-
-                ExpandingSection {
-                    title: qsTr("Avalanche Problem")
-
-                    content.sourceComponent:
-                        Column {
-                            spacing: Theme.paddingMedium
-                            Repeater {
-                                model: dPatterns
-                                Row {
-                                    width: parent.width
-                                    spacing: Theme.paddingMedium
-                                    property int sectionIndex: model.index
-                                    anchors {
-                                                left:     parent.left
-                                                right:    parent.right
-                                                margins:  Theme.paddingMedium
-                                            }
-                                    Image {
-                                        source: "qrc:///res/avalanche-situations/" + dPatterns[sectionIndex]['problem_type'].replace(' ', '_') + ".png"
-                                        width:  Theme.iconSizeLarge
-                                        height: Theme.iconSizeLarge
-                                    }
-                                    Rectangle {
-                                         color: "white"
-                                         width: Theme.iconSizeLarge
-                                         height:Theme.iconSizeLarge
-                                         Repeater {
-                                             model: dPatterns[sectionIndex]['aspect']
-                                             Image {
-                                                 property int aspectIndex: model.index
-                                                 source: "qrc:///res/expositions/exposition_" + dPatterns[sectionIndex]['aspect'][aspectIndex].toLowerCase()  + ".png"
-                                                 width:  Theme.iconSizeLarge
-                                                 height: Theme.iconSizeLarge
-                                             }
-                                         }
-
-                                         Image {
-                                            source: "qrc:///res/expositions/exposition_bg.png"
-                                            width:  Theme.iconSizeLarge
-                                            height: Theme.iconSizeLarge
-                                         }
-                                    }
-
-                                    //Middle is not yet covered
-                                    Rectangle {
-                                         color: "white"
-                                         width: Theme.iconSizeLarge
-                                         height:Theme.iconSizeLarge
-                                         Image {
-                                             source: "qrc:///res/warning-pictos/levels_" + getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) + ".png"
-                                             width:  Theme.iconSizeLarge
-                                             height: Theme.iconSizeLarge
-                                         }
-                                    }
-
-                                    IconButton {
-                                        id: upDownInd
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        icon.source: (getAvaDangElevText(dPatterns[sectionIndex]['valid_elevation']) === "all") ? "" : "image://theme/icon-s-unfocused-down"
-                                        transform: Rotation {
-                                            origin.x: upDownInd.width/2;
-                                            origin.y: upDownInd.height/2;
-                                            angle: (dPatterns[sectionIndex]['valid_elevation'].indexOf('>') > -1) ? 180 : 0
-                                        }
-
-                                    }
-
-                                    Label {
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        text: getElevFromString(dPatterns[sectionIndex]['valid_elevation'])
-                                        font.pixelSize: Theme.fontSizeMedium
-                                        wrapMode: Text.Wrap
-                                    }
-
-
-                                }
-                            }
+            //Avalanche prone locations
+            SectionHeader {
+                text: qsTr("Avalanche prone locations")
+                visible: (avaReport.avalancheProblems.length == 0) ? true : false
+            }
+            Row {
+                width: parent.width
+                spacing: Theme.paddingMedium
+                visible: (avaReport.avalancheProblems.length == 0) ? true : false
+                anchors {
+                            left:     parent.left
+                            right:    parent.right
+                            margins:  Theme.paddingMedium
                         }
+                Rectangle {
+                     color: "white"
+                     width: Theme.iconSizeLarge
+                     height:Theme.iconSizeLarge
+                     Repeater {
+                         model: avaReport.dangerRatings[0]['aspect']
+                         Image {
+                             property int aspectIndex: model.index
+                             source: "qrc:///res/expositions/exposition_" + avaReport.dangerRatings[0]['aspect'][aspectIndex].toLowerCase()  + ".png"
+                             width:  Theme.iconSizeLarge
+                             height: Theme.iconSizeLarge
+                         }
+                     }
+
+                     Image {
+                        source: "qrc:///res/expositions/exposition_bg.png"
+                        width:  Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
+                     }
                 }
+
+                Rectangle {
+                     visible: (avaReport.dangerRatings[0].elevation.hasOwnProperty('upperBound') || avaReport.dangerRatings[0].elevation.hasOwnProperty('lowerBound')) ? true : false
+                     color: "white"
+                     width: Theme.iconSizeLarge
+                     height:Theme.iconSizeLarge
+                     Image {
+                         source: "qrc:///res/warning-pictos/levels_above.png"
+                         width:  Theme.iconSizeLarge
+                         height: Theme.iconSizeLarge
+                     }
+                }
+
+                IconButton {
+                    id: upDownInd
+                    visible: (avaReport.dangerRatings[0].elevation.hasOwnProperty('upperBound') || avaReport.dangerRatings[0].elevation.hasOwnProperty('lowerBound')) ? true : false
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: "image://theme/icon-s-unfocused-down"
+                    transform: Rotation {
+                        origin.x: upDownInd.width/2;
+                        origin.y: upDownInd.height/2;
+                        angle: 180
+                    }
+
+                }
+
+                Label {
+                    visible: (avaReport.dangerRatings[0].elevation.hasOwnProperty('upperBound') || avaReport.dangerRatings[0].elevation.hasOwnProperty('lowerBound')) ? true : false
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: getElevFromString(avaReport.dangerRatings[0].elevation)
+                    font.pixelSize: Theme.fontSizeMedium
+                    wrapMode: Text.Wrap
+                }
+            }
+
+            //Avalanche Problems
+            SectionHeader {
+                text: qsTr("Avalanche Problem")
+                visible: (avaReport.avalancheProblems.length > 0) ? true : false
+            }
+            Repeater {
+                model: avaReport.avalancheProblems
+                Row {
+                    width: parent.width
+                    spacing: Theme.paddingMedium
+                    property int sectionIndex: model.index
+                    anchors {
+                                left:     parent.left
+                                right:    parent.right
+                                margins:  Theme.paddingMedium
+                            }
+                    Image {
+                        source: "qrc:///res/avalanche-situations/" + avaReport.avalancheProblems[sectionIndex]['problemType'] + ".png"
+                        width:  Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
+                    }
+                    Rectangle {
+                         color: "white"
+                         width: Theme.iconSizeLarge
+                         height:Theme.iconSizeLarge
+                         Repeater {
+                             model: avaReport.avalancheProblems[sectionIndex].dangerRating.aspect
+                             Image {
+                                 property int aspectIndex: model.index
+                                 source: "qrc:///res/expositions/exposition_" + avaReport.avalancheProblems[sectionIndex].dangerRating.aspect[aspectIndex].toLowerCase()  + ".png"
+                                 width:  Theme.iconSizeLarge
+                                 height: Theme.iconSizeLarge
+                             }
+                         }
+                         Image {
+                            source: "qrc:///res/expositions/exposition_bg.png"
+                            width:  Theme.iconSizeLarge
+                            height: Theme.iconSizeLarge
+                         }
+                    }
+
+                    Rectangle {
+                         visible: (avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('upperBound') || avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('lowerBound')) ? true : false
+                         color: "white"
+                         width: Theme.iconSizeLarge
+                         height:Theme.iconSizeLarge
+                         Image {
+                             source: "qrc:///res/warning-pictos/levels_" + getAvaProbElevText(avaReport.avalancheProblems[sectionIndex].dangerRating.elevation) + ".png"
+                             width:  Theme.iconSizeLarge
+                             height: Theme.iconSizeLarge
+                         }
+                    }
+
+                    IconButton {
+                        id: upDownInd2
+                        visible: (avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('upperBound') || avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('lowerBound')) ? true : false
+                        anchors.verticalCenter: parent.verticalCenter
+                        icon.source: "image://theme/icon-s-unfocused-down"
+                        transform: Rotation {
+                            origin.x: upDownInd2.width/2;
+                            origin.y: upDownInd2.height/2;
+                            angle: (avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('lowerBound')) ? 180 : 0
+                        }
+
+                    }
+
+                    Label {
+                        visible: (avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('upperBound') || avaReport.avalancheProblems[sectionIndex].dangerRating.elevation.hasOwnProperty('lowerBound')) ? true : false
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: getElevFromString(avaReport.avalancheProblems[sectionIndex].dangerRating.elevation)
+                        font.pixelSize: Theme.fontSizeMedium
+                        wrapMode: Text.Wrap
+                    }
+
+                    Label {
+                        width: parent.width - 2 * Theme.iconSizeLarge
+                        visible: (avaReport.avalancheProblems[sectionIndex].hasOwnProperty('comment')) ? true : false
+                        text: avaReport.avalancheProblems[sectionIndex].comment
+                        font.pixelSize: Theme.fontSizeSmall
+                        wrapMode: Text.Wrap
+                    }
+                }
+            }
+
+            //Highlights
+            Label {
+                visible: (avaReport.hasOwnProperty('highlights')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.highlights
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+            }
+
+            //Danger Description
+            SectionHeader {
+                text: qsTr("Danger Description")
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('avalancheActivityHighlights')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.avalancheActivityHighlights
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('avalancheActivityComment')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.avalancheActivityComment
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+            }
+
+            //Snowpack Description
+            SectionHeader {
+                visible: (avaReport.hasOwnProperty('snowpackStructureHighlights') || avaReport.hasOwnProperty('snowpackStructureComment')) ? true : false
+                text: qsTr("Snowpack Description")
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('snowpackStructureHighlights')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.snowpackStructureHighlights
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('snowpackStructureComment')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.snowpackStructureComment
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+            }
+
+            //TravelAdvisory Description
+            SectionHeader {
+                visible: (avaReport.hasOwnProperty('travelAdvisoryHighlights') || avaReport.hasOwnProperty('travelAdvisoryComment')) ? true : false
+                text: qsTr("Travel Advisory")
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('travelAdvisoryHighlights')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.travelAdvisoryHighlights
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('travelAdvisoryComment')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.travelAdvisoryComment
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+            }
+
+            //wx Forecast
+            SectionHeader {
+                visible: (avaReport.hasOwnProperty('wxSynopsisHighlights') || avaReport.hasOwnProperty('wxSynopsisComment')) ? true : false
+                text: qsTr("Weather Forecast")
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('wxSynopsisHighlights')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.wxSynopsisHighlights
+                font.pixelSize: Theme.fontSizeMedium
+                wrapMode: Text.Wrap
+            }
+            Label {
+                visible: (avaReport.hasOwnProperty('wxSynopsisComment')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.wxSynopsisComment
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+            }
+
+            //tendency
+            SectionHeader {
+                visible: (avaReport.tendency.hasOwnProperty('tendencyComment')) ? true : false
+                text: qsTr("Tendency")
+            }
+            Label {
+                visible: (avaReport.tendency.hasOwnProperty('tendencyComment')) ? true : false
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingMedium
+                        }
+                width: parent.width
+                text: avaReport.tendency.tendencyComment
+                font.pixelSize: Theme.fontSizeSmall
+                wrapMode: Text.Wrap
+            }
+
+            /*
+            ExpandingSectionGroup {
 
                 ExpandingSection {
                     title: qsTr("Danger Description")
@@ -471,7 +658,7 @@ Page {
                     }
                 }
             }
-
+            */
             LinkedLabel {
                 anchors {
                             left: parent.left
@@ -496,7 +683,7 @@ Page {
                     var avaReport_str = val;
                     var avaReports = JSON.parse(avaReport_str);
 
-                    parseAvaReportJSON(avaReports[0])
+                    avaReport = avaReports[0]
 
                     if (avaReports.length > 1) {
                         if (avaReports[1] !== '') {
@@ -516,7 +703,7 @@ Page {
                     cached_pm = val;
                 });
                 setHandler('error', function(val) {
-                    console.log("Error: " + val)
+                    console.log("Error: " + val);
                 });
                 setHandler('finished', function(val) {
                     // console.log("should be done: " + val)
@@ -525,15 +712,33 @@ Page {
                         coverExchange.region = macroRegion
                         coverExchange.microRegion = regionName
                         coverExchange.levelText = qsTr("LEVEL")
+
+                        for (var elem in avaReport.dangerRatings) {
+                            if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('lowerBound')) {
+                                dangerLevel_h = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+                                dangerLevel_alti = avaReport.dangerRatings[elem].elevation.lowerBound;
+
+                            } else if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('upperBound')) {
+                                dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+                            } else {
+                                dangerLevel_h = dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+                            }
+                        }
+
+                        if (dangerLevel_l == 0 || dangerLevel_h == 0) dangerLevel_l = dangerLevel_h = Math.max(dangerLevel_h, dangerLevel_l);
+
+                        dangerLevel = Math.max(dangerLevel_h, dangerLevel_l)
+
                         coverExchange.dangerMain = dangerLevel
                         coverExchange.dangerH = dangerLevel_h
                         coverExchange.dangerL = dangerLevel_l
-                        coverExchange.validHeight = (dangerLevel_l === dangerLevel_h) ? qsTr("entire range") : getElevFromString(dangerLevel_alti)
+                        coverExchange.validHeight = getElevFromString(avaReport.dangerRatings[0].elevation)
+
                     }
                     downloadSucc = val
 
                     // If Busy == false, error message was set by startDownload()
-                    if (downloadSucc == false && busy == True) {
+                    if (downloadSucc == false && busy == true) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
                     }
 

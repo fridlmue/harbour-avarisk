@@ -33,6 +33,125 @@
     </message>
 </context>
 <context>
+    <name>BulletinView</name>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>low</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>moderate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>considerable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>very high</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>between </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Know-How</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valid time interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report from</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report could not be requested</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Danger Level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Elevation Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Avalanche prone locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Avalanche Problem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Danger Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Snowpack Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tendency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LEVEL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Internet connection and no report cached for this region</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Travel Advisory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather Forecast</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DangerPage</name>
     <message>
         <source>Downloading...</source>

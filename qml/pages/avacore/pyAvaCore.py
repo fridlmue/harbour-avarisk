@@ -31,8 +31,9 @@ from avacore.processor_caamlv5 import parse_xml, parse_xml_bavaria, parse_xml_vo
 ### XML-Helpers
 
 def get_xml_as_et(url):
-
-    '''returns the xml-file from url as ElementTree'''
+    '''
+    returns the xml-file from url as ElementTree
+    '''
 
     with urlopen(url) as response:
         response_content = response.read()
@@ -50,8 +51,9 @@ def get_xml_as_et(url):
     return root
 
 def get_reports(region_id, local='en', cache_path=str(Path('cache')), from_cache=False):
-
-    '''returns array of AvaReports for requested region_id and provider information'''
+    '''
+    returns array of AvaReports for requested region_id and provider information
+    '''
 
     url = ''
     if region_id.startswith("FR"):
@@ -80,12 +82,7 @@ def get_reports(region_id, local='en', cache_path=str(Path('cache')), from_cache
 
         logging.info('Fetching %s', url)
         root = get_xml_as_et(url)
-        '''
-        if region_id.startswith("AT8") or region_id.startswith("AT-08"):
-            reports = parse_xml_vorarlberg(root)
-        elif region_id.startswith("BY"):
-            reports = parse_xml_bavaria(root, "bavaria")
-        '''
+
         if region_id.startswith("SI"):
             reports = parse_xml_bavaria(root, "slovenia")
         else:
@@ -94,8 +91,9 @@ def get_reports(region_id, local='en', cache_path=str(Path('cache')), from_cache
 
 
 def get_report_url(region_id, local=''): #You can ignore "provider" return value by url, _ = getReportsUrl
-
-    '''returns the valid URL for requested region_id'''
+    '''
+    returns the valid URL for requested region_id
+    '''
 
      # Euregio-Region Tirol, Südtirol, Trentino
     if ("AT-07" in region_id) or ("IT-32-BZ" in region_id) or ("IT-32-TN" in region_id):
@@ -148,18 +146,6 @@ def get_report_url(region_id, local=''): #You can ignore "provider" return value
         url = "https://www.avalanche-warnings.eu/public/niederoesterreich/caaml"
         provider = "Die dargestellten Informationen werden über eine API auf https://www.avalanche-warnings.eu abgefragt. Diese wird "\
             "bereitgestellt vom: Lawinenwarndienst Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at)."
-    
-    '''
-    #Vorarlberg - outdated!
-    if region_id.startswith("AT8"):
-        url = "https://warndienste.cnv.at/dibos/lawine_en/avalanche_bulletin_vorarlberg_en.xml"
-        provider = "The displayed information is provided by an open data API on https://warndienste.cnv.at by: "\
-            "Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
-        if "DE" in local.upper():
-            url = "http://warndienste.cnv.at/dibos/lawine/avalanche_bulletin_vorarlberg_de.xml"
-            provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at abgefragt. Diese wird "\
-                "bereitgestellt von der Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
-    '''
 
     #Vorarlberg Neu
     if region_id.startswith("AT-08"):
@@ -170,18 +156,6 @@ def get_report_url(region_id, local=''): #You can ignore "provider" return value
             url = "https://www.avalanche-warnings.eu/public/vorarlberg/caaml"
             provider = "Die dargestellten Informationen werden über eine API auf https://warndienste.cnv.at abgefragt. Diese wird "\
                 "bereitgestellt von der Landeswarnzentrale Vorarlberg - http://www.vorarlberg.at/lawine"
-
-    '''
-    #Bavaria - outdated
-    if region_id.startswith("BY"):
-        url = "https://www.lawinenwarndienst-bayern.de/download/lagebericht/caaml_en.xml"
-        provider = "The displayed ihe displayed information is provided by an open data API on https://www.lawinenwarndienst-bayern.de/ "\
-            "by: Avalanche warning centre at the Bavarian State Office for the Environment - https://www.lawinenwarndienst-bayern.de/"
-        if "DE" in local.upper():
-            url = "https://www.lawinenwarndienst-bayern.de/download/lagebericht/caaml.xml"
-            provider = "Die dargestellten Informationen werden über eine API auf https://www.lawinenwarndienst-bayern.de abgefragt. "\
-                "Diese wird bereitgestellt von der Lawinenwarnzentrale Bayern (https://www.lawinenwarndienst-bayern.de)."
-    '''
             
     #Bavaria - neu
     if region_id.startswith("DE-BY"):

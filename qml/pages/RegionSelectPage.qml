@@ -46,7 +46,7 @@ Page {
         delegate: BackgroundItem {
             id: firstListViewDelegate
 
-            onClicked: pageStack.push(Qt.resolvedUrl("DangerPage" + (RegionID.indexOf("CH-") !== -1 ? "_swiss" : "") + ".qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": false})
+            onClicked: pageStack.push(Qt.resolvedUrl("BulletinView.qml"), {"regionID": RegionID, "regionName": region, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": false})
 
             Label {
                 x: Theme.horizontalPageMargin
@@ -63,10 +63,11 @@ Page {
         id: bgImg
         asynchronous: true
         fillMode: Image.PreserveAspectFit
-        opacity: 0.05
+        opacity: 0.20
         source: "qrc:///res/bg_" + ( Theme.colorScheme ? "light" : "dark" ) + "_page.svg"
         anchors {
-            centerIn: parent
+            left: parent.left
+            bottom: parent.bottom
         }
     }
 
