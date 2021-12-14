@@ -33,6 +33,125 @@
     </message>
 </context>
 <context>
+    <name>BulletinView</name>
+    <message>
+        <source>Downloading...</source>
+        <translation>Téléchargement...</translation>
+    </message>
+    <message>
+        <source>low</source>
+        <translation>faible</translation>
+    </message>
+    <message>
+        <source>moderate</source>
+        <translation>limité</translation>
+    </message>
+    <message>
+        <source>considerable</source>
+        <translation>marqué</translation>
+    </message>
+    <message>
+        <source>high</source>
+        <translation>fort</translation>
+    </message>
+    <message>
+        <source>very high</source>
+        <translation>très fort</translation>
+    </message>
+    <message>
+        <source>loading</source>
+        <translation>chargement</translation>
+    </message>
+    <message>
+        <source>between </source>
+        <translation>entre</translation>
+    </message>
+    <message>
+        <source>entire range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Know-How</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Report</source>
+        <translation type="unfinished">Bulletin</translation>
+    </message>
+    <message>
+        <source>Offline Report - Check Validity Date</source>
+        <translation type="unfinished">Bulletin hors connexion - Vérifiez la date de validité</translation>
+    </message>
+    <message>
+        <source>PM Report Available!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valid time interval</source>
+        <translation type="unfinished">Interval de validité</translation>
+    </message>
+    <message>
+        <source>Report from</source>
+        <translation type="unfinished">Bulletin issu de</translation>
+    </message>
+    <message>
+        <source>Report could not be requested</source>
+        <translation type="unfinished">Le bulletin ne peut pas être recueilli</translation>
+    </message>
+    <message>
+        <source>Danger Level</source>
+        <translation type="unfinished">Indice de risque</translation>
+    </message>
+    <message>
+        <source>Elevation Data</source>
+        <translation type="unfinished">Altitude</translation>
+    </message>
+    <message>
+        <source>Avalanche prone locations</source>
+        <translation type="unfinished">Zone d&apos;exposition</translation>
+    </message>
+    <message>
+        <source>Avalanche Problem</source>
+        <translation type="unfinished">Les Problèmes d&apos;Avalanche</translation>
+    </message>
+    <message>
+        <source>Danger Description</source>
+        <translation type="unfinished">Description du risque</translation>
+    </message>
+    <message>
+        <source>Snowpack Description</source>
+        <translation type="unfinished">Manteau neigeux</translation>
+    </message>
+    <message>
+        <source>Tendency</source>
+        <translation type="unfinished">Tendance</translation>
+    </message>
+    <message>
+        <source>LEVEL</source>
+        <translation type="unfinished">Niveau</translation>
+    </message>
+    <message>
+        <source>Maybe no report is provided for this region at the moment.</source>
+        <translation type="unfinished">Il est possible qu&apos;aucun bulletin ne soit disponible actuellement pour cette région</translation>
+    </message>
+    <message>
+        <source>No Internet connection and no report cached for this region</source>
+        <translation type="unfinished">Connexion indisponible, et aucune donnée en cache pour cette région</translation>
+    </message>
+    <message>
+        <source>Travel Advisory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather Forecast</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DangerPage</name>
     <message>
         <source>Downloading...</source>

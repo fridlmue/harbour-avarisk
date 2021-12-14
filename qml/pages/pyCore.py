@@ -77,7 +77,7 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
         Path(path + "/reports/").mkdir(parents=True, exist_ok=True)
 
         for report in reports:
-            for current_region_id in report.valid_regions:
+            for current_region_id in report.get_region_list():
                 pm_marker = ''
                 if hasattr(report, 'predecessor_id'):
                     pm_marker = '_pm'
@@ -89,7 +89,7 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
                         cached = False
         for report in reports:
             if hasattr(report, 'predecessor_id'):
-                if matching_report.report_id in report.predecessor_id:
+                if matching_report.bulletinID in report.predecessor_id:
                     matching_report_pm = report
 
     else:

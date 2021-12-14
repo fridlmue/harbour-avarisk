@@ -21,6 +21,7 @@ SOURCES += src/harbour-avarisk.cpp
 
 DISTFILES += qml/harbour-avarisk.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/BulletinView.qml \
     qml/pages/DangerPage_swiss.qml \
     qml/pages/Education.qml \
     qml/pages/FirstPage.qml \
