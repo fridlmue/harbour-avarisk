@@ -65,8 +65,55 @@ def issue_report(region_id, local, path, from_cache=False, cli_out=False, send_o
         # else:
         #    url, provider = pyAvaCore.get_report_url(region_id, local)
 
+        region_id_short = region_id
+        if "AT-07" in region_id:
+            region_id_short = 'AT-07'
+
+        if "IT-32-BZ" in region_id:
+            region_id_short = 'IT-32-BZ'
+
+        if "IT-32-TN" in region_id:
+            region_id_short = 'IT-32-TN'
+        # Kärnten
+        if region_id.startswith("AT-02"):
+            region_id_short = 'AT-02'
+
+        # Salzburg
+        if region_id.startswith("AT-05"):
+            region_id_short = 'AT-05'
+
+        # Steiermark
+        if region_id.startswith("AT-06"):
+            region_id_short = 'AT-06'
+
+        # Oberösterreich
+        if region_id.startswith("AT-04"):
+            region_id_short = 'AT-04'
+
+        # Niederösterreich
+        if region_id.startswith("AT-03"):
+            region_id_short = 'AT-03'
+
+        #Vorarlberg Neu
+        if region_id.startswith("AT-08"):
+            region_id_short = 'AT-08'
+
+        #Bavaria - neu
+        if region_id.startswith("DE-BY"):
+            region_id_short = 'DE-BY'
+
+        #Val d'Aran
+        if region_id.startswith("ES-CT-L"):
+            region_id_short = 'ES-CT-L'
+
+        if region_id.startswith("SI"):
+            region_id_short = 'SI'
+
+        if region_id.startswith("CH"):
+                region_id_short = 'CH'
+
         try:
-            reports_r, provider, url = pyAvaCore.get_reports(region_id, local=local.lower()[0:2], cache_path=path)
+            reports_r, provider, url = pyAvaCore.get_reports(region_id_short, local=local.lower()[0:2], cache_path=path)
             reports.extend(reports_r)
             pyotherside.send('error', 'local :' +local.lower())
         except Exception as e:

@@ -152,228 +152,6 @@
     </message>
 </context>
 <context>
-    <name>DangerPage</name>
-    <message>
-        <source>Downloading...</source>
-        <translation>Lädt...</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>gering</translation>
-    </message>
-    <message>
-        <source>moderate</source>
-        <translation>mäßig</translation>
-    </message>
-    <message>
-        <source>considerable</source>
-        <translation>erheblich</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>groß</translation>
-    </message>
-    <message>
-        <source>very high</source>
-        <translation>sehr groß</translation>
-    </message>
-    <message>
-        <source>loading</source>
-        <translation>lädt</translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation>Waldgrenze</translation>
-    </message>
-    <message>
-        <source>entire range</source>
-        <translation>jede Höhe</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Neu herunterladen</translation>
-    </message>
-    <message>
-        <source>Know-How</source>
-        <translation>Know-How</translation>
-    </message>
-    <message>
-        <source>PM Report</source>
-        <translation>Nachmittagsbericht</translation>
-    </message>
-    <message>
-        <source>Report</source>
-        <translation>Bericht</translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Offline Report: Prüfe ob gültig!</translation>
-    </message>
-    <message>
-        <source>Valid time interval</source>
-        <translation>Gültigkeitszeitraum</translation>
-    </message>
-    <message>
-        <source>Report from</source>
-        <translation>Bericht vom</translation>
-    </message>
-    <message>
-        <source>Report could not be requested</source>
-        <translation>Report konnte nicht abgerufen werden</translation>
-    </message>
-    <message>
-        <source>Danger Level</source>
-        <translation>Gefahrenstufe</translation>
-    </message>
-    <message>
-        <source>Level</source>
-        <translation>Stufe</translation>
-    </message>
-    <message>
-        <source>Elevation Data</source>
-        <translation>Höheneingrenzung</translation>
-    </message>
-    <message>
-        <source>Avalanche Problem</source>
-        <translation>Probleme und Gefahrenstellen</translation>
-    </message>
-    <message>
-        <source>Danger Description</source>
-        <translation>Gefahrenbeschrieb</translation>
-    </message>
-    <message>
-        <source>Snowpack Description</source>
-        <translation>Schneedeckenaufbau</translation>
-    </message>
-    <message>
-        <source>Tendency</source>
-        <translation>Tendenz</translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation>STUFE</translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
-    </message>
-    <message>
-        <source>No Internet connection and no report cached for this region</source>
-        <translation>Keine Internetverbindung und kein heruntergeladener Report verfügbar</translation>
-    </message>
-    <message>
-        <source>PM Report Available!</source>
-        <translation>Nachmittagsbericht verfügbar!</translation>
-    </message>
-</context>
-<context>
-    <name>DangerPage_swiss</name>
-    <message>
-        <source>Downloading...</source>
-        <translation>Lädt...</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>gering</translation>
-    </message>
-    <message>
-        <source>moderate</source>
-        <translation>mäßig</translation>
-    </message>
-    <message>
-        <source>considerable</source>
-        <translation>erheblich</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>groß</translation>
-    </message>
-    <message>
-        <source>very high</source>
-        <translation>sehr groß</translation>
-    </message>
-    <message>
-        <source>loading</source>
-        <translation>lädt</translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation>Waldgrenze</translation>
-    </message>
-    <message>
-        <source>entire range</source>
-        <translation>jede Höhe</translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Neu herunterladen</translation>
-    </message>
-    <message>
-        <source>Know-How</source>
-        <translation>Know-How</translation>
-    </message>
-    <message>
-        <source>PM Report</source>
-        <translation>Nachmittagsbericht</translation>
-    </message>
-    <message>
-        <source>Report</source>
-        <translation>Bericht</translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Offline Report: Prüfe ob gültig!</translation>
-    </message>
-    <message>
-        <source>PM Report Available!</source>
-        <translation>Nachmittagsbericht verfügbar!</translation>
-    </message>
-    <message>
-        <source>Valid time interval</source>
-        <translation>Gültigkeitszeitraum</translation>
-    </message>
-    <message>
-        <source>Report from</source>
-        <translation>Bericht vom</translation>
-    </message>
-    <message>
-        <source>Report could not be requested</source>
-        <translation>Report konnte nicht abgerufen werden</translation>
-    </message>
-    <message>
-        <source>Danger Level</source>
-        <translation>Gefahrenstufe</translation>
-    </message>
-    <message>
-        <source>Level</source>
-        <translation>Stufe</translation>
-    </message>
-    <message>
-        <source>Avalanche prone locations</source>
-        <translation>Lawinengefährdete Expositionen</translation>
-    </message>
-    <message>
-        <source>Local Report</source>
-        <translation>Lokaler Bericht</translation>
-    </message>
-    <message>
-        <source>Snow and Weather Data</source>
-        <translation>Schnee- und Wetterdaten</translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation>STUFE</translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Möglicherweise wird für diese Region noch kein Lagebericht ausgegeben.</translation>
-    </message>
-    <message>
-        <source>No Internet connection and no report cached for this region</source>
-        <translation>Keine Internetverbindung und kein heruntergeladener Report verfügbar</translation>
-    </message>
-</context>
-<context>
     <name>Education</name>
     <message>
         <source>Danger Scale</source>
@@ -552,6 +330,14 @@
     </message>
     <message>
         <source>Corse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slovenia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Norway</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -994,10 +780,6 @@
         <translation>Ennstaler Alpen</translation>
     </message>
     <message>
-        <source>Schladminger Tauern</source>
-        <translation>Schladminger Tauern</translation>
-    </message>
-    <message>
         <source>Nördl. Wölzer Tauern</source>
         <translation>Nördl. Wölzer Tauern</translation>
     </message>
@@ -1118,16 +900,8 @@
         <translation>Allgäuer Alpen / Hochtannberg</translation>
     </message>
     <message>
-        <source>Lechquellengeb. / Arlberg / Lechtaler Alp.</source>
-        <translation>Lechquellengeb. / Arlberg / Lechtaler Alp.</translation>
-    </message>
-    <message>
         <source>Verwall</source>
         <translation>Verwall</translation>
-    </message>
-    <message>
-        <source>Rätikon</source>
-        <translation>Rätikon</translation>
     </message>
     <message>
         <source>Ammergauer Alpen</source>
@@ -1136,14 +910,6 @@
     <message>
         <source>Werdenfelser Alpen</source>
         <translation>Werdenfelser Alpen</translation>
-    </message>
-    <message>
-        <source>Bayrische Voralpen</source>
-        <translation>Bayrische Voralpen</translation>
-    </message>
-    <message>
-        <source>Chiemgauer Alpen</source>
-        <translation>Chiemgauer Alpen</translation>
     </message>
     <message>
         <source>Berchtesgadener Alpen</source>
@@ -1883,6 +1649,170 @@
     </message>
     <message>
         <source>CERDAGNE-CANIGOU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schladminger Tauern Nord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schladminger Tauern Süd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Vorberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Hauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen Mitte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer Alpen West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer Alpen Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generalized Slovenia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Julian Alps, South and West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Julian Alps, Central and Karawanks, West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kamnik-Savinja Alps and Karawanks, East</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pre-Apline and Dinaric-Alps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nordenskiöld Land</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finnmarkskysten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vest-Finnmark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nord-Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lyngen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tromsø</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sør-Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lofoten og Vesterålen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ofoten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Svartisen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trollheimen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Romsdal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sunnmøre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Fjordane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jotunheimen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Sogn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voss</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hallingdal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hardanger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vest-Telemark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heiane</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

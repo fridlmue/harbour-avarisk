@@ -76,7 +76,7 @@
     </message>
     <message>
         <source>Know-How</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Know-How</translation>
     </message>
     <message>
         <source>Report</source>
@@ -149,228 +149,6 @@
     <message>
         <source>Weather Forecast</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DangerPage</name>
-    <message>
-        <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>faible</translation>
-    </message>
-    <message>
-        <source>moderate</source>
-        <translation>limité</translation>
-    </message>
-    <message>
-        <source>considerable</source>
-        <translation>marqué</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>fort</translation>
-    </message>
-    <message>
-        <source>very high</source>
-        <translation>très fort</translation>
-    </message>
-    <message>
-        <source>loading</source>
-        <translation>chargement</translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation>limite des arbres</translation>
-    </message>
-    <message>
-        <source>entire range</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>Rechargement</translation>
-    </message>
-    <message>
-        <source>Know-How</source>
-        <translation>Savoir-faire</translation>
-    </message>
-    <message>
-        <source>PM Report</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Report</source>
-        <translation>Bulletin</translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Bulletin hors connexion - Vérifiez la date de validité</translation>
-    </message>
-    <message>
-        <source>Valid time interval</source>
-        <translation>Interval de validité</translation>
-    </message>
-    <message>
-        <source>Report from</source>
-        <translation>Bulletin issu de</translation>
-    </message>
-    <message>
-        <source>Report could not be requested</source>
-        <translation>Le bulletin ne peut pas être recueilli</translation>
-    </message>
-    <message>
-        <source>Danger Level</source>
-        <translation>Indice de risque</translation>
-    </message>
-    <message>
-        <source>Level</source>
-        <translation>Indice</translation>
-    </message>
-    <message>
-        <source>Elevation Data</source>
-        <translation>Altitude</translation>
-    </message>
-    <message>
-        <source>Avalanche Problem</source>
-        <translation>Les Problèmes d&apos;Avalanche</translation>
-    </message>
-    <message>
-        <source>Danger Description</source>
-        <translation>Description du risque</translation>
-    </message>
-    <message>
-        <source>Snowpack Description</source>
-        <translation>Manteau neigeux</translation>
-    </message>
-    <message>
-        <source>Tendency</source>
-        <translation>Tendance</translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation>Niveau</translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Il est possible qu&apos;aucun bulletin ne soit disponible actuellement pour cette région</translation>
-    </message>
-    <message>
-        <source>No Internet connection and no report cached for this region</source>
-        <translation>Connexion indisponible, et aucune donnée en cache pour cette région</translation>
-    </message>
-    <message>
-        <source>PM Report Available!</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>DangerPage_swiss</name>
-    <message>
-        <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>faibe</translation>
-    </message>
-    <message>
-        <source>moderate</source>
-        <translation>limité</translation>
-    </message>
-    <message>
-        <source>considerable</source>
-        <translation>marqué</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>fort</translation>
-    </message>
-    <message>
-        <source>very high</source>
-        <translation>très fort</translation>
-    </message>
-    <message>
-        <source>loading</source>
-        <translation>chargement</translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation>limite des arbres</translation>
-    </message>
-    <message>
-        <source>entire range</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Reload</source>
-        <translation>rechargement</translation>
-    </message>
-    <message>
-        <source>Know-How</source>
-        <translation>savoir-faire</translation>
-    </message>
-    <message>
-        <source>PM Report</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Report</source>
-        <translation>Bulletin</translation>
-    </message>
-    <message>
-        <source>Offline Report - Check Validity Date</source>
-        <translation>Bulletin hors connexion - Vérifiez la date de validité</translation>
-    </message>
-    <message>
-        <source>PM Report Available!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Valid time interval</source>
-        <translation>Interval de validité</translation>
-    </message>
-    <message>
-        <source>Report from</source>
-        <translation>Bulletin issu de</translation>
-    </message>
-    <message>
-        <source>Report could not be requested</source>
-        <translation>Le bulletin ne peut pas être recueilli</translation>
-    </message>
-    <message>
-        <source>Danger Level</source>
-        <translation>Indice de risque</translation>
-    </message>
-    <message>
-        <source>Level</source>
-        <translation>Indice</translation>
-    </message>
-    <message>
-        <source>Avalanche prone locations</source>
-        <translation>Zone d&apos;exposition</translation>
-    </message>
-    <message>
-        <source>Local Report</source>
-        <translation>Bulletin local</translation>
-    </message>
-    <message>
-        <source>Snow and Weather Data</source>
-        <translation>Neige et Météo</translation>
-    </message>
-    <message>
-        <source>LEVEL</source>
-        <translation>Niveau</translation>
-    </message>
-    <message>
-        <source>Maybe no report is provided for this region at the moment.</source>
-        <translation>Il est possible qu&apos;aucun bulletin ne soit disponible actuellement pour cette région</translation>
-    </message>
-    <message>
-        <source>No Internet connection and no report cached for this region</source>
-        <translation>Connexion indisponible, et aucune donnée en cache pour cette région</translation>
     </message>
 </context>
 <context>
@@ -552,6 +330,14 @@
     </message>
     <message>
         <source>Corse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Slovenia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Norway</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -994,10 +780,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Schladminger Tauern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nördl. Wölzer Tauern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1118,15 +900,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Lechquellengeb. / Arlberg / Lechtaler Alp.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Verwall</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Rätikon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1135,14 +909,6 @@
     </message>
     <message>
         <source>Werdenfelser Alpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Bayrische Voralpen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Chiemgauer Alpen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1883,6 +1649,170 @@
     </message>
     <message>
         <source>CERDAGNE-CANIGOU</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schladminger Tauern Nord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schladminger Tauern Süd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechtaler Alpen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lechquellengebirge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rätikon West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Vorberge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allgäuer Hauptkamm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen Mitte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bayerische Voralpen Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer Alpen West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chiemgauer Alpen Ost</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Generalized Slovenia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Julian Alps, South and West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Julian Alps, Central and Karawanks, West</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Kamnik-Savinja Alps and Karawanks, East</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>pre-Apline and Dinaric-Alps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nordenskiöld Land</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finnmarkskysten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vest-Finnmark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nord-Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lyngen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tromsø</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sør-Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Troms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lofoten og Vesterålen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ofoten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Salten</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Svartisen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trollheimen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Romsdal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sunnmøre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Fjordane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jotunheimen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Indre Sogn</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voss</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hallingdal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hardanger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vest-Telemark</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Heiane</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

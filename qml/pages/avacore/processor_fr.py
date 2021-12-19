@@ -17,6 +17,7 @@ import pytz
 import dateutil.parser
 import urllib.request
 import copy
+import logging
 import re
 import string
 
@@ -47,6 +48,7 @@ def download_report_fr(region_id):
     req = Request('https://rpcache-aa.meteofrance.com/internet2018client/2.0/report?domain=' + re.sub('FR-', '', region_id) +  \
                 '&report_type=Forecast&report_subtype=BRA')
     req.add_header('Authorization', 'Bearer ' + access_token)
+    logging.info('Fetching %s', req.full_url)
     response_content = urlopen(req).read()
 
     try:

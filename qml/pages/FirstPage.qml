@@ -271,6 +271,50 @@ Page {
 
                     width: parent.width
 
+                    title: qsTr("Slovenia")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndSi
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListSi, "country": qsTr("Slovenia"), "macroRegion": qsTr("Slovenia")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Slovenia")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndSi.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
+                    title: qsTr("Norway")
+
+                    content.sourceComponent: Column {
+                        width: parent.width
+                        BackgroundItem {
+                             id: bgndNorway
+                             onClicked: pageStack.push(Qt.resolvedUrl("RegionSelectPage.qml"), {"regionList": RegionList.regionListNorway, "country": qsTr("Norway"), "macroRegion": qsTr("Norway")})
+
+                             Label {
+                                 x: Theme.horizontalPageMargin
+                                 text: qsTr("Norway")
+                                 anchors.verticalCenter: parent.verticalCenter
+                                 color: bgndNorway.highlighted ? Theme.highlightColor : Theme.primaryColor
+                             }
+                         }
+                    }
+                }
+
+                ExpandingSection {
+
+                    width: parent.width
+
                     title: qsTr("Spain")
 
                     content.sourceComponent: Column {

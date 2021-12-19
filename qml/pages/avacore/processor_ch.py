@@ -21,6 +21,7 @@ import zipfile
 import copy
 import base64
 import json
+import logging
 import re
 
 from avacore import pyAvaCore
@@ -34,6 +35,7 @@ def fetch_files_ch(lang, path):
     '''
     Path(path + '/swiss/').mkdir(parents=True, exist_ok=True)
     url = 'https://www.slf.ch/avalanche/mobile/bulletin_'+lang+'.zip'
+    logging.info('Fetching %s', url)
     urllib.request.urlretrieve(url, path + '/swiss/bulletin_'+lang+'.zip')
 
     try:

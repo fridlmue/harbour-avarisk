@@ -70,6 +70,8 @@ class ElevationType:
             return ">"+ self.lowerBound
         if hasattr(self,'upperBound'):
             return "<"+ self.upperBound
+        else:
+            return ""
         
 class AvaCoreCustom:
     '''

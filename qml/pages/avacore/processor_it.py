@@ -17,7 +17,6 @@ import urllib.request
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-from pathlib import Path
 import pytz
 import dateutil.parser
 import logging
@@ -25,14 +24,6 @@ import logging.handlers
 
 from avacore import pyAvaCore
 from avacore.avabulletin import AvaBulletin, DangerRatingType, AvalancheProblemType, AvaCoreCustom, ElevationType, RegionType
-
-Path('logs').mkdir(parents=True, exist_ok=True)
-logging.basicConfig(
-    format='[%(asctime)s] {%(module)s:%(lineno)d} %(levelname)s - %(message)s',
-    level=logging.INFO,
-    handlers=[
-        logging.handlers.TimedRotatingFileHandler(filename='logs/pyAvaCore.log', when='midnight'),
-        logging.StreamHandler()])
 
 
 def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'))):
@@ -70,6 +61,7 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
         }
 
     req = urllib.request.Request(url, headers=headers)
+    logging.info('Fetching %s', req.full_url)
 
     with urllib.request.urlopen(req) as response:
         content = response.read()
@@ -153,9 +145,11 @@ def date_from_report(date):
     return date
 
 # Only temporary for debug
-def process_all_reports_it():
+def process_all_reports_it(region_prefix=''):
     all_reports = []
     for region in it_region_ref.keys():
+        if not region.startswith(region_prefix):
+            continue
         try:
             m_reports = process_reports_it(region)
         except Exception as e: # pylint: disable=broad-except

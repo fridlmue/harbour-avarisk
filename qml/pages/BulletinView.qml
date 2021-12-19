@@ -107,10 +107,10 @@ Page {
         return str_return
     }
 
-    /*function convertUTCDateToLocalDate(date) {
+    function convertUTCDateToLocalDate(date) {
         var newDate = new Date(date.getTime() - date.getTimezoneOffset()*60*1000);
         return newDate;
-    }*/
+    }
 
     ContextProperty {
        key: "Internet.NetworkState"
@@ -208,7 +208,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(avaReport.publicationTime, Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.publicationTime), Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -218,7 +218,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? Qt.formatDateTime(avaReport.validTime.startTime, Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(avaReport.validTime.endTime, Qt.SystemLocaleShortDate) : ""
+                text: (downloadSucc)? Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.validTime.startTime), Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.validTime.endTime), Qt.SystemLocaleShortDate) : ""
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -587,78 +587,6 @@ Page {
                 wrapMode: Text.Wrap
             }
 
-            /*
-            ExpandingSectionGroup {
-
-                ExpandingSection {
-                    title: qsTr("Danger Description")
-
-                    content.sourceComponent: Column {
-                        width: parent.width
-                        Label {
-                            anchors {
-                                        left: parent.left
-                                        right: parent.right
-                                        margins: Theme.paddingMedium
-                                    }
-                            width: parent.width
-                            text: highlights
-                            font.pixelSize: Theme.fontSizeMedium
-                            wrapMode: Text.Wrap
-                        }
-                        Label {
-                            anchors {
-                                        left: parent.left
-                                        right: parent.right
-                                        margins: Theme.paddingMedium
-                                    }
-                            width: parent.width
-                            text: comment
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                        }
-                    }
-                }
-
-                ExpandingSection {
-                    title: qsTr("Snowpack Description")
-
-                    content.sourceComponent: Column {
-                        width: parent.width
-                        Label {
-                            anchors {
-                                        left: parent.left
-                                        right: parent.right
-                                        margins: Theme.paddingMedium
-                                    }
-                            width: parent.width
-                            text: structure
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                        }
-                    }
-                }
-
-                ExpandingSection {
-                    title: qsTr("Tendency")
-
-                    content.sourceComponent: Column {
-                        width: parent.width
-                        Label {
-                            anchors {
-                                        left: parent.left
-                                        right: parent.right
-                                        margins: Theme.paddingMedium
-                                    }
-                            width: parent.width
-                            text: tendency
-                            font.pixelSize: Theme.fontSizeSmall
-                            wrapMode: Text.Wrap
-                        }
-                    }
-                }
-            }
-            */
             LinkedLabel {
                 anchors {
                             left: parent.left

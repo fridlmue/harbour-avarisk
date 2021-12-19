@@ -4,6 +4,14 @@ X-Nemo-Application-Type=silica-qt5
 Icon=harbour-avarisk
 Exec=harbour-avarisk
 Name=avaRisk
+
+#Prepare Sandboxing, can not yet be used, as contextkit in sailjail has a bug.
+#[X-Sailjail]
+#Permissions=Internet;WebView;Location
+#OrganizationName=de.10hoch-6
+#ApplicationName=avarisk
+
+
 # translation example:
 # your app name in German locale (de)
 #

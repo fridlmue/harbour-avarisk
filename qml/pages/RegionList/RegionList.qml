@@ -138,7 +138,8 @@ QtObject {
         ListElement {region: qsTr("Dachsteingebiet");                              RegionID: "AT-06-01"}
         ListElement {region: qsTr("Totes Gebirge");                                RegionID: "AT-06-02"}
         ListElement {region: qsTr("Ennstaler Alpen");                              RegionID: "AT-06-03"}
-        ListElement {region: qsTr("Schladminger Tauern");                          RegionID: "AT-06-04"}
+        ListElement {region: qsTr("Schladminger Tauern Nord");                     RegionID: "AT-06-04-01"}
+        ListElement {region: qsTr("Schladminger Tauern Süd");                      RegionID: "AT-06-04-02"}
         ListElement {region: qsTr("Nördl. Wölzer Tauern");                         RegionID: "AT-06-05"}
         ListElement {region: qsTr("Rottenmanner Tauern");                          RegionID: "AT-06-06"}
         ListElement {region: qsTr("Südl. Wölzer Tauern");                          RegionID: "AT-06-07"}
@@ -176,23 +177,30 @@ QtObject {
         ListElement {region: qsTr("Gippel- Göllergebiet");                         RegionID: "AT-03-06"}
     }
 
+
     property ListModel regionListVorarlberg: ListModel{
-        ListElement {region: qsTr("Bregenzerwaldgebirge");                         RegionID: "AT8R1"}
-        ListElement {region: qsTr("Allgäuer Alpen / Hochtannberg");                RegionID: "AT8R2"}
-        ListElement {region: qsTr("Lechquellengeb. / Arlberg / Lechtaler Alp.");   RegionID: "AT8R3"}
-        ListElement {region: qsTr("Verwall");                                      RegionID: "AT8R4"}
-        ListElement {region: qsTr("Rätikon");                                      RegionID: "AT8R5"}
-        ListElement {region: qsTr("Silvretta");                                    RegionID: "AT8R6"}
+        ListElement {region: qsTr("Bregenzerwaldgebirge");                         RegionID: "AT-08-01"}
+        ListElement {region: qsTr("Allgäuer Alpen / Hochtannberg");                RegionID: "AT-08-02"}
+        ListElement {region: qsTr("Lechtaler Alpen");                              RegionID: "AT-08-03-01"}
+        ListElement {region: qsTr("Lechquellengebirge");                           RegionID: "AT-08-03-02"}
+        ListElement {region: qsTr("Verwall");                                      RegionID: "AT-08-04"}
+        ListElement {region: qsTr("Rätikon Ost");                                  RegionID: "AT-08-05-01"}
+        ListElement {region: qsTr("Rätikon West");                                 RegionID: "AT-08-05-02"}
+        ListElement {region: qsTr("Silvretta");                                    RegionID: "AT-08-06"}
     }
 
     //REGIONS GERMANY
     property ListModel regionListBavaria: ListModel{
-        ListElement {region: qsTr("Allgäuer Alpen");                               RegionID: "BYALL"}
-        ListElement {region: qsTr("Ammergauer Alpen");                             RegionID: "BYAMM"}
-        ListElement {region: qsTr("Werdenfelser Alpen");                           RegionID: "BYWFK"}
-        ListElement {region: qsTr("Bayrische Voralpen");                           RegionID: "BYBVA"}
-        ListElement {region: qsTr("Chiemgauer Alpen");                             RegionID: "BYCHG"}
-        ListElement {region: qsTr("Berchtesgadener Alpen");                        RegionID: "BYBGD"}
+        ListElement {region: qsTr("Allgäuer Vorberge");                            RegionID: "DE-BY-11"}
+        ListElement {region: qsTr("Allgäuer Hauptkamm");                           RegionID: "DE-BY-12"}
+        ListElement {region: qsTr("Ammergauer Alpen");                             RegionID: "DE-BY-20"}
+        ListElement {region: qsTr("Werdenfelser Alpen");                           RegionID: "DE-BY-30"}
+        ListElement {region: qsTr("Bayerische Voralpen West");                     RegionID: "DE-BY-41"}
+        ListElement {region: qsTr("Bayerische Voralpen Mitte");                    RegionID: "DE-BY-42"}
+        ListElement {region: qsTr("Bayerische Voralpen Ost");                      RegionID: "DE-BY-43"}
+        ListElement {region: qsTr("Chiemgauer Alpen West");                        RegionID: "DE-BY-51"}
+        ListElement {region: qsTr("Chiemgauer Alpen Ost");                         RegionID: "DE-BY-52"}
+        ListElement {region: qsTr("Berchtesgadener Alpen");                        RegionID: "DE-BY-60"}
     }
 
     // REGIONS SPAIN
@@ -440,5 +448,40 @@ QtObject {
     property ListModel regionListFrCorse: ListModel{
         ListElement {region: qsTr("CINTO-ROTONDO");                                RegionID: "FR-40"}
         ListElement {region: qsTr("RENOSO-INCUDINE");                              RegionID: "FR-41"}
+    }
+
+    property ListModel regionListSi: ListModel{
+        ListElement {region: qsTr("Generalized Slovenia");                         RegionID: "SI1"}
+        ListElement {region: qsTr("Julian Alps, South and West");                  RegionID: "SI2"}
+        ListElement {region: qsTr("Julian Alps, Central and Karawanks, West");     RegionID: "SI3"}
+        ListElement {region: qsTr("Kamnik-Savinja Alps and Karawanks, East");      RegionID: "SI4"}
+        ListElement {region: qsTr("pre-Apline and Dinaric-Alps");                  RegionID: "SI5"}
+    }
+    
+    property ListModel regionListNorway: ListModel{
+        ListElement {region: qsTr("Nordenskiöld Land");                            RegionID: "NO-3003"}
+        ListElement {region: qsTr("Finnmarkskysten");                              RegionID: "NO-3006"}
+        ListElement {region: qsTr("Vest-Finnmark");                                RegionID: "NO-3007"}
+        ListElement {region: qsTr("Nord-Troms");                                   RegionID: "NO-3009"}
+        ListElement {region: qsTr("Lyngen");                                       RegionID: "NO-3010"}
+        ListElement {region: qsTr("Tromsø");                                       RegionID: "NO-3011"}
+        ListElement {region: qsTr("Sør-Troms");                                    RegionID: "NO-3012"}
+        ListElement {region: qsTr("Indre Troms");                                  RegionID: "NO-3013"}
+        ListElement {region: qsTr("Lofoten og Vesterålen");                        RegionID: "NO-3014"}
+        ListElement {region: qsTr("Ofoten");                                       RegionID: "NO-3015"}
+        ListElement {region: qsTr("Salten");                                       RegionID: "NO-3016"}
+        ListElement {region: qsTr("Svartisen");                                    RegionID: "NO-3017"}
+        ListElement {region: qsTr("Trollheimen");                                  RegionID: "NO-3022"}
+        ListElement {region: qsTr("Romsdal");                                      RegionID: "NO-3023"}
+        ListElement {region: qsTr("Sunnmøre");                                     RegionID: "NO-3024"}
+        ListElement {region: qsTr("Indre Fjordane");                               RegionID: "NO-3027"}
+        ListElement {region: qsTr("Jotunheimen");                                  RegionID: "NO-3028"}
+        ListElement {region: qsTr("Indre Sogn");                                   RegionID: "NO-3029"}
+        ListElement {region: qsTr("Voss");                                         RegionID: "NO-3031"}
+        ListElement {region: qsTr("Hallingdal");                                   RegionID: "NO-3032"}
+        ListElement {region: qsTr("Hardanger");                                    RegionID: "NO-3034"}
+        ListElement {region: qsTr("Vest-Telemark");                                RegionID: "NO-3035"}
+        ListElement {region: qsTr("Heiane");                                       RegionID: "NO-3037"}
+
     }
 }
