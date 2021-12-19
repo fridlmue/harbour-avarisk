@@ -57,7 +57,7 @@ Page {
                        if (o.responseText != '') {
                            possrc.stop();
                            // log the json response
-                           console.log(o.responseText);
+                           //console.log(o.responseText);
 
                            // translate response into object
                            // var d = eval('new Object(' + o.responseText + ')');

@@ -10,7 +10,7 @@ Name:       harbour-avarisk
 
 Summary:    SailfishOS Client for EAWS Avalanche Bulletins
 Version:    0.9
-Release:    2
+Release:    3
 Group:      Qt/Qt
 License:    GPL3
 URL:        https://github.com/fridlmue/harbour-avaRisk
@@ -19,6 +19,7 @@ Source100:  harbour-avarisk.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   pyotherside-qml-plugin-python3-qt5
 Requires:   qml(org.freedesktop.contextkit)
+Requires:   python3dist(six)
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
