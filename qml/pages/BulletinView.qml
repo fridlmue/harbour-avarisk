@@ -101,9 +101,12 @@ Page {
             str_return = problemElev.lowerBound
         }
 
-        if (str_return.toLowerCase().indexOf("treeline") === -1 && str_return.toLowerCase().indexOf("entire") === -1) {
+        if (str_return.toLowerCase().indexOf("treeline") === -1 && str_return.indexOf(qsTr("entire range")) === -1) {
           str_return += " m"
         }
+
+        str_return.replace("treeline", qsTr("treeline"))
+
         return str_return
     }
 
@@ -208,7 +211,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.publicationTime), Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
+                text: (downloadSucc)? qsTr("Report from") + ": " + Qt.formatDateTime(new Date(avaReport.publicationTime), Qt.SystemLocaleShortDate) : qsTr("Report could not be requested")
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }
@@ -218,7 +221,7 @@ Page {
                             right: parent.right
                             margins: Theme.paddingLarge
                         }
-                text: (downloadSucc)? Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.validTime.startTime), Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(convertUTCDateToLocalDate(avaReport.validTime.endTime), Qt.SystemLocaleShortDate) : ""
+                text: (downloadSucc)? Qt.formatDateTime(new Date(avaReport.validTime.startTime), Qt.SystemLocaleShortDate)  + " - " + Qt.formatDateTime(new Date(avaReport.validTime.endTime), Qt.SystemLocaleShortDate) : ""
                 font.pixelSize: Theme.fontSizeSmall
                 wrapMode: Text.Wrap
             }

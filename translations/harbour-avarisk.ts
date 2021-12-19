@@ -150,6 +150,10 @@
         <source>Weather Forecast</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>treeline</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Education</name>
@@ -338,6 +342,22 @@
     </message>
     <message>
         <source>Norway</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Region by GPS-Position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bulletin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Couldn&apos;t resolve Region</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

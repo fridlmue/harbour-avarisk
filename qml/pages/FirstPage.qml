@@ -15,9 +15,23 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import QtPositioning 5.4
+import org.freedesktop.contextkit 1.0
 import "RegionList"
 
 Page {
+
+    property string determined_region_name: 'n/a';
+    property string determined_region_id: 'n/a';
+
+    property string connection
+
+    ContextProperty {
+       key: "Internet.NetworkState"
+       onValueChanged: {
+           connection = value
+       }
+    }
 
     SilicaFlickable {
 
@@ -27,10 +41,45 @@ Page {
 
         VerticalScrollDecorator {}
 
+        PositionSource {
+           id: possrc
+           updateInterval: 10000
+           active: true
+           onPositionChanged: {
+               console.log(possrc.valid)
+               var coordinate = possrc.position.coordinate;
+               //positiontext.text = "Coordinate: " + coordinate.longitude + " " + coordinate.latitude
+               //var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon=11.4041024&lat=47.2692124"
+               var endp_url = "http://regresolve.10hoch-6.de/regresolve.cgi?lon="+coordinate.longitude+"&lat="+coordinate.latitude
+
+               request(endp_url, function (o) {
+
+                       if (o.responseText != '') {
+                           possrc.stop();
+                           // log the json response
+                           console.log(o.responseText);
+
+                           // translate response into object
+                           // var d = eval('new Object(' + o.responseText + ')');
+                           var d = JSON.parse(o.responseText);
+
+                           // access elements inside json object with dot notation
+                           //console.log(getRegionNameFromId(d.RegionID))
+                           getRegionNameFromId(d.RegionID)
+                   }
+               });
+
+           }
+        }
+
         PullDownMenu {
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Update Position")
+                onClicked: {possrc.update()}
             }
             MenuItem {
                 text: qsTr("Know-How")
@@ -478,6 +527,54 @@ Page {
                 }
             }
 
+            SectionHeader {
+                text: qsTr("Region by GPS-Position")
+            }
+
+            Row {
+                width: parent.width
+                spacing: Theme.paddingMedium
+
+                anchors {
+                            left: parent.left
+                            right: parent.right
+                            margins: Theme.paddingLarge
+                        }
+
+                Label {
+                    //anchors.verticalCenter: parent.verticalCenter
+                    id: determinedRegionName
+                    width: parent.width * 2 / 3
+                    text: determined_region_name;
+                    font.pixelSize: Theme.fontSizeLarge
+                    wrapMode: Text.Wrap
+                }
+
+                Button {
+                    id: requestDetermined
+                    text: qsTr("Bulletin")
+                    enabled: false
+                    width: parent.width * 1 / 3
+                    // height: 3 * width * sourceSize.height / sourceSize.width
+                    onPressed: {
+                        pageStack.push(Qt.resolvedUrl("BulletinView.qml"), {"regionID": determined_region_id, "regionName": determined_region_name, "country": "tbd_1", "macroRegion": "tbd_2", "connection": connection, "pm_only": false})
+                    }
+                }
+
+
+            }
+
+            /*
+            Label {
+                id:positiontext
+                //anchors.verticalCenter: parent.verticalCenter
+                width: parent.width
+                text: "n/a"
+                font.pixelSize: Theme.fontSizeLarge
+                wrapMode: Text.Wrap
+            }
+            */
+
         }
     }
     Image {
@@ -490,5 +587,35 @@ Page {
             left: parent.left
             bottom: parent.bottom
         }
+    }
+
+    function request(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = (function(myxhr) {
+            return function() {
+                callback(myxhr);
+            }
+        })(xhr);
+        xhr.open('GET', url, true);
+        xhr.send('');
+    }
+    function getRegionNameFromId(RegionID) {
+        var xhr = new XMLHttpRequest;
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE){
+                var d = JSON.parse(xhr.responseText);
+                if (RegionID != 'na') {
+                    var region_name = String(d[String(RegionID)])
+                    determined_region_id = RegionID
+                    determined_region_name = region_name;
+                    requestDetermined.enabled = true;
+                 } else {
+                    determined_region_name = qsTr("Couldn't resolve Region");
+                }
+
+            }
+        }
+        xhr.open('GET', 'micro-regions_names/'+Qt.locale().name.substring(0,2)+'.json');
+        xhr.send('');
     }
 }
