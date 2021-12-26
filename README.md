@@ -14,25 +14,39 @@ The Python core of avaRisk - pyAvaCore - moved to an external repository at http
 ## Download and Install
 - avaRisk can be found and installed from openrepos. (https://openrepos.net/content/fridl/avarisk-avalanche-bulletins)
 - avaRisk can be found and installed from the Jolla Store/Sailfish Harbour. (https://harbour.jolla.com/)
+- avaRisk is available in the CHUM repository for SFOS.
 
 ## Supported Regions
 At the moment the following regions are supported:
-- AT Tirol (https://avalanche.report) (EN/DE)
-- AT Kärnten (https://lawinenwarndienst.ktn.gv.at/) (DE)
-- AT Oberöstereich (https://www.land-oberoesterreich.gv.at/lawinenwarndienst.htm) (DE)
-- AT Niederösterreich (https://www.lawinenwarndienst-niederoesterreich.at/) (DE)
-- AT Salzburg (https://lawine.salzburg.at/) (EN/DE)
-- AT Styria (https://www.lawine-steiermark.at/) (EN/DE)
-- AT Vorarlberg (https://warndienste.cnv.at/dibos/lawine/index.html) (EN/DE)
-- CH (including FL) (https://www.slf.ch/en/index.html) (EN/DE)
-- DE Bavaria (https://www.lawinenwarndienst-bayern.de) (EN/DE)
-- ES Val d'Aran (https://lauegi.conselharan.org/) (EN/DE)
-- IT Bolzano (https://avalanche.report) (EN/DE)
-- IT Trentino (https://avalanche.report) (EN/DE)
 
-### Support considered
-- Slovenia: Some or all regions want to partitipate in "CROSSRISK" (http://crossrisk.eu). I'll get the XML-URIs as soon as they are available and the Implement the regions.
-- IT Veneto: (https://www.arpa.veneto.it/neve_valanghe/it/xml/dolomiti_nevevalanghe.xml) (Not CAAML-Compatible)
+Austria:
+- Tyrol (EN/DE/FR)
+- Carinthia (DE)
+- Oberöstereich (DE)
+- Niederösterreich (DE)
+- Salzburg (EN/DE)
+- Styria (EN/DE)
+- Vorarlberg (EN/DE)
+
+France (FR)
+
+Germany:
+- Bavaria (EN/DE)
+
+Italy:
+- South Tyrol (EN/DE)
+- Trention (EN/DE)
+
+Liechtenstein (EN/DE)
+
+Norway (EN (partly))
+
+Spain:
+- Val d'Aran (EN/DE/FR)
+
+Switzerland (EN/DE/FR)
+
+Slovenia (Si)
 
 ### Regions, that can't be implemented at the moment
 
