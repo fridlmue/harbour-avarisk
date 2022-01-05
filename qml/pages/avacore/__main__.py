@@ -33,7 +33,7 @@ from .geojson import FeatureCollection
 
 parser = argparse.ArgumentParser(description='Download and parse EAWS avalanche bulletins')
 parser.add_argument('--regions',
-                    default="AT-02 AT-03 AT-04 AT-05 AT-06 AT-08 DE-BY CH SI FR IT-21 IT-23 IT-25 IT-34 IT-36 IT-57",
+                    default="AT-02 AT-03 AT-04 AT-05 AT-06 AT-07 AT-08 DE-BY CH SI FR IT-21 IT-23 IT-25 IT-34 IT-36 IT-57 NO ES-CT-L GB",
                     help='avalanche region to download')
 parser.add_argument('--output',
                     default='./data',
@@ -57,19 +57,9 @@ logging.basicConfig(
 def download_region(regionID):
     """Downloads the given region and converts it to JSON"""
     reports, _, url = get_reports(regionID)
-    report: AvaBulletin
-    for report in reports:
-        if isinstance(report.validTime.startTime, datetime):
-            validityDate = report.validTime.startTime
-            if validityDate.hour > 15:
-                validityDate = validityDate + timedelta(days=1)
-            validityDate = validityDate.date().isoformat()
-        for region in report.regions:
-            if 'AT8R' in region.regionID:
-                region.regionID = region.regionID.replace('AT8R', 'AT-08-0')
-
     bulletins = Bulletins()
     bulletins.bulletins = reports
+    validityDate = bulletins.main_date()
 
     directory = Path(args.output)
     directory.mkdir(parents=True, exist_ok=True)

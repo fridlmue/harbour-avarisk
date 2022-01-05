@@ -122,7 +122,7 @@ def clean_html_string(to_clean):
     to_clean = to_clean.strip()
     return to_clean
 
-def process_reports_ch(path, lang="en", cached=False, problems=False):
+def process_reports_ch(path, lang="en", cached=False, problems=False, year=''):
     '''
     Download the reports for CH
     '''
@@ -145,8 +145,11 @@ def process_reports_ch(path, lang="en", cached=False, problems=False):
         begin, end = data['validity'].split('/')
 
         date_time_now = datetime.now()
+        
+        if year == '':
+            year = str(date_time_now.year)
 
-        common_report.publicationTime = pytz.timezone("Europe/Zurich").localize(datetime.strptime(str(date_time_now.year) + '-' + begin[begin.find(':')+2:-1], '%Y-%d.%m., %H:%M'))
+        common_report.publicationTime = pytz.timezone("Europe/Zurich").localize(datetime.strptime(year + '-' + begin[begin.find(':')+2:-1], '%Y-%d.%m., %H:%M'))
         common_report.validTime.startTime = common_report.publicationTime
         if common_report.validTime.startTime.hour == 17:
             common_report.validTime.endTime = common_report.validTime.startTime + timedelta(days=1)

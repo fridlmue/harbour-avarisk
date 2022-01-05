@@ -10,7 +10,7 @@ Name:       harbour-avarisk
 
 Summary:    SailfishOS Client for EAWS Avalanche Bulletins
 Version:    0.9
-Release:    3
+Release:    4
 Group:      Qt/Qt
 License:    GPL3
 URL:        https://github.com/fridlmue/harbour-avaRisk

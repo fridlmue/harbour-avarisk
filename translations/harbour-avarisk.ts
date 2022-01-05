@@ -63,11 +63,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>entire range</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>between </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>entire range</source>
+        <source>treeline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -127,6 +131,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Travel Advisory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Weather Forecast</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Tendency</source>
         <translation type="unfinished"></translation>
     </message>
@@ -140,18 +152,6 @@
     </message>
     <message>
         <source>No Internet connection and no report cached for this region</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Travel Advisory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Weather Forecast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>treeline</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
