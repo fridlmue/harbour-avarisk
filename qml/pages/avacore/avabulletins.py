@@ -13,6 +13,7 @@
     along with pyAvaCore. If not, see <http://www.gnu.org/licenses/>.
 """
 
+from datetime import date, datetime, timedelta
 import typing
 from .avabulletin import AvaBulletin, DangerRatingType
 from .geojson import Feature, FeatureCollection
@@ -26,6 +27,13 @@ class Bulletins:
 
     bulletins: typing.List[AvaBulletin]
 
+    def main_date(self) -> date:
+        validityDate: datetime = self.bulletins[0].validTime.startTime
+        if validityDate.hour > 15:
+            validityDate = validityDate + timedelta(days=1)
+        return validityDate.date()
+
+
     def max_danger_ratings(self):
         ratings = dict()
         for bulletin in self.bulletins:
@@ -38,7 +46,12 @@ class Bulletins:
                         or danger.elevation.toString() == ""
                         or danger.elevation.toString().startswith("<")
                     ):
-                        key = f"{regionID}:low"
+                        pm = ''
+                        if hasattr(bulletin, 'predecessor_id'):
+                            pm = ':pm'
+                            key = f"{regionID}:low"
+                            ratings[f"{key}:am"] = ratings.pop(key)
+                        key = f"{regionID}:low{pm}"
                         ratings[key] = max(
                             danger.get_mainValue_int(), ratings.get(key, 0)
                         )
@@ -48,10 +61,52 @@ class Bulletins:
                         or danger.elevation.toString() == ""
                         or danger.elevation.toString().startswith(">")
                     ):
-                        key = f"{regionID}:high"
+                        pm = ''
+                        if hasattr(bulletin, 'predecessor_id'):
+                            pm = ':pm'
+                            key = f"{regionID}:high"
+                            ratings[f"{key}:am"] = ratings.pop(key)
+                        key = f"{regionID}:high{pm}"
                         ratings[key] = max(
                             danger.get_mainValue_int(), ratings.get(key, 0)
                         )
+
+            for region in bulletin.regions:
+                regionID = region.regionID
+                sel_ratings = [value for key,value in ratings.items() if regionID in key]
+                sel_keys = [key for key,value in ratings.items() if regionID in key]
+
+                if not ('am' in sel_keys[0]) and not ('pm' in sel_keys[0]):
+                    key = f"{regionID}:high"
+                    ratings[f"{key}:am"] = ratings[key]
+                    ratings[f"{key}:pm"] = ratings[key]
+                    key = f"{regionID}:low"
+                    ratings[f"{key}:am"] = ratings[key]
+                    ratings[f"{key}:pm"] = ratings[key]
+                
+                key = f"{regionID}:high"
+                if not key in sel_keys:
+                    ratings[key] = max(ratings[f"{key}:am"], ratings[f"{key}:pm"])
+                
+                key = f"{regionID}:low"    
+                if not key in sel_keys:
+                    ratings[key] = max(ratings[f"{key}:am"], ratings[f"{key}:pm"])
+                    
+                key = regionID
+                if not f"{key}:am" in sel_keys:
+                    ratings[f"{key}:am"] = max(ratings[f"{key}:high:am"], ratings[f"{key}:low:am"])
+                    
+                if not f"{key}:pm" in sel_keys:
+                    ratings[f"{key}:pm"] = max(ratings[f"{key}:high:pm"], ratings[f"{key}:low:pm"])
+                    
+                if not key in sel_keys:
+                    ratings[key] = max(sel_ratings)
+
+        # return 0 independent of "no_snow" or "no_rating"
+        for key, value in ratings.items():
+            if value == -1:
+                ratings[key] = 0
+
         return ratings
 
     def augment_geojson(self, geojson: FeatureCollection):

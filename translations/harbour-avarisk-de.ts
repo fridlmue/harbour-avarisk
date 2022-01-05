@@ -63,12 +63,16 @@
         <translation>lädt</translation>
     </message>
     <message>
+        <source>entire range</source>
+        <translation>jede Höhe</translation>
+    </message>
+    <message>
         <source>between </source>
         <translation>zwischen</translation>
     </message>
     <message>
-        <source>entire range</source>
-        <translation>jede Höhe</translation>
+        <source>treeline</source>
+        <translation>Waldgrenze</translation>
     </message>
     <message>
         <source>Reload</source>
@@ -127,6 +131,14 @@
         <translation>Schneedeckenaufbau</translation>
     </message>
     <message>
+        <source>Travel Advisory</source>
+        <translation>Reiseempfehlung</translation>
+    </message>
+    <message>
+        <source>Weather Forecast</source>
+        <translation>Wettervorhersage</translation>
+    </message>
+    <message>
         <source>Tendency</source>
         <translation>Tendenz</translation>
     </message>
@@ -141,18 +153,6 @@
     <message>
         <source>No Internet connection and no report cached for this region</source>
         <translation>Keine Internetverbindung und kein heruntergeladener Report verfügbar</translation>
-    </message>
-    <message>
-        <source>Travel Advisory</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Weather Forecast</source>
-        <translation>Wettervorhersage</translation>
-    </message>
-    <message>
-        <source>treeline</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -322,43 +322,43 @@
     </message>
     <message>
         <source>Alpes du Nord</source>
-        <translation type="unfinished"></translation>
+        <translation>Nordalpen</translation>
     </message>
     <message>
         <source>Alpes du Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Südalpen</translation>
     </message>
     <message>
         <source>Pyrenees</source>
-        <translation type="unfinished"></translation>
+        <translation>Pyrenäen</translation>
     </message>
     <message>
         <source>Corse</source>
-        <translation type="unfinished"></translation>
+        <translation>Korsika</translation>
     </message>
     <message>
         <source>Slovenia</source>
-        <translation type="unfinished"></translation>
+        <translation>Slowenien</translation>
     </message>
     <message>
         <source>Norway</source>
-        <translation type="unfinished"></translation>
+        <translation>Norwegen</translation>
     </message>
     <message>
         <source>Update Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Position neu berechnen</translation>
     </message>
     <message>
         <source>Region by GPS-Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Region laut GPS-Position</translation>
     </message>
     <message>
         <source>Bulletin</source>
-        <translation type="unfinished"></translation>
+        <translation>Bulletin</translation>
     </message>
     <message>
         <source>Couldn&apos;t resolve Region</source>
-        <translation type="unfinished"></translation>
+        <translation>Region konnte nicht ermittelt werden.</translation>
     </message>
 </context>
 <context>
@@ -1673,75 +1673,75 @@
     </message>
     <message>
         <source>Schladminger Tauern Nord</source>
-        <translation type="unfinished"></translation>
+        <translation>Schladminger Tauern Nord</translation>
     </message>
     <message>
         <source>Schladminger Tauern Süd</source>
-        <translation type="unfinished"></translation>
+        <translation>Schladminger Tauern Süd</translation>
     </message>
     <message>
         <source>Lechtaler Alpen</source>
-        <translation type="unfinished"></translation>
+        <translation>Lechtalter Alpen</translation>
     </message>
     <message>
         <source>Lechquellengebirge</source>
-        <translation type="unfinished"></translation>
+        <translation>Lechquellengebirge</translation>
     </message>
     <message>
         <source>Rätikon Ost</source>
-        <translation type="unfinished"></translation>
+        <translation>Rätikon Ost</translation>
     </message>
     <message>
         <source>Rätikon West</source>
-        <translation type="unfinished"></translation>
+        <translation>Rätikon West</translation>
     </message>
     <message>
         <source>Allgäuer Vorberge</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgäuer Vorberge</translation>
     </message>
     <message>
         <source>Allgäuer Hauptkamm</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgäuer Hauptkamm</translation>
     </message>
     <message>
         <source>Bayerische Voralpen West</source>
-        <translation type="unfinished"></translation>
+        <translation>Bayrische Voralpen West</translation>
     </message>
     <message>
         <source>Bayerische Voralpen Mitte</source>
-        <translation type="unfinished"></translation>
+        <translation>Bayrische Voralpen Mitte</translation>
     </message>
     <message>
         <source>Bayerische Voralpen Ost</source>
-        <translation type="unfinished"></translation>
+        <translation>Bayrische Voralpen Ost</translation>
     </message>
     <message>
         <source>Chiemgauer Alpen West</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiemgauer Alpen West</translation>
     </message>
     <message>
         <source>Chiemgauer Alpen Ost</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiemgauer Alpen Ost</translation>
     </message>
     <message>
         <source>Generalized Slovenia</source>
-        <translation type="unfinished"></translation>
+        <translation>Slowenien Generell</translation>
     </message>
     <message>
         <source>Julian Alps, South and West</source>
-        <translation type="unfinished"></translation>
+        <translation>Julianische Alpen, Süd und West</translation>
     </message>
     <message>
         <source>Julian Alps, Central and Karawanks, West</source>
-        <translation type="unfinished"></translation>
+        <translation>Julianische Alpen, Zentral und Karawanken, West</translation>
     </message>
     <message>
         <source>Kamnik-Savinja Alps and Karawanks, East</source>
-        <translation type="unfinished"></translation>
+        <translation>Steiner Alpen und Karawanken, Ost</translation>
     </message>
     <message>
         <source>pre-Apline and Dinaric-Alps</source>
-        <translation type="unfinished"></translation>
+        <translation>Voralpen und Dinariden</translation>
     </message>
     <message>
         <source>Nordenskiöld Land</source>

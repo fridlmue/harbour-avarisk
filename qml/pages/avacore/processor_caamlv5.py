@@ -99,6 +99,7 @@ def parse_xml(root):
             '''
             for AvProblem in observations.iter(tag=CAAMLTAG + 'AvProblem'):
                 type_r = ""
+                problem_danger_rating = DangerRatingType()
                 for avProbType in AvProblem.iter(tag=CAAMLTAG + 'type'):
                     type_r = avProbType.text
                 aspect = []
@@ -106,13 +107,24 @@ def parse_xml(root):
                     aspect.append(validAspect.get('{http://www.w3.org/1999/xlink}href').upper().replace('ASPECTRANGE_', ''))
                 valid_elevation = "-"
                 for validElevation in AvProblem.iter(tag=CAAMLTAG + 'validElevation'):
-                    valid_elevation = validElevation.get('{http://www.w3.org/1999/xlink}href')
+                        if '{http://www.w3.org/1999/xlink}href' in validElevation.attrib:
+                            problem_danger_rating.elevation.auto_select(validElevation.attrib.get('{http://www.w3.org/1999/xlink}href'))
+                        else:
+                            for beginPosition in validElevation.iter(tag=CAAMLTAG + 'beginPosition'):
+                                problem_danger_rating.elevation.auto_select("ElevationRange_" + beginPosition.text + "Hi")
+                            for endPosition in validElevation.iter(tag=CAAMLTAG + 'endPosition'):
+                                problem_danger_rating.elevation.auto_select("ElevationRange_" + endPosition.text + "Lw")
+                        '''
+                        valid_elevation = validElevation.get('{http://www.w3.org/1999/xlink}href')
+                        if not valid_elevation is None:
+                            problem_danger_rating.elevation.auto_select(valid_elevation)
+                        else:
+                        '''
+                        
                 comment_r = ''
                 for comment in AvProblem.iter(tag=CAAMLTAG + 'comment'):
                     comment_r = comment.text
-                problem_danger_rating = DangerRatingType()
                 problem_danger_rating.aspect = aspect
-                problem_danger_rating.elevation.auto_select(valid_elevation)
                 problem = AvalancheProblemType()
                 problem.add_problemType(type_r)
                 problem.dangerRating = problem_danger_rating
@@ -120,16 +132,20 @@ def parse_xml(root):
                     problem.comment = comment_r
                 report.avalancheProblems.append(problem)
             for avActivityHighlights in observations.iter(tag=CAAMLTAG + 'avActivityHighlights'):
-                report.avalancheActivityHighlights = avActivityHighlights.text.replace('&nbsp;', '\n')
+                if not avActivityHighlights.text is None:
+                    report.avalancheActivityHighlights = avActivityHighlights.text.replace('&nbsp;', '\n')
             for wxSynopsisComment in observations.iter(tag=CAAMLTAG + 'wxSynopsisComment'):
                 report.wxSynopsisComment = wxSynopsisComment.text.replace('&nbsp;', '\n')
             for avActivityComment in observations.iter(tag=CAAMLTAG + 'avActivityComment'):
-                report.avalancheActivityComment = avActivityComment.text.replace('&nbsp;', '\n')
+                if not avActivityHighlights.text is None:
+                    report.avalancheActivityComment = avActivityComment.text.replace('&nbsp;', '\n')
             for snowpackStructureComment in observations.iter(tag=CAAMLTAG + ''\
                                                               'snowpackStructureComment'):
-                report.snowpackStructureComment = snowpackStructureComment.text.replace('&nbsp;', '\n')
+                if not snowpackStructureComment.text is None:
+                    report.snowpackStructureComment = snowpackStructureComment.text.replace('&nbsp;', '\n')
             for tendencyComment in observations.iter(tag=CAAMLTAG + 'tendencyComment'):
-                report.tendency.tendencyComment = tendencyComment.text.replace('&nbsp;', '\n')
+                if not tendencyComment.text is None:
+                    report.tendency.tendencyComment = tendencyComment.text.replace('&nbsp;', '\n')
         reports.append(report)
 
         if pm_available:
@@ -321,6 +337,8 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
     now = datetime.now(pytz.timezone('Europe/Ljubljana'))
     if fetch_time_dependant and today == datetime(1, 1, 1, 1, 1, 1) and now.time() > time(17, 0, 0):
         today = now.date() + timedelta(days=1)
+    elif fetch_time_dependant and today == datetime(1, 1, 1, 1, 1, 1):
+        today = now.date()
 
     reports = []
     report = AvaBulletin()
@@ -334,7 +352,7 @@ def parse_xml_bavaria(root, location='bavaria', today=datetime(1, 1, 1, 1, 1, 1)
         for dateTimeReport in metaData.iter(tag=CAAMLTAG + 'dateTimeReport'):
             if location == 'slovenia':
                 time_i = dateutil.parser.parse(dateTimeReport.text, ignoretz = True)
-                report.publicationTime =  pytz.timezone("Europe/Berlin").localize(time_i)
+                report.publicationTime = pytz.timezone("Europe/Ljubljana").localize(time_i)
             else:
                 report.publicationTime = dateutil.parser.parse(dateTimeReport.text)
 

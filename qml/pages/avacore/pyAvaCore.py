@@ -28,7 +28,8 @@ from avacore.avabulletin import AvaBulletin
 from avacore.processor_fr import process_reports_fr, process_all_reports_fr
 from avacore.processor_ch import process_reports_ch
 from avacore.processor_it import process_reports_it, process_all_reports_it
-from avacore.processor_norway import process_reports_no
+from avacore.processor_uk import process_reports_uk
+from avacore.processor_norway import process_reports_no, process_all_reports_no
 from avacore.processor_caamlv5 import parse_xml, parse_xml_bavaria, parse_xml_vorarlberg
 
 config = configparser.ConfigParser()
@@ -79,8 +80,15 @@ def get_reports(region_id, local='en', cache_path=str(Path('cache')), from_cache
             reports = process_reports_it(region_id)
         provider = "AINEVA: aineva.it"
     elif region_id.startswith("NO"):
-        reports = process_reports_no(region_id)
+        if region_id == 'NO':
+            reports = process_all_reports_no(region_id)
+        else:
+            reports = process_reports_no(region_id)
         provider = "varsom.no"
+    elif region_id.startswith("GB"):
+        reports = process_reports_uk()
+        provider = "Scottish Avalanche Information Service"
+        # url = "https://www.sais.gov.uk/api?action=getForecast"
     else:
         url, provider = get_report_url(region_id, local)
 
@@ -98,10 +106,18 @@ def get_report_url(region_id, local=''): #You can ignore "provider" return value
     '''
     returns the valid URL for requested region_id
     '''
-    name = config[region_id]['name']
-    url = config[region_id]['url']
-    if f'url.{local}' in config[region_id]:
-        url = config[region_id][f'url.{local}']
+    
+    region_id_prefix = region_id
+    while not region_id_prefix in config.keys():
+        if region_id_prefix.startswith('SI'):
+            region_id_prefix = 'SI'
+        else:
+            region_id_prefix = '-'.join(region_id_prefix.split('-')[:-1])
+    
+    name = config[region_id_prefix]['name']
+    url = config[region_id_prefix]['url']
+    if f'url.{local}' in config[region_id_prefix]:
+        url = config[region_id_prefix][f'url.{local}']
     netloc = urlparse(url).netloc
     if "DE" == local.upper():
         provider = f"Die dargestellten Informationen werden über eine API auf {netloc} abgefragt. Diese wird bereitgestellt von: {name}."

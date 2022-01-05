@@ -28,15 +28,6 @@ from avacore.avabulletin import AvaBulletin, DangerRatingType, AvalancheProblemT
 
 def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'))):
     
-    '''
-    if today == datetime(1, 1, 1, 1, 1, 1):
-        now = datetime.now(pytz.timezone('Europe/Rome'))
-        if now.time() > time(17, 0, 1):
-            today = now.date() + timedelta(days=1)
-        else:
-            today = now.date()
-    '''
-    
     reports = []
     report = pyAvaCore.AvaBulletin()
 
@@ -94,23 +85,42 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
     else:
         danger_img_value = -1
     
+    print(danger_img_value)
+    
     if danger_img_value != -1:    
         if danger_img_value < 6:
             danger_rating.set_mainValue_int(danger_img_value)
-            # danger_rating.elevation.auto_select(valid_elevation)
-            # report.danger_main.append(pyAvaCore.DangerMain(int(details_10[0][3]), '-'))
         else:
-            # More Values should follow here. I don't know all the possible combinations.
             if danger_img_value == 12:
                 danger_rating.set_mainValue_int(2) # Tagesverläuflicher Anstieg von 1 auf 2
+            elif danger_img_value == 13:
+                danger_rating.set_mainValue_int(3) # Tagesverläuflicher Anstieg von 1 auf 3
             elif danger_img_value == 14:
                 danger_rating.set_mainValue_int(3) # Tagesverläuflicher Anstieg von 2 auf 3
+            elif danger_img_value == 15:
+                danger_rating.set_mainValue_int(4) # Tagesverläuflicher Anstieg von 2 auf 4
             elif danger_img_value == 16:
                 danger_rating.set_mainValue_int(2) # Tagesverläuflicher Wechsel von 2 auf 1
             elif danger_img_value == 17:
                 danger_rating.set_mainValue_int(4) # Tagesverläuflicher Anstieg von 3 auf 4
+            elif danger_img_value == 19:
+                danger_rating.set_mainValue_int(3) # Tagesverläuflicher Anstieg von 3 auf 1
             elif danger_img_value == 20:
                 danger_rating.set_mainValue_int(3) # Tagesverläuflicher Wechsel von 3 auf 2
+            elif danger_img_value == 21:
+                danger_rating.set_mainValue_int(5) # Tagesverläuflicher Wechsel von 4 auf 5
+            elif danger_img_value == 22:
+                danger_rating.set_mainValue_int(4) # Tagesverläuflicher Wechsel von 4 auf 3
+            elif danger_img_value == 6:
+                danger_rating.set_mainValue_int(-1)# No Rating
+            elif danger_img_value == 7:
+                danger_rating.set_mainValue_int(0) # No Snow
+            elif danger_img_value == 8:
+                danger_rating.set_mainValue_int(2) # moderato riscaldamento
+            elif danger_img_value == 9:
+                danger_rating.set_mainValue_int(3) # marcato riscaldamento
+            elif danger_img_value == 10:
+                danger_rating.set_mainValue_int(4) # forte riscaldamento
 
         prefix_alti = ''
 
@@ -130,7 +140,6 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
 
         av_problem = details_10[3][5:-4].lower()
         if av_problem != '':
-            #report.problem_list.append(av_problem)
             problem = AvalancheProblemType()
             problem.add_problemType(av_problem)
             report.avalancheProblems.append(problem)
@@ -141,10 +150,8 @@ def process_reports_it(region_id, today=datetime.now(pytz.timezone('Europe/Rome'
 
 def date_from_report(date):
     date = dateutil.parser.parse(date, dayfirst=True)
-    # date = datetime.datetime.strptime(date, '%d/%m/%Y')
     return date
 
-# Only temporary for debug
 def process_all_reports_it(region_prefix=''):
     all_reports = []
     for region in it_region_ref.keys():
@@ -230,6 +237,3 @@ it_region_ref = {
     'IT-57-PU-01': ['Marche', 3],
     'IT-57-AP-02': ['Marche', 4],
     }
-
-
-

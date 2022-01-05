@@ -19,6 +19,7 @@ import io.thp.pyotherside 1.5
 import org.freedesktop.contextkit 1.0
 
 Page {
+    id: mainView
     property string regionID
     property string regionName
     property string country
@@ -38,9 +39,13 @@ Page {
 
     property bool busy: false
     property int dangerLevel: 0
+    property int dangerLevel_pm: 0
     property int dangerLevel_h: 0
+    property var dangerLevel_h_pm: 0
     property int dangerLevel_l: 0
+    property var dangerLevel_l_pm: 0
     property string dangerLevel_alti: ""
+    property string dangerLevel_alti_pm: ""
 
     /*
     property var dangerLevel: 0
@@ -115,6 +120,42 @@ Page {
         return newDate;
     }
 
+    function extractDangerLevels() {
+        for (var elem in avaReport.dangerRatings) {
+            if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('lowerBound')) {
+                dangerLevel_h = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+                dangerLevel_alti = avaReport.dangerRatings[elem].elevation.lowerBound;
+
+            } else if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('upperBound')) {
+                dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+            } else {
+                dangerLevel_h = dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
+            }
+        }
+
+        if (dangerLevel_l == 0 || dangerLevel_h == 0) dangerLevel_l = dangerLevel_h = Math.max(dangerLevel_h, dangerLevel_l);
+
+        dangerLevel = Math.max(dangerLevel_h, dangerLevel_l)
+
+        if (pm_available) {
+            for (var ratings in avaReportPM.dangerRatings) {
+                //console.log('PM_report auswerten')
+                if (avaReportPM.dangerRatings[ratings].elevation.hasOwnProperty('lowerBound')) {
+                    dangerLevel_h_pm = avDanger[avaReportPM.dangerRatings[ratings]['mainValue']];
+                    dangerLevel_alti_pm = avaReportPM.dangerRatings[ratings].elevation.lowerBound;
+
+                } else if (avaReportPM.dangerRatings[ratings].elevation.hasOwnProperty('upperBound')) {
+                    dangerLevel_l_pm = avDanger[avaReportPM.dangerRatings[ratings]['mainValue']];
+                } else {
+                    dangerLevel_h_pm = dangerLevel_l_pm = avaReportPM[avaReportPM.dangerRatings[ratings]['mainValue']];
+                }
+            }
+            if (dangerLevel_l_pm == 0 || dangerLevel_h_pm == 0) dangerLevel_l_pm = dangerLevel_h_pm = Math.max(dangerLevel_h_pm, dangerLevel_l_pm);
+            dangerLevel_pm = Math.max(dangerLevel_h_pm, dangerLevel_l_pm)
+            // console.log('PM Level ' + dangerLevel_pm.toString())
+        }
+    }
+
     ContextProperty {
        key: "Internet.NetworkState"
        onValueChanged: {
@@ -129,26 +170,29 @@ Page {
     }
 
     onStatusChanged: {
-        if (status == Component.Ready)
+        if ((status == Component.Ready) && (pm_only == false))
         {
             python.startDownload();
-            // console.log('Start DL')
-            // console.log(pm_only)
         }
+
+        if ((status == Component.Ready) && pm_only)
+        {
+            extractDangerLevels();
+            downloadSucc = true;
+        }
+    }
+
+    BusyIndicator {
+        id: busyInd
+        size: BusyIndicatorSize.Large
+        anchors.centerIn: parent
+        running: busy
     }
 
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
         bottomMargin: Theme.paddingSmall
-
-
-        BusyIndicator {
-            id: busyInd
-             size: BusyIndicatorSize.Large
-             anchors.centerIn: parent
-             running: busy
-        }
 
         VerticalScrollDecorator{}
 
@@ -228,6 +272,7 @@ Page {
 
             //Danger Level
             SectionHeader {
+                //text: (pm_available) ? qsTr("Danger Level") + " " + qsTr("and PM") + " " + qsTr("Danger Level") : qsTr("Danger Level")
                 text: qsTr("Danger Level")
             }
             Row {
@@ -254,10 +299,29 @@ Page {
                     font.pixelSize: Theme.fontSizeLarge
                     wrapMode: Text.Wrap
                 }
-            }
+/*
+                Image {
+                    source: "qrc:///res/danger-levels/level_" + dangerLevel_pm + ".png"
+                    width: Theme.iconSizeLarge
+                    height: width * sourceSize.height / sourceSize.width
+                    visible: (pm_available) ? true : false
+                }
 
+                Label {
+                    id: lblDangerLevel_pm
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width
+                    text: dangerLevelText(dangerLevel_pm)
+                    font.pixelSize: Theme.fontSizeLarge
+                    wrapMode: Text.Wrap
+                    visible: (pm_available) ? true : false
+                }
+
+*/
+            }
             //ElevationData
             SectionHeader {
+                //text: (pm_available) ? qsTr("Elevation Data") + " " + qsTr("and PM") + " " + qsTr("Elevation Data") : qsTr("Elevation Data")
                 text: qsTr("Elevation Data")
                 visible: (dangerLevel_l === dangerLevel_h) ? false : true
             }
@@ -284,8 +348,24 @@ Page {
                     font.pixelSize: Theme.fontSizeMedium
                     wrapMode: Text.Wrap
                 }
-            }
+/*
+                Image {
+                    source: "qrc:///res/warning-pictos/levels_" + dangerLevel_l_pm + "_" + dangerLevel_h_pm + ".png"
+                    width: Theme.iconSizeLarge
+                    height: width * sourceSize.height / sourceSize.width
+                    visible: (pm_available) ? true : false
+                }
 
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: getElevFromString(avaReport_pm.dangerRatings[0].elevation)
+                    font.pixelSize: Theme.fontSizeMedium
+                    wrapMode: Text.Wrap
+                    visible: (pm_available) ? true : false
+                }
+
+*/
+            }
             //Avalanche prone locations
             SectionHeader {
                 text: qsTr("Avalanche prone locations")
@@ -622,7 +702,6 @@ Page {
                             avaReportPM = avaReports[1]
                         }
                     }
-                    // console.log("got report: " + val)
                 });
                 setHandler('provider', function(val) {
                     provider = val;
@@ -634,43 +713,31 @@ Page {
                     cached_pm = val;
                 });
                 setHandler('error', function(val) {
-                    console.log("Error: " + val);
+                    // console.log("Error: " + val);
                 });
                 setHandler('finished', function(val) {
-                    // console.log("should be done: " + val)
                     if (val === true) {
                         coverExchange.country = country
                         coverExchange.region = macroRegion
                         coverExchange.microRegion = regionName
                         coverExchange.levelText = qsTr("LEVEL")
 
-                        for (var elem in avaReport.dangerRatings) {
-                            if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('lowerBound')) {
-                                dangerLevel_h = avDanger[avaReport.dangerRatings[elem]['mainValue']];
-                                dangerLevel_alti = avaReport.dangerRatings[elem].elevation.lowerBound;
+                        extractDangerLevels()
 
-                            } else if (avaReport.dangerRatings[elem].elevation.hasOwnProperty('upperBound')) {
-                                dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
-                            } else {
-                                dangerLevel_h = dangerLevel_l = avDanger[avaReport.dangerRatings[elem]['mainValue']];
-                            }
-                        }
-
-                        if (dangerLevel_l == 0 || dangerLevel_h == 0) dangerLevel_l = dangerLevel_h = Math.max(dangerLevel_h, dangerLevel_l);
-
-                        dangerLevel = Math.max(dangerLevel_h, dangerLevel_l)
-
-                        coverExchange.dangerMain = dangerLevel
-                        coverExchange.dangerH = dangerLevel_h
-                        coverExchange.dangerL = dangerLevel_l
+                        coverExchange.dangerMain = Math.max(dangerLevel, dangerLevel_pm)
+                        coverExchange.dangerH = Math.max(dangerLevel_h, dangerLevel_h_pm)
+                        coverExchange.dangerL = Math.max(dangerLevel_l, dangerLevel_l_pm)
                         coverExchange.validHeight = getElevFromString(avaReport.dangerRatings[0].elevation)
-
                     }
                     downloadSucc = val
 
                     // If Busy == false, error message was set by startDownload()
                     if (downloadSucc == false && busy == true) {
                         dangerLevelError = qsTr("Maybe no report is provided for this region at the moment.")
+                    }
+
+                    if (pm_available) {
+                        pageStack.pushAttached(Qt.resolvedUrl("BulletinView.qml"), {"regionID": regionID, "regionName": regionName, "country": country, "macroRegion": macroRegion, "connection": connection, "pm_only": true, "avaReport": avaReportPM});
                     }
 
                     busy = false;
