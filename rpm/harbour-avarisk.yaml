@@ -1,7 +1,7 @@
 Name: harbour-avarisk
 Summary: SailfishOS Client for EAWS Avalanche Bulletins
 Version: 0.9
-Release: 4
+Release: 5
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
@@ -25,8 +25,8 @@ PkgConfigBR:
   - qt5embedwidget
 
 # Build dependencies without a pkgconfig setup can be listed here
-# PkgBR:
-#   - package-needed-to-build
+PkgBR:
+  - qt5-qttools-linguist
 
 # Runtime dependencies which are not automatically detected
 Requires:
